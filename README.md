@@ -4,7 +4,7 @@
 This repository is intended to showcase developer's creativity and talent. Creative solutions & suggestions will be selected 
 and incorporate into eGov ERP suit.
 
-#### How to Participate:-
+#### How to contribute
 1. Solutions can be added individually or as a team.
 2. Every solution must accompanied with a README file to give ample information about the solution.
 3. Every solution must be created and submitted separately.
