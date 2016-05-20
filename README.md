@@ -4,10 +4,10 @@
 This repository is intended to showcase developer's creativity and talent. Creative solutions & suggestions will be selected 
 and incorporate into eGov ERP suit.
 
-#### Terms & Conditions:-
+#### How to Participate:-
 1. Solutions can be added individually or as a team.
 2. Every solution must accompanied with a README file to give ample information about the solution.
-3. Every solution must be created separately.
+3. Every solution must be created and submitted separately.
 4. Do not edit other's solution without respective solution owner's permission.
 5. Once your solution is completed raise an issue [here](https://github.com/egovernments/eGov-RnD/issues/new) asking for a review.
 6. Anyone can participate in reviewing and commenting on the submitted solution.
