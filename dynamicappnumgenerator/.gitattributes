@@ -1,0 +1,5 @@
+# normalize text files to use lf
+text eol=lf
+
+# except these which we want crlf
+*.bat eol=crlf
