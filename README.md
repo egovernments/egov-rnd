@@ -1,6 +1,8 @@
 # eGov-RnD
 ### eGovernments Research and Development Projects
 
+[![Join the chat at https://gitter.im/egovernments/eGov-RnD](https://badges.gitter.im/egovernments/eGov-RnD.svg)](https://gitter.im/egovernments/eGov-RnD?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This repository is intended to showcase developer's creativity and talent. Creative solutions & suggestions will be selected 
 and incorporate into eGov ERP suit.
 
