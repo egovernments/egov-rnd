@@ -7,7 +7,7 @@ More than a project this can be used as a template project for your eGov-RnD con
 This utility depends on SpEL (Spring Expression Language) and others types of string formatting where SpEL helps to get value
 from provided object graph expression. This implementation gives enough flexibility to generate application number as a generic solution
 by following some contracts on format. This particular utility uses database to store the application number format data, which mainly
-contains a **name** and a **format** field.
+contains a table **APP_NUMBER_FORMAT** with **name** and a **format** field.
 
 **name** :- a unique name for the application number formatter.
 
@@ -27,7 +27,7 @@ The contract based on the above format is as follows (All are optional) :-
    **TYPE** : **n** for numeric, **a** for alphabets and **an** alphanumeric.
 
    **LENGTH** : any whole number to limit the length of random value.
-4. If a DB sequence needs to be involved then the expression must be in the following format **seq(PADDING_SIZE,SEQUENCE_NAME)**.
+4. If a DB sequence needs to be involved then the expression must be in the following format **seq(SEQUENCE_NAME,PADDING_SIZE)**.
 
    **SEQUENCE_NAME** : the name of the DB sequence used to get the next number.
 
