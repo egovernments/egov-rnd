@@ -1,0 +1,30 @@
+group 'es-googlesheet-loader'
+version '1.0-SNAPSHOT'
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'GoogleSheetDataLoader'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://repo.egovernments.org/nexus/content/groups/public"
+    }
+}
+
+dependencies {
+    compile 'com.google.api-client:google-api-client:1.22.0'
+    compile 'com.google.oauth-client:google-oauth-client-jetty:1.22.0'
+    compile 'com.google.apis:google-api-services-sheets:v4-rev2-1.22.0'
+    compile 'org.slf4j:slf4j-log4j12:1.7.21'
+    compile 'org.elasticsearch:elasticsearch:2.3.3'
+    compile 'org.springframework:spring-context:4.0.0.RELEASE'
+    compile 'com.google.guava:guava:19.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'org.json:json:20160212'
+
+
+}
