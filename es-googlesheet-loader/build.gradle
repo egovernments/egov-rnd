@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = 'GoogleSheetDataLoader'
+mainClassName = 'org.egov.gsdl.client.GoogleSheetDataLoader'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 version = '1.0'
