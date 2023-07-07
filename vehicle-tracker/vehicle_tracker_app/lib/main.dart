@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Vehicle Tracker App',
       theme: CustomTheme.toastTheme,
       getPages: getPages,
-      initialRoute: "/digit",
+      initialRoute: "/",
     );
   }
 }

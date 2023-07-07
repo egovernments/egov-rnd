@@ -44,6 +44,7 @@ dependencies:
   latlng: any
   flutter_secure_storage: ^8.0.0
   digit_components: ^0.0.1+5
+  geocoding: ^2.1.0
 
 dev_dependencies:
   flutter_test:
