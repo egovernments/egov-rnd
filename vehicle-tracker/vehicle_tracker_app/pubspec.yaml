@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.2.2
   latlng: any
   flutter_secure_storage: ^8.0.0
+  digit_components: ^0.0.1+5
 
 dev_dependencies:
   flutter_test:
