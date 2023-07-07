@@ -3,6 +3,8 @@ import 'package:digit_components/widgets/atoms/digit_checkbox.dart';
 import 'package:digit_components/widgets/atoms/digit_divider.dart';
 import 'package:digit_components/widgets/atoms/digit_toaster.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/features/digit/controllers/digit_controllers.dart';
 import 'package:vehicle_tracker_app/themes.dart';
 
 class DigitPage extends StatelessWidget {
@@ -10,7 +12,7 @@ class DigitPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool check = false;
+    DigitController digitController = Get.find<DigitController>();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -52,13 +54,15 @@ class DigitPage extends StatelessWidget {
             label: "Text Field",
           ),
 
-          // Text Box
-          DigitCheckbox(
-            label: "Checkbox",
-            value: check,
-            onChanged: (value) {
-              check = !value!;
-            },
+          // Check Box
+          Obx(
+            () => DigitCheckbox(
+              label: "Checkbox",
+              value: digitController.check.value,
+              onChanged: (value) {
+                digitController.switchCheck();
+              },
+            ),
           ),
 
           // info card
