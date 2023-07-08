@@ -1,19 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../../../constants.dart';
 import '../widgets/map_marker.dart';
 
 class MapPage extends StatefulWidget {
-  const MapPage({super.key});
+  const MapPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MapPage> createState() => _MapPageState();
 }
 
 class _MapPageState extends State<MapPage> {
-  var markerPosition = const LatLng(51.5, -0.09);
+  LatLng? markerPosition = Get.arguments['position'];
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +39,15 @@ class _MapPageState extends State<MapPage> {
             },
           ),
           // nonRotatedChildren: [
-          //   PlaceDetails(position: position, placeController: placeController),
-          //   ConfirmButton(placeController: placeController)
+          //   // PlaceDetails(position: position, placeController: placeController),
+          //   // ConfirmButton(placeController: placeController)
           // ],
           children: [
             TileLayer(
               urlTemplate: urlTemplate,
               subdomains: const ['a', 'b', 'c'],
             ),
-            Markers(position: markerPosition)
+            Markers(position: markerPosition!)
           ],
         ),
       ),

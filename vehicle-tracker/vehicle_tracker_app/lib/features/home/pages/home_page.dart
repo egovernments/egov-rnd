@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,9 +21,7 @@ class HomePage extends StatelessWidget {
             children: [
               DigitOutLineButton(
                 label: "Request",
-                onPressed: () async {
-                  await placeController.requestOnClick();
-                },
+                onPressed: () async => await placeController.requestOnClick(),
               ),
             ],
           ),

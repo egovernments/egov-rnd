@@ -41,7 +41,7 @@ dependencies:
   flutter_map: ^5.0.0
   geolocator: ^9.0.2
   fluttertoast: ^8.2.2
-  latlng: any
+  latlong2: any
   flutter_secure_storage: ^8.0.0
   digit_components: ^0.0.1+5
   geocoding: ^2.1.0

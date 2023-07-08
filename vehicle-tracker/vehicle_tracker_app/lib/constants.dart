@@ -1,4 +1,5 @@
-import 'package:latlng/latlng.dart';
+
+import 'package:latlong2/latlong.dart';
 
 String uri = "";
 String urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
