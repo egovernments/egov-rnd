@@ -2,6 +2,7 @@ import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../util/drawer_widget.dart';
 import '../controllers/place_controller.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,9 +13,15 @@ class HomePage extends StatelessWidget {
     final placeController = Get.find<PlaceController>();
 
     return Scaffold(
+      // * appbar
       appBar: AppBar(
         title: const Text("Vehicle Tracker App"),
       ),
+
+      // * dwawer
+      drawer: const CustomDrawer(),
+
+      // * body
       body: SingleChildScrollView(
         child: Center(
           child: Column(
