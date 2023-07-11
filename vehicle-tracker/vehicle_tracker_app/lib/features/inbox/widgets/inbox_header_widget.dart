@@ -34,7 +34,7 @@ class InboxHeaderWidget extends StatelessWidget {
               ),
               DigitIconButton(
                 icon: Icons.sort,
-                onPressed: () {},
+                onPressed: () => sortDialogBox(context),
                 iconText: "Sort",
                 iconColor: Colors.orange[700],
                 iconTextColor: Colors.orange[700],
@@ -64,7 +64,7 @@ searchDialogBox(context) => DigitActionDialog.show(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(child: const Text("CLEAR SEARCH"), onPressed: () {}),
-              ElevatedButton(child: const Text("SEARCH"), onPressed: () {}),
+              DigitElevatedButton(child: const Text("SEARCH"), onPressed: () {}),
             ],
           )
         ],
@@ -73,19 +73,50 @@ searchDialogBox(context) => DigitActionDialog.show(
 
 filterDialogBox(context) => DigitActionDialog.show(
       context,
-      widget: const Column(
+      widget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Filter By", style: TextStyle(fontSize: 20)),
-          SizedBox(height: 10),
-          Text("Locality"),
-          SizedBox(height: 20),
-          Text("Status"),
-          DigitCheckboxTile(label: "Application Created", value: false),
-          DigitCheckboxTile(label: "Pending for DSO Assignment", value: false),
-          DigitCheckboxTile(label: "DSO In Progress", value: false),
-          DigitCheckboxTile(label: "Pending for Payment", value: false),
+          const Text("Filter By", style: TextStyle(fontSize: 20)),
+          const SizedBox(height: 10),
+          const Text("Locality"),
+          const SizedBox(height: 20),
+          const Text("Status"),
+          const DigitCheckboxTile(label: "Application Created", value: false),
+          const DigitCheckboxTile(label: "Pending for DSO Assignment", value: false),
+          const DigitCheckboxTile(label: "DSO In Progress", value: false),
+          const DigitCheckboxTile(label: "Pending for Payment", value: false),
+          const Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(child: const Text("CLEAR FILTER"), onPressed: () {}),
+              DigitElevatedButton(child: const Text("FILTER"), onPressed: () {}),
+            ],
+          )
           // DigitDropdown(value: value, label: label, menuItems: menuItems, valueMapper: valueMapper)
+        ],
+      ),
+    );
+
+sortDialogBox(context) => DigitActionDialog.show(
+      context,
+      widget: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text("Sort By", style: TextStyle(fontSize: 20)),
+          RadioListTile(
+            title: const Text("Date (Latest First)"),
+            value: 1,
+            groupValue: 1,
+            onChanged: (value) {},
+          ),
+          RadioListTile(
+            title: const Text("Date (Lates Last)"),
+            value: 2,
+            groupValue: 1,
+            onChanged: (value) {},
+          ),
         ],
       ),
     );
