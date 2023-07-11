@@ -189,10 +189,10 @@ packages:
     dependency: "direct main"
     description:
       name: digit_components
-      sha256: "14074ad93f86f8055e32d6bb26bfa4a63f45dee9c8d581edb149e5f22d05d937"
+      sha256: d328f016e0e94a1ffc97c74e844cd575c54453f225df19c618f0afe126f0cb01
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1+5"
+    version: "0.0.1+7"
   fake_async:
     dependency: transitive
     description:

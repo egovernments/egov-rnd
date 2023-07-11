@@ -43,7 +43,7 @@ dependencies:
   fluttertoast: ^8.2.2
   latlong2: any
   flutter_secure_storage: ^8.0.0
-  digit_components: ^0.0.1+5
+  digit_components: ^0.0.1+7
   geocoding: ^2.1.0
 
 dev_dependencies:
