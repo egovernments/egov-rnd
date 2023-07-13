@@ -69,7 +69,7 @@ searchDialogBox(context, HeaderControllers headerControllers) => DigitActionDial
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton(child: const Text("CLEAR SEARCH"), onPressed: () => headerControllers.clearSeatch()),
+              DigitIconButton(iconText: "CLEAR SEARCH", onPressed: () => headerControllers.clearSeatch()),
               DigitElevatedButton(child: const Text("SEARCH"), onPressed: () {}),
             ],
           )
@@ -112,7 +112,7 @@ filterDialogBox(context, HeaderControllers headerControllers) => DigitActionDial
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(child: const Text("CLEAR FILTER"), onPressed: () => headerControllers.clearFilters()),
+                DigitIconButton(iconText: "CLEAR FILTER", onPressed: () => headerControllers.clearFilters()),
                 DigitElevatedButton(child: const Text("FILTER"), onPressed: () {}),
               ],
             )
