@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 20),
-                DigitElevatedButton(child: const Text("Continue"), onPressed: () => loginController.login()),
+                DigitElevatedButton(child: const Text("Continue"), onPressed: () => loginController.login(context)),
                 DigitIconButton(iconText: "Forgot Password", onPressed: () {})
               ],
             ),
