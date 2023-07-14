@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class MapControllers extends GetxController {
   List<Position> positions = [];
@@ -71,8 +72,8 @@ class MapControllers extends GetxController {
     }
   }
 
-  statusSender(String message) {
-    if (isConnected()) {
+  statusSender(String message) async {
+    if (await isConnected()) {
       // send the status via API
       // if gets an error for any reason, store it in local db
     } else {
@@ -80,9 +81,9 @@ class MapControllers extends GetxController {
     }
   }
 
-  bool isConnected() {
-    // check Internet connection
-    return false;
+  Future<bool> isConnected() async {
+    return await InternetConnectionChecker().hasConnection;
+     
   }
 
   double distanceCalculator(Position a, b) {
