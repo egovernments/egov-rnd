@@ -28,7 +28,6 @@ class MapControllers extends GetxController {
   void startPeriodicFunction() {
     log('startPeriodicFunction called');
     Timer.periodic(const Duration(seconds: 10), (_) async {
-      // If isRunning is false, cancel the timer
       tick++;
       log("Tick $tick");
       if (!isRunning.value) {

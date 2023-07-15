@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/features/home/widgets/home_list_widget.dart';
-import 'package:vehicle_tracker_app/features/map/controllers/map_controllers.dart';
 
 import '../../../util/drawer_widget.dart';
 import '../controllers/place_controller.dart';
@@ -13,7 +12,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final placeController = Get.find<PlaceController>();
-    final mapControllers = Get.find<MapControllers>();
 
     return Scaffold(
       // * appbar
@@ -28,7 +26,6 @@ class HomePage extends StatelessWidget {
       body: ListView.builder(
         itemCount: 3,
         itemBuilder: (context, index) {
-          mapControllers.startTracking(newDelhi, newDelhi);
           return const HomeListWidget();
         },
       ),
