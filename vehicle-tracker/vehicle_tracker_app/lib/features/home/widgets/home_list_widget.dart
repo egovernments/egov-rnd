@@ -1,5 +1,4 @@
 import 'package:digit_components/digit_components.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

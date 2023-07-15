@@ -1,17 +1,19 @@
-// ignore_for_file: avoid_print
 import 'dart:async';
+import 'dart:developer';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:latlong2/latlong.dart';
 
 class MapControllers extends GetxController {
   List<Position> positions = [];
   RxBool isRunning = false.obs;
-  late Position start;
-  late Position end;
+  late LatLng start;
+  late LatLng end;
+  int tick = 0;
 
   // * starts from here
-  void startTracking(Position start, end) {
+  void startTracking(LatLng start, LatLng end) {
     this.start = start;
     this.end = end;
     isRunning.value = true;
@@ -24,19 +26,25 @@ class MapControllers extends GetxController {
   }
 
   void startPeriodicFunction() {
-    Timer.periodic(const Duration(minutes: 2), (_) async {
+    log('startPeriodicFunction called');
+    Timer.periodic(const Duration(seconds: 10), (_) async {
       // If isRunning is false, cancel the timer
+      tick++;
+      log("Tick $tick");
       if (!isRunning.value) {
         _.cancel();
       } else {
+        log("Getting current location for tick $tick");
         Position? currentPosition = await getCurrentLocation();
+        log("Got current location for tick $tick");
         if (currentPosition != null) {
           // Add the current position to the list
           positions.add(currentPosition);
 
           // If there are more than 1 positions, call the distance logic function
           if (positions.length > 1) {
-            distanceLogic(currentPosition, positions[positions.length - 2]);
+            log("Distance logic called for tick $tick");
+            await distanceLogic(currentPosition, positions[positions.length - 2]);
           }
         }
       }
@@ -45,18 +53,27 @@ class MapControllers extends GetxController {
 
   Future<Position?> getCurrentLocation() async {
     try {
-      return await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.best,
-      );
+      return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
     } catch (e) {
-      print('Error getting current location: $e');
+      log('Error getting current location: $e');
       return null;
     }
   }
 
-  distanceLogic(Position currentPosition, prevPosition) {
-    double distance = distanceCalculator(currentPosition, prevPosition);
-    double distanceFromEnd = distanceCalculator(currentPosition, end);
+  distanceLogic(Position currentPosition, Position prevPosition) async {
+    double distance = distanceCalculator(
+      LatLng(currentPosition.latitude, currentPosition.longitude),
+      LatLng(prevPosition.latitude, prevPosition.longitude),
+    );
+    double distanceFromEnd = distanceCalculator(
+      LatLng(currentPosition.latitude, currentPosition.longitude),
+      end,
+    );
+
+    log('Distance: $distance');
+    log('Distance from end: $distanceFromEnd');
+    await statusSender("ok");
+    log("--------------------");
 
     if (distanceFromEnd < 2500) {
       // Send near to destination report
@@ -64,7 +81,7 @@ class MapControllers extends GetxController {
 
     if (distanceFromEnd < 100) {
       // Send reached destination report
-      stopTracking();
+      // stopTracking();
     }
 
     if (distance < 2500) {
@@ -76,21 +93,18 @@ class MapControllers extends GetxController {
     if (await isConnected()) {
       // send the status via API
       // if gets an error for any reason, store it in local db
+      log("Connected for tick $tick");
     } else {
       // store it in local db
+      log("Not connected");
     }
   }
 
   Future<bool> isConnected() async {
     return await InternetConnectionChecker().hasConnection;
-     
   }
 
-  double distanceCalculator(Position a, b) {
+  double distanceCalculator(LatLng a, LatLng b) {
     return Geolocator.distanceBetween(a.latitude, a.longitude, b.latitude, b.longitude);
   }
-
-  
-
-  
 }
