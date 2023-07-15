@@ -1,7 +1,6 @@
-import 'package:digit_components/widgets/atoms/digit_toaster.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:vehicle_tracker_app/themes.dart';
+import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/util/toaster.dart';
 
 import '../../../services/http_service.dart';
 
@@ -22,9 +21,10 @@ class LoginController extends GetxController {
 
     final response = await HttpService.postWithFormData(url, formData);
     if (response.statusCode == 200) {
-      print(response.body);
+      toaster(context, "Login Success");
+      Get.toNamed("/home");
     } else {
-      DigitToast.show(context, options: DigitToastOptions("Login Failed", true, CustomTheme.appTheme));
+      toaster(context, "Login Failed", isError: true);
     }
   }
 }

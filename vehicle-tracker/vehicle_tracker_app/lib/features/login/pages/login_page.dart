@@ -23,13 +23,12 @@ class LoginPage extends StatelessWidget {
                 const Text("Login", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 DigitTextField(label: "User Name", controller: loginController.userNameController),
                 DigitTextField(label: "Password", controller: loginController.passwordController),
-                DigitDropdown(
-                  value: "ok",
+                DigitDropdown<String>(
+                  value: "CityA",
                   label: "City",
-                  menuItems: const ["ok", "ok2"],
-                  valueMapper: (value) {
-                    return value;
-                  },
+                  menuItems: const ["CityA", "CityB", "CityC"],
+                  onChanged: (value) {},
+                  valueMapper: (value) => value,
                 ),
                 const SizedBox(height: 20),
                 DigitElevatedButton(child: const Text("Continue"), onPressed: () => loginController.login(context)),

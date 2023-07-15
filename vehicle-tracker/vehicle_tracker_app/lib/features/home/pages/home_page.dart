@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/features/home/widgets/home_list_widget.dart';
 
 import '../../../util/drawer_widget.dart';
 import '../controllers/place_controller.dart';
@@ -22,17 +23,11 @@ class HomePage extends StatelessWidget {
       drawer: const CustomDrawer(),
 
       // * body
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              DigitOutLineButton(
-                label: "Request",
-                onPressed: () async => await placeController.requestOnClick(),
-              ),
-            ],
-          ),
-        ),
+      body: ListView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return const HomeListWidget();
+        },
       ),
     );
   }
