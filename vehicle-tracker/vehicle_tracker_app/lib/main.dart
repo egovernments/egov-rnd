@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Vehicle Tracker App',
       theme: DigitTheme.instance.mobileTheme,
       getPages: getPages,
-      initialRoute: "/home",
+      initialRoute: "/login",
     );
   }
 }

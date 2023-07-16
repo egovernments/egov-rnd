@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/features/login/controllers/login_controllers.dart';
 
 class LoginPage extends StatelessWidget {
@@ -24,10 +25,10 @@ class LoginPage extends StatelessWidget {
                 DigitTextField(label: "User Name", controller: loginController.userNameController),
                 DigitTextField(label: "Password", controller: loginController.passwordController),
                 DigitDropdown<String>(
-                  value: "CityA",
+                  value: loginController.city,
                   label: "City",
-                  menuItems: const ["CityA", "CityB", "CityC"],
-                  onChanged: (value) {},
+                  menuItems: cityNames,
+                  onChanged: (value) => loginController.city = value ?? "",
                   valueMapper: (value) => value,
                 ),
                 const SizedBox(height: 20),
