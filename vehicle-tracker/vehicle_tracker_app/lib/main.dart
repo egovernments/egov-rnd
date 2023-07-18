@@ -6,6 +6,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vehicle_tracker_app/routes.dart';
 import 'package:vehicle_tracker_app/services/token_service.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Vehicle Tracker App',
       theme: DigitTheme.instance.mobileTheme,
+      translations: AppTranslation(),
+      locale: const Locale('en', 'IN'),
       getPages: getPages,
       initialRoute: isLogin ? "/home" : "/login",
     );

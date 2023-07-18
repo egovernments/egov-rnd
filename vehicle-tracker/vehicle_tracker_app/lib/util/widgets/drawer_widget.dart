@@ -1,5 +1,6 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -37,6 +38,19 @@ class CustomDrawer extends StatelessWidget {
                     // Navigator.pop(context);
                   },
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DigitElevatedButton(
+                      child: const Text("English"),
+                      onPressed: () => Get.updateLocale(const Locale('en', 'IN')),
+                    ),
+                    DigitElevatedButton(
+                      child: const Text("हिंदी"),
+                      onPressed: () => Get.updateLocale(const Locale('hi', 'IN')),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
