@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -13,11 +14,54 @@ class MapControllers extends GetxController {
   int tick = 0;
 
   // * starts from here
-  void startTracking(LatLng start, LatLng end) {
+  void startTracking(LatLng start, LatLng end) async {
+    log('startTracking called');
+    bool permissions = await handleLocationPermission();
+    if (!permissions) return;
+    log('Permissions are ok');
     this.start = start;
     this.end = end;
     isRunning.value = true;
     startPeriodicFunction();
+  }
+
+  startStream() {
+    LocationSettings custom = const LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 100,
+    );
+
+    Geolocator.getPositionStream(locationSettings: custom).listen((position) {
+      log("Stream position: ${position.latitude}, ${position.longitude}");
+    });
+  }
+
+  Future<bool> handleLocationPermission() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    log("handleLocationPermission called");
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      Fluttertoast.showToast(msg: "Location services are disabled. Please enable the services");
+      return false;
+    }
+
+    log("Location services are enabled");
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        Fluttertoast.showToast(msg: "Location permissions are denied. Please enable the permissions");
+        return false;
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      Fluttertoast.showToast(msg: "Location permissions are permanently denied, we cannot request permissions.");
+      return false;
+    }
+
+    return true;
   }
 
   void stopTracking() {

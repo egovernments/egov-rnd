@@ -638,7 +638,7 @@ packages:
     source: hosted
     version: "1.0.1"
   location:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: location
       sha256: "153c5d779e3bfe293ba326105522ab3e3971f11390b32c7e4dce804aa23655dc"

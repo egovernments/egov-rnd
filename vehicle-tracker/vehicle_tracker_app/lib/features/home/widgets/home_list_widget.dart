@@ -54,7 +54,7 @@ class HomeListWidget extends StatelessWidget {
           const SizedBox(height: 6.0),
           wordButton("Inbox", () => Get.toNamed("/inbox")),
           wordButton("View Reports", () => mapControllers.startTracking(newDelhi, newDelhi)),
-          wordButton("FSM Registry", () => null),
+          wordButton("FSM Registry", () => mapControllers.startStream()),
           wordButton("New Desulging Application", () => null),
           wordButton("Search Application", () => null),
         ],
