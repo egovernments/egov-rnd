@@ -11,3 +11,6 @@ Map<String, String> cities = {
 };
 
 List<String> cityNames = cities.keys.toList();
+
+LatLng testStart = const LatLng(28.546476, 77.335280);
+LatLng testEnd = const LatLng(28.639207, 77.368818);

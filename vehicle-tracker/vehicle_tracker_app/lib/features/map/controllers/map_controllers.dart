@@ -77,16 +77,10 @@ class MapControllers extends GetxController {
       if (!isRunning.value) {
         _.cancel();
       } else {
-        log("Getting current location for tick $tick");
         Position? currentPosition = await getCurrentLocation();
-        log("Got current location for tick $tick");
         if (currentPosition != null) {
-          // Add the current position to the list
           positions.add(currentPosition);
-
-          // If there are more than 1 positions, call the distance logic function
           if (positions.length > 1) {
-            log("Distance logic called for tick $tick");
             await distanceLogic(currentPosition, positions[positions.length - 2]);
           }
         }
@@ -113,22 +107,18 @@ class MapControllers extends GetxController {
       end,
     );
 
-    log('Distance: $distance');
+    log('Distance from previous point: $distance');
     log('Distance from end: $distanceFromEnd');
     await statusSender("ok");
     log("--------------------");
 
-    if (distanceFromEnd < 2500) {
-      // Send near to destination report
-    }
-
-    if (distanceFromEnd < 100) {
-      // Send reached destination report
-      // stopTracking();
+    if (distanceFromEnd < 1000) {
+      log("Reached destination");
+      stopTracking();
     }
 
     if (distance < 2500) {
-      // Send slow report
+      log("Distance less than 2.5km");
     }
   }
 

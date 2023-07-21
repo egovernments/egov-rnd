@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -14,26 +15,26 @@ class CustomDrawer extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                const DrawerHeader(
-                  decoration: BoxDecoration(
+                DrawerHeader(
+                  decoration: const BoxDecoration(
                     color: Colors.blue,
                   ),
                   child: Text(
-                    "Vehicle Tracker App",
-                    style: TextStyle(
+                    AppTranslation.appHeading.tr,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24,
                     ),
                   ),
                 ),
                 ListTile(
-                  title: const Text("Home"),
+                  title: Text(AppTranslation.home.tr),
                   onTap: () {
                     // Navigator.pop(context);
                   },
                 ),
                 ListTile(
-                  title: const Text("About"),
+                  title: Text(AppTranslation.about.tr),
                   onTap: () {
                     // Navigator.pop(context);
                   },
