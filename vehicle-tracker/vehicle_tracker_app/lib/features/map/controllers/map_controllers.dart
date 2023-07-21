@@ -66,12 +66,13 @@ class MapControllers extends GetxController {
 
   void stopTracking() {
     // send completed status via API
+    tick = 0;
     isRunning.value = false;
   }
 
   void startPeriodicFunction() {
     log('startPeriodicFunction called');
-    Timer.periodic(const Duration(seconds: 5), (_) async {
+    Timer.periodic(const Duration(seconds: 10), (_) async {
       tick++;
       log("Tick $tick");
       if (!isRunning.value) {
@@ -109,8 +110,7 @@ class MapControllers extends GetxController {
 
     log('Distance from previous point: $distance');
     log('Distance from end: $distanceFromEnd');
-    await statusSender("ok");
-    log("--------------------");
+    // await statusSender("ok");
 
     if (distanceFromEnd < 1000) {
       log("Reached destination");
@@ -120,6 +120,8 @@ class MapControllers extends GetxController {
     if (distance < 2500) {
       log("Distance less than 2.5km");
     }
+
+    log("--------------------");
   }
 
   statusSender(String message) async {

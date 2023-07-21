@@ -22,8 +22,10 @@ void main() async {
 Future<bool> checkLogin() async {
   String? token = await SecureStorageService.read();
   if (token != null) {
+    log("Token not found");
     return true;
   }
+  log("Token found");
   return false;
 }
 
