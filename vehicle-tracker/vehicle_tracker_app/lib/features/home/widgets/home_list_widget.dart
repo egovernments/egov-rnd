@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../constants.dart';
-import '../../map/controllers/map_controllers.dart';
+import '../controllers/map_controllers.dart';
 
 class HomeListWidget extends StatelessWidget {
   const HomeListWidget({super.key});
