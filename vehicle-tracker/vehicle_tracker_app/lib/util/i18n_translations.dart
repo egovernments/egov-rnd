@@ -1,28 +1,24 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:get/get.dart';
 
 class AppTranslation extends Translations {
-  static String get hello => 'hello';
-  static String get bye => 'bye';
-  static String get home => 'home';
-  static String get about => 'about';
-  static String get appHeading => 'appHeading';
+  static String get HOME_APP_BAR => 'home';
+  static String get ABOUT => 'about';
+  static String get APP_HEADING => 'appHeading';
 
   @override
   Map<String, Map<String, String>> get keys => {
         'en_IN': {
-          hello: 'Hello World',
-          bye: 'Good Bye',
-          home: 'Home',
-          about: 'About',
-          appHeading: 'Vehicle Tracker App',
+          HOME_APP_BAR: 'Home',
+          ABOUT: 'About',
+          APP_HEADING: 'Vehicle Tracker App',
         },
         
         'hi_IN': {
-          hello: 'नमस्ते दुनिया',
-          bye: 'अलविदा',
-          home: 'घर',
-          about: 'के बारे में',
-          appHeading: 'वाहन ट्रैकर ऐप',
+          HOME_APP_BAR: 'घर',
+          ABOUT: 'के बारे में',
+          APP_HEADING: 'वाहन ट्रैकर ऐप',
         },
       };
 }

@@ -20,7 +20,7 @@ class CustomDrawer extends StatelessWidget {
                     color: Colors.blue,
                   ),
                   child: Text(
-                    AppTranslation.appHeading.tr,
+                    AppTranslation.APP_HEADING.tr,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -28,13 +28,13 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  title: Text(AppTranslation.home.tr),
+                  title: Text(AppTranslation.HOME_APP_BAR.tr),
                   onTap: () {
                     // Navigator.pop(context);
                   },
                 ),
                 ListTile(
-                  title: Text(AppTranslation.about.tr),
+                  title: Text(AppTranslation.ABOUT.tr),
                   onTap: () {
                     // Navigator.pop(context);
                   },

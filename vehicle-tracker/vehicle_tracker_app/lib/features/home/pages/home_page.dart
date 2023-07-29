@@ -10,12 +10,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final placeController = Get.find<PlaceController>();
-
     return Scaffold(
       // * appbar
       appBar: AppBar(
-        title: Text(AppTranslation.hello.tr),
+        title: Text(AppTranslation.HOME_APP_BAR.tr),
       ),
 
       // * dwawer
