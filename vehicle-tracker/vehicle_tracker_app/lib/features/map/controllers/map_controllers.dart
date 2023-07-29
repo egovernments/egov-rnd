@@ -25,6 +25,7 @@ class MapControllers extends GetxController {
     startPeriodicFunction();
   }
 
+  // ! not used
   startStream() {
     LocationSettings custom = const LocationSettings(
       accuracy: LocationAccuracy.high,
@@ -72,7 +73,7 @@ class MapControllers extends GetxController {
 
   void startPeriodicFunction() {
     log('startPeriodicFunction called');
-    Timer.periodic(const Duration(seconds: 10), (_) async {
+    Timer.periodic(const Duration(seconds: 5), (_) async {
       tick++;
       log("Tick $tick");
       if (!isRunning.value) {
@@ -82,7 +83,7 @@ class MapControllers extends GetxController {
         if (currentPosition != null) {
           positions.add(currentPosition);
           if (positions.length > 1) {
-            await distanceLogic(currentPosition, positions[positions.length - 2]);
+            await distancelogic(currentPosition, positions[positions.length - 2]);
           }
         }
       }
@@ -98,7 +99,7 @@ class MapControllers extends GetxController {
     }
   }
 
-  distanceLogic(Position currentPosition, Position prevPosition) async {
+  distancelogic(Position currentPosition, Position prevPosition) async {
     double distance = distanceCalculator(
       LatLng(currentPosition.latitude, currentPosition.longitude),
       LatLng(prevPosition.latitude, prevPosition.longitude),
@@ -121,6 +122,8 @@ class MapControllers extends GetxController {
       log("Distance less than 2.5km");
     }
 
+    await statusSender("ok");
+
     log("--------------------");
   }
 
@@ -128,7 +131,7 @@ class MapControllers extends GetxController {
     if (await isConnected()) {
       // send the status via API
       // if gets an error for any reason, store it in local db
-      log("Connected for tick $tick");
+      log("Connected to internet");
     } else {
       // store it in local db
       log("Not connected");
