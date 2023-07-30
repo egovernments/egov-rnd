@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       translations: AppTranslation(),
       locale: const Locale('en', 'IN'),
       getPages: getPages,
-      initialRoute: isLogin ? "/home" : "/login",
+      initialRoute: isLogin ? LOGIN : LOGIN,
     );
   }
 }

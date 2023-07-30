@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/features/home/pages/home_page.dart';
 import 'package:vehicle_tracker_app/features/inbox/bindings/inbox_bindings.dart';
@@ -7,19 +9,23 @@ import 'package:vehicle_tracker_app/features/login/pages/login_page.dart';
 
 import 'features/home/bindings/home_bindings.dart';
 
+String HOME = "/";
+String INBOX = "/inbox";
+String LOGIN = "/login";
+
 List<GetPage<dynamic>> getPages = [
   GetPage(
-    name: "/",
+    name: HOME,
     page: () => const HomePage(),
     binding: HomeBindings(),
   ),
   GetPage(
-    name: "/inbox",
+    name: INBOX,
     page: () => const InboxPage(),
     binding: InboxBindings(),
   ),
   GetPage(
-    name: "/login",
+    name: LOGIN,
     page: () => const LoginPage(),
     binding: LoginBindings(),
   )
