@@ -7,18 +7,27 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vehicle_tracker_app/routes.dart';
 import 'package:vehicle_tracker_app/services/token_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+
+  // Load up the environment variables
+  await dotenv.load(fileName: ".env");
+
+  // Initialize the Hive box for storing vehicle tracking data
   await Hive.openBox("tracker");
+
+  // Uses the bool value to determine the initial route
   bool isLogin = await checkLogin();
-  log("Login: $isLogin");
+
   runApp(MyApp(
     isLogin: isLogin,
   ));
 }
 
+// Check if the user is logged via token stored in secure storage
 Future<bool> checkLogin() async {
   String? token = await SecureStorageService.read();
   if (token != null) {
@@ -42,7 +51,7 @@ class MyApp extends StatelessWidget {
       translations: AppTranslation(),
       locale: const Locale('en', 'IN'),
       getPages: getPages,
-      initialRoute: isLogin ? LOGIN : LOGIN,
+      initialRoute: isLogin ? HOME : LOGIN,
     );
   }
 }

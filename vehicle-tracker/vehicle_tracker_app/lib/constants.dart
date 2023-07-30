@@ -1,8 +1,7 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:latlong2/latlong.dart';
 
-String uri = "https://uat.digit.org/egov-location/";
-String urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-LatLng newDelhi = const LatLng(28.61992743538245, 77.20905101733563);
+String uri = dotenv.env["API_URI"] ?? "";
 
 Map<String, String> cities = {
   "City A": "pg.citya",
@@ -12,5 +11,10 @@ Map<String, String> cities = {
 
 List<String> cityNames = cities.keys.toList();
 
-LatLng testStart = const LatLng(28.546476, 77.335280);
-LatLng testEnd = const LatLng(28.639207, 77.368818);
+double testStartLat = double.parse(dotenv.env["TEST_START_LAT"] ?? "");
+double testStartLong = double.parse(dotenv.env["TEST_START_LONG"] ?? "");
+double testEndLat = double.parse(dotenv.env["TEST_END_LAT"] ?? "");
+double testEndLong = double.parse(dotenv.env["TEST_END_LONG"] ?? "");
+
+LatLng testStart = LatLng(testStartLat, testStartLong);
+LatLng testEnd = LatLng(testEndLat, testEndLong);
