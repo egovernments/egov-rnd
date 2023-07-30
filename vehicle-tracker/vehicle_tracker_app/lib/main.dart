@@ -28,21 +28,21 @@ void main() async {
 }
 
 // Check if the user is logged via token stored in secure storage
+// returns true if token is found else false
 Future<bool> checkLogin() async {
   String? token = await SecureStorageService.read();
   if (token != null) {
-    log("Token not found");
+    log("Token found");
     return true;
   }
-  log("Token found");
+  log("Token not found");
   return false;
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.isLogin});
-
   final bool isLogin;
-  // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
