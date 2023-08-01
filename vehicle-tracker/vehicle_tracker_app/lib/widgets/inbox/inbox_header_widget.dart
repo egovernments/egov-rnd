@@ -1,7 +1,8 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/features/inbox/controllers/header_controllers.dart';
+
+import '../../blocs/inbox/controllers/header_controllers.dart';
 
 class InboxHeaderWidget extends StatelessWidget {
   const InboxHeaderWidget({

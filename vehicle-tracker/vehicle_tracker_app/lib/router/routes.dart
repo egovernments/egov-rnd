@@ -1,13 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/features/home/pages/home_page.dart';
-import 'package:vehicle_tracker_app/features/inbox/bindings/inbox_bindings.dart';
-import 'package:vehicle_tracker_app/features/inbox/pages/inbox_page.dart';
+import 'package:vehicle_tracker_app/pages/home/home_page.dart';
+import 'package:vehicle_tracker_app/pages/inbox/inbox_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_page.dart';
 
+import '../blocs/home/bindings/home_bindings.dart';
+import '../blocs/inbox/bindings/inbox_bindings.dart';
 import '../blocs/login/bindings/login_bindings.dart';
-import '../features/home/bindings/home_bindings.dart';
 
 String HOME = "/";
 String INBOX = "/inbox";

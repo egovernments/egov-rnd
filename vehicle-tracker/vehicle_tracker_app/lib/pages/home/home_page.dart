@@ -1,11 +1,11 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/features/home/controllers/inbox_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
-import '../../../util/widgets/drawer_widget.dart';
-import '../widgets/home_list_widget.dart';
+import '../../blocs/home/controllers/inbox_controllers.dart';
+import '../../widgets/drawer_widget.dart';
+import '../../widgets/home/home_list_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
