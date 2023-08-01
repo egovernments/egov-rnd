@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/router/routes.dart';
 
 class LangSelectCard extends StatelessWidget {
   const LangSelectCard({super.key});
@@ -31,7 +32,7 @@ class LangSelectCard extends StatelessWidget {
           const SizedBox(height: 20),
 
           // * Continue Button
-          DigitElevatedButton(child: const Text("Continue"), onPressed: () {})
+          DigitElevatedButton(child: const Text("Continue"), onPressed: () => Get.toNamed(LOGIN))
         ],
       ),
     );

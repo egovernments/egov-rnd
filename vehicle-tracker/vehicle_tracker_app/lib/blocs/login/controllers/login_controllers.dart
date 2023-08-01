@@ -35,6 +35,7 @@ class LoginController extends GetxController {
     }
   }
 
+  // * Forgot Password Dialog Box
   forgetPassword(BuildContext context) {
     return DigitDialog.show(
       context,

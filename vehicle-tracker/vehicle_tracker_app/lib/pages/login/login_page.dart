@@ -19,15 +19,25 @@ class LoginPage extends StatelessWidget {
         footer: const PoweredByDigit(),
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          // * Back Button
+          const SizedBox(height: 20),
+          Align(
+            alignment: Alignment.topLeft,
+            child: DigitIconButton(iconText: "Back", onPressed: () {}, icon: Icons.arrow_back),
+          ),
+
+          // * Login Card
           DigitCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DigitIconButton(iconText: "Back", onPressed: () {}, icon: Icons.arrow_back),
-                const SizedBox(height: 20),
                 const Text("Login"),
+
+                // * Text Fields for User ID and Password
                 DigitTextField(label: AppTranslation.USER_ID.tr, controller: loginController.userNameController),
                 DigitTextField(label: AppTranslation.PASSWORD.tr, controller: loginController.passwordController),
+
+                // * City Dropdown
                 DigitDropdown<String>(
                   value: loginController.city,
                   label: AppTranslation.CITY.tr,
@@ -35,11 +45,15 @@ class LoginPage extends StatelessWidget {
                   onChanged: (value) => loginController.city = value ?? "",
                   valueMapper: (value) => value,
                 ),
+
+                // * Login Button
                 const SizedBox(height: 20),
                 DigitElevatedButton(
                   child: Text(AppTranslation.LOGIN.tr),
                   onPressed: () => loginController.login(context),
                 ),
+
+                // * Forgot Password Button
                 Center(
                   child: DigitIconButton(
                     iconText: AppTranslation.FORGOT_PASSWORD.tr,

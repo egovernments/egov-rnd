@@ -42,7 +42,7 @@ Future<bool> checkLogin() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.isLogin});
   final bool isLogin;
-  
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
       translations: AppTranslation(),
       locale: const Locale('en', 'IN'),
       getPages: getPages,
-      initialRoute: isLogin ? LANG : LOGIN,
+      initialRoute: isLogin ? HOME : LANG,
     );
   }
 }

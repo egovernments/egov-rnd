@@ -36,7 +36,10 @@ class HomePage extends StatelessWidget {
             ),
 
             // * app heading
-            Text(AppTranslation.MY_TRIPS.tr),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(AppTranslation.MY_TRIPS.tr),
+            ),
 
             // ! search bar needs icons support
             DigitSearchBar(
