@@ -4,8 +4,8 @@ import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:vehicle_tracker_app/routes.dart';
-import 'package:vehicle_tracker_app/services/token_service.dart';
+import 'package:vehicle_tracker_app/router/routes.dart';
+import 'package:vehicle_tracker_app/data/token_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
