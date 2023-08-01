@@ -3,6 +3,7 @@
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/pages/home/home_page.dart';
 import 'package:vehicle_tracker_app/pages/inbox/inbox_page.dart';
+import 'package:vehicle_tracker_app/pages/login/login_lang_select_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_page.dart';
 
 import '../blocs/home/bindings/home_bindings.dart';
@@ -12,6 +13,7 @@ import '../blocs/login/bindings/login_bindings.dart';
 String HOME = "/";
 String INBOX = "/inbox";
 String LOGIN = "/login";
+String LANG = "/lang";
 
 List<GetPage<dynamic>> getPages = [
   GetPage(
@@ -28,5 +30,10 @@ List<GetPage<dynamic>> getPages = [
     name: LOGIN,
     page: () => const LoginPage(),
     binding: LoginBindings(),
-  )
+  ),
+  GetPage(
+    name: LANG,
+    page: () => const LoginLagSelectPage(),
+    binding: LoginBindings(),
+  ),
 ];

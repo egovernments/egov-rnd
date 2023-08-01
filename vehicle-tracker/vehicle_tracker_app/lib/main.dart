@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
       translations: AppTranslation(),
       locale: const Locale('en', 'IN'),
       getPages: getPages,
-      initialRoute: isLogin ? HOME : LOGIN,
+      initialRoute: isLogin ? LANG : LOGIN,
     );
   }
 }
