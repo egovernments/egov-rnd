@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/data/localization_service.dart';
 
 // App Translations class
 class AppTranslation extends Translations {
@@ -18,7 +19,14 @@ class AppTranslation extends Translations {
   static String get SEARCH_BAR => 'searchBar';
   static String get IN_PROGRESS => 'inProgress';
   static String get COMPLETED => 'completed';
-  
+  static String get NAME_INFO => 'nameInfo';
+  static String get MOBILE_NUMBER => 'mobileNumber';
+  static String get VIEW_DETAILS => 'viewDetails';
+  static String get START_TRIP => 'startTrip';
+  static String get END_TRIP => 'endTrip';
+  static String get BACK => 'back';
+  static String get WARNING => 'warning';
+  static String get ACTION_TEST_LME_PERFORMANCE_REPORT => 'actionTestLmePerformanceReport';
 
   // Map of all translations for english and hindi
   @override
@@ -38,25 +46,18 @@ class AppTranslation extends Translations {
           HELP: 'Help',
           SEARCH_BAR: 'Search Mobile Number / Name',
           IN_PROGRESS: 'In Progress',
-          COMPLETED: 'Completed'
+          COMPLETED: 'Completed',
+          NAME_INFO: 'Name',
+          MOBILE_NUMBER: 'Mobile Number',
+          VIEW_DETAILS: 'View Details',
+          START_TRIP: 'Start Trip',
+          END_TRIP: 'End Trip',
+          BACK: 'Back',
+          WARNING: 'Warning!',
+          ACTION_TEST_LME_PERFORMANCE_REPORT: 'test',
         },
 
         // Hindi
-        'hi_IN': {
-          HOME_APP_BAR: '',
-          ABOUT: 'के बारे में',
-          APP_HEADING: 'वाहन ट्रैकर ऐप',
-          USER_ID: 'उपयोगकर्ता आईडी',
-          PASSWORD: 'पासवर्ड',
-          CITY: 'शहर',
-          LOGIN: 'लॉग इन करें',
-          FORGOT_PASSWORD: 'पासवर्ड भूल गए?',
-          FORGOT_PASSWORD_INFO: 'अगर आप अपना पासवर्ड भूल गए हैं तो कृपया नगर पालिका से संपर्क करें।',
-          MY_TRIPS: 'मेरी यात्राएं',
-          HELP: 'सहायता',
-          SEARCH_BAR: 'मोबाइल नंबर / नाम खोजें',
-          IN_PROGRESS: 'जारी है',
-          COMPLETED: 'पूरा हुआ'
-        },
+        'hi_IN': LocalizationService.english,
       };
 }

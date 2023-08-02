@@ -18,3 +18,5 @@ double testEndLong = double.parse(dotenv.env["TEST_END_LONG"] ?? "");
 
 LatLng testStart = LatLng(testStartLat, testStartLong);
 LatLng testEnd = LatLng(testEndLat, testEndLong);
+
+List<String> englishList = ["ACTION_TEST_LME_PERFORMANCE_REPORT", "CORE_COMMON_PHONE_NUMBER"];

@@ -31,14 +31,15 @@ class HttpService {
     }
   }
 
-  static Future<Response> postRequestWithoutToken(String route, Map<String, dynamic> jsonMap) async {
-    String url = uri + route;
+  static Future<Response> postRequestWithoutToken(String url, Map<String, dynamic> jsonMap) async {
     String body = json.encode(jsonMap);
 
     try {
       var response = await http.post(
         Uri.parse(url),
-        headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ${await SecureStorageService.read() ?? 'null'}'},
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: body,
       );
       if (response.statusCode == 200) {
@@ -58,7 +59,7 @@ class HttpService {
     try {
       var response = await http.get(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${await SecureStorageService.read() ?? 'null'}'
+        'Authorization': 'Bearer ${await SecureStorageService.read("token") ?? 'null'}'
       });
       if (response.statusCode == 200) {
         var body = json.decode(response.body);
@@ -78,7 +79,10 @@ class HttpService {
     try {
       var response = await http.delete(
         Uri.parse(url),
-        headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ${await SecureStorageService.read() ?? 'null'}'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${await SecureStorageService.read("token") ?? 'null'}'
+        },
         body: body,
       );
       if (response.statusCode == 200) {
@@ -100,7 +104,10 @@ class HttpService {
     try {
       var response = await http.put(
         Uri.parse(url),
-        headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ${await SecureStorageService.read() ?? 'null'}'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${await SecureStorageService.read("token") ?? 'null'}'
+        },
         body: body,
       );
       if (response.statusCode == 200) {

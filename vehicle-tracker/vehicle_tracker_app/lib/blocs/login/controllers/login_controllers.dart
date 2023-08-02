@@ -28,7 +28,7 @@ class LoginController extends GetxController {
     if (response.statusCode == 200) {
       toaster(context, "Login Success");
       String token = response.body['access_token'];
-      await SecureStorageService.write(token);
+      await SecureStorageService.write("token", token);
       Get.toNamed("/home");
     } else {
       toaster(context, "Login Failed", isError: true);

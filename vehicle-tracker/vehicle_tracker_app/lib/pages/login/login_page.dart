@@ -14,7 +14,10 @@ class LoginPage extends StatelessWidget {
     LoginController loginController = Get.find<LoginController>();
 
     return Scaffold(
-      appBar: AppBar(title: Text(AppTranslation.HOME_APP_BAR.tr)),
+      appBar: AppBar(
+        title: Text(AppTranslation.HOME_APP_BAR.tr),
+        centerTitle: false,
+      ),
       body: ScrollableContent(
         footer: const PoweredByDigit(),
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +37,7 @@ class LoginPage extends StatelessWidget {
                 const Text("Login"),
 
                 // * Text Fields for User ID and Password
-                DigitTextField(label: AppTranslation.USER_ID.tr, controller: loginController.userNameController),
+                DigitTextField(label: AppTranslation.ACTION_TEST_LME_PERFORMANCE_REPORT.tr, controller: loginController.userNameController),
                 DigitTextField(label: AppTranslation.PASSWORD.tr, controller: loginController.passwordController),
 
                 // * City Dropdown

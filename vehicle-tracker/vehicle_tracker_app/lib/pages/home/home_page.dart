@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // * appbar
       appBar: AppBar(
+        centerTitle: false,
         title: Text(AppTranslation.HOME_APP_BAR.tr),
       ),
 
@@ -32,7 +33,11 @@ class HomePage extends StatelessWidget {
             // * help button
             Align(
               alignment: Alignment.topRight,
-              child: DigitIconButton(icon: Icons.help, iconText: AppTranslation.HELP.tr, onPressed: () {}),
+              child: DigitIconButton(
+                icon: Icons.help_outline_rounded,
+                iconText: AppTranslation.HELP.tr,
+                onPressed: () {},
+              ),
             ),
 
             // * app heading

@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/pages/home/info_page.dart';
 import 'package:vehicle_tracker_app/pages/home/home_page.dart';
 import 'package:vehicle_tracker_app/pages/inbox/inbox_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_lang_select_page.dart';
@@ -14,6 +15,7 @@ String HOME = "/";
 String INBOX = "/inbox";
 String LOGIN = "/login";
 String LANG = "/lang";
+String INFO = "/info";
 
 List<GetPage<dynamic>> getPages = [
   GetPage(
@@ -33,7 +35,11 @@ List<GetPage<dynamic>> getPages = [
   ),
   GetPage(
     name: LANG,
-    page: () => const LoginLagSelectPage(),
+    page: () => const LoginLangSelectPage(),
     binding: LoginBindings(),
   ),
+  GetPage(
+    name: INFO,
+    page: () => const InfoPage(),
+  )
 ];

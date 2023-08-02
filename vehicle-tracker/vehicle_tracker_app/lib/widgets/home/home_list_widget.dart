@@ -1,17 +1,18 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/router/routes.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../blocs/home/controllers/inbox_controllers.dart';
-import '../../blocs/home/controllers/map_controllers.dart';
 
 class HomeListWidget extends StatelessWidget {
   const HomeListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final mapControllers = Get.find<MapControllers>();
     final inboxController = Get.find<InboxController>();
+    final width = MediaQuery.of(context).size.width;
 
     return Obx(
       () => DigitCard(
@@ -25,21 +26,33 @@ class HomeListWidget extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              const Row(
+              Row(
                 children: [
-                  Text("Name", style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(width: 86),
-                  Text("-- Name --"),
+                  SizedBox(
+                    width: width * 0.35,
+                    child: Text(
+                      AppTranslation.NAME_INFO.tr,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const Text("-- Name --"),
                 ],
               ),
 
               const SizedBox(height: 7),
 
-              const Row(
+              Row(
                 children: [
-                  Text("Mobile Number", style: TextStyle(fontWeight: FontWeight.bold)),
-                  SizedBox(width: 20),
-                  Text("-- Number --"),
+                  SizedBox(
+                    width: width * 0.35,
+                    child: Text(
+                      AppTranslation.MOBILE_NUMBER.tr,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const Text("-- Number --"),
                 ],
               ),
 
@@ -47,17 +60,24 @@ class HomeListWidget extends StatelessWidget {
 
               // ! Have to reverse the direction of arrow position
               DigitIconButton(
-                iconText: "View Details",
+                iconText: AppTranslation.VIEW_DETAILS.tr,
                 icon: Icons.arrow_forward,
-                onPressed: () {},
+                onPressed: () => Get.toNamed(INFO),
               ),
 
               const SizedBox(height: 7),
 
               // ! change after API integration
               inboxController.isCompleted.value
-                  ? Center(child: DigitOutLineButton(label: "End Trip", onPressed: () {}))
-                  : DigitElevatedButton(child: const Text("Start Trip"), onPressed: () {}),
+                  ? Center(
+                      child: DigitOutLineButton(
+                      label: AppTranslation.END_TRIP.tr,
+                      onPressed: () {},
+                    ))
+                  : DigitElevatedButton(
+                      child: Text(AppTranslation.START_TRIP.tr),
+                      onPressed: () {},
+                    ),
             ],
           ),
         ),

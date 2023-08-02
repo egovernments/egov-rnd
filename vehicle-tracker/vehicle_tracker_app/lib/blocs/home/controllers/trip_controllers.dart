@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:digit_components/digit_components.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
-class MapControllers extends GetxController {
+class TripControllers extends GetxController {
   List<Position> positions = [];
   RxBool isRunning = false.obs;
   late LatLng start;
@@ -144,5 +147,27 @@ class MapControllers extends GetxController {
 
   double distanceCalculator(LatLng a, LatLng b) {
     return Geolocator.distanceBetween(a.latitude, a.longitude, b.latitude, b.longitude);
+  }
+
+  startTrip(BuildContext context) {
+    return DigitDialog.show(
+      context,
+      options: DigitDialogOptions(
+        titleText: AppTranslation.WARNING.tr,
+        titleIcon: const Icon(Icons.warning, color: Colors.red),
+        contentText: "Start the trip only after reaching the pickup location.  Have you reached the applicant location?",
+        primaryAction: DigitDialogActions(
+          label: "Yes",
+          action: (context) {
+            // startTracking(LatLng(28.7041, 77.1025), LatLng(28.7041, 77.1025));
+            Get.back();
+          },
+        ),
+        secondaryAction: DigitDialogActions(
+          label: "No",
+          action: (context) => Get.back(),
+        ),
+      ),
+    );
   }
 }
