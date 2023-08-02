@@ -29,7 +29,6 @@ class AppTranslation extends Translations {
   static String get ACTION_TEST_LME_PERFORMANCE_REPORT => 'actionTestLmePerformanceReport';
   static String get CORE_COMMON_PHONE_NUMBER => 'coreCommonPhoneNumber';
 
-
   // Map of all translations for english and hindi
   @override
   Map<String, Map<String, String>> get keys => {
@@ -61,6 +60,6 @@ class AppTranslation extends Translations {
         },
 
         // Hindi
-        'hi_IN': LocalizationService.english,
+        'hi_IN': LocalizationService.englishMap,
       };
 }

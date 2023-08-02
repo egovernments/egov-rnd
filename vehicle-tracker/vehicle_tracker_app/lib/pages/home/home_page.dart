@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final inboxController = Get.find<InboxController>();
+    final theme = DigitTheme.instance;
 
     return Scaffold(
       // * appbar
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
 
             // * app heading
             Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding: theme.buttonPadding,
               child: Text(AppTranslation.MY_TRIPS.tr),
             ),
 

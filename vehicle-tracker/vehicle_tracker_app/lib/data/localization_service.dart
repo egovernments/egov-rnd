@@ -1,57 +1,50 @@
 // ignore_for_file: prefer_conditional_assignment
 
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vehicle_tracker_app/constants.dart';
+import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
-import 'package:vehicle_tracker_app/data/token_service.dart';
-import 'package:vehicle_tracker_app/models/localization_model.dart';
+import 'package:vehicle_tracker_app/models/localization_hive/localization_hive_model.dart';
+
+import '../models/localization/localization_model.dart';
 
 class LocalizationService {
-  static late List<LocalizationMessageModel> localizationList;
-  static Map<String, String> english = {};
+  static Map<String, String> englishMap = {};
 
   static fetchLocalization() async {
-    dynamic localizations;
-    bool storage = true;
-
-    // await SecureStorageService.delete("localization");
+    List<LocalizationHiveModel> localizationList = [];
 
     // * Checks local storage
-    log("Checking local storage");
-    localizations = await getLocalizationFromStorage();
-    if (localizations == null) {
+    final localizationHiveList = HiveService.getLocalization();
+    if (localizationHiveList.isEmpty) {
       // * Call API
       log("Calling API");
-      storage = false;
-      localizations = await getLocalicationFromAPI();
+      final localizations = await getLocalicationFromAPI();
+      if (localizations == null) {
+        log("Error fetching localization from API");
+        return;
+      }
+
       // * Store in local storage
       log("Storing in local storage");
-      await SecureStorageService.write("localization", localizations);
+      localizationList = await HiveService.storeLocalization(localizations);
+    } else {
+      // * If not empty, store in local variable
+      log("Fetching from local storage");
+      localizationList = localizationHiveList;
     }
 
-    if (storage) {
-      localizations = jsonDecode(localizations);
-    }
-
-    final parsed = localizations["messages"] as List<dynamic>;
-
-    // * Parse the data
-    localizationList = parseLocalization(parsed);
-
-    // * Store in map
+    // * Map english localization
     englishMapper(localizationList);
-
-    log(english.toString());
   }
 
-  static englishMapper(List<LocalizationMessageModel> localizationList) {
+  static englishMapper(List<LocalizationHiveModel> localizationList) {
     for (var item in englishList) {
       int index = localizationList.indexWhere((element) => element.code == item);
       if (index != -1) {
-        english[item] = localizationList[index].message;
+        englishMap[item] = localizationList[index].message;
       }
     }
   }
@@ -62,15 +55,11 @@ class LocalizationService {
     for (var localization in localizations) {
       localizationList.add(LocalizationMessageModel.fromJson(localization));
     }
+
     return localizationList;
   }
 
-  static Future<dynamic> getLocalizationFromStorage() async {
-    dynamic localization = await SecureStorageService.read("localization");
-    return localization;
-  }
-
-  static Future<dynamic> getLocalicationFromAPI() async {
+  static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI() async {
     // * Call API
     final env = dotenv.env["LOCALIZATION_API_URL"];
     final url = "${env}tenantId=default&locale=en_IN";
@@ -92,8 +81,9 @@ class LocalizationService {
 
     final response = await HttpService.postRequestWithoutToken(url, body);
     if (response.statusCode == 200) {
-      body = response.body;
-      return body;
+      final parsed = response.body["messages"] as List<dynamic>;
+      final localizationList = parseLocalization(parsed);
+      return localizationList;
     } else {
       log(response.statusCode.toString());
       log(response.body.toString());

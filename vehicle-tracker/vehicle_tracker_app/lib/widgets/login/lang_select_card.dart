@@ -21,18 +21,18 @@ class LangSelectCard extends StatelessWidget {
 
           // * Language Button
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               DigitOutLineButton(label: "Hindi", onPressed: () => Get.updateLocale(const Locale('hi', 'IN'))),
-              const SizedBox(width: 20),
               DigitOutLineButton(label: "English", onPressed: () => Get.updateLocale(const Locale('en', 'IN'))),
             ],
           ),
 
-          const SizedBox(height: 20),
-
           // * Continue Button
-          DigitElevatedButton(child: const Text("Continue"), onPressed: () => Get.toNamed(LOGIN))
+          Padding(
+            padding: DigitTheme.instance.buttonPadding,
+            child: DigitElevatedButton(child: const Text("Continue"), onPressed: () => Get.toNamed(LOGIN)),
+          )
         ],
       ),
     );

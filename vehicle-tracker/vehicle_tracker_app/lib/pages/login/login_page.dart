@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
           const SizedBox(height: 20),
           Align(
             alignment: Alignment.topLeft,
-            child: DigitIconButton(iconText: "Back", onPressed: () {}, icon: Icons.arrow_back),
+            child: DigitIconButton(iconText: "Back", onPressed: () => Get.back(), icon: Icons.arrow_back),
           ),
 
           // * Login Card
@@ -37,8 +37,14 @@ class LoginPage extends StatelessWidget {
                 const Text("Login"),
 
                 // * Text Fields for User ID and Password
-                DigitTextField(label: AppTranslation.ACTION_TEST_LME_PERFORMANCE_REPORT.tr, controller: loginController.userNameController),
-                DigitTextField(label: AppTranslation.CORE_COMMON_PHONE_NUMBER.tr, controller: loginController.passwordController),
+                DigitTextField(
+                  label: AppTranslation.ACTION_TEST_LME_PERFORMANCE_REPORT.tr,
+                  controller: loginController.userNameController,
+                ),
+                DigitTextField(
+                  label: AppTranslation.CORE_COMMON_PHONE_NUMBER.tr,
+                  controller: loginController.passwordController,
+                ),
 
                 // * City Dropdown
                 DigitDropdown<String>(

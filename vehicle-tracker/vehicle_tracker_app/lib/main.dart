@@ -10,17 +10,25 @@ import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'data/localization_service.dart';
+import 'models/localization_hive/localization_hive_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize the Hive database
   await Hive.initFlutter();
 
   // Load up the environment variables
   await dotenv.load(fileName: ".env");
 
+  // Registering the Hive adapters
+  Hive.registerAdapter(LocalizationHiveModelAdapter());
+
   // Initialize the Hive box for storing vehicle tracking data
   await Hive.openBox("tracker");
+  await Hive.openBox("localization");
 
+  // Fetch the localization data via API or from local storage
   await LocalizationService.fetchLocalization();
 
   // Uses the bool value to determine the initial route
@@ -37,6 +45,7 @@ Future<bool> checkLogin() async {
   String? token = await SecureStorageService.read("token");
   if (token != null) {
     log("Token found");
+    log(token);
     return true;
   }
   log("Token not found");
@@ -52,10 +61,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Vehicle Tracker App',
       theme: DigitTheme.instance.mobileTheme,
-      translations: AppTranslation(),
+      translations: AppTranslation(), // has all the translations
       locale: const Locale('en', 'IN'),
-      getPages: getPages,
-      initialRoute: isLogin ? LANG : LANG,
+      getPages: getPages, // has all the routes
+      initialRoute: isLogin ? LANG : LANG, // initial routes, if user is logged in then HOME else LOGIN
     );
   }
 }
