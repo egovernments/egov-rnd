@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
 
                 // * Text Fields for User ID and Password
                 DigitTextField(label: AppTranslation.ACTION_TEST_LME_PERFORMANCE_REPORT.tr, controller: loginController.userNameController),
-                DigitTextField(label: AppTranslation.PASSWORD.tr, controller: loginController.passwordController),
+                DigitTextField(label: AppTranslation.CORE_COMMON_PHONE_NUMBER.tr, controller: loginController.passwordController),
 
                 // * City Dropdown
                 DigitDropdown<String>(

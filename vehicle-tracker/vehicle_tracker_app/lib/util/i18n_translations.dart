@@ -27,6 +27,8 @@ class AppTranslation extends Translations {
   static String get BACK => 'back';
   static String get WARNING => 'warning';
   static String get ACTION_TEST_LME_PERFORMANCE_REPORT => 'actionTestLmePerformanceReport';
+  static String get CORE_COMMON_PHONE_NUMBER => 'coreCommonPhoneNumber';
+
 
   // Map of all translations for english and hindi
   @override
@@ -55,6 +57,7 @@ class AppTranslation extends Translations {
           BACK: 'Back',
           WARNING: 'Warning!',
           ACTION_TEST_LME_PERFORMANCE_REPORT: 'test',
+          CORE_COMMON_PHONE_NUMBER: 'Phone Number',
         },
 
         // Hindi
