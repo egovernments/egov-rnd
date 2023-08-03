@@ -23,10 +23,6 @@ class HiveService {
     return Hive.box("localization").values.toList().cast<LocalizationHiveModel>();
   }
 
-  static getAllToken() {
-    return Hive.box("tracker").values.toList();
-  }
-
   static deleteLocalization() async {
     await Hive.box("localization").clear();
   }
