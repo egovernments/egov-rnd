@@ -26,8 +26,10 @@ class AppTranslation extends Translations {
   static String get END_TRIP => 'endTrip';
   static String get BACK => 'back';
   static String get WARNING => 'warning';
-  static String get ACTION_TEST_LME_PERFORMANCE_REPORT => 'actionTestLmePerformanceReport';
-  static String get CORE_COMMON_PHONE_NUMBER => 'coreCommonPhoneNumber';
+  static String get EMAIL_UPDATED => 'emailUpdated';
+  static String get EMAIL_LOGIN => 'email.login.otp.body';
+  static String get EMAIL_RESET => 'email.pwd.reset.otp.body';
+  
 
   // Map of all translations for english and hindi
   @override
@@ -55,8 +57,9 @@ class AppTranslation extends Translations {
           END_TRIP: 'End Trip',
           BACK: 'Back',
           WARNING: 'Warning!',
-          ACTION_TEST_LME_PERFORMANCE_REPORT: 'test',
-          CORE_COMMON_PHONE_NUMBER: 'Phone Number',
+          EMAIL_LOGIN: 'email_login',
+          EMAIL_UPDATED: 'email_updated',
+          EMAIL_RESET: 'email_reset',
         },
 
         // Hindi

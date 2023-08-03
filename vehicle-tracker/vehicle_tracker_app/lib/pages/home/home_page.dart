@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
 
       // * body
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: theme.buttonPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

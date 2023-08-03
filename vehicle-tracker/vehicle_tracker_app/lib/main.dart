@@ -24,16 +24,16 @@ void main() async {
   await Hive.initFlutter();
 
   // Registering the Hive adapters
-  registerAdapterFunc();
+  registerAdaptersFunc();
 
   // Initialize the Hive box for storing vehicle tracking data
-  await openHiveBoxFunc();
+  await openHiveBoxesFunc();
 
   // Fetch the mdms data via API or from local storage
   await MdmsService.fetchMdmsData();
 
   // Fetch the localization data via API or from local storage
-  await LocalizationService.fetchLocalization();
+  await LocalizationService.fetchLocalizationData();
 
   // Uses the bool value to determine the initial route
   bool isLogin = await checkLogin();
@@ -42,7 +42,6 @@ void main() async {
     isLogin: isLogin,
   ));
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.isLogin});
@@ -62,14 +61,14 @@ class MyApp extends StatelessWidget {
 }
 
 // Common function to register all the Hive adapters
-registerAdapterFunc() {
+registerAdaptersFunc() {
   Hive.registerAdapter(LocalizationHiveModelAdapter());
   Hive.registerAdapter(MdmsHiveModelAdapter());
   Hive.registerAdapter(LanguageHiveModelAdapter());
 }
 
 // Common function to open all the Hive boxes`
-openHiveBoxFunc() async {
+openHiveBoxesFunc() async {
   await Future.wait([
     Hive.openBox("tracker"),
     Hive.openBox("localization"),
@@ -88,4 +87,3 @@ Future<bool> checkLogin() async {
   log("Token not found");
   return false;
 }
-

@@ -12,6 +12,7 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tripControllers = Get.find<TripControllers>();
+    final theme = DigitTheme.instance;
 
     return SafeArea(
       child: Scaffold(
@@ -23,13 +24,13 @@ class InfoPage extends StatelessWidget {
 
         // * Body
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          padding: theme.buttonPadding,
           child: ScrollableContent(
             crossAxisAlignment: CrossAxisAlignment.start,
 
             // * Footer
             footer: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: theme.buttonPadding,
               child: DigitElevatedButton(
                 child: Text(AppTranslation.START_TRIP.tr),
                 onPressed: () => tripControllers.startTrip(context),
@@ -39,7 +40,6 @@ class InfoPage extends StatelessWidget {
             // * Body
             children: [
               // * Back Button
-              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

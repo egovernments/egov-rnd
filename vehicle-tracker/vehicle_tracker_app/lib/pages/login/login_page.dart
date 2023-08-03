@@ -38,11 +38,11 @@ class LoginPage extends StatelessWidget {
 
                 // * Text Fields for User ID and Password
                 DigitTextField(
-                  label: AppTranslation.ACTION_TEST_LME_PERFORMANCE_REPORT.tr,
+                  label: AppTranslation.EMAIL_LOGIN.tr,
                   controller: loginController.userNameController,
                 ),
                 DigitTextField(
-                  label: AppTranslation.CORE_COMMON_PHONE_NUMBER.tr,
+                  label: AppTranslation.EMAIL_RESET.tr,
                   controller: loginController.passwordController,
                 ),
 

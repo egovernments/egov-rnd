@@ -13,8 +13,8 @@ import '../models/localization/localization_model.dart';
 class LocalizationService {
   static Map<String, String> englishMap = {};
 
-  static fetchLocalization() async {
-    // await HiveService.deleteLocalization();
+  static fetchLocalizationData() async {
+    await HiveService.deleteLocalization();
 
     List<LocalizationHiveModel> localizationList = [];
 
@@ -49,6 +49,8 @@ class LocalizationService {
         englishMap[item] = localizationList[index].message;
       }
     }
+
+    log(englishMap.toString());
   }
 
   static List<LocalizationMessageModel> parseLocalization(dynamic localizations) {
@@ -64,20 +66,14 @@ class LocalizationService {
   static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI() async {
     // Call API
     final env = dotenv.env["LOCALIZATION_API_URL"];
-    final url = "${env}tenantId=default&locale=en_IN";
+    final url = "${env}locale=en_IN&tenantId=pb&_=1683277829758";
 
     Map<String, dynamic> body = {
       "RequestInfo": {
-        "apiId": "emp",
-        "ver": "1.0",
-        "ts": "10-03-2017 00:00:00",
-        "action": "create",
-        "did": "1",
-        "key": "abcdkey",
-        "msgId": "20170310130900",
-        "requesterId": "rajesh",
-        "authToken": "03d9ea52-cccb-41d6-841e-b50a518165d5",
-        "userInfo": {"id": 1}
+        "apiId": "Rainmaker",
+        "authToken": "e89ab88c-031c-482f-a950-36b278bde855",
+        "msgId": "1683277829758|en_IN",
+        "plainAccessRequest": {}
       }
     };
 
