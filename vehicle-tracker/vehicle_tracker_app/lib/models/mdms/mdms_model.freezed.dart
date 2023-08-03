@@ -22,7 +22,7 @@ MdmsModel _$MdmsModelFromJson(Map<String, dynamic> json) {
 mixin _$MdmsModel {
   String get tenantId => throw _privateConstructorUsedError;
   String get moduleName => throw _privateConstructorUsedError;
-  List<StateInfo> get stateInfo => throw _privateConstructorUsedError;
+  List<StateInfoModel> get StateInfo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,8 @@ abstract class $MdmsModelCopyWith<$Res> {
   factory $MdmsModelCopyWith(MdmsModel value, $Res Function(MdmsModel) then) =
       _$MdmsModelCopyWithImpl<$Res, MdmsModel>;
   @useResult
-  $Res call({String tenantId, String moduleName, List<StateInfo> stateInfo});
+  $Res call(
+      {String tenantId, String moduleName, List<StateInfoModel> StateInfo});
 }
 
 /// @nodoc
@@ -53,7 +54,7 @@ class _$MdmsModelCopyWithImpl<$Res, $Val extends MdmsModel>
   $Res call({
     Object? tenantId = null,
     Object? moduleName = null,
-    Object? stateInfo = null,
+    Object? StateInfo = null,
   }) {
     return _then(_value.copyWith(
       tenantId: null == tenantId
@@ -64,10 +65,10 @@ class _$MdmsModelCopyWithImpl<$Res, $Val extends MdmsModel>
           ? _value.moduleName
           : moduleName // ignore: cast_nullable_to_non_nullable
               as String,
-      stateInfo: null == stateInfo
-          ? _value.stateInfo
-          : stateInfo // ignore: cast_nullable_to_non_nullable
-              as List<StateInfo>,
+      StateInfo: null == StateInfo
+          ? _value.StateInfo
+          : StateInfo // ignore: cast_nullable_to_non_nullable
+              as List<StateInfoModel>,
     ) as $Val);
   }
 }
@@ -79,7 +80,8 @@ abstract class _$$_MdmsModelCopyWith<$Res> implements $MdmsModelCopyWith<$Res> {
       __$$_MdmsModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String tenantId, String moduleName, List<StateInfo> stateInfo});
+  $Res call(
+      {String tenantId, String moduleName, List<StateInfoModel> StateInfo});
 }
 
 /// @nodoc
@@ -95,7 +97,7 @@ class __$$_MdmsModelCopyWithImpl<$Res>
   $Res call({
     Object? tenantId = null,
     Object? moduleName = null,
-    Object? stateInfo = null,
+    Object? StateInfo = null,
   }) {
     return _then(_$_MdmsModel(
       tenantId: null == tenantId
@@ -106,10 +108,10 @@ class __$$_MdmsModelCopyWithImpl<$Res>
           ? _value.moduleName
           : moduleName // ignore: cast_nullable_to_non_nullable
               as String,
-      stateInfo: null == stateInfo
-          ? _value._stateInfo
-          : stateInfo // ignore: cast_nullable_to_non_nullable
-              as List<StateInfo>,
+      StateInfo: null == StateInfo
+          ? _value._StateInfo
+          : StateInfo // ignore: cast_nullable_to_non_nullable
+              as List<StateInfoModel>,
     ));
   }
 }
@@ -120,8 +122,8 @@ class _$_MdmsModel implements _MdmsModel {
   const _$_MdmsModel(
       {required this.tenantId,
       required this.moduleName,
-      required final List<StateInfo> stateInfo})
-      : _stateInfo = stateInfo;
+      required final List<StateInfoModel> StateInfo})
+      : _StateInfo = StateInfo;
 
   factory _$_MdmsModel.fromJson(Map<String, dynamic> json) =>
       _$$_MdmsModelFromJson(json);
@@ -130,17 +132,17 @@ class _$_MdmsModel implements _MdmsModel {
   final String tenantId;
   @override
   final String moduleName;
-  final List<StateInfo> _stateInfo;
+  final List<StateInfoModel> _StateInfo;
   @override
-  List<StateInfo> get stateInfo {
-    if (_stateInfo is EqualUnmodifiableListView) return _stateInfo;
+  List<StateInfoModel> get StateInfo {
+    if (_StateInfo is EqualUnmodifiableListView) return _StateInfo;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stateInfo);
+    return EqualUnmodifiableListView(_StateInfo);
   }
 
   @override
   String toString() {
-    return 'MdmsModel(tenantId: $tenantId, moduleName: $moduleName, stateInfo: $stateInfo)';
+    return 'MdmsModel(tenantId: $tenantId, moduleName: $moduleName, StateInfo: $StateInfo)';
   }
 
   @override
@@ -153,13 +155,13 @@ class _$_MdmsModel implements _MdmsModel {
             (identical(other.moduleName, moduleName) ||
                 other.moduleName == moduleName) &&
             const DeepCollectionEquality()
-                .equals(other._stateInfo, _stateInfo));
+                .equals(other._StateInfo, _StateInfo));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, tenantId, moduleName,
-      const DeepCollectionEquality().hash(_stateInfo));
+      const DeepCollectionEquality().hash(_StateInfo));
 
   @JsonKey(ignore: true)
   @override
@@ -179,7 +181,7 @@ abstract class _MdmsModel implements MdmsModel {
   const factory _MdmsModel(
       {required final String tenantId,
       required final String moduleName,
-      required final List<StateInfo> stateInfo}) = _$_MdmsModel;
+      required final List<StateInfoModel> StateInfo}) = _$_MdmsModel;
 
   factory _MdmsModel.fromJson(Map<String, dynamic> json) =
       _$_MdmsModel.fromJson;
@@ -189,19 +191,19 @@ abstract class _MdmsModel implements MdmsModel {
   @override
   String get moduleName;
   @override
-  List<StateInfo> get stateInfo;
+  List<StateInfoModel> get StateInfo;
   @override
   @JsonKey(ignore: true)
   _$$_MdmsModelCopyWith<_$_MdmsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-StateInfo _$StateInfoFromJson(Map<String, dynamic> json) {
+StateInfoModel _$StateInfoModelFromJson(Map<String, dynamic> json) {
   return _StateInfo.fromJson(json);
 }
 
 /// @nodoc
-mixin _$StateInfo {
+mixin _$StateInfoModel {
   String get name => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
   String get qrCodeURL => throw _privateConstructorUsedError;
@@ -218,14 +220,15 @@ mixin _$StateInfo {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StateInfoCopyWith<StateInfo> get copyWith =>
+  $StateInfoModelCopyWith<StateInfoModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StateInfoCopyWith<$Res> {
-  factory $StateInfoCopyWith(StateInfo value, $Res Function(StateInfo) then) =
-      _$StateInfoCopyWithImpl<$Res, StateInfo>;
+abstract class $StateInfoModelCopyWith<$Res> {
+  factory $StateInfoModelCopyWith(
+          StateInfoModel value, $Res Function(StateInfoModel) then) =
+      _$StateInfoModelCopyWithImpl<$Res, StateInfoModel>;
   @useResult
   $Res call(
       {String name,
@@ -243,9 +246,9 @@ abstract class $StateInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StateInfoCopyWithImpl<$Res, $Val extends StateInfo>
-    implements $StateInfoCopyWith<$Res> {
-  _$StateInfoCopyWithImpl(this._value, this._then);
+class _$StateInfoModelCopyWithImpl<$Res, $Val extends StateInfoModel>
+    implements $StateInfoModelCopyWith<$Res> {
+  _$StateInfoModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -322,7 +325,8 @@ class _$StateInfoCopyWithImpl<$Res, $Val extends StateInfo>
 }
 
 /// @nodoc
-abstract class _$$_StateInfoCopyWith<$Res> implements $StateInfoCopyWith<$Res> {
+abstract class _$$_StateInfoCopyWith<$Res>
+    implements $StateInfoModelCopyWith<$Res> {
   factory _$$_StateInfoCopyWith(
           _$_StateInfo value, $Res Function(_$_StateInfo) then) =
       __$$_StateInfoCopyWithImpl<$Res>;
@@ -345,7 +349,7 @@ abstract class _$$_StateInfoCopyWith<$Res> implements $StateInfoCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StateInfoCopyWithImpl<$Res>
-    extends _$StateInfoCopyWithImpl<$Res, _$_StateInfo>
+    extends _$StateInfoModelCopyWithImpl<$Res, _$_StateInfo>
     implements _$$_StateInfoCopyWith<$Res> {
   __$$_StateInfoCopyWithImpl(
       _$_StateInfo _value, $Res Function(_$_StateInfo) _then)
@@ -488,7 +492,7 @@ class _$_StateInfo implements _StateInfo {
 
   @override
   String toString() {
-    return 'StateInfo(name: $name, code: $code, qrCodeURL: $qrCodeURL, bannerUrl: $bannerUrl, logoUrl: $logoUrl, logoUrlWhite: $logoUrlWhite, statelogo: $statelogo, hasLocalisation: $hasLocalisation, enableWhatsApp: $enableWhatsApp, defaultUrl: $defaultUrl, languages: $languages, localizationModules: $localizationModules)';
+    return 'StateInfoModel(name: $name, code: $code, qrCodeURL: $qrCodeURL, bannerUrl: $bannerUrl, logoUrl: $logoUrl, logoUrlWhite: $logoUrlWhite, statelogo: $statelogo, hasLocalisation: $hasLocalisation, enableWhatsApp: $enableWhatsApp, defaultUrl: $defaultUrl, languages: $languages, localizationModules: $localizationModules)';
   }
 
   @override
@@ -550,7 +554,7 @@ class _$_StateInfo implements _StateInfo {
   }
 }
 
-abstract class _StateInfo implements StateInfo {
+abstract class _StateInfo implements StateInfoModel {
   const factory _StateInfo(
           {required final String name,
           required final String code,

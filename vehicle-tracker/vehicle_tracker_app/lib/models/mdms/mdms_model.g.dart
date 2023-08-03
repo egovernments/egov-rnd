@@ -9,8 +9,8 @@ part of 'mdms_model.dart';
 _$_MdmsModel _$$_MdmsModelFromJson(Map<String, dynamic> json) => _$_MdmsModel(
       tenantId: json['tenantId'] as String,
       moduleName: json['moduleName'] as String,
-      stateInfo: (json['stateInfo'] as List<dynamic>)
-          .map((e) => StateInfo.fromJson(e as Map<String, dynamic>))
+      StateInfo: (json['StateInfo'] as List<dynamic>)
+          .map((e) => StateInfoModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -18,7 +18,7 @@ Map<String, dynamic> _$$_MdmsModelToJson(_$_MdmsModel instance) =>
     <String, dynamic>{
       'tenantId': instance.tenantId,
       'moduleName': instance.moduleName,
-      'stateInfo': instance.stateInfo,
+      'StateInfo': instance.StateInfo,
     };
 
 _$_StateInfo _$$_StateInfoFromJson(Map<String, dynamic> json) => _$_StateInfo(

@@ -73,6 +73,24 @@ class HttpService {
     }
   }
 
+  static Future<Response> getRequestWithoutToken(String route) async {
+    String url = uri + route;
+    try {
+      var response = await http.get(Uri.parse(url), headers: {
+        'Content-Type': 'application/json',
+      });
+      if (response.statusCode == 200) {
+        var body = json.decode(response.body);
+        return Response(body: body, statusCode: response.statusCode);
+      } else {
+        return Response(body: null, statusCode: response.statusCode);
+      }
+    } on HttpException catch (e) {
+      log(e.toString());
+      return const Response(body: null, statusCode: 666);
+    }
+  }
+
   static Future<Response> deleteRequest(String route, Map<String, dynamic>? jsonMap) async {
     String url = uri + route;
     String body = json.encode(jsonMap);

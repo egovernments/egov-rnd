@@ -4,6 +4,7 @@ import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:vehicle_tracker_app/data/mdms_service.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/data/token_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
@@ -28,8 +29,12 @@ void main() async {
   await Hive.openBox("tracker");
   await Hive.openBox("localization");
 
+  // Fetch the mdms data via API or from local storage
+  await MdmsService.fetchMdmsData();
+
   // Fetch the localization data via API or from local storage
   await LocalizationService.fetchLocalization();
+  
 
   // Uses the bool value to determine the initial route
   bool isLogin = await checkLogin();

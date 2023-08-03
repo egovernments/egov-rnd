@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,16 +10,15 @@ class MdmsModel with _$MdmsModel {
   const factory MdmsModel({
     required String tenantId,
     required String moduleName,
-    required List<StateInfo> stateInfo,
+    required List<StateInfoModel> StateInfo,
   }) = _MdmsModel;
 
-  factory MdmsModel.fromJson(Map<String, dynamic> json) =>
-      _$MdmsModelFromJson(json);
+  factory MdmsModel.fromJson(Map<String, dynamic> json) => _$MdmsModelFromJson(json);
 }
 
 @freezed
-class StateInfo with _$StateInfo {
-  const factory StateInfo({
+class StateInfoModel with _$StateInfoModel {
+  const factory StateInfoModel({
     required String name,
     required String code,
     required String qrCodeURL,
@@ -34,8 +33,7 @@ class StateInfo with _$StateInfo {
     required List<LocalizationModule> localizationModules,
   }) = _StateInfo;
 
-  factory StateInfo.fromJson(Map<String, dynamic> json) =>
-      _$StateInfoFromJson(json);
+  factory StateInfoModel.fromJson(Map<String, dynamic> json) => _$StateInfoModelFromJson(json);
 }
 
 @freezed
@@ -45,8 +43,7 @@ class Language with _$Language {
     required String value,
   }) = _Language;
 
-  factory Language.fromJson(Map<String, dynamic> json) =>
-      _$LanguageFromJson(json);
+  factory Language.fromJson(Map<String, dynamic> json) => _$LanguageFromJson(json);
 }
 
 @freezed
@@ -56,6 +53,5 @@ class LocalizationModule with _$LocalizationModule {
     required String value,
   }) = _LocalizationModule;
 
-  factory LocalizationModule.fromJson(Map<String, dynamic> json) =>
-      _$LocalizationModuleFromJson(json);
+  factory LocalizationModule.fromJson(Map<String, dynamic> json) => _$LocalizationModuleFromJson(json);
 }
