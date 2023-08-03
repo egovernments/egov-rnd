@@ -14,29 +14,31 @@ class LocalizationService {
   static Map<String, String> englishMap = {};
 
   static fetchLocalization() async {
+    // await HiveService.deleteLocalization();
+
     List<LocalizationHiveModel> localizationList = [];
 
-    // * Checks local storage
-    final localizationHiveList = HiveService.getLocalization();
+    // Checks local storage
+    var localizationHiveList = HiveService.getLocalization();
     if (localizationHiveList.isEmpty) {
-      // * Call API
-      log("Calling API");
+      //  Call API
+      log("Calling API for localization");
       final localizations = await getLocalicationFromAPI();
       if (localizations == null) {
         log("Error fetching localization from API");
         return;
       }
 
-      // * Store in local storage
-      log("Storing in local storage");
+      // Store in local storage
+      log("Storing localizations in local storage");
       localizationList = await HiveService.storeLocalization(localizations);
     } else {
-      // * If not empty, store in local variable
-      log("Fetching from local storage");
+      // If not empty, store in local variable
+      log("Fetching localizations from local storage");
       localizationList = localizationHiveList;
     }
 
-    // * Map english localization
+    // Map english localization
     englishMapper(localizationList);
   }
 
@@ -60,7 +62,7 @@ class LocalizationService {
   }
 
   static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI() async {
-    // * Call API
+    // Call API
     final env = dotenv.env["LOCALIZATION_API_URL"];
     final url = "${env}tenantId=default&locale=en_IN";
 
