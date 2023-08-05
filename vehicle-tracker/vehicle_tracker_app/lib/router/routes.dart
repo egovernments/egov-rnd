@@ -41,5 +41,6 @@ List<GetPage<dynamic>> getPages = [
   GetPage(
     name: INFO,
     page: () => const InfoPage(),
+    binding: HomeBindings(),
   )
 ];

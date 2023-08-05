@@ -26,61 +26,58 @@ class HomePage extends StatelessWidget {
       drawer: const CustomDrawer(),
 
       // * body
-      body: Padding(
-        padding: theme.buttonPadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // * help button
-            Align(
-              alignment: Alignment.topRight,
-              child: DigitIconButton(
-                icon: Icons.help_outline_rounded,
-                iconText: AppTranslation.HELP.tr,
-                onPressed: () {},
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // * help button
+          Align(
+            alignment: Alignment.topRight,
+            child: DigitIconButton(
+              icon: Icons.help_outline_rounded,
+              iconText: AppTranslation.HELP.tr,
+              onPressed: () {},
+            ),
+          ),
+
+          // * app heading
+          Padding(
+            padding: theme.buttonPadding,
+            child: Text(AppTranslation.MY_TRIPS.tr),
+          ),
+
+          // ! search bar needs icons support
+          DigitSearchBar(
+            hintText: AppTranslation.SEARCH_BAR.tr,
+            onChanged: (value) {},
+          ),
+
+          const SizedBox(height: 8),
+
+          // * button bar for IN-PROGRESS and COMPLETED
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              DigitOutLineButton(
+                label: AppTranslation.IN_PROGRESS.tr,
+                onPressed: () => inboxController.toggleCompleted(),
               ),
-            ),
-
-            // * app heading
-            Padding(
-              padding: theme.buttonPadding,
-              child: Text(AppTranslation.MY_TRIPS.tr),
-            ),
-
-            // ! search bar needs icons support
-            DigitSearchBar(
-              hintText: AppTranslation.SEARCH_BAR.tr,
-              onChanged: (value) {},
-            ),
-
-            const SizedBox(height: 8),
-
-            // * button bar for IN-PROGRESS and COMPLETED
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                DigitOutLineButton(
-                  label: AppTranslation.IN_PROGRESS.tr,
-                  onPressed: () => inboxController.toggleCompleted(),
-                ),
-                DigitOutLineButton(
-                  label: AppTranslation.COMPLETED.tr,
-                  onPressed: () => inboxController.toggleCompleted(),
-                ),
-              ],
-            ),
-
-            // * list view
-            Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return const HomeListWidget();
-                },
+              DigitOutLineButton(
+                label: AppTranslation.COMPLETED.tr,
+                onPressed: () => inboxController.toggleCompleted(),
               ),
+            ],
+          ),
+
+          // * list view
+          Expanded(
+            child: ListView.builder(
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return const HomeListWidget();
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

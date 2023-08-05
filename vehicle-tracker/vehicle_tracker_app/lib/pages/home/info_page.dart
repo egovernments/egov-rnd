@@ -5,6 +5,7 @@ import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
 
 import '../../blocs/home/controllers/trip_controllers.dart';
+import '../../widgets/home/info_page_widget.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({super.key});
@@ -23,32 +24,40 @@ class InfoPage extends StatelessWidget {
         drawer: const CustomDrawer(),
 
         // * Body
-        body: Padding(
-          padding: theme.buttonPadding,
-          child: ScrollableContent(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        body: ScrollableContent(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
 
-            // * Footer
-            footer: Padding(
-              padding: theme.buttonPadding,
-              child: DigitElevatedButton(
-                child: Text(AppTranslation.START_TRIP.tr),
-                onPressed: () => tripControllers.startTrip(context),
-              ),
+          // * Footer
+          footer: Padding(
+            padding: theme.buttonPadding,
+            child: DigitElevatedButton(
+              child: Text(AppTranslation.START_TRIP.tr),
+              onPressed: () => tripControllers.startTrip(context),
+            ),
+          ),
+
+          // * Body
+          children: [
+            // * Back Button
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DigitIconButton(iconText: AppTranslation.BACK.tr, onPressed: () => Get.back(), icon: Icons.keyboard_arrow_left),
+                DigitIconButton(iconText: AppTranslation.HELP.tr, onPressed: () {}, icon: Icons.help_outline_rounded),
+              ],
             ),
 
-            // * Body
-            children: [
-              // * Back Button
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            DigitCard(
+              padding: theme.buttonPadding,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  DigitIconButton(iconText: AppTranslation.BACK.tr, onPressed: () => Get.back(), icon: Icons.keyboard_arrow_left),
-                  DigitIconButton(iconText: AppTranslation.HELP.tr, onPressed: () {}, icon: Icons.help_outline_rounded),
+                  const Text("Locality....."),
+                  textColumnWidget(["-- values --"], theme)
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );

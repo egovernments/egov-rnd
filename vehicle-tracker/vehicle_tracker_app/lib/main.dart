@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
       translations: AppTranslation(), // has all the translations
       locale: const Locale('en', 'IN'),
       getPages: getPages, // has all the routes
-      initialRoute: isLogin ? LANG : LANG, // initial routes, if user is logged in then HOME else LOGIN
+      initialRoute: isLogin ? HOME : LANG, // initial routes, if user is logged in then HOME else LOGIN
     );
   }
 }

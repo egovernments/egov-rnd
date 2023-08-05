@@ -12,6 +12,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController loginController = Get.find<LoginController>();
+    final theme = DigitTheme.instance;
 
     return Scaffold(
       appBar: AppBar(
@@ -56,10 +57,12 @@ class LoginPage extends StatelessWidget {
                 ),
 
                 // * Login Button
-                const SizedBox(height: 20),
-                DigitElevatedButton(
-                  child: Text(AppTranslation.LOGIN.tr),
-                  onPressed: () => loginController.login(context),
+                Padding(
+                  padding: theme.buttonPadding,
+                  child: DigitElevatedButton(
+                    child: Text(AppTranslation.LOGIN.tr),
+                    onPressed: () => loginController.login(context),
+                  ),
                 ),
 
                 // * Forgot Password Button

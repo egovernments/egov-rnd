@@ -49,8 +49,6 @@ class LocalizationService {
         englishMap[item] = localizationList[index].message;
       }
     }
-
-    log(englishMap.toString());
   }
 
   static List<LocalizationMessageModel> parseLocalization(dynamic localizations) {
