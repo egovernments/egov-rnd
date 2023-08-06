@@ -5,14 +5,14 @@ import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/home/info_page_widget.dart';
 
-import '../../blocs/home/controllers/inbox_controllers.dart';
+import '../../blocs/home/controllers/info_controllers.dart';
 
 class HomeListWidget extends StatelessWidget {
   const HomeListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final inboxController = Get.find<InboxController>();
+    final inboxController = Get.find<InfoController>();
 
     return Obx(
       () => DigitCard(

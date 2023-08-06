@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
 
-import '../../blocs/home/controllers/trip_controllers.dart';
 import '../../widgets/home/info_page_widget.dart';
 
 class InfoPage extends StatelessWidget {
@@ -12,7 +11,7 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tripControllers = Get.find<TripControllers>();
+    // final infoControllers = Get.find<InfoController>();
     final theme = DigitTheme.instance;
 
     return SafeArea(
@@ -32,21 +31,21 @@ class InfoPage extends StatelessWidget {
             padding: theme.buttonPadding,
             child: DigitElevatedButton(
               child: Text(AppTranslation.START_TRIP.tr),
-              onPressed: () => tripControllers.startTrip(context),
+              onPressed: () => (),
             ),
+          ),
+
+          header: Row(
+            // * Back Button
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              DigitIconButton(iconText: AppTranslation.BACK.tr, onPressed: () => Get.back(), icon: Icons.keyboard_arrow_left),
+              DigitIconButton(iconText: AppTranslation.HELP.tr, onPressed: () {}, icon: Icons.help_outline_rounded),
+            ],
           ),
 
           // * Body
           children: [
-            // * Back Button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                DigitIconButton(iconText: AppTranslation.BACK.tr, onPressed: () => Get.back(), icon: Icons.keyboard_arrow_left),
-                DigitIconButton(iconText: AppTranslation.HELP.tr, onPressed: () {}, icon: Icons.help_outline_rounded),
-              ],
-            ),
-
             DigitCard(
               padding: theme.buttonPadding,
               child: Column(

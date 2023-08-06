@@ -11,7 +11,7 @@ class MdmsService {
   static List<MdmsHiveModel> mdmsHiveModelList = [];
 
   static fetchMdmsData() async {
-    await HiveService.deleteMdmsData();
+    // await HiveService.deleteMdmsData();
 
     var data = HiveService.getMdmsData();
 

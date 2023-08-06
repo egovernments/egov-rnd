@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
-import '../../blocs/home/controllers/inbox_controllers.dart';
 import '../../widgets/drawer_widget.dart';
 import '../../widgets/home/home_list_widget.dart';
 
@@ -12,7 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inboxController = Get.find<InboxController>();
+    // final inboxController = Get.find<InboxController>();
     final theme = DigitTheme.instance;
 
     return Scaffold(
@@ -59,11 +58,11 @@ class HomePage extends StatelessWidget {
             children: [
               DigitOutLineButton(
                 label: AppTranslation.IN_PROGRESS.tr,
-                onPressed: () => inboxController.toggleCompleted(),
+                onPressed: () => (),
               ),
               DigitOutLineButton(
                 label: AppTranslation.COMPLETED.tr,
-                onPressed: () => inboxController.toggleCompleted(),
+                onPressed: () => (),
               ),
             ],
           ),
