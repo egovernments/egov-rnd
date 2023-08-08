@@ -7,7 +7,7 @@ import 'package:vehicle_tracker_app/pages/home/home_page.dart';
 import 'package:vehicle_tracker_app/pages/inbox/inbox_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_lang_select_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_page.dart';
-import 'package:vehicle_tracker_app/pages/trip/upload_photo_page.dart';
+import 'package:vehicle_tracker_app/pages/trip/upload_safety_photo_page.dart';
 
 import '../blocs/home/bindings/home_bindings.dart';
 import '../blocs/inbox/bindings/inbox_bindings.dart';
@@ -20,7 +20,8 @@ String LOGIN = "/login";
 String LANG = "/lang";
 String INFO = "/info";
 String DETAILS = "/details";
-String UPLOAD = "/upload";
+String UPLOAD_SAFETY = "/upload_safety";
+String UPLOAD_DROP = "/upload_drop";
 
 List<GetPage<dynamic>> getPages = [
   GetPage(
@@ -54,8 +55,13 @@ List<GetPage<dynamic>> getPages = [
     binding: DetailBindings(),
   ),
   GetPage(
-    name: UPLOAD,
-    page: () => const UploadPhotoPgae(),
+    name: UPLOAD_SAFETY,
+    page: () => UploadSafetyPhotoPgae(),
     binding: DetailBindings(),
-  )
+  ),
+  GetPage(
+    name: UPLOAD_DROP,
+    page: () => UploadSafetyPhotoPgae(),
+    binding: DetailBindings(),
+  ),
 ];

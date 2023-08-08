@@ -5,6 +5,7 @@ import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../blocs/login/controllers/login_controllers.dart';
+import '../../widgets/scrollable_header_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -21,14 +22,11 @@ class LoginPage extends StatelessWidget {
       ),
       body: ScrollableContent(
         footer: const PoweredByDigit(),
+
+        header: const ScrollableHeaderWidget(),
+
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // * Back Button
-          const SizedBox(height: 20),
-          Align(
-            alignment: Alignment.topLeft,
-            child: DigitIconButton(iconText: "Back", onPressed: () => Get.back(), icon: Icons.arrow_back),
-          ),
 
           // * Login Card
           DigitCard(

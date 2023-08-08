@@ -1,13 +1,17 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/widgets/scrollable_header_widget.dart';
 import 'package:vehicle_tracker_app/widgets/trip/camera_widget.dart';
 
+import '../../blocs/details/controllers/camera_controllers.dart';
 import '../../util/i18n_translations.dart';
 import '../../widgets/drawer_widget.dart';
 
-class UploadPhotoPgae extends StatelessWidget {
-  const UploadPhotoPgae({super.key});
+class UploadSafetyPhotoPgae extends StatelessWidget {
+  UploadSafetyPhotoPgae({super.key});
+
+  final cameraController = Get.find<CameraControllers>();
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +28,7 @@ class UploadPhotoPgae extends StatelessWidget {
       // * Body
       body: ScrollableContent(
         // * Headers
-        header: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            DigitIconButton(
-              iconText: AppTranslation.BACK.tr,
-              onPressed: () => Get.back(),
-              icon: Icons.keyboard_arrow_left,
-            ),
-            DigitIconButton(
-              iconText: AppTranslation.HELP.tr,
-              onPressed: () => (),
-              icon: Icons.help_outline_rounded,
-            ),
-          ],
-        ),
+        header: const ScrollableHeaderWidget(),
 
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -53,7 +43,20 @@ class UploadPhotoPgae extends StatelessWidget {
                 // todo: Take image widget
                 CameraWidget(),
 
-                DigitElevatedButton(child: const Text("End Trip"), onPressed: () {})
+                DigitElevatedButton(child: const Text("End Trip"), onPressed: () {}),
+
+                Obx(() {
+                  if (cameraController.imageSafety.value != null) {
+                    return Center(
+                      child: DigitOutLineButton(
+                        label: "Re - Upload Photograph",
+                        onPressed: () => cameraController.pickImageSafety(),
+                      ),
+                    );
+                  }
+
+                  return const SizedBox();
+                })
               ],
             ),
           )

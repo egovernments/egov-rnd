@@ -6,6 +6,7 @@ import 'package:vehicle_tracker_app/widgets/home/info_page_widget.dart';
 
 import '../../blocs/details/controllers/detail_controller.dart';
 import '../../util/i18n_translations.dart';
+import '../../widgets/scrollable_header_widget.dart';
 import '../../widgets/trip/trip_fill_details_widget.dart';
 
 class TripFillDetailsPage extends StatelessWidget {
@@ -28,11 +29,7 @@ class TripFillDetailsPage extends StatelessWidget {
       // * Body
       body: ScrollableContent(
         // * Heaers
-        header: Row(
-          children: [
-            DigitIconButton(iconText: AppTranslation.BACK.tr, onPressed: () => Get.back(), icon: Icons.keyboard_arrow_left),
-          ],
-        ),
+        header: const ScrollableHeaderWidget(),
 
         // * Main Body
         children: [

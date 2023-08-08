@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/blocs/home/controllers/trip_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
+import 'package:vehicle_tracker_app/widgets/scrollable_header_widget.dart';
 
 import '../../widgets/home/info_page_widget.dart';
 
@@ -36,14 +37,7 @@ class InfoPage extends StatelessWidget {
             ),
           ),
 
-          header: Row(
-            // * Back Button
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DigitIconButton(iconText: AppTranslation.BACK.tr, onPressed: () => Get.back(), icon: Icons.keyboard_arrow_left),
-              DigitIconButton(iconText: AppTranslation.HELP.tr, onPressed: () {}, icon: Icons.help_outline_rounded),
-            ],
-          ),
+          header: const ScrollableHeaderWidget(),
 
           // * Body
           children: [

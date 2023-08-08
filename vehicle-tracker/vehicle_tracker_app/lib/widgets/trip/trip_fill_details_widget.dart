@@ -30,7 +30,7 @@ Widget skipNextButton(DetailController detailController) => Padding(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           DigitOutLineButton(onPressed: () {}, label: "Skip"),
-          DigitElevatedButton(child: const Text("Next"), onPressed: () => Get.toNamed(UPLOAD))
+          DigitElevatedButton(child: const Text("Next"), onPressed: () => Get.toNamed(UPLOAD_SAFETY))
         ],
       ),
     );
