@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/trip_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
 
@@ -11,7 +12,7 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final infoControllers = Get.find<InfoController>();
+    final tripControllers = Get.find<TripControllers>();
     final theme = DigitTheme.instance;
 
     return SafeArea(
@@ -31,7 +32,7 @@ class InfoPage extends StatelessWidget {
             padding: theme.buttonPadding,
             child: DigitElevatedButton(
               child: Text(AppTranslation.START_TRIP.tr),
-              onPressed: () => (),
+              onPressed: () => tripControllers.startTrip(context),
             ),
           ),
 

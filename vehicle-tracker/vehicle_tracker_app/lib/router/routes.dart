@@ -7,6 +7,7 @@ import 'package:vehicle_tracker_app/pages/home/home_page.dart';
 import 'package:vehicle_tracker_app/pages/inbox/inbox_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_lang_select_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_page.dart';
+import 'package:vehicle_tracker_app/pages/trip/upload_photo_page.dart';
 
 import '../blocs/home/bindings/home_bindings.dart';
 import '../blocs/inbox/bindings/inbox_bindings.dart';
@@ -19,6 +20,7 @@ String LOGIN = "/login";
 String LANG = "/lang";
 String INFO = "/info";
 String DETAILS = "/details";
+String UPLOAD = "/upload";
 
 List<GetPage<dynamic>> getPages = [
   GetPage(
@@ -51,4 +53,8 @@ List<GetPage<dynamic>> getPages = [
     page: () => const TripFillDetailsPage(),
     binding: DetailBindings(),
   ),
+  GetPage(
+    name: UPLOAD,
+    page: () => const UploadPhotoPgae(),
+  )
 ];

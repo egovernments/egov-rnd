@@ -6,6 +6,7 @@ import 'package:vehicle_tracker_app/widgets/home/info_page_widget.dart';
 
 import '../../blocs/details/controllers/detail_controller.dart';
 import '../../util/i18n_translations.dart';
+import '../../widgets/trip/trip_fill_details_widget.dart';
 
 class TripFillDetailsPage extends StatelessWidget {
   const TripFillDetailsPage({super.key});
@@ -59,10 +60,7 @@ class TripFillDetailsPage extends StatelessWidget {
                   ),
 
                   // * Submit button
-                  Padding(
-                    padding: DigitTheme.instance.buttonPadding,
-                    child: DigitElevatedButton(onPressed: () {}, child: const Text("Submit")),
-                  )
+                  skipNextButton(detailController),
                 ],
               ),
             ),
@@ -72,22 +70,3 @@ class TripFillDetailsPage extends StatelessWidget {
     );
   }
 }
-
-Widget tankTypeSelector(DetailController detailController) => Column(
-      children: [
-        RadioListTile(
-          contentPadding: EdgeInsets.zero,
-          title: const Text("Conventional Septic Tank"),
-          value: 0,
-          groupValue: detailController.tankType.value,
-          onChanged: (value) => detailController.setTankValue(0),
-        ),
-        RadioListTile(
-          contentPadding: EdgeInsets.zero,
-          title: const Text("Septic Tank with Soak Pit"),
-          value: 1,
-          groupValue: detailController.tankType.value,
-          onChanged: (value) => detailController.setTankValue(1),
-        ),
-      ],
-    );
