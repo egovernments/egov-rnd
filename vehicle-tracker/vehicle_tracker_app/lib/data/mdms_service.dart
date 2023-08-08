@@ -10,8 +10,8 @@ import 'http_service.dart';
 class MdmsService {
   static List<MdmsHiveModel> mdmsHiveModelList = [];
 
-  static fetchMdmsData() async {
-    // await HiveService.deleteMdmsData();
+  static Future<void> fetchMdmsData() async {
+    await HiveService.deleteMdmsData();
 
     var data = HiveService.getMdmsData();
 

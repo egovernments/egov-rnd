@@ -29,11 +29,8 @@ void main() async {
   // Initialize the Hive box for storing vehicle tracking data
   await openHiveBoxesFunc();
 
-  // Fetch the mdms data via API or from local storage
-  await MdmsService.fetchMdmsData();
-
-  // Fetch the localization data via API or from local storage
-  await LocalizationService.fetchLocalizationData();
+  // Fetch the mdms and localization data via API or from local storage
+  await fetchDataFunc();
 
   // Uses the bool value to determine the initial route
   bool isLogin = await checkLogin();
@@ -73,6 +70,13 @@ openHiveBoxesFunc() async {
     Hive.openBox("tracker"),
     Hive.openBox("localization"),
     Hive.openBox("mdms"),
+  ]);
+}
+
+fetchDataFunc() async {
+  await Future.wait([
+    MdmsService.fetchMdmsData(),
+    LocalizationService.fetchLocalizationData(),
   ]);
 }
 

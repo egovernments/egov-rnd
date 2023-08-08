@@ -13,8 +13,8 @@ import '../models/localization/localization_model.dart';
 class LocalizationService {
   static Map<String, String> englishMap = {};
 
-  static fetchLocalizationData() async {
-    // await HiveService.deleteLocalization();
+  static Future<void> fetchLocalizationData() async {
+    await HiveService.deleteLocalization();
 
     List<LocalizationHiveModel> localizationList = [];
 
