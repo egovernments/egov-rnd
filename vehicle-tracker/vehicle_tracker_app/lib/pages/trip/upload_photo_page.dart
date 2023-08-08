@@ -51,7 +51,7 @@ class UploadPhotoPgae extends StatelessWidget {
                 const Text("This is to verify that the necessary safety protocols are followed. "),
 
                 // todo: Take image widget
-                const CameraWidget(),
+                CameraWidget(),
 
                 DigitElevatedButton(child: const Text("End Trip"), onPressed: () {})
               ],

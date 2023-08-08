@@ -64,7 +64,7 @@ registerAdaptersFunc() {
   Hive.registerAdapter(LanguageHiveModelAdapter());
 }
 
-// Common function to open all the Hive boxes`
+// Common function to open all the Hive boxes
 openHiveBoxesFunc() async {
   await Future.wait([
     Hive.openBox("tracker"),
@@ -73,6 +73,7 @@ openHiveBoxesFunc() async {
   ]);
 }
 
+// common function to fetch all the mdms and localization data
 fetchDataFunc() async {
   await Future.wait([
     MdmsService.fetchMdmsData(),

@@ -56,5 +56,6 @@ List<GetPage<dynamic>> getPages = [
   GetPage(
     name: UPLOAD,
     page: () => const UploadPhotoPgae(),
+    binding: DetailBindings(),
   )
 ];
