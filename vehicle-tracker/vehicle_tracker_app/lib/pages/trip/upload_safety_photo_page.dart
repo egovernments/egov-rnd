@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/widgets/scrollable_header_widget.dart';
 import 'package:vehicle_tracker_app/widgets/trip/camera_widget.dart';
 
@@ -43,7 +44,7 @@ class UploadSafetyPhotoPgae extends StatelessWidget {
                 // todo: Take image widget
                 CameraWidget(),
 
-                DigitElevatedButton(child: const Text("End Trip"), onPressed: () {}),
+                DigitElevatedButton(child: const Text("End Trip"), onPressed: () => Get.toNamed(TRIP_COMPLETE)),
 
                 Obx(() {
                   if (cameraController.imageSafety.value != null) {

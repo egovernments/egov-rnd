@@ -7,6 +7,7 @@ import 'package:vehicle_tracker_app/pages/home/home_page.dart';
 import 'package:vehicle_tracker_app/pages/inbox/inbox_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_lang_select_page.dart';
 import 'package:vehicle_tracker_app/pages/login/login_page.dart';
+import 'package:vehicle_tracker_app/pages/trip/trip_complete.dart';
 import 'package:vehicle_tracker_app/pages/trip/upload_safety_photo_page.dart';
 
 import '../blocs/home/bindings/home_bindings.dart';
@@ -22,6 +23,7 @@ String INFO = "/info";
 String DETAILS = "/details";
 String UPLOAD_SAFETY = "/upload_safety";
 String UPLOAD_DROP = "/upload_drop";
+String TRIP_COMPLETE = "/trip_complete";
 
 List<GetPage<dynamic>> getPages = [
   GetPage(
@@ -64,4 +66,8 @@ List<GetPage<dynamic>> getPages = [
     page: () => UploadSafetyPhotoPgae(),
     binding: DetailBindings(),
   ),
+  GetPage(
+    name: TRIP_COMPLETE,
+    page: () => const TripCompletepage(),
+  )
 ];
