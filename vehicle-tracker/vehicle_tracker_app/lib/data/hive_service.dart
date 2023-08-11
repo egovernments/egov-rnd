@@ -1,12 +1,13 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:vehicle_tracker_app/models/mdms/mdms_model.dart';
-import 'package:vehicle_tracker_app/models/mdms_hive/mdms_hive_model.dart';
+import 'package:vehicle_tracker_app/models/trip/trip_hive/trip_hive_model.dart';
 
-import '../models/localization/localization_model.dart';
-import '../models/localization_hive/localization_hive_model.dart';
+import '../models/localization/localization_hive/localization_hive_model.dart';
+import '../models/localization/localiztion_model/localization_model.dart';
+import '../models/mdms/mdms_hive/mdms_hive_model.dart';
+import '../models/mdms/mdms_model/mdms_model.dart';
 
 class HiveService {
-
   // ? For storing of Localization Data into Hive
   static Future<List<LocalizationHiveModel>> storeLocalization(List<LocalizationMessageModel> localizationList) async {
     List<LocalizationHiveModel> localizationHiveList = [];
@@ -38,7 +39,7 @@ class HiveService {
           label: language.label,
           value: language.value,
         ));
-      } 
+      }
 
       mdmsHiveModelList.add(MdmsHiveModel(
         name: item.name,
@@ -52,7 +53,22 @@ class HiveService {
     return mdmsHiveModelList;
   }
 
-  
+  // ? Store Trip Data
+  static Future<void> storeTripData(List<Position> poistions) async {
+    List<TripHiveModel> tripHiveModelList = [];
+    for (var position in poistions) {
+      tripHiveModelList.add(TripHiveModel(
+        latitude: position.latitude,
+        longitude: position.longitude,
+      ));
+    }
+
+    await Hive.box("trip").addAll(tripHiveModelList);
+  }
+
+  // ? Get Trip Data
+
+  // ? Get MDMS data
   static List<MdmsHiveModel> getMdmsData() {
     return Hive.box("mdms").values.toList().cast<MdmsHiveModel>();
   }

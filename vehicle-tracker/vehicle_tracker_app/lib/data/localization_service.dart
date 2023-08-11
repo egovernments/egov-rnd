@@ -6,9 +6,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
-import 'package:vehicle_tracker_app/models/localization_hive/localization_hive_model.dart';
 
-import '../models/localization/localization_model.dart';
+import '../models/localization/localization_hive/localization_hive_model.dart';
+import '../models/localization/localiztion_model/localization_model.dart';
 
 class LocalizationService {
   static Map<String, String> englishMap = {};
@@ -51,6 +51,7 @@ class LocalizationService {
     }
   }
 
+  // parse localization
   static List<LocalizationMessageModel> parseLocalization(dynamic localizations) {
     List<LocalizationMessageModel> localizationList = [];
 
@@ -61,8 +62,8 @@ class LocalizationService {
     return localizationList;
   }
 
+  // get localization from API
   static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI() async {
-    // Call API
     final env = dotenv.env["LOCALIZATION_API_URL"];
     final url = "${env}locale=en_IN&tenantId=pb&_=1683277829758";
 
@@ -75,6 +76,7 @@ class LocalizationService {
       }
     };
 
+    // http request
     final response = await HttpService.postRequestWithoutToken(url, body);
     if (response.statusCode == 200) {
       final parsed = response.body["messages"] as List<dynamic>;

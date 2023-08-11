@@ -7,7 +7,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:vehicle_tracker_app/constants.dart';
+import 'package:vehicle_tracker_app/data/hive_service.dart';
+import 'package:vehicle_tracker_app/data/http_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
+
+import '../../../models/trip/trip_hive/trip_hive_model.dart';
 
 class TripControllers extends GetxController {
   List<Position> positions = [];
@@ -115,7 +120,6 @@ class TripControllers extends GetxController {
     log('Distance from previous point: $distance');
     log('Distance from end: $distanceFromEnd');
     // await statusSender("ok");
-
     if (distanceFromEnd < 1000) {
       log("Reached destination");
       stopTracking();
@@ -125,19 +129,17 @@ class TripControllers extends GetxController {
       log("Distance less than 2.5km");
     }
 
-    await statusSender("ok");
+    await statusSender([currentPosition]);
 
     log("--------------------");
   }
 
-  statusSender(String message) async {
+  statusSender(List<Position> latlngs) async {
+    await HiveService.storeTripData(latlngs);
+    
     if (await isConnected()) {
-      // send the status via API
-      // if gets an error for any reason, store it in local db
       log("Connected to internet");
-    } else {
-      // store it in local db
-      log("Not connected");
+      await createPOI(latlngs, "");
     }
   }
 
@@ -169,5 +171,39 @@ class TripControllers extends GetxController {
         ),
       ),
     );
+  }
+
+  // API call to create POI
+  Future<void> createPOI(List<Position> latlng, String? locationNane) async {
+    String url = "$apiUrl/api/v3/poi/_create";
+
+    List<Map<String, dynamic>> locationData = [];
+
+    for (var item in latlng) {
+      locationData.add({
+        "latitude": item.latitude,
+        "longitude": item.longitude,
+      });
+    }
+
+    Map<String, dynamic> body = {};
+
+    body["locationDetails"] = locationData;
+    body["type"] = "point";
+
+    if (locationNane != null) {
+      body["locationName"] = locationNane;
+    } else {
+      body = {
+        body["locationName"]: "",
+      };
+    }
+
+    final response = await HttpService.postRequestWithoutToken(url, body);
+    if (response.statusCode != 200) {
+      log("Error creating POI");
+    } else {
+      log("POI created");
+    }
   }
 }

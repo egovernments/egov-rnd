@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
-import 'package:vehicle_tracker_app/models/mdms/mdms_model.dart';
-import 'package:vehicle_tracker_app/models/mdms_hive/mdms_hive_model.dart';
 
+import '../models/mdms/mdms_hive/mdms_hive_model.dart';
+import '../models/mdms/mdms_model/mdms_model.dart';
 import 'http_service.dart';
 
 class MdmsService {

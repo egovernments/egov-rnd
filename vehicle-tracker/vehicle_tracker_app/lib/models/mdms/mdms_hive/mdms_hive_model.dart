@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:vehicle_tracker_app/models/mdms/mdms_model.dart';
 
 part 'mdms_hive_model.g.dart';
 
