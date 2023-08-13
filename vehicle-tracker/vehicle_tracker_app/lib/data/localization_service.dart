@@ -14,8 +14,6 @@ class LocalizationService {
   static Map<String, String> englishMap = {};
 
   static Future<void> fetchLocalizationData() async {
-    await HiveService.deleteLocalization();
-
     List<LocalizationHiveModel> localizationList = [];
 
     // Checks local storage

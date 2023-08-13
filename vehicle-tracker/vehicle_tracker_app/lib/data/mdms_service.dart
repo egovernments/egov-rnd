@@ -11,8 +11,6 @@ class MdmsService {
   static List<MdmsHiveModel> mdmsHiveModelList = [];
 
   static Future<void> fetchMdmsData() async {
-    await HiveService.deleteMdmsData();
-
     var data = HiveService.getMdmsData();
 
     // If the list empty, call API

@@ -27,6 +27,16 @@ class HiveService {
     return localizationHiveList;
   }
 
+  // ? Get Localization Data
+  static List<LocalizationHiveModel> getLocalization() {
+    return Hive.box("localization").values.toList().cast<LocalizationHiveModel>();
+  }
+
+  // ? Delete Localization Data
+  static deleteLocalization() async {
+    await Hive.box("localization").clear();
+  }
+
   // ? For storing of MDMS data into Hive
   static Future<List<MdmsHiveModel>> storeMdmsData(MdmsModel mdmsModel) async {
     List<MdmsHiveModel> mdmsHiveModelList = [];
@@ -53,6 +63,16 @@ class HiveService {
     return mdmsHiveModelList;
   }
 
+  // ? Get MDMS data
+  static List<MdmsHiveModel> getMdmsData() {
+    return Hive.box("mdms").values.toList().cast<MdmsHiveModel>();
+  }
+
+  // ? Delete MDMS data
+  static deleteMdmsData() async {
+    await Hive.box("mdms").clear();
+  }
+
   // ? Store Trip Data
   static Future<void> storeTripData(List<Position> poistions) async {
     List<TripHiveModel> tripHiveModelList = [];
@@ -67,22 +87,12 @@ class HiveService {
   }
 
   // ? Get Trip Data
-
-  // ? Get MDMS data
-  static List<MdmsHiveModel> getMdmsData() {
-    return Hive.box("mdms").values.toList().cast<MdmsHiveModel>();
+  static List<TripHiveModel> getTripData() {
+    return Hive.box("trip").values.toList().cast<TripHiveModel>();
   }
 
-  // ? returns Localization Hive Data as a list.
-  static List<LocalizationHiveModel> getLocalization() {
-    return Hive.box("localization").values.toList().cast<LocalizationHiveModel>();
-  }
-
-  static deleteLocalization() async {
-    await Hive.box("localization").clear();
-  }
-
-  static deleteMdmsData() async {
-    await Hive.box("mdms").clear();
+  // ? Delete Trip Data
+  static deleteTripData() async {
+    await Hive.box("trip").clear();
   }
 }

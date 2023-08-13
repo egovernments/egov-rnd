@@ -10,9 +10,8 @@ import 'package:latlong2/latlong.dart';
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
+import 'package:vehicle_tracker_app/models/trip/trip_hive/trip_hive_model.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
-
-import '../../../models/trip/trip_hive/trip_hive_model.dart';
 
 class TripControllers extends GetxController {
   List<Position> positions = [];
@@ -20,6 +19,28 @@ class TripControllers extends GetxController {
   late LatLng start;
   late LatLng end;
   int tick = 0;
+
+  Future<void> startTrip(BuildContext context) {
+    return DigitDialog.show(
+      context,
+      options: DigitDialogOptions(
+        titleText: AppTranslation.WARNING.tr,
+        titleIcon: const Icon(Icons.warning, color: Colors.red),
+        contentText: "Start the trip only after reaching the pickup location.  Have you reached the applicant location?",
+        primaryAction: DigitDialogActions(
+          label: "Yes",
+          action: (context) {
+            // startTracking(LatLng(28.7041, 77.1025), LatLng(28.7041, 77.1025));
+            Get.back();
+          },
+        ),
+        secondaryAction: DigitDialogActions(
+          label: "No",
+          action: (context) => Get.back(),
+        ),
+      ),
+    );
+  }
 
   // * starts from here
   void startTracking(LatLng start, LatLng end) async {
@@ -31,18 +52,6 @@ class TripControllers extends GetxController {
     this.end = end;
     isRunning.value = true;
     startPeriodicFunction();
-  }
-
-  // ! not used
-  startStream() {
-    LocationSettings custom = const LocationSettings(
-      accuracy: LocationAccuracy.high,
-      distanceFilter: 100,
-    );
-
-    Geolocator.getPositionStream(locationSettings: custom).listen((position) {
-      log("Stream position: ${position.latitude}, ${position.longitude}");
-    });
   }
 
   Future<bool> handleLocationPermission() async {
@@ -73,12 +82,6 @@ class TripControllers extends GetxController {
     return true;
   }
 
-  void stopTracking() {
-    // send completed status via API
-    tick = 0;
-    isRunning.value = false;
-  }
-
   void startPeriodicFunction() {
     log('startPeriodicFunction called');
     Timer.periodic(const Duration(seconds: 5), (_) async {
@@ -98,6 +101,18 @@ class TripControllers extends GetxController {
     });
   }
 
+  Future<void> stopTracking() async {
+    var hiveData = HiveService.getTripData();
+
+    await createPOI(null, "", tripHiveModel: hiveData);
+
+    positions.clear();
+    tick = 0;
+    isRunning.value = false;
+
+    log("Trip Completed");
+  }
+
   Future<Position?> getCurrentLocation() async {
     try {
       return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
@@ -107,7 +122,7 @@ class TripControllers extends GetxController {
     }
   }
 
-  distancelogic(Position currentPosition, Position prevPosition) async {
+  Future<void> distancelogic(Position currentPosition, Position prevPosition) async {
     double distance = distanceCalculator(
       LatLng(currentPosition.latitude, currentPosition.longitude),
       LatLng(prevPosition.latitude, prevPosition.longitude),
@@ -116,7 +131,6 @@ class TripControllers extends GetxController {
       LatLng(currentPosition.latitude, currentPosition.longitude),
       end,
     );
-
     log('Distance from previous point: $distance');
     log('Distance from end: $distanceFromEnd');
     // await statusSender("ok");
@@ -134,9 +148,9 @@ class TripControllers extends GetxController {
     log("--------------------");
   }
 
-  statusSender(List<Position> latlngs) async {
+  Future<void> statusSender(List<Position> latlngs) async {
     await HiveService.storeTripData(latlngs);
-    
+
     if (await isConnected()) {
       log("Connected to internet");
       await createPOI(latlngs, "");
@@ -151,39 +165,26 @@ class TripControllers extends GetxController {
     return Geolocator.distanceBetween(a.latitude, a.longitude, b.latitude, b.longitude);
   }
 
-  startTrip(BuildContext context) {
-    return DigitDialog.show(
-      context,
-      options: DigitDialogOptions(
-        titleText: AppTranslation.WARNING.tr,
-        titleIcon: const Icon(Icons.warning, color: Colors.red),
-        contentText: "Start the trip only after reaching the pickup location.  Have you reached the applicant location?",
-        primaryAction: DigitDialogActions(
-          label: "Yes",
-          action: (context) {
-            // startTracking(LatLng(28.7041, 77.1025), LatLng(28.7041, 77.1025));
-            Get.back();
-          },
-        ),
-        secondaryAction: DigitDialogActions(
-          label: "No",
-          action: (context) => Get.back(),
-        ),
-      ),
-    );
-  }
-
   // API call to create POI
-  Future<void> createPOI(List<Position> latlng, String? locationNane) async {
-    String url = "$apiUrl/api/v3/poi/_create";
+  Future<void> createPOI(List<Position>? positionsList, String? locationNane, {List<TripHiveModel>? tripHiveModel}) async {
+    String url = "$apiUrl/poi/_create";
 
     List<Map<String, dynamic>> locationData = [];
 
-    for (var item in latlng) {
-      locationData.add({
-        "latitude": item.latitude,
-        "longitude": item.longitude,
-      });
+    if (positionsList == null) {
+      for (var item in tripHiveModel ?? []) {
+        locationData.add({
+          "latitude": item.latitude,
+          "longitude": item.longitude,
+        });
+      }
+    } else {
+      for (var item in positionsList) {
+        locationData.add({
+          "latitude": item.latitude,
+          "longitude": item.longitude,
+        });
+      }
     }
 
     Map<String, dynamic> body = {};

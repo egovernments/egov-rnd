@@ -55,9 +55,8 @@ class HttpService {
   }
 
   static Future<Response> getRequest(String route) async {
-    String url = uri + route;
     try {
-      var response = await http.get(Uri.parse(url), headers: {
+      var response = await http.get(Uri.parse(route), headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ${await SecureStorageService.read("token") ?? 'null'}'
       });
