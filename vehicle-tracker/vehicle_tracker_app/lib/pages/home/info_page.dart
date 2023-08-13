@@ -6,6 +6,7 @@ import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
 import 'package:vehicle_tracker_app/widgets/scrollable_header_widget.dart';
 
+import '../../models/home_trip/home_trip_model/home_trip_model.dart';
 import '../../widgets/home/info_page_widget.dart';
 
 class InfoPage extends StatelessWidget {
@@ -15,6 +16,7 @@ class InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final tripControllers = Get.find<TripControllers>();
     final theme = DigitTheme.instance;
+    final HomeTripModel data = Get.arguments as HomeTripModel;
 
     return SafeArea(
       child: Scaffold(
@@ -37,7 +39,7 @@ class InfoPage extends StatelessWidget {
             ),
           ),
 
-          header: const ScrollableHeaderWidget(),
+          header:  scrollableHeaderWidget(true, false),
 
           // * Body
           children: [
@@ -46,8 +48,11 @@ class InfoPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Text("Locality....."),
-                  textColumnWidget(["-- values --"], theme)
+                  Text(
+                    data.routeId.toUpperCase(),
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  textColumnWidget(data),
                 ],
               ),
             ),

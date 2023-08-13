@@ -1,8 +1,9 @@
 import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 
-Widget textColumnWidget(List<String> values, DigitTheme theme) => Padding(
-      padding: theme.verticalMargin,
+Widget textColumnWidget(HomeTripModel data) => Padding(
+      padding: DigitTheme.instance.verticalMargin,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -19,18 +20,21 @@ Widget textColumnWidget(List<String> values, DigitTheme theme) => Padding(
             ],
           ),
           const Spacer(),
-          Column(
-            children: [
-              paddedText(values[0]),
-              paddedText(values[0]),
-              paddedText(values[0]),
-              paddedText(values[0]),
-              paddedText(values[0]),
-              paddedText(values[0]),
-              paddedText(values[0]),
-            ],
+          Expanded(
+            flex: 6,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                paddedText(data.id),
+                paddedText(data.operator.name),
+                paddedText(data.operator.vehicleNumber),
+                paddedText(data.routeId),
+                paddedText(data.routeId),
+                paddedText(data.plannedStartTime),
+                paddedText(data.status),
+              ],
+            ),
           ),
-          const Spacer(flex: 2),
         ],
       ),
     );
@@ -39,6 +43,8 @@ Widget paddedText(String value, {bool bold = false}) => Padding(
       padding: DigitTheme.instance.verticalMargin,
       child: Text(
         value,
+        maxLines: 2,
+        overflow: TextOverflow.visible,
         style: bold ? const TextStyle(fontWeight: FontWeight.bold) : null,
       ),
     );
