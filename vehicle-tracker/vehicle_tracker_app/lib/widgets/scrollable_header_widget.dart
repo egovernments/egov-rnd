@@ -1,31 +1,27 @@
+import 'dart:developer';
+
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../util/i18n_translations.dart';
 
-class ScrollableHeaderWidget extends StatelessWidget {
-  const ScrollableHeaderWidget({super.key});
-
-  final bool help = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
+Widget scrollableHeaderWidget(bool back, bool help) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      if (back)
         DigitIconButton(
           iconText: AppTranslation.BACK.tr,
           onPressed: () => Get.back(),
           icon: Icons.keyboard_arrow_left,
         ),
-        
-        if (help) DigitIconButton(
+      if (help)
+        DigitIconButton(
           iconText: AppTranslation.HELP.tr,
-          onPressed: () => (),
+          onPressed: () => (log("help")),
           icon: Icons.help_outline_rounded,
         ),
-      ],
-    );
-  }
+    ],
+  );
 }

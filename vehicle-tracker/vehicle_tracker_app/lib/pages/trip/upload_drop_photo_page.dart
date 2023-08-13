@@ -14,7 +14,7 @@ class UploadDropPhotoPgae extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cameraController = Get.find<CameraControllers>();
-    
+
     return Scaffold(
       // * AppBar
       appBar: AppBar(
@@ -28,7 +28,7 @@ class UploadDropPhotoPgae extends StatelessWidget {
       // * Body
       body: ScrollableContent(
         // * Headers
-        header: const ScrollableHeaderWidget(),
+        header: scrollableHeaderWidget(true, true),
 
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,

@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
       body: ScrollableContent(
         footer: const PoweredByDigit(),
 
-        header: const ScrollableHeaderWidget(),
+        header:  scrollableHeaderWidget(false, true),
 
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

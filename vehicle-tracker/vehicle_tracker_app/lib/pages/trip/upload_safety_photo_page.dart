@@ -29,7 +29,7 @@ class UploadSafetyPhotoPgae extends StatelessWidget {
       // * Body
       body: ScrollableContent(
         // * Headers
-        header: const ScrollableHeaderWidget(),
+        header: scrollableHeaderWidget(true, true),
 
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,

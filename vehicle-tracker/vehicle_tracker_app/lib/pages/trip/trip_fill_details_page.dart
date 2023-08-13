@@ -29,7 +29,7 @@ class TripFillDetailsPage extends StatelessWidget {
       // * Body
       body: ScrollableContent(
         // * Heaers
-        header: const ScrollableHeaderWidget(),
+        header: scrollableHeaderWidget(true, true),
 
         // * Main Body
         children: [
