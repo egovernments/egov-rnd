@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
@@ -7,11 +8,11 @@ import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_h
 
 class HomeHTTPRepository {
   // ? Uses the userId to get the list of trips.
-  Future<List<HomeTripModel>> getHomeTripData(String userId) async {
+  Future<List<Rx<HomeTripModel>>> getHomeTripData(String userId) async {
     log("Calling Home Trip Info API");
 
     String reqUrl = "$apiUrl/trip/_search?usedId=$userId";
-    List<HomeTripModel> homeTripModel = [];
+    List<Rx<HomeTripModel>> homeTripModel = [];
 
     final response = await HttpService.getRequest(reqUrl);
 
@@ -28,14 +29,14 @@ class HomeHTTPRepository {
     final data = response.body as List<dynamic>;
 
     for (var item in data) {
-      homeTripModel.add(HomeTripModel.fromJson(item));
+      homeTripModel.add(Rx(HomeTripModel.fromJson(item)));
     }
 
     return homeTripModel;
   }
 
   // ? Used to send tracking data to the server.
-  Future<bool> callTrackingApi(List<TripHiveModel> positions, String alert) async {
+  Future<bool> callTrackingApi(List<TripHiveModel> positions, String alert, String tripId) async {
     String reqUrl = "$apiUrl/poi/_create";
 
     List<Map<String, double>> latLong = [];
@@ -45,7 +46,7 @@ class HomeHTTPRepository {
     }
 
     Map<String, dynamic> body = {
-      "id": "string",
+      "id": tripId,
       "locationName": "Any name assigned to the location",
       "status": "active",
       "type": "point",

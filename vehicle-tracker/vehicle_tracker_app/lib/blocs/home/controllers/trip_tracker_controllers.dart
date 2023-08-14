@@ -19,18 +19,18 @@ class TripControllers extends GetxController {
   HomeHiveRepository homeHiveRepository = HomeHiveRepository();
 
   // * This function starts the tracking peroiodic event
-  Future<void> startTracking() async {
+  Future<void> startTracking(String tripId) async {
     log('---- Trip and Tracking started ----');
     isRunning.value = true;
 
     log("Tracker loginc called");
-    await trackerLogic("start");
+    await trackerLogic("start", tripId);
 
-    startPeriodicFunction();
+    startPeriodicFunction(tripId);
   }
 
   // * This functions starts a timer which will call the trackerLogin function every n seconds
-  void startPeriodicFunction() {
+  void startPeriodicFunction(String tripId) {
     log('Periodic function started');
     Timer.periodic(const Duration(seconds: 5), (_) async {
       log("Periodic function called");
@@ -38,13 +38,13 @@ class TripControllers extends GetxController {
         log("Periodic function stopped");
         _.cancel();
       } else {
-        trackerLogic("In Progress");
+        trackerLogic("In Progress", tripId);
       }
     });
   }
 
   // * The tracker logic function which checks location permissions and gets the current position
-  Future<void> trackerLogic(String alert) async {
+  Future<void> trackerLogic(String alert, String tripId) async {
     bool permissions = await handleLocationPermission();
     if (!permissions) {
       isRunning.value = false;
@@ -62,13 +62,13 @@ class TripControllers extends GetxController {
     }
 
     log("Calling position sender logic");
-    await positionSender(currentPosition, alert);
+    await positionSender(currentPosition, alert, tripId);
 
     log(" ---- Tracker Login Completed ----");
   }
 
   // * This function is responsible to send the API or store the tracking data to hive
-  Future<void> positionSender(Position position, String alert) async {
+  Future<void> positionSender(Position position, String alert, String tripId) async {
     TripHiveModel tripHiveModel = TripHiveModel(
       latitude: position.latitude,
       longitude: position.longitude,
@@ -87,7 +87,7 @@ class TripControllers extends GetxController {
       // if success delete the hive data
       // else save the data to hive
       log("Sending position to server");
-      final status = await homeHTTPRepository.callTrackingApi(positions, alert);
+      final status = await homeHTTPRepository.callTrackingApi(positions, alert, tripId);
       if (status) {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
@@ -146,8 +146,10 @@ class TripControllers extends GetxController {
   }
 
   // * Start trip dialog box
-  Future<void> startTrip(BuildContext context) {
-    return DigitDialog.show(
+  Future<bool> startTrip(BuildContext context, String tripId) async {
+    int val = 0;
+
+    await DigitDialog.show(
       context,
       options: DigitDialogOptions(
         titleText: AppTranslation.WARNING.tr,
@@ -157,22 +159,34 @@ class TripControllers extends GetxController {
           label: "Yes",
           action: (context) async {
             isLoading.value = true;
-            await startTracking();
+            await startTracking(tripId);
             Get.back();
             isLoading.value = false;
+            val = 1;
           },
         ),
         secondaryAction: DigitDialogActions(
           label: "No",
-          action: (context) => Get.back(),
+          action: (context) {
+            Get.back();
+            return false;
+          },
         ),
       ),
     );
+
+    if (val == 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // * Stop trip dialog box
-  Future<void> endTrip(BuildContext context) {
-    return DigitDialog.show(
+  Future<bool> endTrip(BuildContext context, String tripId) async {
+    int val = 0;
+
+    await DigitDialog.show(
       context,
       options: DigitDialogOptions(
         titleText: AppTranslation.WARNING.tr,
@@ -184,6 +198,7 @@ class TripControllers extends GetxController {
             // ! MIGHT NEED TO CHANGE THIS
             isRunning.value = false;
             Get.back();
+            val = 1;
           },
         ),
         secondaryAction: DigitDialogActions(
@@ -192,5 +207,11 @@ class TripControllers extends GetxController {
         ),
       ),
     );
+
+    if (val == 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

@@ -1,9 +1,8 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart';
-import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
+import 'package:vehicle_tracker_app/widgets/home/start_trip_button.dart';
 import 'package:vehicle_tracker_app/widgets/scrollable_header_widget.dart';
 
 import '../../models/home_trip/home_trip_model/home_trip_model.dart';
@@ -14,9 +13,8 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tripControllers = Get.find<TripControllers>();
     final theme = DigitTheme.instance;
-    final HomeTripModel data = Get.arguments as HomeTripModel;
+    final Rx<HomeTripModel> data = Get.arguments as Rx<HomeTripModel>;
 
     return SafeArea(
       child: Scaffold(
@@ -31,15 +29,9 @@ class InfoPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
 
           // * Footer
-          footer: Padding(
-            padding: theme.buttonPadding,
-            child: DigitElevatedButton(
-              child: Text(AppTranslation.START_TRIP.tr),
-              onPressed: () => tripControllers.startTrip(context),
-            ),
-          ),
+          footer: StartTripButton(data: data),
 
-          header:  scrollableHeaderWidget(true, false),
+          header: scrollableHeaderWidget(true, false),
 
           // * Body
           children: [
@@ -49,10 +41,10 @@ class InfoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    data.routeId.toUpperCase(),
+                    data.value.routeId.toUpperCase(),
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  textColumnWidget(data),
+                  textColumnWidget(data.value),
                 ],
               ),
             ),

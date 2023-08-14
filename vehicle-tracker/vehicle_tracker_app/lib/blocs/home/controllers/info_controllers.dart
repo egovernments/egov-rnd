@@ -8,8 +8,8 @@ class InfoController extends GetxController {
   RxBool isCompleted = false.obs;
   RxBool isLoading = false.obs;
   RxBool isTextControllerEmpty = true.obs;
-  final homeTripModel = Rx<List<HomeTripModel>>([]);
-  final filteredHomeTripModel = Rx<List<HomeTripModel>>([]);
+  final homeTripModel = Rx<List<Rx<HomeTripModel>>>([]);
+  final filteredHomeTripModel = Rx<List<Rx<HomeTripModel>>>([]);
   HomeHTTPRepository homeHTTPRepository = HomeHTTPRepository();
   final TextEditingController searchController = TextEditingController();
 
@@ -33,8 +33,8 @@ class InfoController extends GetxController {
   // ? The filtered list is used when the search text is not empty.
   void onChangedFilter(String value) {
     filteredHomeTripModel.value = homeTripModel.value.where((element) {
-      bool name = element.operator.name.toLowerCase().contains(value.toLowerCase());
-      bool contactNumber = element.operator.contactNumber.contains(value);
+      bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
+      bool contactNumber = element.value.operator.contactNumber.contains(value);
       return name || contactNumber;
     }).toList();
   }

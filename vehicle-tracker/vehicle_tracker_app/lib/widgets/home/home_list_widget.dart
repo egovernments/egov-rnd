@@ -5,55 +5,36 @@ import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_m
 import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/home/info_page_widget.dart';
-
-import '../../blocs/home/controllers/info_controllers.dart';
-import '../../blocs/home/controllers/trip_tracker_controllers.dart';
+import 'package:vehicle_tracker_app/widgets/home/start_trip_button.dart';
 
 class HomeListWidget extends StatelessWidget {
   const HomeListWidget({super.key, required this.data});
-  final HomeTripModel data;
+  final Rx<HomeTripModel> data;
 
   @override
   Widget build(BuildContext context) {
-    final inboxController = Get.find<InfoController>();
-    final tripControllers = Get.find<TripControllers>();
 
-    return Obx(
-      () => DigitCard(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //  Locality Heading
-              Text(
-                data.routeId.toUpperCase(),
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-
-              homeTextColumnWidget(data.operator.name, data.operator.contactNumber),
-
-              // ! Have to reverse the direction of arrow position
-              DigitIconButton(
-                iconText: AppTranslation.VIEW_DETAILS.tr,
-                icon: Icons.arrow_forward,
-                onPressed: () => Get.toNamed(INFO, arguments: data),
-              ),
-
-              // ! change after API integration
-              tripControllers.isRunning.value
-                  ? Center(
-                      child: DigitOutLineButton(
-                      label: AppTranslation.END_TRIP.tr,
-                      onPressed: () => tripControllers.endTrip(context),
-                    ))
-                  : DigitElevatedButton(
-                      child: Text(AppTranslation.START_TRIP.tr),
-                      onPressed: () => tripControllers.startTrip(context),
-                    ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //  Locality Heading
+          Text(
+            data.value.routeId.toUpperCase(),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
-        ),
+
+          homeTextColumnWidget(data.value.operator.name, data.value.operator.contactNumber),
+
+          DigitIconButton(
+            iconText: AppTranslation.VIEW_DETAILS.tr,
+            icon: Icons.arrow_forward,
+            onPressed: () => Get.toNamed(INFO, arguments: data),
+          ),
+
+          StartTripButton(data: data) 
+        ],
       ),
     );
   }
