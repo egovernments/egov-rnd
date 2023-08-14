@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'trip_hive_model.g.dart';
+part 'trip_tracker_hive_model.g.dart';
 
 @HiveType(typeId: 2)
 class TripHiveModel extends HiveObject {

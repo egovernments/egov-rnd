@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../controllers/info_controllers.dart';
-import '../controllers/trip_controllers.dart';
+import '../controllers/trip_tracker_controllers.dart';
 
 class HomeBindings extends Bindings {
   @override

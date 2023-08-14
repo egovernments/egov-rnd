@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'trip_hive_model.dart';
+part of 'trip_tracker_hive_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator

@@ -1,7 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/blocs/home/controllers/trip_controllers.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
 import 'package:vehicle_tracker_app/widgets/scrollable_header_widget.dart';

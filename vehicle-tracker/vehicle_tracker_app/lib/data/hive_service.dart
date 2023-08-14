@@ -1,6 +1,4 @@
-import 'package:geolocator/geolocator.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:vehicle_tracker_app/models/trip/trip_hive/trip_hive_model.dart';
 
 import '../models/localization/localization_hive/localization_hive_model.dart';
 import '../models/localization/localiztion_model/localization_model.dart';
@@ -73,26 +71,5 @@ class HiveService {
     await Hive.box("mdms").clear();
   }
 
-  // ? Store Trip Data
-  static Future<void> storeTripData(List<Position> poistions) async {
-    List<TripHiveModel> tripHiveModelList = [];
-    for (var position in poistions) {
-      tripHiveModelList.add(TripHiveModel(
-        latitude: position.latitude,
-        longitude: position.longitude,
-      ));
-    }
-
-    await Hive.box("trip").addAll(tripHiveModelList);
-  }
-
-  // ? Get Trip Data
-  static List<TripHiveModel> getTripData() {
-    return Hive.box("trip").values.toList().cast<TripHiveModel>();
-  }
-
-  // ? Delete Trip Data
-  static deleteTripData() async {
-    await Hive.box("trip").clear();
-  }
+  
 }

@@ -59,9 +59,14 @@ class MyApp extends StatelessWidget {
 
 // Common function to register all the Hive adapters
 registerAdaptersFunc() {
+  // For Localization 
   Hive.registerAdapter(LocalizationHiveModelAdapter());
+
+  // For MDMS data
   Hive.registerAdapter(MdmsHiveModelAdapter());
   Hive.registerAdapter(LanguageHiveModelAdapter());
+
+  // For tracker storing data
 }
 
 // Common function to open all the Hive boxes
