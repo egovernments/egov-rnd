@@ -8,7 +8,7 @@ part of 'trip_tracker_hive_model.dart';
 
 class TripHiveModelAdapter extends TypeAdapter<TripHiveModel> {
   @override
-  final int typeId = 2;
+  final int typeId = 3;
 
   @override
   TripHiveModel read(BinaryReader reader) {

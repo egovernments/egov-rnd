@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'trip_tracker_hive_model.g.dart';
 
-@HiveType(typeId: 2)
+@HiveType(typeId: 3)
 class TripHiveModel extends HiveObject {
   @HiveField(0)
   double latitude;

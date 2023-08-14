@@ -1,16 +1,16 @@
 import 'dart:developer';
 
-import 'package:geolocator/geolocator.dart';
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
+import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 
 class HomeHTTPRepository {
-  String tripUrl = "$apiUrl/trip/_search";
-
   // ? Uses the userId to get the list of trips.
   Future<List<HomeTripModel>> getHomeTripData(String userId) async {
-    String reqUrl = "$tripUrl?usedId=$userId";
+    log("Calling Home Trip Info API");
+
+    String reqUrl = "$apiUrl/trip/_search?usedId=$userId";
     List<HomeTripModel> homeTripModel = [];
 
     final response = await HttpService.getRequest(reqUrl);
@@ -35,8 +35,9 @@ class HomeHTTPRepository {
   }
 
   // ? Used to send tracking data to the server.
-  Future<bool> callTrackingApi(List<Position> positions, String alert) async {
-    String reqUrl = "$tripUrl/poi/_create";
+  Future<bool> callTrackingApi(List<TripHiveModel> positions, String alert) async {
+    String reqUrl = "$apiUrl/poi/_create";
+
     List<Map<String, double>> latLong = [];
 
     for (var position in positions) {
@@ -57,8 +58,10 @@ class HomeHTTPRepository {
     try {
       final response = await HttpService.postRequestWithoutToken(reqUrl, body);
 
-      // ? If the response is not 200, then return false.
+      // ? If the response is null OR not 200, then return false.
       if (response.statusCode == null || response.statusCode != 200) {
+        log("Error: ${response.body}");
+        log("Error Code: ${response.statusCode}");
         return false;
       }
 
