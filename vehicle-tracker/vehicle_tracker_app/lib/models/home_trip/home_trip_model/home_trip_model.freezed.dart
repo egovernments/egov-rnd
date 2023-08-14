@@ -21,16 +21,27 @@ HomeTripModel _$HomeTripModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$HomeTripModel {
   String get id => throw _privateConstructorUsedError;
+  set id(String value) => throw _privateConstructorUsedError;
   String get routeId => throw _privateConstructorUsedError;
+  set routeId(String value) => throw _privateConstructorUsedError;
   String get serviceCode => throw _privateConstructorUsedError;
+  set serviceCode(String value) => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
+  set status(String value) => throw _privateConstructorUsedError;
   String get plannedStartTime => throw _privateConstructorUsedError;
+  set plannedStartTime(String value) => throw _privateConstructorUsedError;
   String get plannedEndTime => throw _privateConstructorUsedError;
+  set plannedEndTime(String value) => throw _privateConstructorUsedError;
   Operator get operator => throw _privateConstructorUsedError;
+  set operator(Operator value) => throw _privateConstructorUsedError;
   String? get actualStartTime => throw _privateConstructorUsedError;
+  set actualStartTime(String? value) => throw _privateConstructorUsedError;
   String? get actualEndTime => throw _privateConstructorUsedError;
+  set actualEndTime(String? value) => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
+  set userId(String value) => throw _privateConstructorUsedError;
   String? get locationAlerts => throw _privateConstructorUsedError;
+  set locationAlerts(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -243,7 +254,7 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_HomeTripModel implements _HomeTripModel {
-  const _$_HomeTripModel(
+  _$_HomeTripModel(
       {required this.id,
       required this.routeId,
       required this.serviceCode,
@@ -260,73 +271,32 @@ class _$_HomeTripModel implements _HomeTripModel {
       _$$_HomeTripModelFromJson(json);
 
   @override
-  final String id;
+  String id;
   @override
-  final String routeId;
+  String routeId;
   @override
-  final String serviceCode;
+  String serviceCode;
   @override
-  final String status;
+  String status;
   @override
-  final String plannedStartTime;
+  String plannedStartTime;
   @override
-  final String plannedEndTime;
+  String plannedEndTime;
   @override
-  final Operator operator;
+  Operator operator;
   @override
-  final String? actualStartTime;
+  String? actualStartTime;
   @override
-  final String? actualEndTime;
+  String? actualEndTime;
   @override
-  final String userId;
+  String userId;
   @override
-  final String? locationAlerts;
+  String? locationAlerts;
 
   @override
   String toString() {
     return 'HomeTripModel(id: $id, routeId: $routeId, serviceCode: $serviceCode, status: $status, plannedStartTime: $plannedStartTime, plannedEndTime: $plannedEndTime, operator: $operator, actualStartTime: $actualStartTime, actualEndTime: $actualEndTime, userId: $userId, locationAlerts: $locationAlerts)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_HomeTripModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.routeId, routeId) || other.routeId == routeId) &&
-            (identical(other.serviceCode, serviceCode) ||
-                other.serviceCode == serviceCode) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.plannedStartTime, plannedStartTime) ||
-                other.plannedStartTime == plannedStartTime) &&
-            (identical(other.plannedEndTime, plannedEndTime) ||
-                other.plannedEndTime == plannedEndTime) &&
-            (identical(other.operator, operator) ||
-                other.operator == operator) &&
-            (identical(other.actualStartTime, actualStartTime) ||
-                other.actualStartTime == actualStartTime) &&
-            (identical(other.actualEndTime, actualEndTime) ||
-                other.actualEndTime == actualEndTime) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.locationAlerts, locationAlerts) ||
-                other.locationAlerts == locationAlerts));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      routeId,
-      serviceCode,
-      status,
-      plannedStartTime,
-      plannedEndTime,
-      operator,
-      actualStartTime,
-      actualEndTime,
-      userId,
-      locationAlerts);
 
   @JsonKey(ignore: true)
   @override
@@ -343,44 +313,55 @@ class _$_HomeTripModel implements _HomeTripModel {
 }
 
 abstract class _HomeTripModel implements HomeTripModel {
-  const factory _HomeTripModel(
-      {required final String id,
-      required final String routeId,
-      required final String serviceCode,
-      required final String status,
-      required final String plannedStartTime,
-      required final String plannedEndTime,
-      required final Operator operator,
-      final String? actualStartTime,
-      final String? actualEndTime,
-      required final String userId,
-      final String? locationAlerts}) = _$_HomeTripModel;
+  factory _HomeTripModel(
+      {required String id,
+      required String routeId,
+      required String serviceCode,
+      required String status,
+      required String plannedStartTime,
+      required String plannedEndTime,
+      required Operator operator,
+      String? actualStartTime,
+      String? actualEndTime,
+      required String userId,
+      String? locationAlerts}) = _$_HomeTripModel;
 
   factory _HomeTripModel.fromJson(Map<String, dynamic> json) =
       _$_HomeTripModel.fromJson;
 
   @override
   String get id;
+  set id(String value);
   @override
   String get routeId;
+  set routeId(String value);
   @override
   String get serviceCode;
+  set serviceCode(String value);
   @override
   String get status;
+  set status(String value);
   @override
   String get plannedStartTime;
+  set plannedStartTime(String value);
   @override
   String get plannedEndTime;
+  set plannedEndTime(String value);
   @override
   Operator get operator;
+  set operator(Operator value);
   @override
   String? get actualStartTime;
+  set actualStartTime(String? value);
   @override
   String? get actualEndTime;
+  set actualEndTime(String? value);
   @override
   String get userId;
+  set userId(String value);
   @override
   String? get locationAlerts;
+  set locationAlerts(String? value);
   @override
   @JsonKey(ignore: true)
   _$$_HomeTripModelCopyWith<_$_HomeTripModel> get copyWith =>

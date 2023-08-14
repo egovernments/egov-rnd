@@ -5,10 +5,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'home_trip_model.freezed.dart';
 part 'home_trip_model.g.dart';
 
-@freezed
+@unfreezed
 class HomeTripModel with _$HomeTripModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
-  const factory HomeTripModel(
+ factory HomeTripModel(
       {required String id,
       required String routeId,
       required String serviceCode,
