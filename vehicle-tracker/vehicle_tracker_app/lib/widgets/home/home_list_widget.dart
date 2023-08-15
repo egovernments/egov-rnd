@@ -13,9 +13,7 @@ class HomeListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return DigitCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +31,7 @@ class HomeListWidget extends StatelessWidget {
             onPressed: () => Get.toNamed(INFO, arguments: data),
           ),
 
-          StartTripButton(data: data) 
+          StartTripButton(data: data)
         ],
       ),
     );

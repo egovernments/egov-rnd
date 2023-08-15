@@ -29,7 +29,10 @@ class InfoPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
 
           // * Footer
-          footer: StartTripButton(data: data),
+          footer: Padding(
+            padding: DigitTheme.instance.buttonPadding,
+            child: StartTripButton(data: data),
+          ),
 
           header: scrollableHeaderWidget(true, false),
 

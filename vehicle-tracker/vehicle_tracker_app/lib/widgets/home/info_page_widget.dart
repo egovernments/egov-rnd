@@ -43,8 +43,8 @@ Widget paddedText(String value, {bool bold = false}) => Padding(
       padding: DigitTheme.instance.verticalMargin,
       child: Text(
         value,
-        maxLines: 2,
-        overflow: TextOverflow.visible,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: bold ? const TextStyle(fontWeight: FontWeight.bold) : null,
       ),
     );

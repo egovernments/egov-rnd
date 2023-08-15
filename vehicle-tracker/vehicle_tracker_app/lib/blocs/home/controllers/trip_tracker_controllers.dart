@@ -76,7 +76,7 @@ class TripControllers extends GetxController {
     log("Calling position sender logic");
     await positionSender(currentPosition, alert, tripId);
 
-    log(" ---- Tracker Login Completed ----");
+    log(" ---- Tracker Logic Completed ----");
   }
 
   // ? This function is responsible to send the API or store the tracking data to hive
