@@ -25,7 +25,16 @@ class HttpService {
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }
+    } on SocketException catch (e) {
+      log("Error: No internet connection. : ${e.toString()}");
+      return const Response(body: null, statusCode: 503);
     } on HttpException catch (e) {
+      log("Error: Could not send data to the server. : ${e.toString()}");
+      return const Response(body: null, statusCode: 500);
+    } on FormatException catch (e) {
+      log("Error: Bad response format. : ${e.toString()}");
+      return const Response(body: null, statusCode: 400);
+    } on Exception catch (e) {
       log(e.toString());
       return const Response(body: null, statusCode: 500);
     }
@@ -48,7 +57,16 @@ class HttpService {
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }
+    } on SocketException catch (e) {
+      log("Error: No internet connection. : ${e.toString()}");
+      return const Response(body: null, statusCode: 503);
     } on HttpException catch (e) {
+      log("Error: Could not send data to the server. : ${e.toString()}");
+      return const Response(body: null, statusCode: 500);
+    } on FormatException catch (e) {
+      log("Error: Bad response format. : ${e.toString()}");
+      return const Response(body: null, statusCode: 400);
+    } on Exception catch (e) {
       log(e.toString());
       return const Response(body: null, statusCode: 500);
     }
@@ -66,9 +84,18 @@ class HttpService {
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }
+    } on SocketException catch (e) {
+      log("Error: No internet connection. : ${e.toString()}");
+      return const Response(body: null, statusCode: 503);
     } on HttpException catch (e) {
+      log("Error: Could not send data to the server. : ${e.toString()}");
+      return const Response(body: null, statusCode: 500);
+    } on FormatException catch (e) {
+      log("Error: Bad response format. : ${e.toString()}");
+      return const Response(body: null, statusCode: 400);
+    } on Exception catch (e) {
       log(e.toString());
-      return const Response(body: null, statusCode: 666);
+      return const Response(body: null, statusCode: 500);
     }
   }
 
@@ -84,9 +111,18 @@ class HttpService {
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }
+    } on SocketException catch (e) {
+      log("Error: No internet connection. : ${e.toString()}");
+      return const Response(body: null, statusCode: 503);
     } on HttpException catch (e) {
+      log("Error: Could not send data to the server. : ${e.toString()}");
+      return const Response(body: null, statusCode: 500);
+    } on FormatException catch (e) {
+      log("Error: Bad response format. : ${e.toString()}");
+      return const Response(body: null, statusCode: 400);
+    } on Exception catch (e) {
       log(e.toString());
-      return const Response(body: null, statusCode: 666);
+      return const Response(body: null, statusCode: 500);
     }
   }
 
@@ -108,9 +144,18 @@ class HttpService {
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }
+    } on SocketException catch (e) {
+      log("Error: No internet connection. : ${e.toString()}");
+      return const Response(body: null, statusCode: 503);
     } on HttpException catch (e) {
+      log("Error: Could not send data to the server. : ${e.toString()}");
+      return const Response(body: null, statusCode: 500);
+    } on FormatException catch (e) {
+      log("Error: Bad response format. : ${e.toString()}");
+      return const Response(body: null, statusCode: 400);
+    } on Exception catch (e) {
       log(e.toString());
-      return const Response(body: null, statusCode: 666);
+      return const Response(body: null, statusCode: 500);
     }
   }
 
@@ -133,9 +178,18 @@ class HttpService {
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }
+    } on SocketException catch (e) {
+      log("Error: No internet connection. : ${e.toString()}");
+      return const Response(body: null, statusCode: 503);
     } on HttpException catch (e) {
+      log("Error: Could not send data to the server. : ${e.toString()}");
+      return const Response(body: null, statusCode: 500);
+    } on FormatException catch (e) {
+      log("Error: Bad response format. : ${e.toString()}");
+      return const Response(body: null, statusCode: 400);
+    } on Exception catch (e) {
       log(e.toString());
-      return const Response(body: null, statusCode: 666);
+      return const Response(body: null, statusCode: 500);
     }
   }
 }
