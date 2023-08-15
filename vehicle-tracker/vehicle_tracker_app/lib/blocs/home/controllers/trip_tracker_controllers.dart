@@ -5,8 +5,10 @@ import 'package:digit_components/widgets/atoms/digit_toaster.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_hive_repository.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.dart';
+import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/trip_tracker_utility.dart';
@@ -20,14 +22,17 @@ class TripControllers extends GetxController {
   TripTrackerUtility tripTrackerUtility = TripTrackerUtility();
 
   // * This function starts the tracking peroiodic event
-  Future<void> startTracking(String tripId) async {
+  Future<void> startTracking(Rx<HomeTripModel> data) async {
     log('---- Trip and Tracking started ----');
 
-    log("Tracker loginc called");
-    await trackerLogic("start", tripId);
+    log("Tracker logic called");
+    await trackerLogic("start", data.value.id);
+
+    data.value.status = TripStates.RUNNING;
+    update([data.value.id]);
 
     // Calls the periodic function
-    startPeriodicFunction(tripId);
+    startPeriodicFunction(data.value.id);
   }
 
   // ? This functions starts a timer which will call the trackerLogic function every n seconds
@@ -35,8 +40,8 @@ class TripControllers extends GetxController {
   // ? The main point on this function is to get and send tracker function like a cron schedule
   void startPeriodicFunction(String tripId) {
     log('Periodic function started');
-    isLoading.value = true;
-    
+    isRunning.value = true;
+
     Timer.periodic(const Duration(seconds: 5), (_) async {
       log("Periodic function called");
       if (!isRunning.value) {
@@ -133,7 +138,7 @@ class TripControllers extends GetxController {
   }
 
   // ? Start trip dialog box by using the tripId
-  Future<void> startTrip(BuildContext context, String tripId) async {
+  Future<void> startTrip(BuildContext context, Rx<HomeTripModel> data) async {
     await DigitDialog.show(
       context,
       options: DigitDialogOptions(
@@ -143,9 +148,12 @@ class TripControllers extends GetxController {
         primaryAction: DigitDialogActions(
           label: "Yes",
           action: (context) async {
+            data.value.status = TripStates.PROGRESS;
+            update([data.value.id]);
+
             Get.back();
             isLoading.toggle();
-            await startTracking(tripId);
+            await startTracking(data);
             isLoading.toggle();
           },
         ),
@@ -160,9 +168,7 @@ class TripControllers extends GetxController {
   }
 
   // ? Stop trip dialog box
-  Future<bool> endTrip(BuildContext context, String tripId) async {
-    int val = 0;
-
+  Future<void> endTrip(BuildContext context, Rx<HomeTripModel> data) async {
     await DigitDialog.show(
       context,
       options: DigitDialogOptions(
@@ -172,10 +178,11 @@ class TripControllers extends GetxController {
         primaryAction: DigitDialogActions(
           label: "Yes",
           action: (context) {
-            // ! MIGHT NEED TO CHANGE THIS
+            data.value.status = TripStates.COMPLETED;
+            update([data.value.id]);
+
             isRunning.value = false;
             Get.back();
-            val = 1;
           },
         ),
         secondaryAction: DigitDialogActions(
@@ -184,11 +191,5 @@ class TripControllers extends GetxController {
         ),
       ),
     );
-
-    if (val == 1) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }
