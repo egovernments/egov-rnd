@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:digit_components/digit_components.dart';
+import 'package:digit_components/widgets/atoms/digit_toaster.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_hive_repository.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.dart';
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
+import 'package:vehicle_tracker_app/util/trip_tracker_utility.dart';
 
 class TripControllers extends GetxController {
   RxBool isRunning = false.obs; // This variable is to check if the tracking is running or not
@@ -17,21 +17,26 @@ class TripControllers extends GetxController {
 
   HomeHTTPRepository homeHTTPRepository = HomeHTTPRepository();
   HomeHiveRepository homeHiveRepository = HomeHiveRepository();
+  TripTrackerUtility tripTrackerUtility = TripTrackerUtility();
 
   // * This function starts the tracking peroiodic event
   Future<void> startTracking(String tripId) async {
     log('---- Trip and Tracking started ----');
-    isRunning.value = true;
 
     log("Tracker loginc called");
     await trackerLogic("start", tripId);
 
+    // Calls the periodic function
     startPeriodicFunction(tripId);
   }
 
-  // * This functions starts a timer which will call the trackerLogin function every n seconds
+  // ? This functions starts a timer which will call the trackerLogic function every n seconds
+  // ? The timer will stop if the isRunning variable is false
+  // ? The main point on this function is to get and send tracker function like a cron schedule
   void startPeriodicFunction(String tripId) {
     log('Periodic function started');
+    isLoading.value = true;
+    
     Timer.periodic(const Duration(seconds: 5), (_) async {
       log("Periodic function called");
       if (!isRunning.value) {
@@ -43,9 +48,11 @@ class TripControllers extends GetxController {
     });
   }
 
-  // * The tracker logic function which checks location permissions and gets the current position
+  // ? The tracker logic function which checks location permissions and gets the current position
+  // ? If the location permissions are not granted, the function will stop and return early
+  // ? If the location permissions are granted, the function will get the current location and use it accordingly
   Future<void> trackerLogic(String alert, String tripId) async {
-    bool permissions = await handleLocationPermission();
+    bool permissions = await tripTrackerUtility.handleLocationPermission(Get.context);
     if (!permissions) {
       isRunning.value = false;
       log('Location permissions not granted');
@@ -55,7 +62,7 @@ class TripControllers extends GetxController {
     }
 
     log("Getting current location");
-    Position? currentPosition = await getCurrentLocation();
+    Position? currentPosition = await tripTrackerUtility.getCurrentLocation();
     if (currentPosition == null) {
       log("Error getting current location");
       return;
@@ -67,13 +74,16 @@ class TripControllers extends GetxController {
     log(" ---- Tracker Login Completed ----");
   }
 
-  // * This function is responsible to send the API or store the tracking data to hive
+  // ? This function is responsible to send the API or store the tracking data to hive
+  // ? It will check if the device is connected to internet or not
+  // ? If there is internet connection, it will send the data to server
+  // ? If by any chance the data sending fails, it will store the data to hive
   Future<void> positionSender(Position position, String alert, String tripId) async {
     TripHiveModel tripHiveModel = TripHiveModel(
       latitude: position.latitude,
       longitude: position.longitude,
     );
-    final isConnected = await this.isConnected();
+    final isConnected = await tripTrackerUtility.isConnected();
 
     // If connected to internet, try send the position to server
     // Else save the position to hive
@@ -103,52 +113,27 @@ class TripControllers extends GetxController {
     }
   }
 
-  // * This function is to check the location permissions
-  Future<bool> handleLocationPermission() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-    log("handleLocationPermission called");
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      Fluttertoast.showToast(msg: "Location services are disabled. Please enable the services");
-      return false;
+  // ! Checks if the first function call is completed or not.
+  // ! If not completed, it will show a toast message
+  // ! Might need to change this
+  bool spamChecker(BuildContext context) {
+    if (isLoading.isTrue) {
+      DigitToast.show(
+        context,
+        options: DigitToastOptions(
+          "Wait for it to complete",
+          true,
+          DigitTheme.instance.mobileTheme,
+        ),
+      );
+      return true;
     }
 
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        Fluttertoast.showToast(msg: "Location permissions are denied. Please enable the permissions");
-        return false;
-      }
-    }
-    if (permission == LocationPermission.deniedForever) {
-      Fluttertoast.showToast(msg: "Location permissions are permanently denied, we cannot request permissions.");
-      return false;
-    }
-
-    return true;
+    return false;
   }
 
-  // * This function is to get the current location
-  Future<Position?> getCurrentLocation() async {
-    try {
-      return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-    } catch (e) {
-      log('Error getting current location: $e');
-      return null;
-    }
-  }
-
-  // * This function checks if the device is connected to internet
-  Future<bool> isConnected() async {
-    return await InternetConnectionChecker().hasConnection;
-  }
-
-  // * Start trip dialog box
-  Future<bool> startTrip(BuildContext context, String tripId) async {
-    int val = 0;
-
+  // ? Start trip dialog box by using the tripId
+  Future<void> startTrip(BuildContext context, String tripId) async {
     await DigitDialog.show(
       context,
       options: DigitDialogOptions(
@@ -158,31 +143,23 @@ class TripControllers extends GetxController {
         primaryAction: DigitDialogActions(
           label: "Yes",
           action: (context) async {
-            isLoading.value = true;
-            await startTracking(tripId);
             Get.back();
-            isLoading.value = false;
-            val = 1;
+            isLoading.toggle();
+            await startTracking(tripId);
+            isLoading.toggle();
           },
         ),
         secondaryAction: DigitDialogActions(
           label: "No",
           action: (context) {
             Get.back();
-            return false;
           },
         ),
       ),
     );
-
-    if (val == 1) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
-  // * Stop trip dialog box
+  // ? Stop trip dialog box
   Future<bool> endTrip(BuildContext context, String tripId) async {
     int val = 0;
 
