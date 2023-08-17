@@ -1,62 +1,60 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // ! USE SCROLLABLE CONTETNT
+    final theme = DigitTheme.instance;
+
     return Drawer(
-      child: Column(
-        children: [
-          Expanded(
-            child: ListView(
+      child: ScrollableContent(
+        header: Container(
+          color: DigitTheme.instance.colors.cloudGray,
+          padding: theme.buttonPadding,
+          child: Padding(
+            padding: theme.buttonPadding,
+            child: Column(
               children: [
-                DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,
-                  ),
-                  child: Text(
-                    AppTranslation.APP_HEADING.tr,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
-                ),
-                ListTile(
-                  title: Text(AppTranslation.HOME_APP_BAR.tr),
-                  onTap: () {
-                    // Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  title: Text(AppTranslation.ABOUT.tr),
-                  onTap: () {
-                    // Navigator.pop(context);
-                  },
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    DigitElevatedButton(
-                      child: const Text("English"),
-                      onPressed: () => Get.updateLocale(const Locale('en', 'IN')),
-                    ),
-                    DigitElevatedButton(
-                      child: const Text("हिंदी"),
-                      onPressed: () => Get.updateLocale(const Locale('hi', 'IN')),
-                    ),
-                  ],
-                )
+                Text("--- Name ---", style: Theme.of(context).textTheme.displayMedium),
+                Text("--- Phone ---", style: Theme.of(context).textTheme.headlineLarge),
               ],
             ),
           ),
-          const Spacer(),
-          const PoweredByDigit()
+        ),
+        footer: Padding(
+          padding: theme.buttonPadding,
+          child: const PoweredByDigit(),
+        ),
+        children: [
+          DigitIconTile(
+            title: "Home",
+            onPressed: () {},
+            icon: Icons.home,
+          ),
+          DigitIconTile(
+            title: "Language",
+            onPressed: () {},
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                DigitElevatedButton(child: const Text("Hindi"), onPressed: () {}),
+                DigitOutLineButton(label: "English", onPressed: () {}),
+              ],
+            ),
+            icon: Icons.language,
+          ),
+          DigitIconTile(
+            title: "Org Profile",
+            onPressed: () {},
+            icon: Icons.contact_page,
+          ),
+          DigitIconTile(
+            title: "Logout",
+            onPressed: () {},
+            icon: Icons.logout,
+          ),
         ],
       ),
     );
