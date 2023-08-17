@@ -18,8 +18,8 @@ class LoginController extends GetxController {
     Map<String, dynamic> formData = {
       "grant_type": "password",
       "scope": "read",
-      "username": userNameController.text,
-      "password": passwordController.text,
+      "username": userNameController.text.trim(),
+      "password": passwordController.text.trim(),
       "userType": "EMPLOYEE",
       "tenantId": cities[city],
     };
