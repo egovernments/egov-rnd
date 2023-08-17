@@ -1,12 +1,12 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/widgets/scrollable_header_widget.dart';
+import 'package:vehicle_tracker_app/widgets/utils/scrollable_header_widget.dart';
 import 'package:vehicle_tracker_app/widgets/trip/camera_widget.dart';
 
 import '../../blocs/details/controllers/camera_controllers.dart';
 import '../../util/i18n_translations.dart';
-import '../../widgets/drawer_widget.dart';
+import '../../widgets/utils/drawer_widget.dart';
 
 class UploadDropPhotoPgae extends StatelessWidget {
   const UploadDropPhotoPgae({super.key});

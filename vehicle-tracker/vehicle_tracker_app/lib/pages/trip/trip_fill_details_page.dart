@@ -1,12 +1,12 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
+import 'package:vehicle_tracker_app/widgets/utils/drawer_widget.dart';
 import 'package:vehicle_tracker_app/widgets/home/info_page_widget.dart';
 
 import '../../blocs/details/controllers/detail_controller.dart';
 import '../../util/i18n_translations.dart';
-import '../../widgets/scrollable_header_widget.dart';
+import '../../widgets/utils/scrollable_header_widget.dart';
 import '../../widgets/trip/trip_fill_details_widget.dart';
 
 class TripFillDetailsPage extends StatelessWidget {

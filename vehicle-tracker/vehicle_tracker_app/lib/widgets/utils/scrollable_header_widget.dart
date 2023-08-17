@@ -4,7 +4,7 @@ import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../util/i18n_translations.dart';
+import '../../util/i18n_translations.dart';
 
 Widget scrollableHeaderWidget(bool back, bool help) {
   return Row(

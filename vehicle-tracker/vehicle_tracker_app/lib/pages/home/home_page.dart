@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/blocs/home/controllers/info_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
-import '../../widgets/drawer_widget.dart';
+import '../../widgets/utils/drawer_widget.dart';
 import '../../widgets/home/trip_info_list_widget.dart';
 
 class HomePage extends StatelessWidget {

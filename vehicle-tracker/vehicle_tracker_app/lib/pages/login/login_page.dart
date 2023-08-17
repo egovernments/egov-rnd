@@ -5,7 +5,7 @@ import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../blocs/login/controllers/login_controllers.dart';
-import '../../widgets/scrollable_header_widget.dart';
+import '../../widgets/utils/scrollable_header_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

@@ -1,9 +1,9 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/widgets/drawer_widget.dart';
+import 'package:vehicle_tracker_app/widgets/utils/drawer_widget.dart';
 import 'package:vehicle_tracker_app/widgets/home/start_trip_button.dart';
-import 'package:vehicle_tracker_app/widgets/scrollable_header_widget.dart';
+import 'package:vehicle_tracker_app/widgets/utils/scrollable_header_widget.dart';
 
 import '../../models/home_trip/home_trip_model/home_trip_model.dart';
 import '../../widgets/home/info_page_widget.dart';

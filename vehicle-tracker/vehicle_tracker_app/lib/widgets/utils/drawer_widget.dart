@@ -2,7 +2,7 @@ import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../router/routes.dart';
+import '../../router/routes.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
