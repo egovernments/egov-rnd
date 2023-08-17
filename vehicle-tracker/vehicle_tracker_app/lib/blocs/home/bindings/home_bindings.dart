@@ -8,8 +8,8 @@ import '../controllers/trip_tracker_controllers.dart';
 class HomeBindings extends Bindings {
   @override
   void dependencies() {
-    Get.put(TripControllers(), permanent: true);
     Get.put(InfoController(), permanent: true);
+    Get.put(TripControllers(), permanent: true);
   }
 }
 

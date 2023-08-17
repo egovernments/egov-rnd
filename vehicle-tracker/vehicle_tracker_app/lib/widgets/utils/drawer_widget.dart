@@ -48,11 +48,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             icon: Icons.language,
           ),
-          DigitIconTile(
-            title: "Org Profile",
-            onPressed: () {},
-            icon: Icons.contact_page,
-          ),
+          IconTile(),
           DigitIconTile(
             title: "Logout",
             onPressed: () => Get.offAllNamed(LANG),
@@ -60,6 +56,21 @@ class CustomDrawer extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class IconTile extends StatelessWidget {
+  const IconTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return DigitIconTile(
+      title: "Org Profile",
+      onPressed: () {},
+      icon: Icons.contact_page,
     );
   }
 }

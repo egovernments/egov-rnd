@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/info_controllers.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_hive_repository.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
@@ -22,6 +23,7 @@ class TripControllers extends GetxController {
   HomeHTTPRepository homeHTTPRepository = HomeHTTPRepository();
   HomeHiveRepository homeHiveRepository = HomeHiveRepository();
   TripTrackerUtility tripTrackerUtility = TripTrackerUtility();
+  InfoController infoController = Get.find<InfoController>();
 
   // * This function starts the tracking peroiodic event
   Future<void> startTracking(Rx<HomeTripModel> data) async {
@@ -122,9 +124,8 @@ class TripControllers extends GetxController {
     }
   }
 
-  // ! Checks if the first function call is completed or not.
-  // ! If not completed, it will show a toast message
-  // ! Might need to change this
+  // ? Checks if any previous trip is running or not
+  // ? If not completed, it will show a toast message
   bool spamChecker(BuildContext context) {
     if (isLoading.isTrue) {
       DigitToast.show(
@@ -151,15 +152,7 @@ class TripControllers extends GetxController {
         contentText: "Start the trip only after reaching the pickup location.  Have you reached the applicant location?",
         primaryAction: DigitDialogActions(
           label: "Yes",
-          action: (context) async {
-            data.value.status = TripStates.PROGRESS;
-            update([data.value.id]);
-            Wakelock.enable();
-            Get.back();
-            isLoading.toggle();
-            await startTracking(data);
-            isLoading.toggle();
-          },
+          action: (context) async => await startTripFunction(data),
         ),
         secondaryAction: DigitDialogActions(
           label: "No",
@@ -169,6 +162,23 @@ class TripControllers extends GetxController {
         ),
       ),
     );
+  }
+
+  // ? This function starts the trip
+  Future<void> startTripFunction(Rx<HomeTripModel> data) async {
+    // updates the UI
+    data.value.status = TripStates.PROGRESS;
+    update([data.value.id]);
+
+    // prevents the screen from sleeping
+    Wakelock.enable();
+
+    Get.back();
+
+    // calls the startTracking function
+    isLoading.toggle();
+    await startTracking(data);
+    isLoading.toggle();
   }
 
   // ? Stop trip dialog box
@@ -181,13 +191,7 @@ class TripControllers extends GetxController {
         contentText: "Are you sure you want to stop the trip?",
         primaryAction: DigitDialogActions(
           label: "Yes",
-          action: (context) {
-            data.value.status = TripStates.COMPLETED;
-            update([data.value.id]);
-            Wakelock.disable();
-            isRunning.value = false;
-            Get.back();
-          },
+          action: (context) => endTripFunction(data),
         ),
         secondaryAction: DigitDialogActions(
           label: "No",
@@ -195,5 +199,23 @@ class TripControllers extends GetxController {
         ),
       ),
     );
+  }
+
+  // ? This function stops the trip
+  void endTripFunction(Rx<HomeTripModel> data) {
+    // updates the UI
+    data.value.status = TripStates.COMPLETED;
+    update([data.value.id]);
+
+    // removes the trip from the normal trip list and adds it to the completed trip list
+    infoController.normalTripList.value.remove(data);
+    infoController.completedTripList.value.add(data);
+
+    // gives the screen the permission to sleep
+    Wakelock.disable();
+
+    // stops the periodic function
+    isRunning.value = false;
+    Get.back();
   }
 }
