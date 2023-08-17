@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,12 +31,15 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // * Help Button
-            Align(
-              alignment: Alignment.topRight,
-              child: DigitIconButton(
-                icon: Icons.help_outline_rounded,
-                iconText: AppTranslation.HELP.tr,
-                onPressed: () {},
+            Padding(
+              padding: theme.buttonPadding,
+              child: Align(
+                alignment: Alignment.topRight,
+                child: DigitIconButton(
+                  icon: Icons.help_outline_rounded,
+                  iconText: AppTranslation.HELP.tr,
+                  onPressed: () {},
+                ),
               ),
             ),
 
@@ -56,27 +57,27 @@ class HomePage extends StatelessWidget {
               controller: infoController.searchController,
               hintText: AppTranslation.SEARCH_BAR.tr,
               onChanged: (value) {
-                log(value.isEmpty.toString());
                 infoController.isTextControllerEmpty.value = value.isEmpty;
                 infoController.onChangedFilter(value);
               },
             ),
 
-            const SizedBox(height: 8),
-
             // * button bar for IN-PROGRESS and COMPLETED
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                DigitOutLineButton(
-                  label: AppTranslation.IN_PROGRESS.tr,
-                  onPressed: () => infoController.isCompleted.value = false,
-                ),
-                DigitOutLineButton(
-                  label: AppTranslation.COMPLETED.tr,
-                  onPressed: () => infoController.isCompleted.value = true,
-                ),
-              ],
+            Padding(
+              padding: theme.buttonPadding,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  DigitOutLineButton(
+                    label: AppTranslation.IN_PROGRESS.tr,
+                    onPressed: () => infoController.isCompleted.value = false,
+                  ),
+                  DigitOutLineButton(
+                    label: AppTranslation.COMPLETED.tr,
+                    onPressed: () => infoController.isCompleted.value = true,
+                  ),
+                ],
+              ),
             ),
 
             // * trip list builder widget

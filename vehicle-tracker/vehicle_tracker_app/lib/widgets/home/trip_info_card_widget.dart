@@ -7,8 +7,8 @@ import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/home/info_page_widget.dart';
 import 'package:vehicle_tracker_app/widgets/home/start_trip_button.dart';
 
-class HomeListWidget extends StatelessWidget {
-  const HomeListWidget({super.key, required this.data});
+class TripInfoCardWidget extends StatelessWidget {
+  const TripInfoCardWidget({super.key, required this.data});
   final Rx<HomeTripModel> data;
 
   @override

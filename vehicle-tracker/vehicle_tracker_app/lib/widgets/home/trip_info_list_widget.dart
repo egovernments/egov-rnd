@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../blocs/home/controllers/info_controllers.dart';
-import 'home_list_widget.dart';
+import 'trip_info_card_widget.dart';
 
 class TripInfoListBuilderWidget extends StatelessWidget {
   const TripInfoListBuilderWidget({
@@ -29,7 +29,7 @@ class TripInfoListBuilderWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
-              return HomeListWidget(data: list[index]);
+              return TripInfoCardWidget(data: list[index]);
             },
           );
         }
@@ -40,7 +40,7 @@ class TripInfoListBuilderWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
-              return HomeListWidget(data: list[index]);
+              return TripInfoCardWidget(data: list[index]);
             },
           );
         } 
@@ -51,7 +51,7 @@ class TripInfoListBuilderWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
-              return HomeListWidget(data: list[index]);
+              return TripInfoCardWidget(data: list[index]);
             },
           );
         }
@@ -61,7 +61,7 @@ class TripInfoListBuilderWidget extends StatelessWidget {
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
-              return HomeListWidget(data: list[index]);
+              return TripInfoCardWidget(data: list[index]);
             },
           );
       }),
