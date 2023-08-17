@@ -22,12 +22,9 @@ class LoginPage extends StatelessWidget {
       ),
       body: ScrollableContent(
         footer: const PoweredByDigit(),
-
-        header:  scrollableHeaderWidget(false, true),
-
+        header: scrollableHeaderWidget(true, false),
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
           // * Login Card
           DigitCard(
             child: Column(
@@ -37,11 +34,11 @@ class LoginPage extends StatelessWidget {
 
                 // * Text Fields for User ID and Password
                 DigitTextField(
-                  label: AppTranslation.EMAIL_LOGIN.tr,
+                  label: "User ID",
                   controller: loginController.userNameController,
                 ),
                 DigitTextField(
-                  label: AppTranslation.EMAIL_RESET.tr,
+                  label: "Password",
                   controller: loginController.passwordController,
                 ),
 

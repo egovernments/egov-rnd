@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/token_service.dart';
+import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/toaster.dart';
 
@@ -29,7 +30,7 @@ class LoginController extends GetxController {
       toaster(context, "Login Success");
       String token = response.body['access_token'];
       await SecureStorageService.write("token", token);
-      Get.toNamed("/home");
+      Get.offAllNamed(HOME);
     } else {
       toaster(context, "Login Failed", isError: true);
     }
