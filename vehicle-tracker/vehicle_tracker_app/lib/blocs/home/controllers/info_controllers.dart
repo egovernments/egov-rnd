@@ -7,8 +7,10 @@ class InfoController extends GetxController {
   RxBool isCompleted = false.obs;
   RxBool isLoading = false.obs;
   RxBool isTextControllerEmpty = true.obs;
-  final homeTripModel = Rx<List<Rx<HomeTripModel>>>([]);
-  final filteredHomeTripModel = Rx<List<Rx<HomeTripModel>>>([]);
+  final normalTripList = Rx<List<Rx<HomeTripModel>>>([]);
+  final filteredNormalTripList = Rx<List<Rx<HomeTripModel>>>([]);
+  final completedTripList = Rx<List<Rx<HomeTripModel>>>([]);
+  final filteredCompletedTripList = Rx<List<Rx<HomeTripModel>>>([]);
   HomeHTTPRepository homeHTTPRepository = HomeHTTPRepository();
   final TextEditingController searchController = TextEditingController();
 
@@ -20,8 +22,21 @@ class InfoController extends GetxController {
 
   // ? Function to call the API to get all the Trips Data.
   Future<void> getHomeTripData(String userId) async {
+    await fillList(userId);
+  }
+
+  Future<void> fillList(String userId) async {
     isLoading.toggle();
-    homeTripModel.value = await homeHTTPRepository.getHomeTripData(userId);
+    final totalList = await homeHTTPRepository.getHomeTripData(userId);
+
+    normalTripList.value = totalList.where((element) {
+      return element.value.status != "Completed" && element.value.status != "completed";
+    }).toList();
+
+    completedTripList.value = totalList.where((element) {
+      return element.value.status == "Completed" || element.value.status == "completed";
+    }).toList();
+
     isLoading.toggle();
   }
 
@@ -31,10 +46,19 @@ class InfoController extends GetxController {
   // ? The original list is used when the search text is empty.
   // ? The filtered list is used when the search text is not empty.
   void onChangedFilter(String value) {
-    filteredHomeTripModel.value = homeTripModel.value.where((element) {
-      bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
-      bool contactNumber = element.value.operator.contactNumber.contains(value);
-      return name || contactNumber;
-    }).toList();
+    if (isCompleted.isTrue) {
+      filteredCompletedTripList.value = completedTripList.value.where((element) {
+        bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
+        bool contactNumber = element.value.operator.contactNumber.contains(value);
+        return name || contactNumber;
+      }).toList();
+      return;
+    } else {
+      filteredNormalTripList.value = normalTripList.value.where((element) {
+        bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
+        bool contactNumber = element.value.operator.contactNumber.contains(value);
+        return name || contactNumber;
+      }).toList();
+    }
   }
 }

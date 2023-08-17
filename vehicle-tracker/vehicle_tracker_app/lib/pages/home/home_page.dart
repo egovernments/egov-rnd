@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -54,6 +56,7 @@ class HomePage extends StatelessWidget {
               controller: infoController.searchController,
               hintText: AppTranslation.SEARCH_BAR.tr,
               onChanged: (value) {
+                log(value.isEmpty.toString());
                 infoController.isTextControllerEmpty.value = value.isEmpty;
                 infoController.onChangedFilter(value);
               },
@@ -67,11 +70,11 @@ class HomePage extends StatelessWidget {
               children: [
                 DigitOutLineButton(
                   label: AppTranslation.IN_PROGRESS.tr,
-                  onPressed: () => (),
+                  onPressed: () => infoController.isCompleted.value = false,
                 ),
                 DigitOutLineButton(
                   label: AppTranslation.COMPLETED.tr,
-                  onPressed: () => (),
+                  onPressed: () => infoController.isCompleted.value = true,
                 ),
               ],
             ),

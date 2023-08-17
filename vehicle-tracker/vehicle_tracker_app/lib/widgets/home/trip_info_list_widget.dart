@@ -23,21 +23,47 @@ class TripInfoListBuilderWidget extends StatelessWidget {
           );
         }
 
-        if (infoController.isTextControllerEmpty.value == false) {
+        // ? If the search text is empty and the isCompleted is false, then the normalTripList is displayed.
+        if (infoController.isTextControllerEmpty.isTrue && infoController.isCompleted.isFalse) {
+          final list = infoController.normalTripList.value;
           return ListView.builder(
-            itemCount: infoController.filteredHomeTripModel.value.length,
+            itemCount: list.length,
             itemBuilder: (context, index) {
-              return HomeListWidget(data: infoController.filteredHomeTripModel.value[index]);
+              return HomeListWidget(data: list[index]);
             },
           );
         }
 
-        return ListView.builder(
-          itemCount: infoController.homeTripModel.value.length,
-          itemBuilder: (context, index) {
-            return HomeListWidget(data: infoController.homeTripModel.value[index]);
-          },
-        );
+        // ? If the search text is empty and the isCompleted is true, then the completedTripList is displayed.
+        if (infoController.isTextControllerEmpty.isTrue && infoController.isCompleted.isTrue) {
+          final list = infoController.completedTripList.value;
+          return ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (context, index) {
+              return HomeListWidget(data: list[index]);
+            },
+          );
+        } 
+
+        // ? If the search text is not empty and the isCompleted is false, then the filteredNormalTripList is displayed.
+        if (infoController.isTextControllerEmpty.isFalse && infoController.isCompleted.isFalse) {
+          final list = infoController.filteredNormalTripList.value;
+          return ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (context, index) {
+              return HomeListWidget(data: list[index]);
+            },
+          );
+        }
+
+        // ? If the search text is not empty and the isCompleted is true, then the filteredCompletedTripList is displayed.
+        final list = infoController.filteredCompletedTripList.value;
+          return ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (context, index) {
+              return HomeListWidget(data: list[index]);
+            },
+          );
       }),
     );
   }
