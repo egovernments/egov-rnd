@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 toaster(BuildContext? context, String message, {bool isError = false}) {
-  if (context == null) {
+  if (true) {
     Fluttertoast.showToast(
         msg: message,
         toastLength: Toast.LENGTH_SHORT,
@@ -15,5 +15,5 @@ toaster(BuildContext? context, String message, {bool isError = false}) {
     return;
   }
 
-  DigitToast.show(context, options: DigitToastOptions(message, isError, DigitTheme.instance.mobileTheme));
+  // DigitToast.show(context, options: DigitToastOptions(message, isError, DigitTheme.instance.mobileTheme));
 }

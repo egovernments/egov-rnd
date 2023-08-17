@@ -51,6 +51,7 @@ dependencies:
   location: ^5.0.0
   flutter_dotenv: ^5.1.0
   image_picker: ^1.0.2
+  wakelock: ^0.6.2
   
 dev_dependencies:
   flutter_test:

@@ -11,7 +11,9 @@ import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.d
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
+import 'package:vehicle_tracker_app/util/toaster.dart';
 import 'package:vehicle_tracker_app/util/trip_tracker_utility.dart';
+import 'package:wakelock/wakelock.dart';
 
 class TripControllers extends GetxController {
   RxBool isRunning = false.obs; // This variable is to check if the tracking is running or not
@@ -42,7 +44,7 @@ class TripControllers extends GetxController {
     log('Periodic function started');
     isRunning.value = true;
 
-    Timer.periodic(const Duration(seconds: 5), (_) async {
+    Timer.periodic(const Duration(seconds: 10), (_) async {
       log("Periodic function called");
       if (!isRunning.value) {
         log("Periodic function stopped");
@@ -106,6 +108,7 @@ class TripControllers extends GetxController {
       if (status) {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
+        toaster(Get.context, "Position sent successfully to server");
       } else {
         // If the position sending fails, save the data to hive
         log("Error sending position, saving to hive");
@@ -115,6 +118,7 @@ class TripControllers extends GetxController {
       // If not connected to internet, save the data to hive
       log("No internet connection, saving to hive");
       await homeHiveRepository.storeTripData(tripHiveModel);
+      toaster(Get.context, "No internet connection, saving to hive DB");
     }
   }
 
@@ -150,7 +154,7 @@ class TripControllers extends GetxController {
           action: (context) async {
             data.value.status = TripStates.PROGRESS;
             update([data.value.id]);
-
+            Wakelock.enable();
             Get.back();
             isLoading.toggle();
             await startTracking(data);
@@ -180,7 +184,7 @@ class TripControllers extends GetxController {
           action: (context) {
             data.value.status = TripStates.COMPLETED;
             update([data.value.id]);
-
+            Wakelock.disable();
             isRunning.value = false;
             Get.back();
           },
