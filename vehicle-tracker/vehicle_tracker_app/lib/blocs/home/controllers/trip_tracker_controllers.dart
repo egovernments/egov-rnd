@@ -87,10 +87,10 @@ class TripControllers extends GetxController {
   // ? It will check if the device is connected to internet or not
   // ? If there is internet connection, it will send the data to server
   // ? If by any chance the data sending fails, it will store the data to hive
-  Future<void> positionSender(Position position, String alert, String tripId) async {
+  Future<void> positionSender(Position? position, String alert, String tripId) async {
     TripHiveModel tripHiveModel = TripHiveModel(
-      latitude: position.latitude,
-      longitude: position.longitude,
+      latitude: position?.latitude ?? 0,
+      longitude: position?.longitude ?? 0,
     );
     final isConnected = await tripTrackerUtility.isConnected();
 
@@ -168,7 +168,7 @@ class TripControllers extends GetxController {
   Future<void> startTripFunction(Rx<HomeTripModel> data) async {
     // updates the UI
     data.value.status = TripStates.PROGRESS;
-    update([data.value.id]);
+    // update([data.value.id]);
 
     // prevents the screen from sleeping
     Wakelock.enable();
@@ -202,14 +202,23 @@ class TripControllers extends GetxController {
   }
 
   // ? This function stops the trip
-  void endTripFunction(Rx<HomeTripModel> data) {
-    // updates the UI
+  void endTripFunction(Rx<HomeTripModel> data) async {
+    // todo : add an extra API call to send the last position to the server
+
+    data.value.status = TripStates.PROGRESS;
+
+    Position? currentPosition = await tripTrackerUtility.getCurrentLocation();
+    if (currentPosition == null) {
+      log("Error getting current location");
+    }
+
+    await positionSender(currentPosition, TripStates.COMPLETED, data.value.id);
+
     data.value.status = TripStates.COMPLETED;
-    update([data.value.id]);
 
     // removes the trip from the normal trip list and adds it to the completed trip list
-    infoController.normalTripList.value.remove(data);
-    infoController.completedTripList.value.add(data);
+    infoController.normalTripList.remove(data);
+    infoController.completedTripList.add(data);
 
     // gives the screen the permission to sleep
     Wakelock.disable();
