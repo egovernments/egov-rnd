@@ -18,10 +18,10 @@ class LangSelectCard extends StatelessWidget {
             // * Heading
             Padding(
               padding: theme.buttonPadding,
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("FSSM | Odisha"),
+                  Text("FSSM | Odisha", style: Theme.of(context).textTheme.titleLarge),
                 ],
               ),
             ),
