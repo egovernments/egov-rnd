@@ -11,10 +11,10 @@ class InfoController extends GetxController {
   
   HomeHTTPRepository homeHTTPRepository = HomeHTTPRepository();
   final TextEditingController searchController = TextEditingController();
-  final normalTripList = Rx<List<Rx<HomeTripModel>>>([]);
-  final filteredNormalTripList = Rx<List<Rx<HomeTripModel>>>([]);
-  final completedTripList = Rx<List<Rx<HomeTripModel>>>([]);
-  final filteredCompletedTripList = Rx<List<Rx<HomeTripModel>>>([]);
+  final normalTripList = RxList<Rx<HomeTripModel>>([]);
+  final filteredNormalTripList = RxList<Rx<HomeTripModel>>([]);
+  final completedTripList = RxList<Rx<HomeTripModel>>([]);
+  final filteredCompletedTripList = RxList<Rx<HomeTripModel>>([]);
 
   @override
   void onInit() {
@@ -52,7 +52,7 @@ class InfoController extends GetxController {
     if (isCompleted.isTrue) {
 
       // If the completed button is pressed then the filtered list is assigned to the completed list.
-      filteredCompletedTripList.value = completedTripList.value.where((element) {
+      filteredCompletedTripList.value = completedTripList.where((element) {
         bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
         bool contactNumber = element.value.operator.contactNumber.contains(value);
         return name || contactNumber;
@@ -61,7 +61,7 @@ class InfoController extends GetxController {
     } else {
 
       // If the completed button is not pressed then the filtered list is assigned to the normal list.
-      filteredNormalTripList.value = normalTripList.value.where((element) {
+      filteredNormalTripList.value = normalTripList.where((element) {
         bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
         bool contactNumber = element.value.operator.contactNumber.contains(value);
         return name || contactNumber;

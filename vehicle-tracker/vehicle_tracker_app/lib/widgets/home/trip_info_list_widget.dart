@@ -25,7 +25,7 @@ class TripInfoListBuilderWidget extends StatelessWidget {
 
         // ? If the search text is empty and the isCompleted is false, then the normalTripList is displayed.
         if (infoController.isTextControllerEmpty.isTrue && infoController.isCompleted.isFalse) {
-          final list = infoController.normalTripList.value;
+          final list = infoController.normalTripList;
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
@@ -36,7 +36,7 @@ class TripInfoListBuilderWidget extends StatelessWidget {
 
         // ? If the search text is empty and the isCompleted is true, then the completedTripList is displayed.
         if (infoController.isTextControllerEmpty.isTrue && infoController.isCompleted.isTrue) {
-          final list = infoController.completedTripList.value;
+          final list = infoController.completedTripList;
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
@@ -47,7 +47,7 @@ class TripInfoListBuilderWidget extends StatelessWidget {
 
         // ? If the search text is not empty and the isCompleted is false, then the filteredNormalTripList is displayed.
         if (infoController.isTextControllerEmpty.isFalse && infoController.isCompleted.isFalse) {
-          final list = infoController.filteredNormalTripList.value;
+          final list = infoController.filteredNormalTripList;
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
@@ -57,7 +57,7 @@ class TripInfoListBuilderWidget extends StatelessWidget {
         }
 
         // ? If the search text is not empty and the isCompleted is true, then the filteredCompletedTripList is displayed.
-        final list = infoController.filteredCompletedTripList.value;
+        final list = infoController.filteredCompletedTripList;
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
