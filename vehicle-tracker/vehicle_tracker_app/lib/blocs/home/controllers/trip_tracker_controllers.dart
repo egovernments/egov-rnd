@@ -87,7 +87,7 @@ class TripControllers extends GetxController {
   // ? It will check if the device is connected to internet or not
   // ? If there is internet connection, it will send the data to server
   // ? If by any chance the data sending fails, it will store the data to hive
-  Future<void> positionSender(Position? position, String alert, String tripId) async {
+  Future<bool> positionSender(Position? position, String alert, String tripId) async {
     TripHiveModel tripHiveModel = TripHiveModel(
       latitude: position?.latitude ?? 0,
       longitude: position?.longitude ?? 0,
@@ -111,16 +111,19 @@ class TripControllers extends GetxController {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
         toaster(Get.context, "Position sent successfully to server");
+        return status;
       } else {
         // If the position sending fails, save the data to hive
         log("Error sending position, saving to hive");
         homeHiveRepository.storeTripData(tripHiveModel);
+        return status;
       }
     } else {
       // If not connected to internet, save the data to hive
       log("No internet connection, saving to hive");
       await homeHiveRepository.storeTripData(tripHiveModel);
       toaster(Get.context, "No internet connection, saving to hive DB");
+      return false;
     }
   }
 
@@ -168,7 +171,7 @@ class TripControllers extends GetxController {
   Future<void> startTripFunction(Rx<HomeTripModel> data) async {
     // updates the UI
     data.value.status = TripStates.PROGRESS;
-    // update([data.value.id]);
+    update([data.value.id]);
 
     // prevents the screen from sleeping
     Wakelock.enable();
@@ -206,15 +209,25 @@ class TripControllers extends GetxController {
     // todo : add an extra API call to send the last position to the server
 
     data.value.status = TripStates.PROGRESS;
+    update([data.value.id]);
+
+    Get.back();
 
     Position? currentPosition = await tripTrackerUtility.getCurrentLocation();
     if (currentPosition == null) {
       log("Error getting current location");
     }
 
-    await positionSender(currentPosition, TripStates.COMPLETED, data.value.id);
+    final status = await positionSender(currentPosition, TripStates.COMPLETED, data.value.id);
+
+    if (!status) {
+      data.value.status = TripStates.RUNNING;
+      update([data.value.id]);
+      return;
+    }
 
     data.value.status = TripStates.COMPLETED;
+    update([data.value.id]);
 
     // removes the trip from the normal trip list and adds it to the completed trip list
     infoController.normalTripList.remove(data);
@@ -225,6 +238,5 @@ class TripControllers extends GetxController {
 
     // stops the periodic function
     isRunning.value = false;
-    Get.back();
   }
 }
