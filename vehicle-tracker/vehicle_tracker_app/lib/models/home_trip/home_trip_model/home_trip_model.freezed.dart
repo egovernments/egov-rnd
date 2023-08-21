@@ -28,10 +28,10 @@ mixin _$HomeTripModel {
   set serviceCode(String value) => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   set status(String value) => throw _privateConstructorUsedError;
-  String get plannedStartTime => throw _privateConstructorUsedError;
-  set plannedStartTime(String value) => throw _privateConstructorUsedError;
-  String get plannedEndTime => throw _privateConstructorUsedError;
-  set plannedEndTime(String value) => throw _privateConstructorUsedError;
+  String? get plannedStartTime => throw _privateConstructorUsedError;
+  set plannedStartTime(String? value) => throw _privateConstructorUsedError;
+  String? get plannedEndTime => throw _privateConstructorUsedError;
+  set plannedEndTime(String? value) => throw _privateConstructorUsedError;
   Operator get operator => throw _privateConstructorUsedError;
   set operator(Operator value) => throw _privateConstructorUsedError;
   String? get actualStartTime => throw _privateConstructorUsedError;
@@ -60,8 +60,8 @@ abstract class $HomeTripModelCopyWith<$Res> {
       String routeId,
       String serviceCode,
       String status,
-      String plannedStartTime,
-      String plannedEndTime,
+      String? plannedStartTime,
+      String? plannedEndTime,
       Operator operator,
       String? actualStartTime,
       String? actualEndTime,
@@ -88,8 +88,8 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
     Object? routeId = null,
     Object? serviceCode = null,
     Object? status = null,
-    Object? plannedStartTime = null,
-    Object? plannedEndTime = null,
+    Object? plannedStartTime = freezed,
+    Object? plannedEndTime = freezed,
     Object? operator = null,
     Object? actualStartTime = freezed,
     Object? actualEndTime = freezed,
@@ -113,14 +113,14 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      plannedStartTime: null == plannedStartTime
+      plannedStartTime: freezed == plannedStartTime
           ? _value.plannedStartTime
           : plannedStartTime // ignore: cast_nullable_to_non_nullable
-              as String,
-      plannedEndTime: null == plannedEndTime
+              as String?,
+      plannedEndTime: freezed == plannedEndTime
           ? _value.plannedEndTime
           : plannedEndTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       operator: null == operator
           ? _value.operator
           : operator // ignore: cast_nullable_to_non_nullable
@@ -166,8 +166,8 @@ abstract class _$$_HomeTripModelCopyWith<$Res>
       String routeId,
       String serviceCode,
       String status,
-      String plannedStartTime,
-      String plannedEndTime,
+      String? plannedStartTime,
+      String? plannedEndTime,
       Operator operator,
       String? actualStartTime,
       String? actualEndTime,
@@ -193,8 +193,8 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
     Object? routeId = null,
     Object? serviceCode = null,
     Object? status = null,
-    Object? plannedStartTime = null,
-    Object? plannedEndTime = null,
+    Object? plannedStartTime = freezed,
+    Object? plannedEndTime = freezed,
     Object? operator = null,
     Object? actualStartTime = freezed,
     Object? actualEndTime = freezed,
@@ -218,14 +218,14 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      plannedStartTime: null == plannedStartTime
+      plannedStartTime: freezed == plannedStartTime
           ? _value.plannedStartTime
           : plannedStartTime // ignore: cast_nullable_to_non_nullable
-              as String,
-      plannedEndTime: null == plannedEndTime
+              as String?,
+      plannedEndTime: freezed == plannedEndTime
           ? _value.plannedEndTime
           : plannedEndTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       operator: null == operator
           ? _value.operator
           : operator // ignore: cast_nullable_to_non_nullable
@@ -259,8 +259,8 @@ class _$_HomeTripModel implements _HomeTripModel {
       required this.routeId,
       required this.serviceCode,
       required this.status,
-      required this.plannedStartTime,
-      required this.plannedEndTime,
+      this.plannedStartTime,
+      this.plannedEndTime,
       required this.operator,
       this.actualStartTime,
       this.actualEndTime,
@@ -279,9 +279,9 @@ class _$_HomeTripModel implements _HomeTripModel {
   @override
   String status;
   @override
-  String plannedStartTime;
+  String? plannedStartTime;
   @override
-  String plannedEndTime;
+  String? plannedEndTime;
   @override
   Operator operator;
   @override
@@ -318,8 +318,8 @@ abstract class _HomeTripModel implements HomeTripModel {
       required String routeId,
       required String serviceCode,
       required String status,
-      required String plannedStartTime,
-      required String plannedEndTime,
+      String? plannedStartTime,
+      String? plannedEndTime,
       required Operator operator,
       String? actualStartTime,
       String? actualEndTime,
@@ -342,11 +342,11 @@ abstract class _HomeTripModel implements HomeTripModel {
   String get status;
   set status(String value);
   @override
-  String get plannedStartTime;
-  set plannedStartTime(String value);
+  String? get plannedStartTime;
+  set plannedStartTime(String? value);
   @override
-  String get plannedEndTime;
-  set plannedEndTime(String value);
+  String? get plannedEndTime;
+  set plannedEndTime(String? value);
   @override
   Operator get operator;
   set operator(Operator value);

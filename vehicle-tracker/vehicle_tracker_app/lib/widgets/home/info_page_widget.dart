@@ -30,7 +30,7 @@ Widget textColumnWidget(HomeTripModel data) => Padding(
                 paddedText(data.operator.vehicleNumber),
                 paddedText(data.routeId),
                 paddedText(data.routeId),
-                paddedText(data.plannedStartTime),
+                paddedText(data.plannedStartTime ?? ""),
                 paddedText(data.status),
               ],
             ),

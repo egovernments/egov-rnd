@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'home_trip_model.dart';
 
 // **************************************************************************
@@ -14,8 +12,8 @@ _$_HomeTripModel _$$_HomeTripModelFromJson(Map<String, dynamic> json) =>
       routeId: json['routeId'] as String,
       serviceCode: json['serviceCode'] as String,
       status: json['status'] as String,
-      plannedStartTime: json['plannedStartTime'] as String,
-      plannedEndTime: json['plannedEndTime'] as String,
+      plannedStartTime: json['plannedStartTime'] as String?,
+      plannedEndTime: json['plannedEndTime'] as String?,
       operator: Operator.fromJson(json['operator'] as Map<String, dynamic>),
       actualStartTime: json['actualStartTime'] as String?,
       actualEndTime: json['actualEndTime'] as String?,
@@ -29,9 +27,6 @@ Map<String, dynamic> _$$_HomeTripModelToJson(_$_HomeTripModel instance) {
     'routeId': instance.routeId,
     'serviceCode': instance.serviceCode,
     'status': instance.status,
-    'plannedStartTime': instance.plannedStartTime,
-    'plannedEndTime': instance.plannedEndTime,
-    'operator': instance.operator.toJson(),
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -40,6 +35,9 @@ Map<String, dynamic> _$$_HomeTripModelToJson(_$_HomeTripModel instance) {
     }
   }
 
+  writeNotNull('plannedStartTime', instance.plannedStartTime);
+  writeNotNull('plannedEndTime', instance.plannedEndTime);
+  val['operator'] = instance.operator.toJson();
   writeNotNull('actualStartTime', instance.actualStartTime);
   writeNotNull('actualEndTime', instance.actualEndTime);
   val['userId'] = instance.userId;
