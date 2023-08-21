@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/blocs/home/controllers/info_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
+import 'package:vehicle_tracker_app/widgets/home/toggle_switch.dart';
 
 import '../../widgets/utils/drawer_widget.dart';
 import '../../widgets/home/trip_info_list_widget.dart';
@@ -64,21 +65,25 @@ class HomePage extends StatelessWidget {
 
             // * button bar for IN-PROGRESS and COMPLETED
             Padding(
-              padding: theme.buttonPadding,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  DigitOutLineButton(
-                    label: AppTranslation.IN_PROGRESS.tr,
-                    onPressed: () => infoController.isCompleted.value = false,
-                  ),
-                  DigitOutLineButton(
-                    label: AppTranslation.COMPLETED.tr,
-                    onPressed: () => infoController.isCompleted.value = true,
-                  ),
-                ],
-              ),
+              padding: theme.verticalMargin * 2,
+              child: Center(child: toggler(context, infoController)),
             ),
+            // Padding(
+            //   padding: theme.buttonPadding,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //     children: [
+            //       DigitOutLineButton(
+            //         label: AppTranslation.IN_PROGRESS.tr,
+            //         onPressed: () => infoController.isCompleted.value = false,
+            //       ),
+            //       DigitOutLineButton(
+            //         label: AppTranslation.COMPLETED.tr,
+            //         onPressed: () => infoController.isCompleted.value = true,
+            //       ),
+            //     ],
+            //   ),
+            // ),
 
             // * trip list builder widget
             TripInfoListBuilderWidget(infoController: infoController),
