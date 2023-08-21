@@ -1,11 +1,14 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/home/info_page_widget.dart';
 import 'package:vehicle_tracker_app/widgets/home/start_trip_button.dart';
+
+import 'status_info_widget.dart';
 
 class TripInfoCardWidget extends StatelessWidget {
   const TripInfoCardWidget({super.key, required this.data});
@@ -17,6 +20,12 @@ class TripInfoCardWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Status Heading
+          GetBuilder<TripControllers>(
+            id: data.value.id,
+            builder: (tripControllers) => statusInfoWidget(data.value.status),
+          ),
+
           //  Locality Heading
           Text(
             data.value.routeId.toUpperCase(),

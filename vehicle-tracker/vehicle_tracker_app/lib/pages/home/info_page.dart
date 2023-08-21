@@ -47,7 +47,7 @@ class InfoPage extends StatelessWidget {
                     data.value.routeId.toUpperCase(),
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  textColumnWidget(data.value),
+                  textColumnWidget(data),
                 ],
               ),
             ),

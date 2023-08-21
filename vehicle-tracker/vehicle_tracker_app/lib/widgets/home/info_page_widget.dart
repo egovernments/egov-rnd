@@ -1,8 +1,12 @@
 import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
+import 'package:vehicle_tracker_app/widgets/home/status_info_widget.dart';
 
-Widget textColumnWidget(HomeTripModel data) => Padding(
+import '../../blocs/home/controllers/trip_tracker_controllers.dart';
+
+Widget textColumnWidget(Rx<HomeTripModel> data) => Padding(
       padding: DigitTheme.instance.verticalMargin,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -25,13 +29,16 @@ Widget textColumnWidget(HomeTripModel data) => Padding(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                paddedText(data.id),
-                paddedText(data.operator.name),
-                paddedText(data.operator.vehicleNumber),
-                paddedText(data.routeId),
-                paddedText(data.routeId),
-                paddedText(data.plannedStartTime ?? ""),
-                paddedText(data.status),
+                paddedText(data.value.id),
+                paddedText(data.value.operator.name),
+                paddedText(data.value.operator.vehicleNumber),
+                paddedText(data.value.routeId),
+                paddedText(data.value.routeId),
+                paddedText(data.value.plannedStartTime ?? ""),
+                GetBuilder<TripControllers>(
+                  id: data.value.id,
+                  builder: (tripControllers) => statusInfoWidget(data.value.status),
+                ),
               ],
             ),
           ),
