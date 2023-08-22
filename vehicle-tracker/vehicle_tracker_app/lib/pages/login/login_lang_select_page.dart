@@ -8,10 +8,9 @@ class LoginLangSelectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // ! add the background image
-
-      body: Column(
+    return Scaffold(
+      backgroundColor: DigitTheme.instance.colorScheme.primary,
+      body: const Column(
         children: [
           Spacer(),
           LangSelectCard(),
