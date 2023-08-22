@@ -11,8 +11,9 @@ import 'package:vehicle_tracker_app/widgets/home/start_trip_button.dart';
 import 'status_info_widget.dart';
 
 class TripInfoCardWidget extends StatelessWidget {
-  const TripInfoCardWidget({super.key, required this.data});
+  TripInfoCardWidget({super.key, required this.data});
   final Rx<HomeTripModel> data;
+  final textTheme = DigitTheme.instance.mobileTheme.textTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class TripInfoCardWidget extends StatelessWidget {
           //  Locality Heading
           Text(
             data.value.routeId.toUpperCase(),
-            style: Theme.of(context).textTheme.titleLarge,
+            style: textTheme.headlineMedium,
           ),
 
           homeTextColumnWidget(data.value.operator.name, data.value.operator.contactNumber),

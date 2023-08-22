@@ -10,6 +10,7 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = DigitTheme.instance;
+    final textTheme = theme.mobileTheme.textTheme;
 
     return Drawer(
       child: ScrollableContent(
@@ -17,11 +18,11 @@ class CustomDrawer extends StatelessWidget {
           color: DigitTheme.instance.colors.cloudGray,
           padding: theme.buttonPadding,
           child: Padding(
-            padding: theme.buttonPadding,
+            padding: const EdgeInsets.symmetric(vertical: kPadding * 13),
             child: Column(
               children: [
-                Text("--- Name ---", style: Theme.of(context).textTheme.displayMedium),
-                Text("--- Phone ---", style: Theme.of(context).textTheme.headlineLarge),
+                Text("--- Name ---", style: textTheme.displayMedium),
+                Text("--- Phone ---", style: textTheme.headlineLarge),
               ],
             ),
           ),

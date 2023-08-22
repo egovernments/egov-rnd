@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final infoController = Get.find<InfoController>();
     final theme = DigitTheme.instance;
+    final textTheme = theme.mobileTheme.textTheme;
 
     return SafeArea(
       child: Scaffold(
@@ -49,7 +50,7 @@ class HomePage extends StatelessWidget {
               padding: theme.buttonPadding,
               child: Text(
                 AppTranslation.MY_TRIPS.tr,
-                style: Theme.of(context).textTheme.displayMedium,
+                style: textTheme.displayMedium,
               ),
             ),
 

@@ -14,6 +14,7 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = DigitTheme.instance;
+    final textTheme = theme.mobileTheme.textTheme;
     final Rx<HomeTripModel> data = Get.arguments as Rx<HomeTripModel>;
 
     return SafeArea(
@@ -45,7 +46,7 @@ class InfoPage extends StatelessWidget {
                 children: [
                   Text(
                     data.value.routeId.toUpperCase(),
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: textTheme.titleLarge,
                   ),
                   textColumnWidget(data),
                 ],
