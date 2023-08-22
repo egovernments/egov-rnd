@@ -9,6 +9,7 @@ class LangSelectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = DigitTheme.instance;
+    final textTheme = theme.mobileTheme.textTheme;
 
     return Padding(
       padding: theme.verticalMargin,
@@ -21,7 +22,7 @@ class LangSelectCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("FSSM | Odisha", style: Theme.of(context).textTheme.titleLarge),
+                  Text("FSSM | Odisha", style: textTheme.headlineLarge),
                 ],
               ),
             ),
@@ -32,7 +33,12 @@ class LangSelectCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  DigitElevatedButton(child: const Text("Hindi"), onPressed: () {}),
+                  DigitElevatedButton(
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: kPadding * 2),
+                        child: Text("Hindi"),
+                      ),
+                      onPressed: () {}),
                   DigitOutLineButton(label: "English", onPressed: () => Get.updateLocale(const Locale('en', 'IN'))),
                 ],
               ),

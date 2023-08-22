@@ -15,7 +15,10 @@ Widget statusInfoWidget(String status) {
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       color: colourPicker(status, theme),
-      child: Padding(padding: const EdgeInsets.symmetric(horizontal: 8), child: infoBuilder(status, theme)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kPadding, vertical: kPadding),
+        child: infoBuilder(status, theme),
+      ),
     ),
   );
 }
@@ -32,29 +35,64 @@ Color colourPicker(String status, DigitTheme theme) {
 }
 
 Widget infoBuilder(String status, DigitTheme theme) {
+  final textTheme = theme.mobileTheme.textTheme.bodyLarge;
+
   switch (status) {
     case TripStates.CREATED:
-      return DigitIconButton(
-        icon: Icons.error,
-        iconColor: theme.colors.lavaRed,
-        iconText: "Not Started",
-        iconTextColor: theme.colors.lavaRed,
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.error,
+            color: theme.colors.lavaRed,
+            size: 20,
+          ),
+          const SizedBox(width: 2),
+          Text(
+            "Not Started",
+            style: textTheme?.copyWith(
+              color: theme.colors.lavaRed,
+            ),
+          ),
+        ],
       );
 
     case TripStates.COMPLETED:
-      return DigitIconButton(
-        icon: Icons.thumb_up,
-        iconColor: theme.colors.waterBlue,
-        iconText: "Completed",
-        iconTextColor: theme.colors.waterBlue,
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.thumb_up,
+            color: theme.colors.waterBlue,
+            size: 20,
+          ),
+          const SizedBox(width: 2),
+          Text(
+            "Completed",
+            style: textTheme?.copyWith(
+              color: theme.colors.waterBlue,
+            ),
+          ),
+        ],
       );
 
     default:
-      return DigitIconButton(
-        icon: Icons.check_circle,
-        iconColor: theme.colors.darkSpringGreen,
-        iconText: "On Going",
-        iconTextColor: theme.colors.darkSpringGreen,
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.check_circle,
+            color: theme.colors.darkSpringGreen,
+            size: 20,
+          ),
+          const SizedBox(width: 2),
+          Text(
+            "On Going",
+            style: textTheme?.copyWith(
+              color: theme.colors.darkSpringGreen,
+            ),
+          ),
+        ],
       );
   }
 }
