@@ -2,6 +2,7 @@ import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../data/token_service.dart';
 import '../../router/routes.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -56,7 +57,10 @@ class CustomDrawer extends StatelessWidget {
           ),
           DigitIconTile(
             title: "Logout",
-            onPressed: () => Get.offAllNamed(LANG),
+            onPressed: () async {
+              await SecureStorageService.delete("token");
+              Get.offAllNamed(LANG);
+            },
             icon: Icons.logout,
           ),
         ],
