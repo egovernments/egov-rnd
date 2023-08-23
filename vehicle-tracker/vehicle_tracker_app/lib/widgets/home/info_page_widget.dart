@@ -7,7 +7,6 @@ import '../../blocs/home/controllers/trip_tracker_controllers.dart';
 import 'status_info_widget.dart';
 
 Widget textColumnWidget(Rx<HomeTripModel> data) {
-  final textTheme = DigitTheme.instance.mobileTheme.textTheme;
 
   return Padding(
     padding: DigitTheme.instance.verticalMargin,
@@ -21,7 +20,7 @@ Widget textColumnWidget(Rx<HomeTripModel> data) {
         textRow('Date', data.value.plannedStartTime ?? ""),
         Row(
           children: [
-            paddedText("Status : ", bold: true),
+            paddedText("Status\t\t", bold: true),
             GetBuilder<TripControllers>(
               id: "data.value.id",
               builder: (tripControllers) => statusInfoWidget(data.value.status),
@@ -88,7 +87,7 @@ Widget textColumnWidget(Rx<HomeTripModel> data) {
 
 Widget textRow(String key, String value) => Row(
       children: [
-        paddedText("$key : ", bold: true),
+        paddedText("$key\t\t", bold: true),
         Expanded(child: paddedText(value)),
       ],
     );

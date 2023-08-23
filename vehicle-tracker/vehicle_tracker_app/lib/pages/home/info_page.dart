@@ -46,7 +46,7 @@ class InfoPage extends StatelessWidget {
                 children: [
                   Text(
                     data.value.routeId.toUpperCase(),
-                    style: textTheme.titleLarge,
+                    style: textTheme.headlineLarge,
                   ),
                   textColumnWidget(data),
                 ],
