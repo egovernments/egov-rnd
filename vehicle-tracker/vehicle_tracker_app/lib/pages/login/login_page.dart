@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController loginController = Get.find<LoginController>();
-    final theme = DigitTheme.instance;
+    final textTheme = DigitTheme.instance.mobileTheme.textTheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -31,15 +31,18 @@ class LoginPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Login"),
+                Text(
+                  AppTranslation.LOGIN.tr,
+                  style: textTheme.displayMedium,
+                ),
 
                 // * Text Fields for User ID and Password
                 DigitTextField(
-                  label: "User ID",
+                  label: AppTranslation.USER_ID.tr,
                   controller: loginController.userNameController,
                 ),
                 DigitTextField(
-                  label: "Password",
+                  label: AppTranslation.PASSWORD.tr,
                   controller: loginController.passwordController,
                 ),
 

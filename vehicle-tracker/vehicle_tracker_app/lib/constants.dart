@@ -20,4 +20,4 @@ String apiUrl = dotenv.env["API_URL"] ?? "";
 LatLng testStart = LatLng(testStartLat, testStartLong);
 LatLng testEnd = LatLng(testEndLat, testEndLong);
 
-List<String> englishList = ["EMAIL_UPDATED", "email.login.otp.body", "email.pwd.reset.otp.body"];
+

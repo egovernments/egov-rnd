@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
             // * Digiit Search Bar
             DigitSearchBar(
               controller: infoController.searchController,
-              hintText: AppTranslation.SEARCH_BAR.tr,
+              hintText: AppTranslation.SEARCH_BAR_HINT.tr,
               onChanged: (value) {
                 infoController.isTextControllerEmpty.value = value.isEmpty;
                 infoController.onChangedFilter(value);

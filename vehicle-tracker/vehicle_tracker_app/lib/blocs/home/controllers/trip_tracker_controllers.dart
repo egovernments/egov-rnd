@@ -152,13 +152,13 @@ class TripControllers extends GetxController {
       options: DigitDialogOptions(
         titleText: AppTranslation.WARNING.tr,
         titleIcon: const Icon(Icons.warning, color: Colors.red),
-        contentText: "Start the trip only after reaching the pickup location.  Have you reached the applicant location?",
+        contentText: AppTranslation.START_TRIP_MESSAGE.tr,
         primaryAction: DigitDialogActions(
-          label: "Yes",
+          label: AppTranslation.YES.tr,
           action: (context) async => await startTripFunction(data),
         ),
         secondaryAction: DigitDialogActions(
-          label: "No",
+          label: AppTranslation.NO.tr,
           action: (context) {
             Get.back();
           },

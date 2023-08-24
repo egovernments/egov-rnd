@@ -1,6 +1,8 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 Widget statusInfoWidget(String status) {
   final theme = DigitTheme.instance;
@@ -49,7 +51,7 @@ Widget infoBuilder(String status, DigitTheme theme) {
           ),
           const SizedBox(width: 2),
           Text(
-            "Not Started",
+            AppTranslation.NOT_STARTED_STATUS.tr,
             style: textTheme?.copyWith(
               color: theme.colors.lavaRed,
             ),
@@ -68,7 +70,7 @@ Widget infoBuilder(String status, DigitTheme theme) {
           ),
           const SizedBox(width: 2),
           Text(
-            "Completed",
+            AppTranslation.COMPLETED_TRIP_STATUS.tr,
             style: textTheme?.copyWith(
               color: theme.colors.waterBlue,
             ),
@@ -87,7 +89,7 @@ Widget infoBuilder(String status, DigitTheme theme) {
           ),
           const SizedBox(width: 2),
           Text(
-            "On Going",
+            AppTranslation.ON_GOING_STATUS.tr,
             style: textTheme?.copyWith(
               color: theme.colors.darkSpringGreen,
             ),

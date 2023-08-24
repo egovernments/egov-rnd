@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../data/token_service.dart';
 import '../../router/routes.dart';
@@ -34,12 +35,12 @@ class CustomDrawer extends StatelessWidget {
         ),
         children: [
           DigitIconTile(
-            title: "Home",
+            title: AppTranslation.HOME.tr,
             onPressed: () {},
             icon: Icons.home,
           ),
           DigitIconTile(
-            title: "Language",
+            title: AppTranslation.LANGUAGE.tr,
             onPressed: () {},
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -51,12 +52,12 @@ class CustomDrawer extends StatelessWidget {
             icon: Icons.language,
           ),
           DigitIconTile(
-            title: "Org Profile",
+            title: AppTranslation.ORG_PROFILE.tr,
             onPressed: () {},
             icon: Icons.person,
           ),
           DigitIconTile(
-            title: "Logout",
+            title: AppTranslation.LOGOUT.tr,
             onPressed: () async {
               await SecureStorageService.delete("token");
               Get.offAllNamed(LANG);

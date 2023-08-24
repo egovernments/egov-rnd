@@ -35,7 +35,7 @@ class StartTripButton extends StatelessWidget {
         if (data.value.status == TripStates.COMPLETED) {
           return Center(
             child: DigitOutLineButton(
-              label: "Trip Completed",
+              label: AppTranslation.TRIP_COMPLETED.tr,
               onPressed: () {},
             ),
           );
@@ -45,7 +45,7 @@ class StartTripButton extends StatelessWidget {
           child: Text(AppTranslation.START_TRIP.tr),
           onPressed: () async {
             if (tripControllers.isLoading.isTrue || tripControllers.isRunning.isTrue) {
-              toaster(context, "Only one trip can be started at a time", isError: true);
+              toaster(context, AppTranslation.TRIP_RUNNING_STATUS.tr, isError: true);
               return;
             }
 

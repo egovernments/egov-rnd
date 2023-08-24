@@ -12,7 +12,9 @@ Widget scrollableHeaderWidget(bool back, bool help) {
     children: [
       if (back)
         DigitIconButton(
+          iconTextColor: Colors.black,
           iconText: AppTranslation.BACK.tr,
+          iconColor: Colors.black,
           onPressed: () => Get.back(),
           icon: Icons.keyboard_arrow_left,
         ),

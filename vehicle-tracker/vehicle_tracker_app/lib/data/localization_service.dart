@@ -3,9 +3,9 @@
 import 'dart:developer';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../models/localization/localization_hive/localization_hive_model.dart';
 import '../models/localization/localiztion_model/localization_model.dart';
@@ -14,6 +14,8 @@ class LocalizationService {
   static Map<String, String> englishMap = {};
 
   static Future<void> fetchLocalizationData() async {
+    await HiveService.deleteLocalization();
+
     List<LocalizationHiveModel> localizationList = [];
 
     // Checks local storage
@@ -41,7 +43,7 @@ class LocalizationService {
   }
 
   static englishMapper(List<LocalizationHiveModel> localizationList) {
-    for (var item in englishList) {
+    for (var item in AppTranslation.englishValues.keys) {
       int index = localizationList.indexWhere((element) => element.code == item);
       if (index != -1) {
         englishMap[item] = localizationList[index].message;
