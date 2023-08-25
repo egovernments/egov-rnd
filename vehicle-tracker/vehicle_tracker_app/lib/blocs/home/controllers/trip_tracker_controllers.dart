@@ -204,6 +204,23 @@ class TripControllers extends GetxController {
     );
   }
 
+  Future<bool> endTripAPI(Position? currentPosition, String tripId) async {
+    final data = homeHiveRepository.getTripData();
+    data.add(TripHiveModel(
+      latitude: currentPosition?.latitude ?? 0,
+      longitude: currentPosition?.longitude ?? 0,
+    ));
+
+    final status = await homeHTTPRepository.callTrackingApi(data, TripStates.COMPLETED, tripId);
+
+    if (status) {
+      await homeHiveRepository.deleteTripData();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   // ? This function stops the trip
   void endTripFunction(Rx<HomeTripModel> data) async {
     // todo : add an extra API call to send the last position to the server
@@ -218,10 +235,10 @@ class TripControllers extends GetxController {
       log("Error getting current location");
     }
 
-    final status = await positionSender(currentPosition, TripStates.COMPLETED, data.value.id);
-
+    final status = await endTripAPI(currentPosition, data.value.id);
     if (!status) {
       data.value.status = TripStates.RUNNING;
+      toaster(Get.context, AppTranslation.POSITION_NOT_SENT_MESSAGE.tr);
       update([data.value.id]);
       return;
     }

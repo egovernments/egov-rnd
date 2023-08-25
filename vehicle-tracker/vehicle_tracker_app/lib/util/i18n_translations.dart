@@ -50,6 +50,7 @@ class AppTranslation extends Translations {
   static String get LOCATION_SERVICE_DISABLED_MESSAGE => 'locationServiceDisabledMessage';
   static String get LOCATION_PERMISSION_DENIED_MESSAGE => 'locationPermissionDeniedMessage';
   static String get LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE => 'locationPermissionDeniedForeverMessage';
+  static String get POSITION_NOT_SENT_MESSAGE => 'positionNotSentMessage';
 
   static Map<String, String> englishValues = {
     YES: 'Yes',
@@ -97,6 +98,7 @@ class AppTranslation extends Translations {
     LOCATION_SERVICE_DISABLED_MESSAGE: 'Location services are disabled. Please enable the services',
     LOCATION_PERMISSION_DENIED_MESSAGE: 'Location permissions are denied. Please enable the permissions',
     LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE: 'Location permissions are permanently denied, we cannot request permissions.',
+    POSITION_NOT_SENT_MESSAGE: 'Error sending position, pls try again later',
   };
 
   // Map of all translations for english and hindi
