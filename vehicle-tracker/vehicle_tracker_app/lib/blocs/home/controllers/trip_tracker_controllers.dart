@@ -110,7 +110,7 @@ class TripControllers extends GetxController {
       if (status) {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
-        toaster(Get.context, "Position sent successfully to server");
+        toaster(Get.context, AppTranslation.POSITION_SENT_MESSAGE.tr);
         return status;
       } else {
         // If the position sending fails, save the data to hive
@@ -122,7 +122,7 @@ class TripControllers extends GetxController {
       // If not connected to internet, save the data to hive
       log("No internet connection, saving to hive");
       await homeHiveRepository.storeTripData(tripHiveModel);
-      toaster(Get.context, "No internet connection, saving to hive DB");
+      toaster(Get.context, AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
       return false;
     }
   }
@@ -134,7 +134,7 @@ class TripControllers extends GetxController {
       DigitToast.show(
         context,
         options: DigitToastOptions(
-          "Wait for it to complete",
+          AppTranslation.START_LOADING_MESSAGE.tr,
           true,
           DigitTheme.instance.mobileTheme,
         ),
@@ -191,13 +191,13 @@ class TripControllers extends GetxController {
       options: DigitDialogOptions(
         titleText: AppTranslation.WARNING.tr,
         titleIcon: const Icon(Icons.warning, color: Colors.red),
-        contentText: "Are you sure you want to stop the trip?",
+        contentText: AppTranslation.END_TRIP_MESSAGE.tr,
         primaryAction: DigitDialogActions(
-          label: "Yes",
+          label: AppTranslation.YES.tr,
           action: (context) => endTripFunction(data),
         ),
         secondaryAction: DigitDialogActions(
-          label: "No",
+          label: AppTranslation.NO.tr,
           action: (context) => Get.back(),
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/toaster.dart';
 
 class HomeHTTPRepository {
@@ -18,7 +19,7 @@ class HomeHTTPRepository {
     final response = await HttpService.getRequest(reqUrl);
 
     if (response.statusCode != 200) {
-      toaster(Get.context, "Network or Server Error");
+      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr);
       return homeTripModel;
     }
 

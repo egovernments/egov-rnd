@@ -40,6 +40,16 @@ class AppTranslation extends Translations {
   static String get NOT_STARTED_STATUS => 'notStartedStatus';
   static String get ON_GOING_STATUS => 'onGoingStatus';
   static String get COMPLETED_TRIP_STATUS => 'completedTripStatus';
+  static String get END_TRIP_MESSAGE => 'endTripMessage';
+  static String get START_LOADING_MESSAGE => 'startLoadingMessage';
+  static String get POSITION_SENT_MESSAGE => 'positionSentMessage';
+  static String get POSITION_HIVE_STORE_MESSAGE => 'positionHiveStoreMessage';
+  static String get NETWORK_ERROR_MESSAGE => 'networkErrorMessage';
+  static String get LOGIN_SUCCESS_MESSAGE => 'loginSuccessMessage';
+  static String get LOGIN_FAILED_MESSAGE => 'loginFailedMessage';
+  static String get LOCATION_SERVICE_DISABLED_MESSAGE => 'locationServiceDisabledMessage';
+  static String get LOCATION_PERMISSION_DENIED_MESSAGE => 'locationPermissionDeniedMessage';
+  static String get LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE => 'locationPermissionDeniedForeverMessage';
 
   static Map<String, String> englishValues = {
     YES: 'Yes',
@@ -77,6 +87,16 @@ class AppTranslation extends Translations {
     NOT_STARTED_STATUS: 'Not Started',
     ON_GOING_STATUS: 'On Going',
     COMPLETED_TRIP_STATUS: 'Completed',
+    END_TRIP_MESSAGE: 'Are you sure you want to stop the trip?',
+    START_LOADING_MESSAGE: 'Please wait while we start the trip',
+    POSITION_SENT_MESSAGE: 'Position sent successfully',
+    POSITION_HIVE_STORE_MESSAGE: 'No internet connection, saving to hive DB',
+    NETWORK_ERROR_MESSAGE: 'Network or Server Error',
+    LOGIN_SUCCESS_MESSAGE: 'Login Success',
+    LOGIN_FAILED_MESSAGE: 'Login Failed',
+    LOCATION_SERVICE_DISABLED_MESSAGE: 'Location services are disabled. Please enable the services',
+    LOCATION_PERMISSION_DENIED_MESSAGE: 'Location permissions are denied. Please enable the permissions',
+    LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE: 'Location permissions are permanently denied, we cannot request permissions.',
   };
 
   // Map of all translations for english and hindi

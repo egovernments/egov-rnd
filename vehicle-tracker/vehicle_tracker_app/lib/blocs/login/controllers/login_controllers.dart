@@ -27,12 +27,12 @@ class LoginController extends GetxController {
 
     final response = await HttpService.postWithFormData(url, formData);
     if (response.statusCode == 200) {
-      toaster(context, "Login Success");
       String token = response.body['access_token'];
       await SecureStorageService.write("token", token);
+      toaster(context, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
       Get.offAllNamed(HOME);
     } else {
-      toaster(context, "Login Failed", isError: true);
+      toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
     }
   }
 

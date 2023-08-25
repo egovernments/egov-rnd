@@ -4,7 +4,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/toaster.dart';
 
 class TripTrackerUtility {
@@ -23,7 +25,7 @@ class TripTrackerUtility {
     log("handleLocationPermission called");
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      toaster(context, 'Location services are disabled. Please enable the services');
+      toaster(context, AppTranslation.LOCATION_SERVICE_DISABLED_MESSAGE.tr);
       return false;
     }
 
@@ -31,12 +33,12 @@ class TripTrackerUtility {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        toaster(context, "Location permissions are denied. Please enable the permissions");
+        toaster(context, AppTranslation.LOCATION_PERMISSION_DENIED_MESSAGE.tr);
         return false;
       }
     }
     if (permission == LocationPermission.deniedForever) {
-      toaster(context, "Location permissions are permanently denied, we cannot request permissions.");
+      toaster(context, AppTranslation.LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE.tr);
       return false;
     }
 
