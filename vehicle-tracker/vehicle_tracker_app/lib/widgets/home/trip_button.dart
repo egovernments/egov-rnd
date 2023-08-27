@@ -22,7 +22,8 @@ class StartTripButton extends StatelessWidget {
         }
 
         if (data.value.status == TripStates.RUNNING) {
-          return Center(
+          return SizedBox(
+            width: double.infinity,
             child: DigitOutLineButton(
               label: AppTranslation.END_TRIP.tr,
               onPressed: () async {
@@ -33,7 +34,8 @@ class StartTripButton extends StatelessWidget {
         }
 
         if (data.value.status == TripStates.COMPLETED) {
-          return Center(
+          return SizedBox(
+            width: double.infinity,
             child: DigitOutLineButton(
               label: AppTranslation.TRIP_COMPLETED.tr,
               onPressed: () {},
@@ -56,3 +58,11 @@ class StartTripButton extends StatelessWidget {
     );
   }
 }
+
+Widget customOutlineButton() => OutlinedButton(
+      onPressed: () {},
+      style: OutlinedButton.styleFrom(
+        minimumSize: const Size.fromWidth(double.infinity),
+      ),
+      child: const Text("Start Trip"),
+    );

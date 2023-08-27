@@ -226,6 +226,9 @@ class TripControllers extends GetxController {
       return;
     }
 
+    log("Deleting trip data from hive");
+    await homeHiveRepository.deleteTripData();
+
     data.value.status = TripStates.COMPLETED;
     update([data.value.id]);
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.dart';
+import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 
 class InfoController extends GetxController {
@@ -19,7 +20,7 @@ class InfoController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getHomeTripData("rajan123");
+    getHomeTripData(testUserId);
   }
 
   // ? Function to call the API to get all the Trips Data.

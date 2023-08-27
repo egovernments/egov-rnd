@@ -17,6 +17,6 @@ class TripStates {
   static const String ACTIVE = "active";
   static const String PROGRESS = "progress";
   static const String COMPLETED = "completed";
-  static const String RUNNING = "running";
+  static const String RUNNING = "in_progress";
   static const String CREATED = "created";
 }

@@ -17,6 +17,8 @@ double testEndLat = double.parse(dotenv.env["TEST_END_LAT"] ?? "");
 double testEndLong = double.parse(dotenv.env["TEST_END_LONG"] ?? "");
 String apiUrl = dotenv.env["API_URL"] ?? "";
 
+String testUserId = "rajan123";
+
 LatLng testStart = LatLng(testStartLat, testStartLong);
 LatLng testEnd = LatLng(testEndLat, testEndLong);
 

@@ -40,22 +40,8 @@ class HomeHTTPRepository {
 
     Map<String, dynamic> body = {
       "id": data.id,
-      "routeId": data.routeId,
-      "name": "",
-      "serviceCode": data.serviceCode,
       "status": start ? "in_progress" : "completed",
-      "operator": {
-        "id": data.operator.id,
-        "name": data.operator.name,
-        "email": data.operator.email,
-        "contactNumber": data.operator.contactNumber,
-        "vehicleNumber": data.operator.vehicleNumber
-      },
-      "plannedStartTime": data.plannedStartTime ?? "",
-      "plannedEndTime": data.plannedEndTime ?? "",
-      "actualStartTime": data.actualStartTime ?? "",
-      "actualEndTime": data.actualEndTime ?? "",
-      "locationAlerts": [data.locationAlerts ?? ""]
+      "userId": testUserId,
     };
 
     final response = await HttpService.putRequest(reqUrl, body);
@@ -72,25 +58,30 @@ class HomeHTTPRepository {
 
   // ? API to update the trip progress
   Future<bool> updateTripProgress(HomeTripModel data, List<TripHiveModel> positions) async {
-    String reqUrl = "$apiUrl/trip/_progress/_update";
+    String reqUrl = "$apiUrl/trip/_progress";
 
     List<Map<String, dynamic>> updates = [];
 
     for (var position in positions) {
-      updates.add({
-        "progressTime": position.timestamp,
-        "location": {"latitude": position.latitude, "longitude": position.longitude},
-      });
+      updates.add(
+        {
+          "progressTime": position.timestamp,
+          "location": {
+            "latitude": position.latitude,
+            "longitude": position.longitude,
+          },
+        },
+      );
     }
 
     Map<String, dynamic> body = {
-      "id": data.id,
-      "tripId": data.routeId,
+      "tripId": data.id,
       "progressReportedTime": DateTime.now().toIso8601String(),
       "progressData": updates,
-      "matchedPoiId": "",
-      "userId": "rajan123",
+      "userId": testUserId,
     };
+
+    log("Body: $body");
 
     final response = await HttpService.putRequest(reqUrl, body);
 
@@ -121,7 +112,7 @@ class HomeHTTPRepository {
       "type": "point",
       "locationDetails": latLong,
       "alert": [alert],
-      "userId": "rajan123",
+      "userId": testUserId,
       "distanceMeters": 200000,
     };
 
