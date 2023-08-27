@@ -29,20 +29,26 @@ class TripControllers extends GetxController {
   Future<void> startTracking(Rx<HomeTripModel> data) async {
     log('---- Trip and Tracking started ----');
 
-    log("Tracker logic called");
-    await trackerLogic("start", data.value.id);
+    log("Start TRIP API");
+    final status = await homeHTTPRepository.updateTrip(data.value, true);
+    if (!status) {
+      toaster(Get.context, AppTranslation.TRIP_NOT_STARTED_MESSAGE.tr, isError: true);
+      data.value.status = TripStates.CREATED;
+      update([data.value.id]);
+      return;
+    }
 
     data.value.status = TripStates.RUNNING;
     update([data.value.id]);
 
     // Calls the periodic function
-    startPeriodicFunction(data.value.id);
+    startPeriodicFunction(data.value);
   }
 
   // ? This functions starts a timer which will call the trackerLogic function every n seconds
   // ? The timer will stop if the isRunning variable is false
   // ? The main point on this function is to get and send tracker function like a cron schedule
-  void startPeriodicFunction(String tripId) {
+  void startPeriodicFunction(HomeTripModel trip) {
     log('Periodic function started');
     isRunning.value = true;
 
@@ -52,7 +58,7 @@ class TripControllers extends GetxController {
         log("Periodic function stopped");
         _.cancel();
       } else {
-        trackerLogic("In Progress", tripId);
+        trackerLogic("In Progress", trip);
       }
     });
   }
@@ -60,7 +66,7 @@ class TripControllers extends GetxController {
   // ? The tracker logic function which checks location permissions and gets the current position
   // ? If the location permissions are not granted, the function will stop and return early
   // ? If the location permissions are granted, the function will get the current location and use it accordingly
-  Future<void> trackerLogic(String alert, String tripId) async {
+  Future<void> trackerLogic(String alert, HomeTripModel trip) async {
     bool permissions = await tripTrackerUtility.handleLocationPermission(Get.context);
     if (!permissions) {
       isRunning.value = false;
@@ -78,7 +84,7 @@ class TripControllers extends GetxController {
     }
 
     log("Calling position sender logic");
-    await positionSender(currentPosition, alert, tripId);
+    await positionSender(currentPosition, alert, trip);
 
     log(" ---- Tracker Logic Completed ----");
   }
@@ -87,10 +93,11 @@ class TripControllers extends GetxController {
   // ? It will check if the device is connected to internet or not
   // ? If there is internet connection, it will send the data to server
   // ? If by any chance the data sending fails, it will store the data to hive
-  Future<bool> positionSender(Position? position, String alert, String tripId) async {
+  Future<bool> positionSender(Position? position, String alert, HomeTripModel trip) async {
     TripHiveModel tripHiveModel = TripHiveModel(
       latitude: position?.latitude ?? 0,
       longitude: position?.longitude ?? 0,
+      timestamp: DateTime.now().toIso8601String(),
     );
     final isConnected = await tripTrackerUtility.isConnected();
 
@@ -102,11 +109,11 @@ class TripControllers extends GetxController {
       List<TripHiveModel> positions = homeHiveRepository.getTripData();
       positions.add(tripHiveModel);
 
-      // Sending the positions to the server :-
+      // Sending the positions to the server
       // if success delete the hive data
       // else save the data to hive
       log("Sending position to server");
-      final status = await homeHTTPRepository.callTrackingApi(positions, alert, tripId);
+      final status = await homeHTTPRepository.updateTripProgress(trip, positions);
       if (status) {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
@@ -204,41 +211,17 @@ class TripControllers extends GetxController {
     );
   }
 
-  Future<bool> endTripAPI(Position? currentPosition, String tripId) async {
-    final data = homeHiveRepository.getTripData();
-    data.add(TripHiveModel(
-      latitude: currentPosition?.latitude ?? 0,
-      longitude: currentPosition?.longitude ?? 0,
-    ));
-
-    final status = await homeHTTPRepository.callTrackingApi(data, TripStates.COMPLETED, tripId);
-
-    if (status) {
-      await homeHiveRepository.deleteTripData();
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   // ? This function stops the trip
   void endTripFunction(Rx<HomeTripModel> data) async {
-    // todo : add an extra API call to send the last position to the server
-
     data.value.status = TripStates.PROGRESS;
     update([data.value.id]);
 
     Get.back();
 
-    Position? currentPosition = await tripTrackerUtility.getCurrentLocation();
-    if (currentPosition == null) {
-      log("Error getting current location");
-    }
-
-    final status = await endTripAPI(currentPosition, data.value.id);
+    final status = await homeHTTPRepository.updateTrip(data.value, false);
     if (!status) {
       data.value.status = TripStates.RUNNING;
-      toaster(Get.context, AppTranslation.POSITION_NOT_SENT_MESSAGE.tr);
+      toaster(Get.context, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
       update([data.value.id]);
       return;
     }

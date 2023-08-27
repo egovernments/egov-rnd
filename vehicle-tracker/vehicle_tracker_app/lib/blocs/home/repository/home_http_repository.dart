@@ -19,7 +19,7 @@ class HomeHTTPRepository {
     final response = await HttpService.getRequest(reqUrl);
 
     if (response.statusCode != 200) {
-      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr);
+      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true);
       return homeTripModel;
     }
 
@@ -32,7 +32,79 @@ class HomeHTTPRepository {
     return homeTripModel;
   }
 
-  // ? Used to send tracking data to the server.
+  // ? API to start and end the Trip
+  // ? If start is true, then the trip will start
+  // ? If start is false, then the trip will end
+  Future<bool> updateTrip(HomeTripModel data, bool start) async {
+    String reqUrl = "$apiUrl/trip/_update";
+
+    Map<String, dynamic> body = {
+      "id": data.id,
+      "routeId": data.routeId,
+      "name": "",
+      "serviceCode": data.serviceCode,
+      "status": start ? "in_progress" : "completed",
+      "operator": {
+        "id": data.operator.id,
+        "name": data.operator.name,
+        "email": data.operator.email,
+        "contactNumber": data.operator.contactNumber,
+        "vehicleNumber": data.operator.vehicleNumber
+      },
+      "plannedStartTime": data.plannedStartTime ?? "",
+      "plannedEndTime": data.plannedEndTime ?? "",
+      "actualStartTime": data.actualStartTime ?? "",
+      "actualEndTime": data.actualEndTime ?? "",
+      "locationAlerts": [data.locationAlerts ?? ""]
+    };
+
+    final response = await HttpService.putRequest(reqUrl, body);
+
+    // ? If the response is null OR not 200, then return false.
+    if (response.statusCode == null || response.statusCode != 200) {
+      log("Error Code: ${response.statusCode}");
+      log("Error: ${response.body}");
+      return false;
+    }
+
+    return true;
+  }
+
+  // ? API to update the trip progress
+  Future<bool> updateTripProgress(HomeTripModel data, List<TripHiveModel> positions) async {
+    String reqUrl = "$apiUrl/trip/_progress/_update";
+
+    List<Map<String, dynamic>> updates = [];
+
+    for (var position in positions) {
+      updates.add({
+        "progressTime": position.timestamp,
+        "location": {"latitude": position.latitude, "longitude": position.longitude},
+      });
+    }
+
+    Map<String, dynamic> body = {
+      "id": data.id,
+      "tripId": data.routeId,
+      "progressReportedTime": DateTime.now().toIso8601String(),
+      "progressData": updates,
+      "matchedPoiId": "",
+      "userId": "rajan123",
+    };
+
+    final response = await HttpService.putRequest(reqUrl, body);
+
+    // ? If the response is null OR not 200, then return false.
+    if (response.statusCode == null || response.statusCode != 200) {
+      log("Error Code: ${response.statusCode}");
+      log("Error: ${response.body}");
+      return false;
+    }
+
+    return true;
+  }
+
+  // ? API to create a new POI
   Future<bool> callTrackingApi(List<TripHiveModel> positions, String alert, String tripId) async {
     String reqUrl = "$apiUrl/poi/_create";
 

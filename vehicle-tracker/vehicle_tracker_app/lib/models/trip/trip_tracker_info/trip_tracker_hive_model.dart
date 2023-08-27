@@ -10,8 +10,12 @@ class TripHiveModel extends HiveObject {
   @HiveField(1)
   double longitude;
 
+  @HiveField(2)
+  String timestamp;
+
   TripHiveModel({
     required this.latitude,
     required this.longitude,
+    required this.timestamp,
   });
 }

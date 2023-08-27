@@ -19,17 +19,20 @@ class TripHiveModelAdapter extends TypeAdapter<TripHiveModel> {
     return TripHiveModel(
       latitude: fields[0] as double,
       longitude: fields[1] as double,
+      timestamp: fields[2] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, TripHiveModel obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.latitude)
       ..writeByte(1)
-      ..write(obj.longitude);
+      ..write(obj.longitude)
+      ..writeByte(2)
+      ..write(obj.timestamp);
   }
 
   @override
