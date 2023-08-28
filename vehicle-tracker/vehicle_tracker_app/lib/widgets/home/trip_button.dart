@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,11 +11,19 @@ import '../../models/home_trip/home_trip_model/home_trip_model.dart';
 import '../../util/i18n_translations.dart';
 
 class StartTripButton extends StatelessWidget {
-  const StartTripButton({super.key, required this.data});
+  StartTripButton({super.key, required this.data});
   final Rx<HomeTripModel> data;
+
+  final tripControllers = Get.find<TripControllers>();
 
   @override
   Widget build(BuildContext context) {
+    
+    if (data.value.status == TripStates.RUNNING) {
+      log("Running previous trip");
+      tripControllers.startPeriodicFunction(data.value);
+    }
+
     return GetBuilder<TripControllers>(
       id: data.value.id,
       builder: (tripControllers) {
