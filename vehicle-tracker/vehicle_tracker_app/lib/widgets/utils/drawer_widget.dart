@@ -36,7 +36,13 @@ class CustomDrawer extends StatelessWidget {
         children: [
           DigitIconTile(
             title: AppTranslation.HOME.tr,
-            onPressed: () {},
+            onPressed: () {
+              if (Get.currentRoute != HOME) {
+                Get.toNamed(HOME);
+              } else {
+                Get.back();
+              }
+            },
             icon: Icons.home,
           ),
           DigitIconTile(
