@@ -2,8 +2,8 @@
 
 import 'package:get/get.dart';
 
-import '../blocs/map_page/bindings/map_bindings.dart';
-import '../pages/map_page/map_page.dart';
+import '../blocs/map/bindings/map_bindings.dart';
+import '../pages/map/map_page.dart';
 
 String MAP = "/map";
 
