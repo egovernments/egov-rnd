@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:map_web_app/constants.dart';
 import 'package:map_web_app/data/http_service.dart';
 import 'package:map_web_app/models/map/trip_progress/progress_report_model.dart';
 
@@ -31,8 +32,7 @@ class RouteControllers extends GetxController {
   }
 
   Future<void> fetchData() async {
-    // String url = "$ApiUrl/trip/_progress/_search?tripId=52ecddb0-a128-423e-aa54-390e85adf83e";
-    String url = "http://localhost:8000/trip";
+    String url = "$ApiUrl/trip/_progress/_search?tripId=52ecddb0-a128-423e-aa54-390e85adf83e";
 
     final response = await HttpService.getRequest(url);
     if (response.statusCode == 200) {
@@ -42,9 +42,6 @@ class RouteControllers extends GetxController {
         progressReportList.add(progressReport);
       }
     }
-
-    // * Polyline
-    polyPoints.clear();
 
     for (var item in progressReportList) {
       final list = item.progressData ?? [];
