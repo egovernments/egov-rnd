@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -15,8 +13,6 @@ List<Polygon> polygonLayerWidget(MapControllers controller) {
   if (controller.newPolygon != null) {
     polygons.add(controller.newPolygon!);
   }
-
-  log('Total polygons: ${polygons.length}');
 
   return polygons;
 }

@@ -11,7 +11,7 @@ LatLng random3 = const LatLng(28.6598, 77.1137);
 String urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 List<String> subDomain = ['a', 'b', 'c'];
 
-String ApiUrl = "http://167.71.225.156:8080/api/v3";
+String apiUrl = "http://167.71.225.156:8080/api/v3";
 
 List<String> siteTypes = ['Waste Land', 'Dumping Ground', 'Landfill'];
 

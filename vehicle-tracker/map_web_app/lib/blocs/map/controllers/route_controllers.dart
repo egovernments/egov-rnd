@@ -32,7 +32,7 @@ class RouteControllers extends GetxController {
   }
 
   Future<void> fetchData() async {
-    String url = "$ApiUrl/trip/_progress/_search?tripId=52ecddb0-a128-423e-aa54-390e85adf83e";
+    String url = "$apiUrl/trip/_progress/_search?tripId=52ecddb0-a128-423e-aa54-390e85adf83e";
 
     final response = await HttpService.getRequest(url);
     if (response.statusCode == 200) {
