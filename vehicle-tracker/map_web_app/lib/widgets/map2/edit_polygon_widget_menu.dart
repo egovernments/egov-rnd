@@ -21,11 +21,10 @@ Widget editPolygonMenuWidget(MapControllers controller, BuildContext context) {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: kPadding),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Icon(Icons.location_on, color: theme.colors.burningOrange),
-                  Text("Edit Point Location", style: textTheme.headlineMedium),
+                  Text("Edit Point Location", style: textTheme.headlineLarge),
                 ],
               ),
             ),

@@ -62,8 +62,9 @@ Widget createPolygonMenuWidget(MapControllers controller, BuildContext context) 
 
   return Align(
     alignment: Alignment.centerLeft,
-    child: SizedBox(
+    child: Container(
       width: 400,
+      constraints: const BoxConstraints(maxHeight: 400),
       child: DigitCard(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -80,17 +81,21 @@ Widget createPolygonMenuWidget(MapControllers controller, BuildContext context) 
             ),
 
             // * List of all the polygons
-            Table(
-              border: TableBorder.all(color: theme.colors.black),
-              columnWidths: const {
-                0: FlexColumnWidth(3),
-                1: FlexColumnWidth(1),
-                2: FlexColumnWidth(1),
-              },
-              children: [
-                tableRowHeader(),
-                for (final polygon in controller.polygons) tableRowItemBuilder(polygon, theme, controller),
-              ],
+            Flexible(
+              child: SingleChildScrollView(
+                child: Table(
+                  border: TableBorder.all(color: theme.colors.black),
+                  columnWidths: const {
+                    0: FlexColumnWidth(3),
+                    1: FlexColumnWidth(1),
+                    2: FlexColumnWidth(1),
+                  },
+                  children: [
+                    tableRowHeader(),
+                    for (final polygon in controller.polygons) tableRowItemBuilder(polygon, theme, controller),
+                  ],
+                ),
+              ),
             ),
 
             Padding(
