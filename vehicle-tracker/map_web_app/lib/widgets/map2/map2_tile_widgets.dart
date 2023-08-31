@@ -8,7 +8,7 @@ import 'package:map_web_app/blocs/map2/controllers/map_controllers.dart';
 List<Polygon> polygonLayerWidget(MapControllers controller) {
   List<Polygon> polygons = [];
 
-  for (var polygon in controller.customPolygons) {
+  for (var polygon in controller.polygons) {
     polygons.add(polygon);
   }
 

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:map_web_app/blocs/map2/controllers/map_controllers.dart';
 import 'package:map_web_app/constants.dart';
@@ -25,12 +26,12 @@ class CreatePolygonWidget extends StatelessWidget {
 Widget addPolygonWidget(MapControllers controller, BuildContext context) {
   final textTheme = DigitTheme.instance.mobileTheme.textTheme;
   final theme = DigitTheme.instance;
-  final width = MediaQuery.of(context).size.width;
+  // final width = MediaQuery.of(context).size.width;
 
   return Align(
     alignment: Alignment.centerLeft,
     child: SizedBox(
-      width: width * 0.2,
+      width: 350,
       child: DigitCard(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -39,10 +40,11 @@ Widget addPolygonWidget(MapControllers controller, BuildContext context) {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: kPadding),
               child: Row(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Icon(Icons.location_on, color: theme.colors.burningOrange),
-                  Text("Add Point Location", style: textTheme.headlineLarge),
+                  Text("Add Point Location", style: textTheme.headlineMedium),
                 ],
               ),
             ),
@@ -97,19 +99,81 @@ Widget addPolygonWidget(MapControllers controller, BuildContext context) {
   );
 }
 
+TableRow tableRowHead() {
+  return const TableRow(
+    children: [
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: kPadding, horizontal: kPadding * 2),
+        child: Text("Location"),
+      ),
+      Padding(
+        padding: EdgeInsets.all(kPadding),
+        child: Text("Last Week \nStops"),
+      ),
+      Padding(
+        padding: EdgeInsets.all(kPadding),
+        child: Text("Actions"),
+      ),
+    ],
+  );
+}
+
+TableRow tableRowItemBuilder(Polygon polygon, DigitTheme theme, MapControllers controller) {
+  log(controller.polygons.length.toString());
+
+  return TableRow(children: [
+    const Padding(
+      padding: EdgeInsets.symmetric(vertical: kPadding, horizontal: kPadding * 2),
+      child: Text("Name"),
+    ),
+    const Padding(
+      padding: EdgeInsets.all(kPadding),
+      child: Text("12"),
+    ),
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.edit),
+          color: theme.colors.burningOrange,
+        ),
+        IconButton(
+          onPressed: () => controller.removePolygon(polygon),
+          icon: const Icon(Icons.delete),
+          color: theme.colors.burningOrange,
+        ),
+      ],
+    ),
+  ]);
+}
+
 Widget createPolygonWidget(MapControllers controller, BuildContext context) {
   final textTheme = DigitTheme.instance.mobileTheme.textTheme;
   final theme = DigitTheme.instance;
-  final width = MediaQuery.of(context).size.width;
 
   return Align(
     alignment: Alignment.centerLeft,
     child: SizedBox(
-      width: width * 0.2,
+      width: 400,
       child: DigitCard(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // * List of all the polygons
+            Table(
+              border: TableBorder.all(color: theme.colors.black),
+              columnWidths: const {
+                0: FlexColumnWidth(3),
+                1: FlexColumnWidth(1),
+                2: FlexColumnWidth(2),
+              },
+              children: [
+                tableRowHead(),
+                for (final polygon in controller.polygons) tableRowItemBuilder(polygon, theme, controller),
+              ],
+            ),
+
             Padding(
               padding: const EdgeInsets.symmetric(vertical: kPadding),
               child: Row(

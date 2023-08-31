@@ -8,9 +8,8 @@ import 'package:latlong2/latlong.dart';
 import '../../../constants.dart';
 
 class MapControllers extends GetxController {
-
   // * Dummy Data
-  List<Polygon> customPolygons = <Polygon>[
+  RxList<Polygon> polygons = <Polygon>[
     Polygon(
       points: [newDelhi, newDelhi2, newDelhi3],
       color: Colors.red.withOpacity(0.5),
@@ -25,7 +24,7 @@ class MapControllers extends GetxController {
       borderStrokeWidth: 2,
       isFilled: true,
     ),
-  ];
+  ].obs;
 
   RxList<Marker> markers = <Marker>[].obs;
 
@@ -60,7 +59,6 @@ class MapControllers extends GetxController {
     newPolygonBuilder();
 
     log("Point : $point");
-
   }
 
   // ? method to build new polygon from the dummy list
@@ -83,8 +81,7 @@ class MapControllers extends GetxController {
     // ? To copy the list of points into a new object
     List<LatLng> copy = List.from(newPolyPoints);
 
-    customPolygons.add(
-      Polygon(
+    polygons.add(Polygon(
       points: copy,
       color: Colors.red.withOpacity(0.5),
       borderColor: Colors.red,
@@ -95,7 +92,6 @@ class MapControllers extends GetxController {
     newPolyPoints.clear();
     newPolygon = null;
     isDrawing.value = false;
-
   }
 
   // ? method to cancel building new polygon
@@ -103,5 +99,11 @@ class MapControllers extends GetxController {
     newPolyPoints.clear();
     newPolygon = null;
     isDrawing.value = false;
+  }
+
+  void removePolygon(Polygon polygon) {
+    log("Polygon removing");
+    polygons.remove(polygon);
+    log(polygons.length.toString());
   }
 }
