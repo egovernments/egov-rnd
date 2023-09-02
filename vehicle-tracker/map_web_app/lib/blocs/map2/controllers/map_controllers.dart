@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:map_web_app/models/map2/alert_polygons.dart';
 
 import '../../../constants.dart';
+import '../repository/map2_http_repository.dart';
 
 class MapControllers extends GetxController {
   // * Dummy Data
@@ -25,8 +27,10 @@ class MapControllers extends GetxController {
       isFilled: true,
     ),
   ].obs;
+  RxList<AlertPolygon> alertPolygons = <AlertPolygon>[].obs;
 
   RxList<Marker> markers = <Marker>[].obs;
+  RxList<AlertPolygon> alertMarkers = <AlertPolygon>[].obs;
 
   RxList<LatLng> newPolyPoints = <LatLng>[].obs;
   Polygon? newPolygon;
@@ -46,7 +50,17 @@ class MapControllers extends GetxController {
   // ? API to fetch data
   Future<void> fetchData() async {
     isFetching.value = true;
-    // todo: fetch data from api
+
+    final alertPolygons = await Map2HttpRepository.getAllPolygonsWithAlerts();
+
+    for (var alartPolygon in alertPolygons) {
+      if (alartPolygon.type == "point") {
+        alertMarkers.add(alartPolygon);
+      } else {
+        alertPolygons.add(alartPolygon);
+      }
+    }
+
     isFetching.value = false;
   }
 
@@ -97,7 +111,7 @@ class MapControllers extends GetxController {
 
   void removePolygon(Polygon polygon) {
     log("Polygon removing");
-    
+
     // todo: call any apis if needed
 
     polygons.remove(polygon);
