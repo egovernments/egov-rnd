@@ -11,7 +11,7 @@ class Map2HttpRepository {
       "id": alertPolygon.id,
       "locationName": alertPolygon.locationName,
       "status": alertPolygon.status,
-      "type":  alertPolygon.type == "Polygon" ? "line" : alertPolygon.type, // ! error here
+      "type":  alertPolygon.type, // ! error here
       "userId": alertPolygon.userId,
       "alert": alertPolygon.alert,
       "distanceMeters": alertPolygon.distanceMeters,

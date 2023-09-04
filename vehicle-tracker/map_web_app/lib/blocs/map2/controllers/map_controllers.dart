@@ -112,6 +112,14 @@ class MapControllers extends GetxController {
       ));
     }
 
+    // * Add the first point to the last to make it a closed polygon
+    if (newPolyPoints.length > 2) {
+      copy.add(LocationDetails(
+        latitude: newPolyPoints.first.latitude,
+        longitude: newPolyPoints.first.longitude,
+      ));
+    }
+
     AlertPolygon newAlertPolygon = AlertPolygon(
       locationName: siteNameController.text,
       status: "active",
@@ -153,6 +161,14 @@ class MapControllers extends GetxController {
       copy.add(LocationDetails(
         latitude: point.latitude,
         longitude: point.longitude,
+      ));
+    }
+
+    // * Add the first point to the last to make it a closed polygon
+    if (newPolyPoints.length > 2) {
+      copy.add(LocationDetails(
+        latitude: newPolyPoints.first.latitude,
+        longitude: newPolyPoints.first.longitude,
       ));
     }
 
