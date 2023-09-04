@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
@@ -28,6 +29,8 @@ class MapControllers extends GetxController {
 
   TextEditingController siteNameController = TextEditingController();
   TextEditingController siteDistanceController = TextEditingController();
+
+  DigitTheme theme = DigitTheme.instance;
 
   @override
   void onInit() {
@@ -83,8 +86,8 @@ class MapControllers extends GetxController {
   void newPolygonBuilder() {
     newPolygon = Polygon(
       points: newPolyPoints,
-      color: Colors.red.withOpacity(0.5),
-      borderColor: Colors.red,
+      color: theme.colors.lavaRed.withOpacity(0.5),
+      borderColor: theme.colors.lavaRed,
       borderStrokeWidth: 2,
       isFilled: true,
     );
@@ -216,8 +219,8 @@ class MapControllers extends GetxController {
 
     selectedPolygon.value = Polygon(
       points: oldPolygon.locationDetails!.map((e) => LatLng(e.latitude!, e.longitude!)).toList(),
-      color: Colors.blue.withOpacity(0.5),
-      borderColor: Colors.blue,
+      color: theme.colors.curiousBlue.withOpacity(0.5),
+      borderColor: theme.colors.curiousBlue,
       borderStrokeWidth: 2,
       isFilled: true,
     );

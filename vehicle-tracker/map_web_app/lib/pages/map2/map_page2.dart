@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
@@ -73,8 +74,8 @@ class MapPage2 extends StatelessWidget {
 
     return Polygon(
       points: polygon.points,
-      color: Colors.red.withOpacity(0.5),
-      borderColor: Colors.red,
+      color: DigitTheme.instance.colors.lavaRed.withOpacity(0.5),
+      borderColor: DigitTheme.instance.colors.lavaRed,
       borderStrokeWidth: 2,
       isFilled: true,
     );

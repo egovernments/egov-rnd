@@ -1,3 +1,4 @@
+import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -9,8 +10,8 @@ List<Polygon> polygonLayerWidget(MapControllers controller) {
   for (var alertPolygon in controller.alertPolygons) {
     polygons.add(Polygon(
       points: controller.polygonPointBuilder(alertPolygon.locationDetails),
-      color: Colors.red.withOpacity(0.5),
-      borderColor: Colors.red,
+      color: DigitTheme.instance.colors.lavaRed.withOpacity(0.5),
+      borderColor: DigitTheme.instance.colors.lavaRed,
       borderStrokeWidth: 2,
       isFilled: true,
     ));
@@ -41,9 +42,9 @@ MarkerLayer markerLayerWidget2(MapControllers controller) => MarkerLayer(
 Marker markerBuilder(MapControllers controller, LatLng point) {
   return Marker(
     point: point,
-    builder: (context) => const Icon(
+    builder: (context) => Icon(
       Icons.location_on,
-      color: Colors.red,
+      color: DigitTheme.instance.colors.lavaRed,
       size: 20,
     ),
   );

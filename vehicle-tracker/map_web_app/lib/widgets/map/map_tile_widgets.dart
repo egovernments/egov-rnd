@@ -1,3 +1,4 @@
+import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:map_web_app/blocs/map/controllers/route_controllers.dart';
@@ -9,7 +10,7 @@ PolylineLayer polyLineWidget(RouteControllers controller) => PolylineLayer(
         Polyline(
           points: controller.polyPoints,
           strokeWidth: 2.0,
-          color: Colors.blue,
+          color: DigitTheme.instance.colors.curiousBlue,
         ),
       ],
     );
@@ -20,14 +21,14 @@ MarkerLayer markerLayerWidget(RouteControllers controller) => MarkerLayer(
         // * Start Location
         Marker(
           point: controller.polyPoints.first,
-          builder: (ctx) => const Icon(Icons.fire_truck, color: Colors.blue),
+          builder: (ctx) => Icon(Icons.fire_truck, color: DigitTheme.instance.colors.curiousBlue),
         ),
 
         // * End Location
         Marker(
           rotate: true,
           point: controller.polyPoints.last,
-          builder: (ctx) => const Icon(Icons.warehouse, color: Colors.blue),
+          builder: (ctx) => Icon(Icons.warehouse, color: DigitTheme.instance.colors.curiousBlue),
         ),
       ],
     );
