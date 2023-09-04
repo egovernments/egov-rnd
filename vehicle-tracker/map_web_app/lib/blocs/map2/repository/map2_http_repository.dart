@@ -11,14 +11,12 @@ class Map2HttpRepository {
       "id": alertPolygon.id,
       "locationName": alertPolygon.locationName,
       "status": alertPolygon.status,
-      "type":  alertPolygon.type, // ! error here
+      "type": alertPolygon.type,
       "userId": alertPolygon.userId,
       "alert": alertPolygon.alert,
       "distanceMeters": alertPolygon.distanceMeters,
       "locationDetails": alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
     };
-
-    print(jsonMap);
 
     final response = await HttpService.postRequestWithoutToken(url, jsonMap);
 
@@ -36,14 +34,12 @@ class Map2HttpRepository {
       "id": alertPolygon.id,
       "locationName": alertPolygon.locationName,
       "status": alertPolygon.status,
-      "type":  alertPolygon.type == "polygon" ? "line" : alertPolygon.type, // ! error here
+      "type": alertPolygon.type == "polygon" ? "line" : alertPolygon.type,
       "userId": alertPolygon.userId,
       "alert": alertPolygon.alert,
       "distanceMeters": alertPolygon.distanceMeters,
       "locationDetails": alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
     };
-
-    print(jsonMap);
 
     final response = await HttpService.putRequestWithoutToken(url, jsonMap);
 

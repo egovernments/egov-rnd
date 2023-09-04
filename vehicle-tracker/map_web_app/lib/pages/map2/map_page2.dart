@@ -1,11 +1,7 @@
-import 'dart:developer';
 
-import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
-import 'package:latlong2/latlong.dart';
-import 'package:map_web_app/constants.dart';
 import 'package:map_web_app/widgets/map/map_tile_widgets.dart';
 import 'package:map_web_app/widgets/map2/map2_tile_widgets.dart';
 import 'package:map_web_app/widgets/map2/menu_tile_widget.dart';
@@ -69,15 +65,4 @@ class MapPage2 extends StatelessWidget {
     );
   }
 
-  Polygon polygonBuilder(Polygon polygon) {
-    log("Building");
-
-    return Polygon(
-      points: polygon.points,
-      color: DigitTheme.instance.colors.lavaRed.withOpacity(0.5),
-      borderColor: DigitTheme.instance.colors.lavaRed,
-      borderStrokeWidth: 2,
-      isFilled: true,
-    );
-  }
 }
