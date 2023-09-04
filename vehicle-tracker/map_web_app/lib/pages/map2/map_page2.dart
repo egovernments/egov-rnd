@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:map_web_app/constants.dart';
 import 'package:map_web_app/widgets/map/map_tile_widgets.dart';
 import 'package:map_web_app/widgets/map2/map2_tile_widgets.dart';
@@ -17,13 +18,21 @@ class MapPage2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<MapControllers>(
       builder: (controller) {
+        if (controller.isFetching.isTrue) {
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+
         return SafeArea(
           child: Scaffold(
             // * Flutter Map
             body: FlutterMap(
               // * Options
               options: MapOptions(
-                center: newDelhi,
+                center: controller.locationSetter(),
                 zoom: 13,
                 maxZoom: 18,
                 minZoom: 1,

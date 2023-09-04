@@ -1,32 +1,23 @@
-import 'package:latlong2/latlong.dart';
 import 'package:map_web_app/constants.dart';
 import 'package:map_web_app/models/map2/alert_polygons.dart';
 
 import '../../../data/http_service.dart';
 
 class Map2HttpRepository {
-  static Future<bool> createPolygon(int distance, List<LatLng> positions) async {
+  static Future<bool> createPolygon(AlertPolygon alertPolygon) async {
     String url = "$apiUrl/poi/_create";
 
-    List<Map<String, dynamic>> locationDetails = [];
-
-    for (var position in positions) {
-      Map<String, dynamic> location = {
-        "latitude": position.latitude,
-        "longitude": position.longitude,
-      };
-      locationDetails.add(location);
-    }
-
     Map<String, dynamic> jsonMap = {
-      "locationName": "",
-      "status": "active",
-      "type": "polygon",
-      "userId": "rajan123",
-      "alert": ["Alert-001"],
-      "distanceMeters": distance,
-      "locationDetails": locationDetails,
+      "locationName": alertPolygon.locationName,
+      "status": alertPolygon.status,
+      "type":  "line", // ! error here
+      "userId": alertPolygon.userId,
+      "alert": alertPolygon.alert,
+      "distanceMeters": alertPolygon.distanceMeters,
+      "locationDetails": alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
     };
+
+    print(jsonMap);
 
     final response = await HttpService.postRequestWithoutToken(url, jsonMap);
 

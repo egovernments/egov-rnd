@@ -53,7 +53,7 @@ Widget editPolygonMenuWidget(MapControllers controller, BuildContext context) {
                   padding: const EdgeInsets.symmetric(vertical: kPadding),
                   child: DigitElevatedButton(
                     onPressed: () {
-                      controller.editPolygon();
+                      // controller.editPolygon();
                       log("Polygon Editted");
                     },
                     child: const Text("Edit Location"),
@@ -65,7 +65,7 @@ Widget editPolygonMenuWidget(MapControllers controller, BuildContext context) {
                   padding: const EdgeInsets.symmetric(vertical: kPadding),
                   child: DigitOutLineButton(
                     onPressed: () {
-                      controller.cancelEditPolygon();
+                      // controller.cancelEditPolygon();
                     },
                     label: "\t\tCancel\t\t",
                   ),

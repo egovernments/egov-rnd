@@ -32,7 +32,7 @@ Widget addPolygonMenuWidget(MapControllers controller, BuildContext context) {
             ),
 
             // * Text Fields for Site Name
-            const DigitTextField(label: "Site Name"),
+            DigitTextField(label: "Site Name", controller: controller.siteNameController),
 
             // * Dropdown Menu for Site Type
             DigitDropdown<String>(
@@ -44,7 +44,7 @@ Widget addPolygonMenuWidget(MapControllers controller, BuildContext context) {
             ),
 
             // * Text Field for Alert Distance
-            const DigitTextField(label: "Alert when within a distance (meters) of "),
+            DigitTextField(label: "Alert when within a distance (meters) of ", controller: controller.siteDistanceController),
 
             // * Buttons
             Row(
@@ -56,7 +56,6 @@ Widget addPolygonMenuWidget(MapControllers controller, BuildContext context) {
                   child: DigitElevatedButton(
                     onPressed: () {
                       controller.addNewPolygon();
-                      log("Polygon Added");
                     },
                     child: const Text("Add Location"),
                   ),

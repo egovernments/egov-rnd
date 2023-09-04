@@ -8,6 +8,8 @@ LatLng random1 = const LatLng(28.6708, 77.1061);
 LatLng random2 = const LatLng(28.6602, 77.0987);
 LatLng random3 = const LatLng(28.6598, 77.1137);
 
+LatLng custom = const LatLng(17.428446, 78.302284);
+
 String urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 List<String> subDomain = ['a', 'b', 'c'];
 

@@ -6,8 +6,18 @@ import 'package:map_web_app/blocs/map2/controllers/map_controllers.dart';
 List<Polygon> polygonLayerWidget(MapControllers controller) {
   List<Polygon> polygons = [];
 
-  for (var polygon in controller.polygons) {
-    polygons.add(polygon);
+  // for (var polygon in controller.polygons) {
+  //   polygons.add(polygon);
+  // }
+
+  for (var alertPolygon in controller.alertPolygons) {
+    polygons.add(Polygon(
+      points: controller.polygonPointBuilder(alertPolygon.locationDetails),
+      color: Colors.red.withOpacity(0.5),
+      borderColor: Colors.red,
+      borderStrokeWidth: 2,
+      isFilled: true,
+    ));
   }
 
   if (controller.newPolygon != null) {
