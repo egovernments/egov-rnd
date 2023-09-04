@@ -18,7 +18,8 @@ class MapControllers extends GetxController {
   RxList<LatLng> newPolyPoints = <LatLng>[].obs;
 
   Polygon? newPolygon;
-  Polygon? edittingPolygon;
+  AlertPolygon? edittingAlertPolygon;
+  var selectedPolygon = Rxn<Polygon>();
 
   RxBool isFetching = false.obs;
   RxBool isDrawing = false.obs;
@@ -52,19 +53,6 @@ class MapControllers extends GetxController {
     log("Alert Polygons: ${this.alertPolygons.length}");
 
     isFetching.value = false;
-  }
-
-  LatLng locationSetter() {
-    return custom;
-
-    if (alertMarkers.isNotEmpty && alertMarkers.first.locationDetails!.isNotEmpty) {
-      return LatLng(
-        alertMarkers.first.locationDetails!.last.latitude!,
-        alertMarkers.first.locationDetails!.last.longitude!,
-      );
-    } else {
-      return newDelhi;
-    }
   }
 
   List<LatLng> polygonPointBuilder(List<LocationDetails>? locationDetails) {
@@ -145,19 +133,67 @@ class MapControllers extends GetxController {
     dataClearer();
   }
 
+  void editPolygon() async {
+    if (newPolygon == null || newPolyPoints.isEmpty) {
+      log("empty build polygon");
+      return;
+    }
+
+    if (siteNameController.text.isEmpty || siteDistanceController.text.isEmpty) {
+      log("empty text field");
+      return;
+    }
+
+    List<LocationDetails> copy = [];
+
+    for (var point in newPolyPoints) {
+      copy.add(LocationDetails(
+        latitude: point.latitude,
+        longitude: point.longitude,
+      ));
+    }
+
+    AlertPolygon newAlertPolygon = AlertPolygon(
+      id: edittingAlertPolygon?.id ?? "",
+      locationName: siteNameController.text,
+      status: "active",
+      type: shapeTypeSetter(copy.length),
+      userId: "rajan123",
+      alert: ["Alert-001"],
+      distanceMeters: int.parse(siteDistanceController.text),
+      locationDetails: copy,
+    );
+
+    // * Call the api to create new polygon
+    final response = await Map2HttpRepository.updatePolygon(newAlertPolygon);
+    if (response == false) {
+      log("Error in calling CREATE POLYGON api");
+      return;
+    }
+
+    // * Add the new polygon to the list
+    alertPolygons.remove(edittingAlertPolygon);
+    alertPolygons.add(newAlertPolygon);
+
+    log("Done");
+
+    // * Clear all the data
+    dataClearer();
+  }
+
   String shapeTypeSetter(int points) {
     switch (points) {
       case 0:
         return "None";
 
       case 1:
-        return "Point";
+        return "point";
 
       case 2:
-        return "Line";
+        return "line";
 
       default:
-        return "Polygon";
+        return "polygon";
     }
   }
 
@@ -174,66 +210,28 @@ class MapControllers extends GetxController {
     alertPolygons.remove(alertPolygon);
   }
 
-  // void editPolygonSetup(Polygon oldPolygon) {
-  //   isDrawing.value = true;
-  //   isEditing.value = true;
+  void editPolygonSetup(AlertPolygon oldPolygon) {
+    isDrawing.value = true;
+    isEditing.value = true;
 
-  //   polygons.add(
-  //     Polygon(
-  //       points: oldPolygon.points,
-  //       color: Colors.blue.withOpacity(0.5),
-  //       borderColor: Colors.blue,
-  //       borderStrokeWidth: 2,
-  //       isFilled: true,
-  //     ),
-  //   );
+    selectedPolygon.value = Polygon(
+      points: oldPolygon.locationDetails!.map((e) => LatLng(e.latitude!, e.longitude!)).toList(),
+      color: Colors.blue.withOpacity(0.5),
+      borderColor: Colors.blue,
+      borderStrokeWidth: 2,
+      isFilled: true,
+    );
 
-  //   edittingPolygon = oldPolygon;
-  // }
+    edittingAlertPolygon = oldPolygon;
 
-  // void editPolygon() {
-  //   if (newPolygon == null) {
-  //     return;
-  //   }
-
-  //   // todo: call any apis if needed
-
-  //   // ? To copy the list of points into a new object
-  //   List<LatLng> copy = List.from(newPolyPoints);
-
-  //   // ? Remove the old copy polygon
-  //   polygons.removeLast();
-
-  //   // ? Remove the actual previous polygon
-  //   polygons.remove(edittingPolygon);
-
-  //   // ? Add the new polygon
-  //   polygons.add(
-  //     Polygon(
-  //       points: copy,
-  //       color: Colors.red.withOpacity(0.5),
-  //       borderColor: Colors.red,
-  //       borderStrokeWidth: 2,
-  //       isFilled: true,
-  //     ),
-  //   );
-
-  //   // ? Clear all the data
-  //   dataClearer();
-  // }
-
-  // cancelEditPolygon() {
-  //   // ? Remove the old copy polygon
-  //   polygons.removeLast();
-
-  //   // ? Clear all the data
-  //   dataClearer();
-  // }
+    log("Polygon editing");
+  }
 
   dataClearer() {
     newPolyPoints.clear();
     newPolygon = null;
-    edittingPolygon = null;
+    edittingAlertPolygon = null;
+    selectedPolygon.value = null;
     isDrawing.value = false;
     isEditing.value = false;
     siteNameController.clear();
@@ -257,5 +255,18 @@ class MapControllers extends GetxController {
     String centreY = (sumY / points.length).toStringAsFixed(4);
 
     return "$centreX, $centreY";
+  }
+
+  LatLng locationSetter() {
+    return custom;
+
+    if (alertMarkers.isNotEmpty && alertMarkers.first.locationDetails!.isNotEmpty) {
+      return LatLng(
+        alertMarkers.first.locationDetails!.last.latitude!,
+        alertMarkers.first.locationDetails!.last.longitude!,
+      );
+    } else {
+      return newDelhi;
+    }
   }
 }

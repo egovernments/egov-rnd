@@ -6,10 +6,6 @@ import 'package:map_web_app/blocs/map2/controllers/map_controllers.dart';
 List<Polygon> polygonLayerWidget(MapControllers controller) {
   List<Polygon> polygons = [];
 
-  // for (var polygon in controller.polygons) {
-  //   polygons.add(polygon);
-  // }
-
   for (var alertPolygon in controller.alertPolygons) {
     polygons.add(Polygon(
       points: controller.polygonPointBuilder(alertPolygon.locationDetails),
@@ -22,6 +18,14 @@ List<Polygon> polygonLayerWidget(MapControllers controller) {
 
   if (controller.newPolygon != null) {
     polygons.add(controller.newPolygon!);
+  }
+
+  // if (controller.edittingPolygon. != null) {
+  //   polygons.add(controller.edittingPolygon!);
+  // }
+
+  if (controller.selectedPolygon.value != null) {
+    polygons.add(controller.selectedPolygon.value!);
   }
 
   return polygons;

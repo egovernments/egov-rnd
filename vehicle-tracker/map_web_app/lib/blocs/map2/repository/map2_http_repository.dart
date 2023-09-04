@@ -8,9 +8,10 @@ class Map2HttpRepository {
     String url = "$apiUrl/poi/_create";
 
     Map<String, dynamic> jsonMap = {
+      "id": alertPolygon.id,
       "locationName": alertPolygon.locationName,
       "status": alertPolygon.status,
-      "type":  "line", // ! error here
+      "type":  alertPolygon.type == "Polygon" ? "line" : alertPolygon.type, // ! error here
       "userId": alertPolygon.userId,
       "alert": alertPolygon.alert,
       "distanceMeters": alertPolygon.distanceMeters,
@@ -20,6 +21,31 @@ class Map2HttpRepository {
     print(jsonMap);
 
     final response = await HttpService.postRequestWithoutToken(url, jsonMap);
+
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static Future<bool> updatePolygon(AlertPolygon alertPolygon) async {
+    String url = "$apiUrl/poi/_update";
+
+    Map<String, dynamic> jsonMap = {
+      "id": alertPolygon.id,
+      "locationName": alertPolygon.locationName,
+      "status": alertPolygon.status,
+      "type":  alertPolygon.type == "polygon" ? "line" : alertPolygon.type, // ! error here
+      "userId": alertPolygon.userId,
+      "alert": alertPolygon.alert,
+      "distanceMeters": alertPolygon.distanceMeters,
+      "locationDetails": alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
+    };
+
+    print(jsonMap);
+
+    final response = await HttpService.putRequestWithoutToken(url, jsonMap);
 
     if (response.statusCode == 200) {
       return true;

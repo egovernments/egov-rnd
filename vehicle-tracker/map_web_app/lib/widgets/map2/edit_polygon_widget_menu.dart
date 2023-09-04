@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +28,10 @@ Widget editPolygonMenuWidget(MapControllers controller, BuildContext context) {
             ),
 
             // * Text Fields for Site Name
-            const DigitTextField(label: "Site Name"),
+            DigitTextField(
+              label: "Site Name",
+              controller: controller.siteNameController,
+            ),
 
             // * Dropdown Menu for Site Type
             DigitDropdown<String>(
@@ -42,7 +43,10 @@ Widget editPolygonMenuWidget(MapControllers controller, BuildContext context) {
             ),
 
             // * Text Field for Alert Distance
-            const DigitTextField(label: "Alert when within a distance (meters) of "),
+            DigitTextField(
+              label: "Alert when within a distance (meters) of ",
+              controller: controller.siteDistanceController,
+            ),
 
             // * Buttons
             Row(
@@ -52,10 +56,7 @@ Widget editPolygonMenuWidget(MapControllers controller, BuildContext context) {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: kPadding),
                   child: DigitElevatedButton(
-                    onPressed: () {
-                      // controller.editPolygon();
-                      log("Polygon Editted");
-                    },
+                    onPressed: () => controller.editPolygon(),
                     child: const Text("Edit Location"),
                   ),
                 ),
@@ -64,9 +65,7 @@ Widget editPolygonMenuWidget(MapControllers controller, BuildContext context) {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: kPadding),
                   child: DigitOutLineButton(
-                    onPressed: () {
-                      // controller.cancelEditPolygon();
-                    },
+                    onPressed: () => controller.cancelNewPolygon(),
                     label: "\t\tCancel\t\t",
                   ),
                 ),

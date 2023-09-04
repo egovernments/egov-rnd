@@ -1,6 +1,5 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:map_web_app/models/map2/alert_polygons.dart';
 
 import '../../blocs/map2/controllers/map_controllers.dart';
@@ -41,14 +40,14 @@ TableRow tableRowItemBuilder(AlertPolygon polygon, DigitTheme theme, MapControll
         IconButton(
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(),
-          onPressed: () => {}, //controller.editPolygonSetup(polygon),
+          onPressed: () => controller.editPolygonSetup(polygon),
           icon: const Icon(Icons.edit),
           color: theme.colors.burningOrange,
         ),
         IconButton(
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(),
-          onPressed: () => {}, // controller.removePolygon(polygon),
+          onPressed: () => controller.removePolygon(polygon),
           icon: const Icon(Icons.delete),
           color: theme.colors.burningOrange,
         ),
