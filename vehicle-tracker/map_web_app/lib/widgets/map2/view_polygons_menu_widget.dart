@@ -1,6 +1,5 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
-import 'package:map_web_app/models/map2/alert_polygons.dart';
 
 import '../../blocs/map2/controllers/map_controllers.dart';
 
@@ -13,7 +12,7 @@ TableRow tableRowHeader() {
       ),
       Padding(
         padding: EdgeInsets.all(kPadding),
-        child: Text("Last Week \nStops", style: TextStyle(fontWeight: FontWeight.bold)),
+        child: Text("Last Week Stops", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
       Padding(
         padding: EdgeInsets.all(kPadding),
@@ -23,37 +22,42 @@ TableRow tableRowHeader() {
   );
 }
 
-TableRow tableRowItemBuilder(AlertPolygon polygon, DigitTheme theme, MapControllers controller) {
-  return TableRow(children: [
-    Padding(
-      padding: const EdgeInsets.all(kPadding),
-      child: Text(controller.polygonCentreCalculator(polygon.locationDetails!)),
-    ),
-    const Padding(
-      padding: EdgeInsets.all(kPadding),
-      child: Center(child: Text("12")),
-    ),
-    Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        IconButton(
-          padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(),
-          onPressed: () => controller.editPolygonSetup(polygon),
-          icon: const Icon(Icons.edit),
-          color: theme.colors.burningOrange,
-        ),
-        IconButton(
-          padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(),
-          onPressed: () => controller.removePolygon(polygon),
-          icon: const Icon(Icons.delete),
-          color: theme.colors.burningOrange,
-        ),
-      ],
-    ),
-  ]);
+TableRow tableRowItemBuilder(int index, DigitTheme theme, MapControllers controller) {
+  final polygon = controller.alertPolygons[index];
+
+  return TableRow(
+    decoration: index.isEven ? BoxDecoration(color: theme.colors.quillGray) : null,
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(kPadding),
+        child: Text(controller.polygonCentreCalculator(polygon.locationDetails!)),
+      ),
+      const Padding(
+        padding: EdgeInsets.all(kPadding),
+        child: Center(child: Text("12")),
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
+            onPressed: () => controller.editPolygonSetup(polygon),
+            icon: const Icon(Icons.edit),
+            color: theme.colors.burningOrange,
+          ),
+          IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
+            onPressed: () => controller.removePolygon(polygon),
+            icon: const Icon(Icons.delete),
+            color: theme.colors.burningOrange,
+          ),
+        ],
+      ),
+    ],
+  );
 }
 
 Widget createPolygonMenuWidget(MapControllers controller, BuildContext context) {
@@ -75,7 +79,7 @@ Widget createPolygonMenuWidget(MapControllers controller, BuildContext context) 
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Icon(Icons.location_on, color: theme.colors.burningOrange),
-                  Text("Add Point Location", style: textTheme.headlineLarge),
+                  Text("Recommended Sites", style: textTheme.headlineLarge),
                 ],
               ),
             ),
@@ -84,15 +88,15 @@ Widget createPolygonMenuWidget(MapControllers controller, BuildContext context) 
             Flexible(
               child: SingleChildScrollView(
                 child: Table(
-                  border: TableBorder.all(color: theme.colors.black),
+                  border: TableBorder.all(color: theme.colors.white),
                   columnWidths: const {
                     0: FlexColumnWidth(3),
-                    1: FlexColumnWidth(1),
+                    1: FlexColumnWidth(1.5),
                     2: FlexColumnWidth(1),
                   },
                   children: [
                     tableRowHeader(),
-                    for (final polygon in controller.alertPolygons) tableRowItemBuilder(polygon, theme, controller),
+                    for (int i = 0; i < controller.alertPolygons.length; i++) tableRowItemBuilder(i, theme, controller)
                   ],
                 ),
               ),
