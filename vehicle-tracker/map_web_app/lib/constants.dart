@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:latlong2/latlong.dart';
 
 LatLng newDelhi = const LatLng(28.61992743538245, 77.20905101733563);
@@ -10,10 +11,11 @@ LatLng random3 = const LatLng(28.6598, 77.1137);
 
 LatLng custom = const LatLng(17.428446, 78.302284);
 
-String urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+// ? Important variables
+String urlTemplate = dotenv.env["URL_TEMPLATE"] ?? "";
 List<String> subDomain = ['a', 'b', 'c'];
-
-String apiUrl = "http://167.71.225.156:8080/api/v3";
+String apiUrl = dotenv.env["API_URL"] ?? "";
+String userID = dotenv.env["USER_ID"] ?? "";
 
 List<String> siteTypes = ['Waste Land', 'Dumping Ground', 'Landfill'];
 

@@ -1,9 +1,15 @@
 import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:map_web_app/router/routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Load up the environment variables
+  await dotenv.load(fileName: ".env");
+  
   runApp(const MyApp());
 }
 

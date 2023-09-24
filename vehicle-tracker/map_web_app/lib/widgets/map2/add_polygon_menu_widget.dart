@@ -8,7 +8,6 @@ import '../../constants.dart';
 Widget addPolygonMenuWidget(MapControllers controller, BuildContext context) {
   final textTheme = DigitTheme.instance.mobileTheme.textTheme;
   final theme = DigitTheme.instance;
-  // final width = MediaQuery.of(context).size.width;
 
   return Align(
     alignment: Alignment.centerLeft,
@@ -18,6 +17,7 @@ Widget addPolygonMenuWidget(MapControllers controller, BuildContext context) {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            
             // * Heading
             Padding(
               padding: const EdgeInsets.symmetric(vertical: kPadding),

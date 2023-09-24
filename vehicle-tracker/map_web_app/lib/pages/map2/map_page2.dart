@@ -34,6 +34,7 @@ class MapPage2 extends StatelessWidget {
                 maxZoom: 18,
                 minZoom: 1,
                 onTap: (tapPosition, point) {
+                  // ? The tap behavious will change accordingly when we are building a polygon
                   if (controller.isDrawing.isTrue) {
                     controller.addNewPolyPoints(point);
                   }

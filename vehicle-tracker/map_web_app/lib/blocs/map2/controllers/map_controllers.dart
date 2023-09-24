@@ -58,6 +58,9 @@ class MapControllers extends GetxController {
     isFetching.value = false;
   }
 
+  // ? Function to get all data from the api and set up the markers for the map
+  // This will render points on the map and as the points are increasing, it will build a polygon
+  // using those points. 
   List<LatLng> polygonPointBuilder(List<LocationDetails>? locationDetails) {
     List<LatLng> points = [];
 
@@ -76,13 +79,13 @@ class MapControllers extends GetxController {
     return points;
   }
 
-  // ? method to add new polypoints to the dummy list
+  // ? method to add new polypoints to the dummy array
   void addNewPolyPoints(LatLng point) {
     newPolyPoints.add(point);
     newPolygonBuilder();
   }
 
-  // ? method to build new polygon from the dummy list
+  // ? method to build new polygon from the dummy object
   void newPolygonBuilder() {
     newPolygon = Polygon(
       points: newPolyPoints,
@@ -93,7 +96,10 @@ class MapControllers extends GetxController {
     );
   }
 
-  // ? Method to add new polygon to the main list
+  // ? Method to add new polygon to the main polygon array
+  // This will use the dummy polygon and deep copy it to the main polygon array
+  // This will also call the api to create new polygon in the server
+  // After the polygon is created, the dummy polygon is deleted
   void addNewPolygon() async {
     if (newPolygon == null || newPolyPoints.isEmpty) {
       return;
@@ -124,7 +130,7 @@ class MapControllers extends GetxController {
       locationName: siteNameController.text,
       status: "active",
       type: shapeTypeSetter(copy.length),
-      userId: "rajan123",
+      userId: userID,
       alert: ["Alert-001"],
       distanceMeters: int.parse(siteDistanceController.text),
       locationDetails: copy,
@@ -144,6 +150,11 @@ class MapControllers extends GetxController {
     dataClearer();
   }
 
+  // ? method to edit polygon
+  // What it does is build a new dummy polygon on tha map with different color so as to show which polygon we are editing
+  // As the user clicks on the map to add new points, the a new polygon is drawed
+  // When the user clicks on the save button, the dummy polygon is deep copied and saved to the main polygon array and sent to the server
+  // THe old dummy polygon is deleted after it
   void editPolygon() async {
     if (newPolygon == null || newPolyPoints.isEmpty) {
       log("empty build polygon");
@@ -177,7 +188,7 @@ class MapControllers extends GetxController {
       locationName: siteNameController.text,
       status: "active",
       type: shapeTypeSetter(copy.length),
-      userId: "rajan123",
+      userId: userID,
       alert: ["Alert-001"],
       distanceMeters: int.parse(siteDistanceController.text),
       locationDetails: copy,
@@ -200,6 +211,7 @@ class MapControllers extends GetxController {
     dataClearer();
   }
 
+  // ? A method to set the type of the polygon based on the number of points
   String shapeTypeSetter(int points) {
     switch (points) {
       case 0:
@@ -224,7 +236,7 @@ class MapControllers extends GetxController {
   void removePolygon(AlertPolygon alertPolygon) {
     log("Polygon removing");
 
-    // todo: call any apis if needed
+    // todo: add the delete api implementation here
 
     alertPolygons.remove(alertPolygon);
   }
@@ -246,6 +258,7 @@ class MapControllers extends GetxController {
     log("Polygon editing");
   }
 
+  // ? method to clear all the objwcts and reset it
   dataClearer() {
     newPolyPoints.clear();
     newPolygon = null;
@@ -257,6 +270,8 @@ class MapControllers extends GetxController {
     siteDistanceController.clear();
   }
 
+  // ? This will calculate the centre of a polygon by taking avg of all the points in that polygom
+  // ? Calculating the actual centroid of every kind of polygon would be complex and take extra computation
   String polygonCentreCalculator(List<LocationDetails> points) {
     double sumX = 0;
     double sumY = 0;
@@ -276,6 +291,8 @@ class MapControllers extends GetxController {
     return "$centreX, $centreY";
   }
 
+  // ? sets up the initial location for the map.
+  // todo : can be configured later
   LatLng locationSetter() {
     return custom;
 
