@@ -47,13 +47,16 @@ TableRow tableRowItemBuilder(int index, DigitTheme theme, MapControllers control
             icon: const Icon(Icons.edit),
             color: theme.colors.burningOrange,
           ),
-          IconButton(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-            onPressed: () => controller.removePolygon(polygon),
-            icon: const Icon(Icons.delete),
-            color: theme.colors.burningOrange,
-          ),
+
+          // ! Can be used to delete the polygon
+          // todo: Add delete functionality when the AP is ready
+          // IconButton(
+          //   padding: EdgeInsets.zero,
+          //   constraints: const BoxConstraints(),
+          //   onPressed: () => controller.removePolygon(polygon),
+          //   icon: const Icon(Icons.delete),
+          //   color: theme.colors.burningOrange,
+          // ),
         ],
       ),
     ],
