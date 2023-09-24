@@ -2,12 +2,12 @@ import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/constants.dart';
-import 'package:vehicle_tracker_app/data/token_service.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/toaster.dart';
 
 import '../../../data/http_service.dart';
+import '../../../data/secure_storage_service.dart';
 
 class LoginController extends GetxController {
   TextEditingController userNameController = TextEditingController();

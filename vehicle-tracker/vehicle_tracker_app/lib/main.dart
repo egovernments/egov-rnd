@@ -7,11 +7,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vehicle_tracker_app/data/mdms_service.dart';
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
-import 'package:vehicle_tracker_app/data/token_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'data/localization_service.dart';
+import 'data/secure_storage_service.dart';
 import 'models/localization/localization_hive/localization_hive_model.dart';
 import 'models/mdms/mdms_hive/mdms_hive_model.dart';
 
