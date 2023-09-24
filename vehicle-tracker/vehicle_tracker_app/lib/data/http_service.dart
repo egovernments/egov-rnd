@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../constants.dart';
-import 'token_service.dart';
+import 'secure_storage_service.dart';
 
 class HttpService {
   static Future<Response> postWithFormData(String url, Map<String, dynamic> formData) async {
