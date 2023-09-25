@@ -2,6 +2,7 @@ import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/constants.dart';
+import 'package:vehicle_tracker_app/models/login/login_data_model/login_data_model.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/toaster.dart';
@@ -16,23 +17,35 @@ class LoginController extends GetxController {
   String city = cities.keys.first;
 
   void login(context) async {
-    Map<String, dynamic> formData = {
-      "grant_type": "password",
-      "scope": "read",
-      "username": userNameController.text.trim(),
-      "password": passwordController.text.trim(),
-      "userType": "EMPLOYEE",
-      "tenantId": cities[city],
-    };
+    try {
+      Map<String, dynamic> formData = {
+        "grant_type": "password",
+        "scope": "read",
+        "username": userNameController.text.trim(),
+        "password": passwordController.text.trim(),
+        "userType": "EMPLOYEE",
+        "tenantId": cities[city],
+      };
 
-    final response = await HttpService.postWithFormData(url, formData);
-    if (response.statusCode == 200) {
-      String token = response.body['access_token'];
-      await SecureStorageService.write("token", token);
-      toaster(context, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
-      Get.offAllNamed(HOME);
-    } else {
-      toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+      final response = await HttpService.postWithFormData(url, formData);
+      if (response.statusCode == 200) {
+        final loginModel = LoginDataModel.fromJson(response.body);
+
+        await Future.wait([
+          SecureStorageService.write(token, loginModel.access_token),
+          SecureStorageService.write(uuid, loginModel.UserRequest.uuid),
+          SecureStorageService.write(tenantId, loginModel.UserRequest.tenantId)
+        ]);
+
+        toaster(context, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
+        Get.offAllNamed(HOME);
+      } else {
+        toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+      }
+    } on FormatException catch (e) {
+      toaster(context, e.message, isError: true);
+    } on Exception catch (e) {
+      toaster(context, e.toString(), isError: true);
     }
   }
 

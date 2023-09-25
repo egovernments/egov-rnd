@@ -1,15 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.dart';
 import 'package:vehicle_tracker_app/constants.dart';
+import 'package:vehicle_tracker_app/data/secure_storage_service.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 
 class InfoController extends GetxController {
   RxBool isCompleted = false.obs; // To check if the completed button is pressed or not.
   RxBool isLoading = false.obs; // To check if the data is loading or not.
   RxBool isTextControllerEmpty = true.obs; // To check if the search text is empty or not.
-  
+
   HomeHTTPRepository homeHTTPRepository = HomeHTTPRepository();
   final TextEditingController searchController = TextEditingController();
   final normalTripList = RxList<Rx<HomeTripModel>>([]);
@@ -51,7 +54,6 @@ class InfoController extends GetxController {
   // ? The filtered list is used when the search text is not empty.
   void onChangedFilter(String value) {
     if (isCompleted.isTrue) {
-
       // If the completed button is pressed then the filtered list is assigned to the completed list.
       filteredCompletedTripList.value = completedTripList.where((element) {
         bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
@@ -60,7 +62,6 @@ class InfoController extends GetxController {
       }).toList();
       return;
     } else {
-
       // If the completed button is not pressed then the filtered list is assigned to the normal list.
       filteredNormalTripList.value = normalTripList.where((element) {
         bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
@@ -69,4 +70,5 @@ class InfoController extends GetxController {
       }).toList();
     }
   }
+ 
 }

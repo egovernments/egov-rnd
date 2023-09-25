@@ -22,4 +22,6 @@ String testUserId = "rajan123";
 LatLng testStart = LatLng(testStartLat, testStartLong);
 LatLng testEnd = LatLng(testEndLat, testEndLong);
 
-
+String token = "token";
+String uuid = "uuid";
+String tenantId = "tenantId";
