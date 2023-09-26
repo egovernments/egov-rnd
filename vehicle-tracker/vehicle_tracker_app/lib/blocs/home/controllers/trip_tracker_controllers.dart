@@ -152,28 +152,6 @@ class TripControllers extends GetxController {
     return false;
   }
 
-  // ? Start trip dialog box by using the tripId
-  Future<void> startTrip(BuildContext context, Rx<HomeTripModel> data) async {
-    await DigitDialog.show(
-      context,
-      options: DigitDialogOptions(
-        titleText: AppTranslation.WARNING.tr,
-        titleIcon: const Icon(Icons.warning, color: Colors.red),
-        contentText: AppTranslation.START_TRIP_MESSAGE.tr,
-        primaryAction: DigitDialogActions(
-          label: AppTranslation.YES.tr,
-          action: (context) async => await startTripFunction(data),
-        ),
-        secondaryAction: DigitDialogActions(
-          label: AppTranslation.NO.tr,
-          action: (context) {
-            Get.back();
-          },
-        ),
-      ),
-    );
-  }
-
   // ? This function starts the trip
   Future<void> startTripFunction(Rx<HomeTripModel> data) async {
     // updates the UI
@@ -189,26 +167,6 @@ class TripControllers extends GetxController {
     isLoading.toggle();
     await startTracking(data);
     isLoading.toggle();
-  }
-
-  // ? Stop trip dialog box
-  Future<void> endTrip(BuildContext context, Rx<HomeTripModel> data) async {
-    await DigitDialog.show(
-      context,
-      options: DigitDialogOptions(
-        titleText: AppTranslation.WARNING.tr,
-        titleIcon: const Icon(Icons.warning, color: Colors.red),
-        contentText: AppTranslation.END_TRIP_MESSAGE.tr,
-        primaryAction: DigitDialogActions(
-          label: AppTranslation.YES.tr,
-          action: (context) => endTripFunction(data),
-        ),
-        secondaryAction: DigitDialogActions(
-          label: AppTranslation.NO.tr,
-          action: (context) => Get.back(),
-        ),
-      ),
-    );
   }
 
   // ? This function stops the trip
@@ -241,5 +199,47 @@ class TripControllers extends GetxController {
 
     // stops the periodic function
     isRunning.value = false;
+  }
+
+  // ? Start trip dialog box by using the tripId
+  Future<void> startTrip(BuildContext context, Rx<HomeTripModel> data) async {
+    await DigitDialog.show(
+      context,
+      options: DigitDialogOptions(
+        titleText: AppTranslation.WARNING.tr,
+        titleIcon: const Icon(Icons.warning, color: Colors.red),
+        contentText: AppTranslation.START_TRIP_MESSAGE.tr,
+        primaryAction: DigitDialogActions(
+          label: AppTranslation.YES.tr,
+          action: (context) async => await startTripFunction(data),
+        ),
+        secondaryAction: DigitDialogActions(
+          label: AppTranslation.NO.tr,
+          action: (context) {
+            Get.back();
+          },
+        ),
+      ),
+    );
+  }
+
+  // ? Stop trip dialog box
+  Future<void> endTrip(BuildContext context, Rx<HomeTripModel> data) async {
+    await DigitDialog.show(
+      context,
+      options: DigitDialogOptions(
+        titleText: AppTranslation.WARNING.tr,
+        titleIcon: const Icon(Icons.warning, color: Colors.red),
+        contentText: AppTranslation.END_TRIP_MESSAGE.tr,
+        primaryAction: DigitDialogActions(
+          label: AppTranslation.YES.tr,
+          action: (context) => endTripFunction(data),
+        ),
+        secondaryAction: DigitDialogActions(
+          label: AppTranslation.NO.tr,
+          action: (context) => Get.back(),
+        ),
+      ),
+    );
   }
 }

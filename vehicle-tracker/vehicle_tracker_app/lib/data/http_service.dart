@@ -4,8 +4,8 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:vehicle_tracker_app/constants.dart';
 
-import '../constants.dart';
 import 'secure_storage_service.dart';
 
 class HttpService {
@@ -100,7 +100,7 @@ class HttpService {
   }
 
   static Future<Response> getRequestWithoutToken(String route) async {
-    String url = uri + route;
+    String url = apiUrl + route;
     try {
       var response = await http.get(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ class HttpService {
   }
 
   static Future<Response> deleteRequest(String route, Map<String, dynamic>? jsonMap) async {
-    String url = uri + route;
+    String url = apiUrl + route;
     String body = json.encode(jsonMap);
     try {
       var response = await http.delete(
@@ -160,7 +160,7 @@ class HttpService {
   }
 
   static Future<Response> putRequest(String route, Map<String, dynamic> jsonMap) async {
-    String url = uri + route;
+    String url = apiUrl + route;
     String body = json.encode(jsonMap);
 
     try {

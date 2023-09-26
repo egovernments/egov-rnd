@@ -2,11 +2,11 @@
 
 import 'dart:developer';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
+import '../constants.dart';
 import '../models/localization/localization_hive/localization_hive_model.dart';
 import '../models/localization/localiztion_model/localization_model.dart';
 
@@ -64,8 +64,7 @@ class LocalizationService {
 
   // get localization from API
   static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI() async {
-    final env = dotenv.env["LOCALIZATION_API_URL"];
-    final url = "${env}locale=en_IN&tenantId=pb&_=1683277829758";
+    final url = "${localizationUrl}locale=en_IN&tenantId=pb&_=1683277829758";
 
     Map<String, dynamic> body = {
       "RequestInfo": {
