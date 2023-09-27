@@ -70,23 +70,7 @@ class HomePage extends StatelessWidget {
               padding: theme.verticalMargin * 2,
               child: Center(child: toggler(context, infoController)),
             ),
-            // Padding(
-            //   padding: theme.buttonPadding,
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //     children: [
-            //       DigitOutLineButton(
-            //         label: AppTranslation.IN_PROGRESS.tr,
-            //         onPressed: () => infoController.isCompleted.value = false,
-            //       ),
-            //       DigitOutLineButton(
-            //         label: AppTranslation.COMPLETED.tr,
-            //         onPressed: () => infoController.isCompleted.value = true,
-            //       ),
-            //     ],
-            //   ),
-            // ),
-
+            
             // * trip list builder widget
             TripInfoListBuilderWidget(infoController: infoController),
           ],

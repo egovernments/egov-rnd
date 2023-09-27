@@ -48,13 +48,13 @@ class CustomDrawer extends StatelessWidget {
             icon: Icons.home,
           ),
           DigitIconTile(
-            title: AppTranslation.LANGUAGE.tr,
+            title: AppTranslation.ENGLISH.tr,
             onPressed: () {},
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 DigitElevatedButton(child: const Text("Hindi"), onPressed: () {}),
-                DigitOutLineButton(label: "English", onPressed: () {}),
+                DigitOutLineButton(label: AppTranslation.ENGLISH.tr, onPressed: () {}),
               ],
             ),
             icon: Icons.language,

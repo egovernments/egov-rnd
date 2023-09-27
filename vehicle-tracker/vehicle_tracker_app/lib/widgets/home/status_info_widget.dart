@@ -18,7 +18,7 @@ Widget statusInfoWidget(String status) {
       ),
       color: colourPicker(status, theme),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kPadding, vertical: kPadding),
+        padding: theme.buttonPadding * 0.65,
         child: infoBuilder(status, theme),
       ),
     ),
@@ -53,7 +53,7 @@ Widget infoBuilder(String status, DigitTheme theme) {
           ),
           const SizedBox(width: 2),
           Text(
-            AppTranslation.NOT_STARTED_STATUS.tr,
+            "NONE",
             style: textTheme?.copyWith(
               color: theme.colors.davyGray,
             ),

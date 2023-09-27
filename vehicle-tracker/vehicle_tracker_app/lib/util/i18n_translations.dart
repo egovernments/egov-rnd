@@ -20,7 +20,7 @@ class AppTranslation extends Translations {
   static String get MY_TRIPS => 'myTrips';
   static String get HELP => 'help';
   static String get HOME => 'home';
-  static String get LANGUAGE => 'language';
+  static String get ENGLISH => 'english';
   static String get ORG_PROFILE => 'orgProfile';
   static String get LOGOUT => 'logout';
   static String get SEARCH_BAR_HINT => 'searchBar';
@@ -52,6 +52,7 @@ class AppTranslation extends Translations {
   static String get LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE => 'locationPermissionDeniedForeverMessage';
   static String get TRIP_NOT_END_MESSAGE => 'tripNotEndMessage';
   static String get TRIP_NOT_STARTED_MESSAGE => 'tripNotStartedMessage';
+  static String get NONE_TRIP => 'nonetrip';
 
   static Map<String, String> englishValues = {
     YES: 'Yes',
@@ -69,7 +70,7 @@ class AppTranslation extends Translations {
     MY_TRIPS: 'My Trips',
     HELP: 'Help',
     HOME: 'Home',
-    LANGUAGE: 'Language',
+    ENGLISH: 'English',
     ORG_PROFILE: 'Org Profile',
     LOGOUT: 'Logout',
     SEARCH_BAR_HINT: 'Search Mobile Number / Name',
@@ -101,15 +102,16 @@ class AppTranslation extends Translations {
     LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE: 'Location permissions are permanently denied, we cannot request permissions.',
     TRIP_NOT_END_MESSAGE: 'Trip was not able to end, pls try again later',
     TRIP_NOT_STARTED_MESSAGE: 'Trip was not able to start, pls try again later',
+    NONE_TRIP: 'Cant Start This Trip',
   };
 
   // Map of all translations for english and hindi
   @override
   Map<String, Map<String, String>> get keys => {
         // English
-        'en_IN': englishValues,
+        'en_IN': englishValues, // change this to english map when english is ready
 
         // Hindi
-        'hi_IN': LocalizationService.englishMap,
+        'hi_IN': LocalizationService.englishMap, // change this to hindi map when hindi is ready
       };
 }

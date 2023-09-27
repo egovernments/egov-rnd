@@ -11,7 +11,8 @@ import '../models/localization/localization_hive/localization_hive_model.dart';
 import '../models/localization/localiztion_model/localization_model.dart';
 
 class LocalizationService {
-  static Map<String, String> englishMap = {};
+  static Map<String, String> englishMap = {}; // This english translation map is used in AppTranslation class for english translations
+  static Map<String, String> hindiMap = {}; // This hindi translation map is used in AppTranslation class for hindi translations
 
   static Future<void> fetchLocalizationData() async {
     await HiveService.deleteLocalization();
@@ -40,6 +41,7 @@ class LocalizationService {
 
     // Map english localization
     englishMapper(localizationList);
+    
   }
 
   static englishMapper(List<LocalizationHiveModel> localizationList) {
@@ -47,6 +49,15 @@ class LocalizationService {
       int index = localizationList.indexWhere((element) => element.code == item);
       if (index != -1) {
         englishMap[item] = localizationList[index].message;
+      }
+    }
+  }
+
+  static hindiMapper(List<LocalizationHiveModel> localizationList) {
+    for (var item in AppTranslation.englishValues.keys) {
+      int index = localizationList.indexWhere((element) => element.code == item);
+      if (index != -1) {
+        hindiMap[item] = localizationList[index].message;
       }
     }
   }
