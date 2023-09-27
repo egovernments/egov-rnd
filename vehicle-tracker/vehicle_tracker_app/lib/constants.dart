@@ -4,6 +4,8 @@ final String apiUrl = dotenv.env["API_URL"] ?? "";
 final String localizationUrl = dotenv.env["LOCALIZATION_API_URL"] ?? "";
 final String mdmsUrl = dotenv.env["MDMS_URL"] ?? "";
 final String loginUrl = dotenv.env["LOGIN_URL"] ?? "";
+final int periodicTrackingFrequency = int.parse(dotenv.env["PERIODIC_TRACKING_FREQUENCY"] ?? "10");
+
 
 const Map<String, String> cities = {
   "City A": "pg.citya",

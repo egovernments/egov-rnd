@@ -9,6 +9,7 @@ import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
 import 'package:vehicle_tracker_app/blocs/home/controllers/info_controllers.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_hive_repository.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.dart';
+import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
@@ -52,7 +53,7 @@ class TripControllers extends GetxController {
     log('Periodic function started');
     isRunning.value = true;
 
-    Timer.periodic(const Duration(seconds: 10), (_) async {
+    Timer.periodic(Duration(seconds: periodicTrackingFrequency), (_) async {
       log("Periodic function called");
       if (!isRunning.value) {
         log("Periodic function stopped");
