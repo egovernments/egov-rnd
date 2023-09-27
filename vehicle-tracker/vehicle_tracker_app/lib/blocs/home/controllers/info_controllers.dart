@@ -7,6 +7,7 @@ import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.d
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/secure_storage_service.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
+import 'package:vehicle_tracker_app/router/routes.dart';
 
 class InfoController extends GetxController {
   RxBool isCompleted = false.obs; // To check if the completed button is pressed or not.
@@ -23,19 +24,25 @@ class InfoController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getHomeTripData(testUserId);
+    getHomeTripData();
   }
 
   // ? Function to call the API to get all the Trips Data.
-  Future<void> getHomeTripData(String userId) async {
-    await fillList(userId);
+  Future<void> getHomeTripData() async {
+    final cityId = await SecureStorageService.read(tenantId);
+    if (cityId == null) {
+      log("City ID is null");
+      Get.offAllNamed(LANG);
+    }
+
+    await fillList(cityId!);
   }
 
   // ? It will get the trip data and filter the data based on the status.
   // ? The filters are if status is completed or not.
-  Future<void> fillList(String userId) async {
+  Future<void> fillList(String tentantId) async {
     isLoading.toggle();
-    final totalList = await homeHTTPRepository.getHomeTripData(userId);
+    final totalList = await homeHTTPRepository.getHomeTripData(tentantId);
 
     normalTripList.value = totalList.where((element) {
       return element.value.status != TripStates.COMPLETED;
@@ -56,19 +63,28 @@ class InfoController extends GetxController {
     if (isCompleted.isTrue) {
       // If the completed button is pressed then the filtered list is assigned to the completed list.
       filteredCompletedTripList.value = completedTripList.where((element) {
-        bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
-        bool contactNumber = element.value.operator.contactNumber.contains(value);
+        // avoiding all null values
+        if (element.value.operator == null) return false;
+        if (element.value.operator!.name == null) return false;
+        if (element.value.operator!.contactNumber == null) return false;
+
+        bool name = element.value.operator!.name!.toLowerCase().contains(value.toLowerCase());
+        bool contactNumber = element.value.operator!.contactNumber!.contains(value);
         return name || contactNumber;
       }).toList();
       return;
     } else {
       // If the completed button is not pressed then the filtered list is assigned to the normal list.
       filteredNormalTripList.value = normalTripList.where((element) {
-        bool name = element.value.operator.name.toLowerCase().contains(value.toLowerCase());
-        bool contactNumber = element.value.operator.contactNumber.contains(value);
+        // avoiding all null values
+        if (element.value.operator == null) return false;
+        if (element.value.operator?.name == null) return false;
+        if (element.value.operator?.contactNumber == null) return false;
+
+        bool name = element.value.operator!.name!.toLowerCase().contains(value.toLowerCase());
+        bool contactNumber = element.value.operator!.contactNumber!.contains(value);
         return name || contactNumber;
       }).toList();
     }
   }
- 
 }

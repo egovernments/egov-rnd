@@ -19,4 +19,5 @@ class TripStates {
   static const String COMPLETED = "completed";
   static const String RUNNING = "in_progress";
   static const String CREATED = "created";
+  static const String NONE = "none";
 }

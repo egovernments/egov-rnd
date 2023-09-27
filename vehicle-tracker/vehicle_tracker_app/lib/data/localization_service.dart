@@ -76,7 +76,7 @@ class LocalizationService {
     };
 
     // http request
-    final response = await HttpService.postRequestWithoutToken(url, body);
+    final response = await HttpService.postRequest(url, body);
     if (response.statusCode == 200) {
       final parsed = response.body["messages"] as List<dynamic>;
       final localizationList = parseLocalization(parsed);

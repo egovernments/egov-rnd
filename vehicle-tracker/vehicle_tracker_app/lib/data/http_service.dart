@@ -40,7 +40,8 @@ class HttpService {
     }
   }
 
-  static Future<Response> postRequestWithoutToken(String url, Map<String, dynamic> jsonMap) async {
+  static Future<Response> postRequest(String url, Map<String, dynamic> jsonMap) async {
+    jsonMap["X-authToken"] = await SecureStorageService.read(token) ?? 'null';
     String body = json.encode(jsonMap);
 
     try {
@@ -48,6 +49,7 @@ class HttpService {
         Uri.parse(url),
         headers: {
           'Content-Type': 'application/json',
+          'X-authToken': await SecureStorageService.read("token") ?? 'null',
         },
         body: body,
       );
@@ -72,14 +74,17 @@ class HttpService {
     }
   }
 
-  static Future<Response> getRequest(String route) async {
+  static Future<Response> getRequest(String url) async {
+    log(await SecureStorageService.read(token) ?? 'null');
+
     try {
-      var response = await http.get(Uri.parse(route), headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ${await SecureStorageService.read("token") ?? 'null'}'
+      var response = await http.get(Uri.parse(url), headers: {
+        'accept': 'application/json',
+        'X-authToken': await SecureStorageService.read(token) ?? 'null',
       });
       if (response.statusCode == 200) {
         var body = json.decode(response.body);
+        log(body.toString());
         return Response(body: body, statusCode: response.statusCode);
       } else {
         return Response(body: null, statusCode: response.statusCode);
@@ -99,8 +104,7 @@ class HttpService {
     }
   }
 
-  static Future<Response> getRequestWithoutToken(String route) async {
-    String url = apiUrl + route;
+  static Future<Response> getRequestWithoutToken(String url) async {
     try {
       var response = await http.get(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
@@ -126,41 +130,8 @@ class HttpService {
     }
   }
 
-  static Future<Response> deleteRequest(String route, Map<String, dynamic>? jsonMap) async {
-    String url = apiUrl + route;
-    String body = json.encode(jsonMap);
-    try {
-      var response = await http.delete(
-        Uri.parse(url),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${await SecureStorageService.read("token") ?? 'null'}'
-        },
-        body: body,
-      );
-      if (response.statusCode == 200) {
-        var body = json.decode(response.body);
-        return Response(body: body, statusCode: response.statusCode);
-      } else {
-        return Response(body: null, statusCode: response.statusCode);
-      }
-    } on SocketException catch (e) {
-      log("Error: No internet connection. : ${e.toString()}");
-      return const Response(body: null, statusCode: 503);
-    } on HttpException catch (e) {
-      log("Error: Could not send data to the server. : ${e.toString()}");
-      return const Response(body: null, statusCode: 500);
-    } on FormatException catch (e) {
-      log("Error: Bad response format. : ${e.toString()}");
-      return const Response(body: null, statusCode: 400);
-    } on Exception catch (e) {
-      log(e.toString());
-      return const Response(body: null, statusCode: 500);
-    }
-  }
-
-  static Future<Response> putRequest(String route, Map<String, dynamic> jsonMap) async {
-    String url = apiUrl + route;
+  static Future<Response> putRequest(String url, Map<String, dynamic> jsonMap) async {
+    jsonMap["X-authToken"] = await SecureStorageService.read(token) ?? 'null';
     String body = json.encode(jsonMap);
 
     try {
@@ -168,7 +139,7 @@ class HttpService {
         Uri.parse(url),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${await SecureStorageService.read("token") ?? 'null'}'
+          'X-authToken': await SecureStorageService.read("token") ?? 'null',
         },
         body: body,
       );

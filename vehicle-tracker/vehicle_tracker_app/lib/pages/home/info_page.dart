@@ -45,7 +45,7 @@ class InfoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    data.value.routeId.toUpperCase(),
+                    data.value.routeId?.toUpperCase() ?? "Null",
                     style: textTheme.headlineLarge,
                   ),
                   textColumnWidget(data),

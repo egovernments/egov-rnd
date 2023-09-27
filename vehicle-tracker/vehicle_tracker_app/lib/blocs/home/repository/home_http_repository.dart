@@ -10,13 +10,17 @@ import 'package:vehicle_tracker_app/util/toaster.dart';
 
 class HomeHTTPRepository {
   // ? Uses the userId to get the list of trips.
-  Future<List<Rx<HomeTripModel>>> getHomeTripData(String userId) async {
+  Future<List<Rx<HomeTripModel>>> getHomeTripData(String tenantId) async {
     log("Calling Home Trip Info API");
 
-    String reqUrl = "$apiUrl/trip/_search?usedId=$userId";
     List<Rx<HomeTripModel>> homeTripModel = [];
 
+    String reqUrl = "$apiUrl/trip/_search?operatorId=$testOperatorId&tenantId=$tenantId";
+
+    log(reqUrl);
+
     final response = await HttpService.getRequest(reqUrl);
+    log(response.statusCode.toString());
 
     if (response.statusCode != 200) {
       toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true);
@@ -41,7 +45,7 @@ class HomeHTTPRepository {
     Map<String, dynamic> body = {
       "id": data.id,
       "status": start ? "in_progress" : "completed",
-      "userId": testUserId,
+      "userId": testOperatorId,
     };
 
     final response = await HttpService.putRequest(reqUrl, body);
@@ -78,7 +82,7 @@ class HomeHTTPRepository {
       "tripId": data.id,
       "progressReportedTime": DateTime.now().toIso8601String(),
       "progressData": updates,
-      "userId": testUserId,
+      "userId": testOperatorId,
     };
 
     log("Body: $body");
@@ -112,11 +116,11 @@ class HomeHTTPRepository {
       "type": "point",
       "locationDetails": latLong,
       "alert": [alert],
-      "userId": testUserId,
+      "userId": testOperatorId,
       "distanceMeters": 200000,
     };
 
-    final response = await HttpService.postRequestWithoutToken(reqUrl, body);
+    final response = await HttpService.postRequest(reqUrl, body);
 
     // ? If the response is null OR not 200, then return false.
     if (response.statusCode == null || response.statusCode != 200) {
