@@ -16,21 +16,24 @@ class HomeHTTPRepository {
     List<Rx<HomeTripModel>> homeTripModel = [];
 
     String reqUrl = "$apiUrl/trip/_search?operatorId=$testOperatorId&tenantId=$tenantId";
-
-    log(reqUrl);
-
     final response = await HttpService.getRequest(reqUrl);
-    log(response.statusCode.toString());
 
     if (response.statusCode != 200) {
       toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true);
       return homeTripModel;
     }
 
-    final data = response.body as List<dynamic>;
-
-    for (var item in data) {
-      homeTripModel.add(Rx(HomeTripModel.fromJson(item)));
+    try {
+      final data = response.body as List<dynamic>;
+      for (var item in data) {
+        homeTripModel.add(Rx(HomeTripModel.fromJson(item)));
+      }
+    } on FormatException catch (e) {
+      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.message);
+      homeTripModel.clear();
+    } on Exception catch (e) {
+      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.toString());
+      homeTripModel.clear();
     }
 
     return homeTripModel;

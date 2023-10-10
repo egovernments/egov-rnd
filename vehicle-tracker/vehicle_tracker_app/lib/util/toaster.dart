@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-toaster(BuildContext? context, String message, {bool isError = false}) {
+toaster(BuildContext? context, String message, {bool isError = false, String? error}) {
   if (true) {
     Fluttertoast.showToast(
         msg: message,
@@ -10,7 +12,12 @@ toaster(BuildContext? context, String message, {bool isError = false}) {
         backgroundColor: isError ? Colors.red : Colors.green,
         textColor: Colors.white,
         fontSize: 16.0);
-    return;
+
+    log(message);
+  }
+
+  if (error != null) {
+    log("Error : $error");
   }
 
   // DigitToast.show(context, options: DigitToastOptions(message, isError, DigitTheme.instance.mobileTheme));
