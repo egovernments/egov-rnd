@@ -18,7 +18,7 @@ Widget statusInfoWidget(String status) {
       ),
       color: colourPicker(status, theme),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kPadding, vertical: kPadding),
+        padding: theme.buttonPadding * 0.65,
         child: infoBuilder(status, theme),
       ),
     ),
@@ -27,6 +27,8 @@ Widget statusInfoWidget(String status) {
 
 Color colourPicker(String status, DigitTheme theme) {
   switch (status) {
+    case TripStates.NONE:
+      return theme.colors.cloudGray;
     case TripStates.CREATED:
       return theme.colors.paleRose;
     case TripStates.COMPLETED:
@@ -40,6 +42,25 @@ Widget infoBuilder(String status, DigitTheme theme) {
   final textTheme = theme.mobileTheme.textTheme.bodyLarge;
 
   switch (status) {
+    case TripStates.NONE:
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.error,
+            color: theme.colors.davyGray,
+            size: 20,
+          ),
+          const SizedBox(width: 2),
+          Text(
+            "NONE",
+            style: textTheme?.copyWith(
+              color: theme.colors.davyGray,
+            ),
+          ),
+        ],
+      );
+
     case TripStates.CREATED:
       return Row(
         mainAxisSize: MainAxisSize.min,

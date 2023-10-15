@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 
 import '../models/mdms/mdms_hive/mdms_hive_model.dart';
@@ -35,9 +36,9 @@ class MdmsService {
   }
 
   static Future<MdmsModel?> callMdmsAPI() async {
-    final env = dotenv.env["MDMS_URL"];
+    
 
-    var response = await HttpService.getRequestWithoutToken(env!);
+    var response = await HttpService.getRequestWithoutToken(mdmsUrl);
     if (response.statusCode == 200) {
       Map<String, dynamic> json = response.body;
       return MdmsModel.fromJson(json);

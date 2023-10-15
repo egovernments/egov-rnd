@@ -1,6 +1,7 @@
 import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 
 import '../../blocs/home/controllers/trip_tracker_controllers.dart';
@@ -13,17 +14,17 @@ Widget textColumnWidget(Rx<HomeTripModel> data) {
     child: Column(
       children: [
         textRow('Trip ID', data.value.id),
-        textRow("Name", data.value.operator.name),
-        textRow('Vehicle \nNumber', data.value.operator.contactNumber),
-        textRow('Pickup \nLocation', data.value.routeId),
-        textRow('Drop \nLocation', data.value.routeId),
+        textRow("Name", data.value.operator?.name ?? ""),
+        textRow('Vehicle \nNumber', data.value.operator?.contactNumber ?? ""),
+        textRow('Pickup \nLocation', data.value.routeId ?? ""),
+        textRow('Drop \nLocation', data.value.routeId ?? ""),
         textRow('Date', data.value.plannedStartTime ?? ""),
         Row(
           children: [
             paddedText("Status\t\t", bold: true),
             GetBuilder<TripControllers>(
               id: "data.value.id",
-              builder: (tripControllers) => statusInfoWidget(data.value.status),
+              builder: (tripControllers) => statusInfoWidget(data.value.status ?? TripStates.NONE),
             ),
           ],
         )

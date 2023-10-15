@@ -2,16 +2,17 @@
 
 import 'dart:developer';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
+import '../constants.dart';
 import '../models/localization/localization_hive/localization_hive_model.dart';
 import '../models/localization/localiztion_model/localization_model.dart';
 
 class LocalizationService {
-  static Map<String, String> englishMap = {};
+  static Map<String, String> englishMap = {}; // This english translation map is used in AppTranslation class for english translations
+  static Map<String, String> hindiMap = {}; // This hindi translation map is used in AppTranslation class for hindi translations
 
   static Future<void> fetchLocalizationData() async {
     // await HiveService.deleteLocalization();
@@ -40,6 +41,7 @@ class LocalizationService {
 
     // Map english localization
     englishMapper(localizationList);
+    
   }
 
   static englishMapper(List<LocalizationHiveModel> localizationList) {
@@ -47,6 +49,15 @@ class LocalizationService {
       int index = localizationList.indexWhere((element) => element.code == item);
       if (index != -1) {
         englishMap[item] = localizationList[index].message;
+      }
+    }
+  }
+
+  static hindiMapper(List<LocalizationHiveModel> localizationList) {
+    for (var item in AppTranslation.englishValues.keys) {
+      int index = localizationList.indexWhere((element) => element.code == item);
+      if (index != -1) {
+        hindiMap[item] = localizationList[index].message;
       }
     }
   }
@@ -64,8 +75,7 @@ class LocalizationService {
 
   // get localization from API
   static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI() async {
-    final env = dotenv.env["LOCALIZATION_API_URL"];
-    final url = "${env}locale=en_IN&tenantId=pb&_=1683277829758";
+    final url = "${localizationUrl}locale=en_IN&tenantId=pb&_=1683277829758";
 
     Map<String, dynamic> body = {
       "RequestInfo": {
@@ -77,7 +87,7 @@ class LocalizationService {
     };
 
     // http request
-    final response = await HttpService.postRequestWithoutToken(url, body);
+    final response = await HttpService.postRequest(url, body);
     if (response.statusCode == 200) {
       final parsed = response.body["messages"] as List<dynamic>;
       final localizationList = parseLocalization(parsed);

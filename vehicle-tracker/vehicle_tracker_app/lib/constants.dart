@@ -1,25 +1,21 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:latlong2/latlong.dart';
 
-String uri = dotenv.env["API_URI"] ?? "";
+final String apiUrl = dotenv.env["API_URL"] ?? "";
+final String localizationUrl = dotenv.env["LOCALIZATION_API_URL"] ?? "";
+final String mdmsUrl = dotenv.env["MDMS_URL"] ?? "";
+final String loginUrl = dotenv.env["LOGIN_URL"] ?? "";
+final int periodicTrackingFrequency = int.parse(dotenv.env["PERIODIC_TRACKING_FREQUENCY"] ?? "10");
 
-Map<String, String> cities = {
+
+const Map<String, String> cities = {
   "City A": "pg.citya",
-  "City B": "pg.cityb",
+  "Amritsar": "pb.amritsar",
   "City C": "pg.cityc",
 };
 
-List<String> cityNames = cities.keys.toList();
+final List<String> cityNames = cities.keys.toList();
 
-double testStartLat = double.parse(dotenv.env["TEST_START_LAT"] ?? "");
-double testStartLong = double.parse(dotenv.env["TEST_START_LONG"] ?? "");
-double testEndLat = double.parse(dotenv.env["TEST_END_LAT"] ?? "");
-double testEndLong = double.parse(dotenv.env["TEST_END_LONG"] ?? "");
-String apiUrl = dotenv.env["API_URL"] ?? "";
-
-String testUserId = "rajan123";
-
-LatLng testStart = LatLng(testStartLat, testStartLong);
-LatLng testEnd = LatLng(testEndLat, testEndLong);
-
-
+const String testOperatorId = "ccf4998c-e7af-4e4d-a97f-59c51bbf45e5";
+const String token = "token";
+const String uuid = "uuid";
+const String tenantId = "tenantId";

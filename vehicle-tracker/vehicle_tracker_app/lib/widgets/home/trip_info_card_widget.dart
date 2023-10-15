@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
 import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
@@ -24,16 +25,16 @@ class TripInfoCardWidget extends StatelessWidget {
           // Status Heading
           GetBuilder<TripControllers>(
             id: data.value.id,
-            builder: (tripControllers) => statusInfoWidget(data.value.status),
+            builder: (tripControllers) => statusInfoWidget(data.value.status ?? TripStates.NONE),
           ),
 
           //  Locality Heading
           Text(
-            data.value.routeId.toUpperCase(),
+            data.value.routeId?.toUpperCase() ?? "",
             style: textTheme.headlineMedium,
           ),
 
-          homeTextColumnWidget(data.value.operator.name, data.value.operator.contactNumber),
+          homeTextColumnWidget(data.value.operator?.name ?? "", data.value.operator?.contactNumber ?? ""),
 
           DigitIconButton(
             iconText: AppTranslation.VIEW_DETAILS.tr,

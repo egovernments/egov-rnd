@@ -8,17 +8,17 @@ part 'home_trip_model.g.dart';
 @unfreezed
 class HomeTripModel with _$HomeTripModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
- factory HomeTripModel(
+  factory HomeTripModel(
       {required String id,
-      required String routeId,
-      required String serviceCode,
-      required String status,
+      String? routeId,
+      String? serviceCode,
+      String? status,
       String? plannedStartTime,
       String? plannedEndTime,
-      required Operator operator,
+      Operator? operator,
       String? actualStartTime,
       String? actualEndTime,
-      required String userId,
+      String? userId,
       String? locationAlerts}) = _HomeTripModel;
 
   factory HomeTripModel.fromJson(Map<String, dynamic> json) => _$HomeTripModelFromJson(json);
@@ -28,11 +28,11 @@ class HomeTripModel with _$HomeTripModel {
 class Operator with _$Operator {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   const factory Operator({
-    required String id,
-    required String name,
-    required String email,
-    required String contactNumber,
-    required String vehicleNumber,
+    String? id,
+    String? name,
+    String? email,
+    String? contactNumber,
+    String? vehicleNumber,
   }) = _Operator;
 
   factory Operator.fromJson(Map<String, dynamic> json) => _$OperatorFromJson(json);

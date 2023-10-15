@@ -22,24 +22,24 @@ HomeTripModel _$HomeTripModelFromJson(Map<String, dynamic> json) {
 mixin _$HomeTripModel {
   String get id => throw _privateConstructorUsedError;
   set id(String value) => throw _privateConstructorUsedError;
-  String get routeId => throw _privateConstructorUsedError;
-  set routeId(String value) => throw _privateConstructorUsedError;
-  String get serviceCode => throw _privateConstructorUsedError;
-  set serviceCode(String value) => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
-  set status(String value) => throw _privateConstructorUsedError;
+  String? get routeId => throw _privateConstructorUsedError;
+  set routeId(String? value) => throw _privateConstructorUsedError;
+  String? get serviceCode => throw _privateConstructorUsedError;
+  set serviceCode(String? value) => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
+  set status(String? value) => throw _privateConstructorUsedError;
   String? get plannedStartTime => throw _privateConstructorUsedError;
   set plannedStartTime(String? value) => throw _privateConstructorUsedError;
   String? get plannedEndTime => throw _privateConstructorUsedError;
   set plannedEndTime(String? value) => throw _privateConstructorUsedError;
-  Operator get operator => throw _privateConstructorUsedError;
-  set operator(Operator value) => throw _privateConstructorUsedError;
+  Operator? get operator => throw _privateConstructorUsedError;
+  set operator(Operator? value) => throw _privateConstructorUsedError;
   String? get actualStartTime => throw _privateConstructorUsedError;
   set actualStartTime(String? value) => throw _privateConstructorUsedError;
   String? get actualEndTime => throw _privateConstructorUsedError;
   set actualEndTime(String? value) => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  set userId(String value) => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
+  set userId(String? value) => throw _privateConstructorUsedError;
   String? get locationAlerts => throw _privateConstructorUsedError;
   set locationAlerts(String? value) => throw _privateConstructorUsedError;
 
@@ -57,18 +57,18 @@ abstract class $HomeTripModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String routeId,
-      String serviceCode,
-      String status,
+      String? routeId,
+      String? serviceCode,
+      String? status,
       String? plannedStartTime,
       String? plannedEndTime,
-      Operator operator,
+      Operator? operator,
       String? actualStartTime,
       String? actualEndTime,
-      String userId,
+      String? userId,
       String? locationAlerts});
 
-  $OperatorCopyWith<$Res> get operator;
+  $OperatorCopyWith<$Res>? get operator;
 }
 
 /// @nodoc
@@ -85,15 +85,15 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
   @override
   $Res call({
     Object? id = null,
-    Object? routeId = null,
-    Object? serviceCode = null,
-    Object? status = null,
+    Object? routeId = freezed,
+    Object? serviceCode = freezed,
+    Object? status = freezed,
     Object? plannedStartTime = freezed,
     Object? plannedEndTime = freezed,
-    Object? operator = null,
+    Object? operator = freezed,
     Object? actualStartTime = freezed,
     Object? actualEndTime = freezed,
-    Object? userId = null,
+    Object? userId = freezed,
     Object? locationAlerts = freezed,
   }) {
     return _then(_value.copyWith(
@@ -101,18 +101,18 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      routeId: null == routeId
+      routeId: freezed == routeId
           ? _value.routeId
           : routeId // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceCode: null == serviceCode
+              as String?,
+      serviceCode: freezed == serviceCode
           ? _value.serviceCode
           : serviceCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
+              as String?,
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       plannedStartTime: freezed == plannedStartTime
           ? _value.plannedStartTime
           : plannedStartTime // ignore: cast_nullable_to_non_nullable
@@ -121,10 +121,10 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
           ? _value.plannedEndTime
           : plannedEndTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      operator: null == operator
+      operator: freezed == operator
           ? _value.operator
           : operator // ignore: cast_nullable_to_non_nullable
-              as Operator,
+              as Operator?,
       actualStartTime: freezed == actualStartTime
           ? _value.actualStartTime
           : actualStartTime // ignore: cast_nullable_to_non_nullable
@@ -133,10 +133,10 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
           ? _value.actualEndTime
           : actualEndTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       locationAlerts: freezed == locationAlerts
           ? _value.locationAlerts
           : locationAlerts // ignore: cast_nullable_to_non_nullable
@@ -146,8 +146,12 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $OperatorCopyWith<$Res> get operator {
-    return $OperatorCopyWith<$Res>(_value.operator, (value) {
+  $OperatorCopyWith<$Res>? get operator {
+    if (_value.operator == null) {
+      return null;
+    }
+
+    return $OperatorCopyWith<$Res>(_value.operator!, (value) {
       return _then(_value.copyWith(operator: value) as $Val);
     });
   }
@@ -163,19 +167,19 @@ abstract class _$$_HomeTripModelCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String routeId,
-      String serviceCode,
-      String status,
+      String? routeId,
+      String? serviceCode,
+      String? status,
       String? plannedStartTime,
       String? plannedEndTime,
-      Operator operator,
+      Operator? operator,
       String? actualStartTime,
       String? actualEndTime,
-      String userId,
+      String? userId,
       String? locationAlerts});
 
   @override
-  $OperatorCopyWith<$Res> get operator;
+  $OperatorCopyWith<$Res>? get operator;
 }
 
 /// @nodoc
@@ -190,15 +194,15 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? routeId = null,
-    Object? serviceCode = null,
-    Object? status = null,
+    Object? routeId = freezed,
+    Object? serviceCode = freezed,
+    Object? status = freezed,
     Object? plannedStartTime = freezed,
     Object? plannedEndTime = freezed,
-    Object? operator = null,
+    Object? operator = freezed,
     Object? actualStartTime = freezed,
     Object? actualEndTime = freezed,
-    Object? userId = null,
+    Object? userId = freezed,
     Object? locationAlerts = freezed,
   }) {
     return _then(_$_HomeTripModel(
@@ -206,18 +210,18 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      routeId: null == routeId
+      routeId: freezed == routeId
           ? _value.routeId
           : routeId // ignore: cast_nullable_to_non_nullable
-              as String,
-      serviceCode: null == serviceCode
+              as String?,
+      serviceCode: freezed == serviceCode
           ? _value.serviceCode
           : serviceCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
+              as String?,
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       plannedStartTime: freezed == plannedStartTime
           ? _value.plannedStartTime
           : plannedStartTime // ignore: cast_nullable_to_non_nullable
@@ -226,10 +230,10 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
           ? _value.plannedEndTime
           : plannedEndTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      operator: null == operator
+      operator: freezed == operator
           ? _value.operator
           : operator // ignore: cast_nullable_to_non_nullable
-              as Operator,
+              as Operator?,
       actualStartTime: freezed == actualStartTime
           ? _value.actualStartTime
           : actualStartTime // ignore: cast_nullable_to_non_nullable
@@ -238,10 +242,10 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
           ? _value.actualEndTime
           : actualEndTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      userId: null == userId
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       locationAlerts: freezed == locationAlerts
           ? _value.locationAlerts
           : locationAlerts // ignore: cast_nullable_to_non_nullable
@@ -256,15 +260,15 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
 class _$_HomeTripModel implements _HomeTripModel {
   _$_HomeTripModel(
       {required this.id,
-      required this.routeId,
-      required this.serviceCode,
-      required this.status,
+      this.routeId,
+      this.serviceCode,
+      this.status,
       this.plannedStartTime,
       this.plannedEndTime,
-      required this.operator,
+      this.operator,
       this.actualStartTime,
       this.actualEndTime,
-      required this.userId,
+      this.userId,
       this.locationAlerts});
 
   factory _$_HomeTripModel.fromJson(Map<String, dynamic> json) =>
@@ -273,23 +277,23 @@ class _$_HomeTripModel implements _HomeTripModel {
   @override
   String id;
   @override
-  String routeId;
+  String? routeId;
   @override
-  String serviceCode;
+  String? serviceCode;
   @override
-  String status;
+  String? status;
   @override
   String? plannedStartTime;
   @override
   String? plannedEndTime;
   @override
-  Operator operator;
+  Operator? operator;
   @override
   String? actualStartTime;
   @override
   String? actualEndTime;
   @override
-  String userId;
+  String? userId;
   @override
   String? locationAlerts;
 
@@ -315,15 +319,15 @@ class _$_HomeTripModel implements _HomeTripModel {
 abstract class _HomeTripModel implements HomeTripModel {
   factory _HomeTripModel(
       {required String id,
-      required String routeId,
-      required String serviceCode,
-      required String status,
+      String? routeId,
+      String? serviceCode,
+      String? status,
       String? plannedStartTime,
       String? plannedEndTime,
-      required Operator operator,
+      Operator? operator,
       String? actualStartTime,
       String? actualEndTime,
-      required String userId,
+      String? userId,
       String? locationAlerts}) = _$_HomeTripModel;
 
   factory _HomeTripModel.fromJson(Map<String, dynamic> json) =
@@ -333,14 +337,14 @@ abstract class _HomeTripModel implements HomeTripModel {
   String get id;
   set id(String value);
   @override
-  String get routeId;
-  set routeId(String value);
+  String? get routeId;
+  set routeId(String? value);
   @override
-  String get serviceCode;
-  set serviceCode(String value);
+  String? get serviceCode;
+  set serviceCode(String? value);
   @override
-  String get status;
-  set status(String value);
+  String? get status;
+  set status(String? value);
   @override
   String? get plannedStartTime;
   set plannedStartTime(String? value);
@@ -348,8 +352,8 @@ abstract class _HomeTripModel implements HomeTripModel {
   String? get plannedEndTime;
   set plannedEndTime(String? value);
   @override
-  Operator get operator;
-  set operator(Operator value);
+  Operator? get operator;
+  set operator(Operator? value);
   @override
   String? get actualStartTime;
   set actualStartTime(String? value);
@@ -357,8 +361,8 @@ abstract class _HomeTripModel implements HomeTripModel {
   String? get actualEndTime;
   set actualEndTime(String? value);
   @override
-  String get userId;
-  set userId(String value);
+  String? get userId;
+  set userId(String? value);
   @override
   String? get locationAlerts;
   set locationAlerts(String? value);
@@ -374,11 +378,11 @@ Operator _$OperatorFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Operator {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get contactNumber => throw _privateConstructorUsedError;
-  String get vehicleNumber => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get contactNumber => throw _privateConstructorUsedError;
+  String? get vehicleNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -392,11 +396,11 @@ abstract class $OperatorCopyWith<$Res> {
       _$OperatorCopyWithImpl<$Res, Operator>;
   @useResult
   $Res call(
-      {String id,
-      String name,
-      String email,
-      String contactNumber,
-      String vehicleNumber});
+      {String? id,
+      String? name,
+      String? email,
+      String? contactNumber,
+      String? vehicleNumber});
 }
 
 /// @nodoc
@@ -412,33 +416,33 @@ class _$OperatorCopyWithImpl<$Res, $Val extends Operator>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? email = null,
-    Object? contactNumber = null,
-    Object? vehicleNumber = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? contactNumber = freezed,
+    Object? vehicleNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactNumber: null == contactNumber
+              as String?,
+      contactNumber: freezed == contactNumber
           ? _value.contactNumber
           : contactNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      vehicleNumber: null == vehicleNumber
+              as String?,
+      vehicleNumber: freezed == vehicleNumber
           ? _value.vehicleNumber
           : vehicleNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -451,11 +455,11 @@ abstract class _$$_OperatorCopyWith<$Res> implements $OperatorCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      String name,
-      String email,
-      String contactNumber,
-      String vehicleNumber});
+      {String? id,
+      String? name,
+      String? email,
+      String? contactNumber,
+      String? vehicleNumber});
 }
 
 /// @nodoc
@@ -469,33 +473,33 @@ class __$$_OperatorCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? email = null,
-    Object? contactNumber = null,
-    Object? vehicleNumber = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? email = freezed,
+    Object? contactNumber = freezed,
+    Object? vehicleNumber = freezed,
   }) {
     return _then(_$_Operator(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as String?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
+              as String?,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      contactNumber: null == contactNumber
+              as String?,
+      contactNumber: freezed == contactNumber
           ? _value.contactNumber
           : contactNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      vehicleNumber: null == vehicleNumber
+              as String?,
+      vehicleNumber: freezed == vehicleNumber
           ? _value.vehicleNumber
           : vehicleNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -505,25 +509,21 @@ class __$$_OperatorCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_Operator implements _Operator {
   const _$_Operator(
-      {required this.id,
-      required this.name,
-      required this.email,
-      required this.contactNumber,
-      required this.vehicleNumber});
+      {this.id, this.name, this.email, this.contactNumber, this.vehicleNumber});
 
   factory _$_Operator.fromJson(Map<String, dynamic> json) =>
       _$$_OperatorFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String email;
+  final String? email;
   @override
-  final String contactNumber;
+  final String? contactNumber;
   @override
-  final String vehicleNumber;
+  final String? vehicleNumber;
 
   @override
   String toString() {
@@ -565,24 +565,24 @@ class _$_Operator implements _Operator {
 
 abstract class _Operator implements Operator {
   const factory _Operator(
-      {required final String id,
-      required final String name,
-      required final String email,
-      required final String contactNumber,
-      required final String vehicleNumber}) = _$_Operator;
+      {final String? id,
+      final String? name,
+      final String? email,
+      final String? contactNumber,
+      final String? vehicleNumber}) = _$_Operator;
 
   factory _Operator.fromJson(Map<String, dynamic> json) = _$_Operator.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get email;
+  String? get email;
   @override
-  String get contactNumber;
+  String? get contactNumber;
   @override
-  String get vehicleNumber;
+  String? get vehicleNumber;
   @override
   @JsonKey(ignore: true)
   _$$_OperatorCopyWith<_$_Operator> get copyWith =>

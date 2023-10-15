@@ -1,9 +1,11 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/info_controllers.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
-import '../../data/token_service.dart';
+import '../../data/secure_storage_service.dart';
 import '../../router/routes.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -46,13 +48,13 @@ class CustomDrawer extends StatelessWidget {
             icon: Icons.home,
           ),
           DigitIconTile(
-            title: AppTranslation.LANGUAGE.tr,
+            title: AppTranslation.ENGLISH.tr,
             onPressed: () {},
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 DigitElevatedButton(child: const Text("Hindi"), onPressed: () {}),
-                DigitOutLineButton(label: "English", onPressed: () {}),
+                DigitOutLineButton(label: AppTranslation.ENGLISH.tr, onPressed: () {}),
               ],
             ),
             icon: Icons.language,
@@ -66,6 +68,15 @@ class CustomDrawer extends StatelessWidget {
             title: AppTranslation.LOGOUT.tr,
             onPressed: () async {
               await SecureStorageService.delete("token");
+
+              if (Get.isRegistered<InfoController>()) {
+                Get.delete<InfoController>(force: true);
+              }
+
+              if (Get.isRegistered<TripControllers>()) {
+                Get.delete<TripControllers>(force: true);
+              }
+
               Get.offAllNamed(LANG);
             },
             icon: Icons.logout,
