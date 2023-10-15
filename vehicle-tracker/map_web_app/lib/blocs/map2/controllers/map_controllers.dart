@@ -60,7 +60,7 @@ class MapControllers extends GetxController {
 
   // ? Function to get all data from the api and set up the markers for the map
   // This will render points on the map and as the points are increasing, it will build a polygon
-  // using those points. 
+  // using those points.
   List<LatLng> polygonPointBuilder(List<LocationDetails>? locationDetails) {
     List<LatLng> points = [];
 
@@ -294,15 +294,13 @@ class MapControllers extends GetxController {
   // ? sets up the initial location for the map.
   // todo : can be configured later
   LatLng locationSetter() {
-    return custom;
-
     if (alertMarkers.isNotEmpty && alertMarkers.first.locationDetails!.isNotEmpty) {
       return LatLng(
         alertMarkers.first.locationDetails!.last.latitude!,
         alertMarkers.first.locationDetails!.last.longitude!,
       );
     } else {
-      return newDelhi;
+      return custom;
     }
   }
 }
