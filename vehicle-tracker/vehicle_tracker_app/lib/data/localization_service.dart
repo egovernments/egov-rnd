@@ -15,7 +15,7 @@ class LocalizationService {
   static Map<String, String> hindiMap = {}; // This hindi translation map is used in AppTranslation class for hindi translations
 
   static Future<void> fetchLocalizationData() async {
-    await HiveService.deleteLocalization();
+    // await HiveService.deleteLocalization();
 
     List<LocalizationHiveModel> localizationList = [];
 

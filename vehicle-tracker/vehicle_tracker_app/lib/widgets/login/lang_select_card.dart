@@ -41,7 +41,11 @@ class LangSelectCard extends StatelessWidget {
                       ),
                       onPressed: () {}),
                   DigitOutLineButton(
-                      label: AppTranslation.ENGLISH.tr, onPressed: () => Get.updateLocale(const Locale('en', 'IN'))),
+                    label: AppTranslation.LANGUAGE.tr,
+                    onPressed: () => Get.updateLocale(
+                      const Locale('en', 'IN'),
+                    ),
+                  ),
                 ],
               ),
             ),
