@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:map_web_app/constants.dart';
 import 'package:map_web_app/models/map2/alert_polygons.dart';
 
@@ -21,6 +23,7 @@ class Map2HttpRepository {
     final response = await HttpService.postRequestWithoutToken(url, jsonMap);
 
     if (response.statusCode == 200) {
+      log("New Polygon added: ${response.body}");
       return true;
     } else {
       return false;
