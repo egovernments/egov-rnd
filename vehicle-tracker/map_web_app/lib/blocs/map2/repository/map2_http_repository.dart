@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:map_web_app/constants.dart';
 import 'package:map_web_app/models/map2/alert_polygons.dart';
+import 'package:map_web_app/util/toaster.dart';
 
 import '../../../data/http_service.dart';
 
@@ -49,6 +50,7 @@ class Map2HttpRepository {
     if (response.statusCode == 200) {
       return true;
     } else {
+      toaster("Unable to update polygon", isError: true);
       return false;
     }
   }
