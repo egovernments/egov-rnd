@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:map_web_app/blocs/map/controllers/route_controllers.dart';
+import 'package:map_web_app/constants.dart';
 import 'package:map_web_app/widgets/map/map_app_bar_widget.dart';
 import 'package:map_web_app/widgets/map/map_legends_widget.dart';
 import 'package:map_web_app/widgets/map/map_tile_widgets.dart';
@@ -33,7 +34,7 @@ class MapPage extends StatelessWidget {
             body: FlutterMap(
               // * Map Options
               options: MapOptions(
-                center: controller.polyPoints.first,
+                center: controller.polyPoints.isNotEmpty ? controller.polyPoints.first : newDelhi,
                 zoom: 13,
                 maxZoom: 18,
                 minZoom: 1,
@@ -56,7 +57,7 @@ class MapPage extends StatelessWidget {
                 polyLineWidget(controller),
 
                 // * Marker Layer
-                markerLayerWidget(controller),
+                if (controller.polyPoints.isNotEmpty) markerLayerWidget(controller),
               ],
             ),
           ),
