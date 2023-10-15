@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: DigitTheme.instance.mobileTheme,
       getPages: getPages,
-      initialRoute: MAP,
+      initialRoute: MAP2,
     );
   }
 }
