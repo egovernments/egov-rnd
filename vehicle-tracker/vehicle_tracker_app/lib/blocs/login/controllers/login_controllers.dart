@@ -18,7 +18,7 @@ class LoginController extends GetxController {
 
     if (isLogin) {
       Get.offAllNamed(HOME);
-    } 
+    }
   }
 
   // * Forgot Password Dialog Box
@@ -28,7 +28,7 @@ class LoginController extends GetxController {
       options: DigitDialogOptions(
           titleText: AppTranslation.FORGOT_PASSWORD.tr,
           titleIcon: const Icon(Icons.warning_rounded, color: Colors.red),
-          contentText: AppTranslation.FORGOT_PASSWORD_INFO.tr,
+          contentText: AppTranslation.FORGOT_PASSWORD_MESSAGE.tr,
           primaryAction: DigitDialogActions(label: AppTranslation.OK.tr, action: (context) => Get.back())),
     );
   }

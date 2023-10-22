@@ -57,7 +57,7 @@ Widget homeTextColumnWidget(String name, String phoneNumber) => Padding(
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              paddedText(AppTranslation.NAME_INFO.tr, bold: true),
+              paddedText(AppTranslation.NAME.tr, bold: true),
               paddedText(AppTranslation.MOBILE_NUMBER.tr, bold: true),
             ],
           ),

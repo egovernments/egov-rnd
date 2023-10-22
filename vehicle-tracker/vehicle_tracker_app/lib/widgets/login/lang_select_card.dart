@@ -37,7 +37,7 @@ class LangSelectCard extends StatelessWidget {
                   DigitElevatedButton(
                     child: Padding(
                       padding: theme.buttonPadding * 0.4,
-                      child: const Text("Orissa"),
+                      child: Text(AppTranslation.ODIA.tr),
                     ),
                     onPressed: () => Get.updateLocale(
                       const Locale('or', 'IN'),

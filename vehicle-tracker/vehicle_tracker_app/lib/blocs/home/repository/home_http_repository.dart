@@ -19,6 +19,9 @@ class HomeHTTPRepository {
     final response = await HttpService.getRequest(reqUrl);
 
     if (response.statusCode != 200) {
+      log("Error Code: ${response.statusCode}");
+      log("Error: ${response.body}");
+      
       toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true);
       return homeTripModel;
     }
@@ -35,6 +38,8 @@ class HomeHTTPRepository {
       toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.toString());
       homeTripModel.clear();
     }
+
+    log("Got the data");
 
     return homeTripModel;
   }

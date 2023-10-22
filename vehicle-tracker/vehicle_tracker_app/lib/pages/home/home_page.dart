@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
               padding: theme.verticalMargin * 2,
               child: Center(child: toggler(context, infoController)),
             ),
-            
+
             // * trip list builder widget
             TripInfoListBuilderWidget(infoController: infoController),
           ],
