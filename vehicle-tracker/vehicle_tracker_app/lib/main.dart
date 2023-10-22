@@ -10,6 +10,7 @@ import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'constants.dart';
 import 'data/localization_service.dart';
 import 'data/secure_storage_service.dart';
 import 'models/localization/localization_hive/localization_hive_model.dart';
@@ -74,9 +75,7 @@ registerAdaptersFunc() {
 // Common function to open all the Hive boxes
 openHiveBoxesFunc() async {
   await Future.wait([
-    Hive.openBox("tracker"),
-    Hive.openBox("localization"),
-    Hive.openBox("mdms"),
+    for (var box in hiveBoxes) Hive.openBox(box),
   ]);
 }
 
@@ -84,7 +83,7 @@ openHiveBoxesFunc() async {
 fetchDataFunc() async {
   await Future.wait([
     MdmsService.fetchMdmsData(),
-    LocalizationService.fetchLocalizationData(),
+    LocalizationService.i18nMapBuilder(),
   ]);
 }
 

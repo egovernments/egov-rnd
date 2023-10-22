@@ -23,7 +23,7 @@ class LangSelectCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(AppTranslation.APP_HEADING.tr, style: textTheme.headlineLarge),
+                  Text(AppTranslation.LOGIN.tr, style: textTheme.headlineLarge),
                 ],
               ),
             ),
@@ -35,11 +35,14 @@ class LangSelectCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   DigitElevatedButton(
-                      child: Padding(
-                        padding: theme.buttonPadding * 0.4,
-                        child: const Text("Hindi"),
-                      ),
-                      onPressed: () {}),
+                    child: Padding(
+                      padding: theme.buttonPadding * 0.4,
+                      child: const Text("Orissa"),
+                    ),
+                    onPressed: () => Get.updateLocale(
+                      const Locale('or', 'IN'),
+                    ),
+                  ),
                   DigitOutLineButton(
                     label: AppTranslation.ENGLISH.tr,
                     onPressed: () => Get.updateLocale(

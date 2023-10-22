@@ -7,7 +7,7 @@ import '../models/mdms/mdms_model/mdms_model.dart';
 
 class HiveService {
   // ? For storing of Localization Data into Hive
-  static Future<List<LocalizationHiveModel>> storeLocalization(List<LocalizationMessageModel> localizationList) async {
+  static Future<List<LocalizationHiveModel>> storeLocalization(List<LocalizationMessageModel> localizationList, String locale) async {
     List<LocalizationHiveModel> localizationHiveList = [];
 
     // Parses through all the code and messages and it to a list of Hive Model
@@ -15,24 +15,25 @@ class HiveService {
       localizationHiveList.add(LocalizationHiveModel(
         code: item.code,
         message: item.message,
+        locale: item.locale,
       ));
     }
 
     // Adds all the list at once to hive
-    Hive.box("localization").addAll(localizationHiveList);
+    Hive.box(locale).addAll(localizationHiveList);
 
     // returns the same list to be used as an in memory variable for usage.
     return localizationHiveList;
   }
 
   // ? Get Localization Data
-  static List<LocalizationHiveModel> getLocalization() {
-    return Hive.box("localization").values.toList().cast<LocalizationHiveModel>();
+  static List<LocalizationHiveModel> getLocalization(String locale) {
+    return Hive.box(locale).values.toList().cast<LocalizationHiveModel>();
   }
 
   // ? Delete Localization Data
-  static deleteLocalization() async {
-    await Hive.box("localization").clear();
+  static deleteLocalization(String locale) async {
+    await Hive.box(locale).clear();
   }
 
   // ? For storing of MDMS data into Hive

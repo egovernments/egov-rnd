@@ -13,7 +13,7 @@ class AppTranslation extends Translations {
   static String get USER_ID => 'userId';
   static String get PASSWORD => 'password';
   static String get CITY => 'city';
-  static String get LOGIN => 'login';
+  static String get LOGIN => 'LOGIN';
   static String get FORGOT_PASSWORD => 'forgetPassword';
   static String get FORGOT_PASSWORD_INFO => 'forgetPasswordInfo';
   static String get OK => 'ok';
@@ -109,9 +109,9 @@ class AppTranslation extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         // English
-        'en_IN': englishValues, // change this to english map when english is ready
+        'en_IN': LocalizationService.englishMap, // change this to english map when english is ready
 
         // Hindi
-        'hi_IN': LocalizationService.englishMap, // change this to hindi map when hindi is ready
+        'or_IN': LocalizationService.orissaMap, // change this to hindi map when hindi is ready
       };
 }
