@@ -11,9 +11,16 @@ class RouteMapPage extends StatelessWidget {
   const RouteMapPage({super.key});
   @override
   Widget build(BuildContext context) {
+    // * Get the tripId from the URL
+    final tripId = Get.parameters['tripId'] ?? "52ecddb0-a128-423e-aa54-390e85adf83e";
+
+    // * Fetch the data from the API using the tripId
+    final mapController = Get.find<RouteControllers>();
+    mapController.fetchData(tripId);
+
     return GetBuilder<RouteControllers>(
       builder: (controller) {
-        if (controller.progressReportList.isEmpty) {
+        if (controller.isFetching.isTrue) {
           return const Center(child: CircularProgressIndicator());
         }
 
