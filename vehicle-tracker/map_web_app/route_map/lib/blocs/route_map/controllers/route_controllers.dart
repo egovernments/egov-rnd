@@ -3,9 +3,11 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:map_web_app/constants.dart';
-import 'package:map_web_app/data/http_service.dart';
-import 'package:map_web_app/models/map/trip_progress/progress_report_model.dart';
+
+import '../../../constants.dart';
+import '../../../data/http_service.dart';
+import '../../../models/trip_progress/progress_report_model.dart';
+
 
 class RouteControllers extends GetxController {
   late Timer _timer;
