@@ -19,3 +19,4 @@ const String testOperatorId = "ccf4998c-e7af-4e4d-a97f-59c51bbf45e5";
 const String token = "token";
 const String uuid = "uuid";
 const String tenantId = "tenantId";
+const List<String> hiveBoxes = ["en_IN", "or_IN", "mdms", "tracker"];

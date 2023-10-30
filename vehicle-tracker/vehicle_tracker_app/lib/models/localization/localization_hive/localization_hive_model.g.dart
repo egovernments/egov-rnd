@@ -19,17 +19,20 @@ class LocalizationHiveModelAdapter extends TypeAdapter<LocalizationHiveModel> {
     return LocalizationHiveModel(
       code: fields[0] as String,
       message: fields[1] as String,
+      locale: fields[2] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, LocalizationHiveModel obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.code)
       ..writeByte(1)
-      ..write(obj.message);
+      ..write(obj.message)
+      ..writeByte(2)
+      ..write(obj.locale);
   }
 
   @override

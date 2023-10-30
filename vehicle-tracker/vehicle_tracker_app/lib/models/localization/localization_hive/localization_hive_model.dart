@@ -10,8 +10,12 @@ class LocalizationHiveModel extends HiveObject {
   @HiveField(1)
   String message;
 
+  @HiveField(2)
+  String locale;
+
   LocalizationHiveModel({
     required this.code,
     required this.message,
+    required this.locale,
   });
 }

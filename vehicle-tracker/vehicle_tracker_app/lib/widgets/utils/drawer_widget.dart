@@ -7,6 +7,7 @@ import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../data/secure_storage_service.dart';
 import '../../router/routes.dart';
+import 'custom_outline_button_widget.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -48,13 +49,19 @@ class CustomDrawer extends StatelessWidget {
             icon: Icons.home,
           ),
           DigitIconTile(
-            title: AppTranslation.ENGLISH.tr,
+            title: Get.locale.toString() == "en_IN" ? AppTranslation.ENGLISH.tr : AppTranslation.ODIA.tr,
             onPressed: () {},
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                DigitElevatedButton(child: const Text("Hindi"), onPressed: () {}),
-                DigitOutLineButton(label: AppTranslation.ENGLISH.tr, onPressed: () {}),
+                DigitElevatedButton(
+                  child: Text(AppTranslation.ODIA.tr),
+                  onPressed: () => Get.updateLocale(const Locale('or', 'IN')),
+                ),
+                CustomOutLineButton(
+                  label: AppTranslation.ENGLISH.tr,
+                  onPressed: () => Get.updateLocale(const Locale('en', 'IN')),
+                ),
               ],
             ),
             icon: Icons.language,

@@ -4,60 +4,63 @@ import 'dart:developer';
 
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/data/http_service.dart';
-import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../constants.dart';
 import '../models/localization/localization_hive/localization_hive_model.dart';
 import '../models/localization/localiztion_model/localization_model.dart';
 
 class LocalizationService {
-  static Map<String, String> englishMap = {}; // This english translation map is used in AppTranslation class for english translations
-  static Map<String, String> hindiMap = {}; // This hindi translation map is used in AppTranslation class for hindi translations
+  // This english translation map is used in AppTranslation class for english translations
+  static Map<String, String> englishMap = {};
+  // This orissa translation map is used in AppTranslation class for hindi translations
+  static Map<String, String> orissaMap = {};
 
-  static Future<void> fetchLocalizationData() async {
-    // await HiveService.deleteLocalization();
+  static Future<void> i18nMapBuilder() async {
+    await Future.wait([
+      fetchhLocalizationData("en_IN"),
+      fetchhLocalizationData("or_IN"),
+    ]);
+  }
 
+  static Future<void> fetchhLocalizationData(String locale) async {
     List<LocalizationHiveModel> localizationList = [];
 
     // Checks local storage
-    var localizationHiveList = HiveService.getLocalization();
+    final localizationHiveList = HiveService.getLocalization(locale);
     if (localizationHiveList.isEmpty) {
       //  Call API
-      log("Calling API for localization");
-      final localizations = await getLocalicationFromAPI();
+      log("Calling API for $locale localization");
+      final localizations = await getLocalicationFromAPI(locale);
       if (localizations == null) {
-        log("Error fetching localization from API");
+        log("Error fetching $locale localization from API");
         return;
       }
 
       // Store in local storage
-      log("Storing localizations in local storage");
-      localizationList = await HiveService.storeLocalization(localizations);
+      log("Storing $locale localizations in local storage");
+      localizationList = await HiveService.storeLocalization(localizations, locale);
     } else {
       // If not empty, store in local variable
-      log("Fetching localizations from local storage");
+      log("Fetching $locale localizations from local storage");
       localizationList = localizationHiveList;
     }
 
     // Map english localization
-    englishMapper(localizationList);
-    
+    mapper(localizationList, locale);
+    log("Mapped $locale localizations");
   }
 
-  static englishMapper(List<LocalizationHiveModel> localizationList) {
-    for (var item in AppTranslation.englishValues.keys) {
-      int index = localizationList.indexWhere((element) => element.code == item);
-      if (index != -1) {
-        englishMap[item] = localizationList[index].message;
-      }
-    }
-  }
-
-  static hindiMapper(List<LocalizationHiveModel> localizationList) {
-    for (var item in AppTranslation.englishValues.keys) {
-      int index = localizationList.indexWhere((element) => element.code == item);
-      if (index != -1) {
-        hindiMap[item] = localizationList[index].message;
+  static mapper(List<LocalizationHiveModel> localizationList, String locale) {
+    for (var item in localizationList) {
+      switch (locale) {
+        case "en_IN":
+          englishMap[item.code] = item.message;
+          break;
+        case "or_IN":
+          orissaMap[item.code] = item.message;
+          break;
+        default:
+          continue;
       }
     }
   }
@@ -74,8 +77,8 @@ class LocalizationService {
   }
 
   // get localization from API
-  static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI() async {
-    final url = "${localizationUrl}locale=en_IN&tenantId=pb&_=1683277829758";
+  static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI(String locale) async {
+    final url = "$localizationUrl?module=rainmaker-fsm&locale=$locale&tenantId=pb.amritsar";
 
     Map<String, dynamic> body = {
       "RequestInfo": {
@@ -93,8 +96,6 @@ class LocalizationService {
       final localizationList = parseLocalization(parsed);
       return localizationList;
     } else {
-      log(response.statusCode.toString());
-      log(response.body.toString());
       return null;
     }
   }
