@@ -11,9 +11,9 @@ apk:
 	flutter build apk --release --no-tree-shake-icons
 
 build:
-	docker build -t map_web_app .
+	docker build -t polygon_map .
 
 run:
-	docker run -d -p 2205:80 --name map map_web_app
+	docker run -d -p 2205:80 --name polygon_map polygon_map
 
 .PHONY: json add apk build run
