@@ -49,7 +49,7 @@ class CustomDrawer extends StatelessWidget {
             icon: Icons.home,
           ),
           DigitIconTile(
-            title: AppTranslation.ENGLISH.tr,
+            title: Get.locale.toString() == "en_IN" ? AppTranslation.ENGLISH.tr : AppTranslation.ODIA.tr,
             onPressed: () {},
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -60,7 +60,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
                 CustomOutLineButton(
                   label: AppTranslation.ENGLISH.tr,
-                  onPressed: () => Get.updateLocale(const Locale('or', 'IN')),
+                  onPressed: () => Get.updateLocale(const Locale('en', 'IN')),
                 ),
               ],
             ),
