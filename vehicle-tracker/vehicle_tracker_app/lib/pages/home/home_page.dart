@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
         // * Appbar
         appBar: AppBar(
           centerTitle: false,
-          title: Text(AppTranslation.HOME_APP_BAR.tr),
+          // title: Text(AppTranslation.HOME_APP_BAR.tr),
         ),
 
         // * Dwawer

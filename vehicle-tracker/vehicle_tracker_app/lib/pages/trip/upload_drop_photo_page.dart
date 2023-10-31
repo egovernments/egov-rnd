@@ -5,7 +5,6 @@ import 'package:vehicle_tracker_app/widgets/utils/scrollable_header_widget.dart'
 import 'package:vehicle_tracker_app/widgets/trip/camera_widget.dart';
 
 import '../../blocs/details/controllers/camera_controllers.dart';
-import '../../util/i18n_translations.dart';
 import '../../widgets/utils/drawer_widget.dart';
 
 class UploadDropPhotoPgae extends StatelessWidget {
@@ -18,7 +17,7 @@ class UploadDropPhotoPgae extends StatelessWidget {
     return Scaffold(
       // * AppBar
       appBar: AppBar(
-        title: Text(AppTranslation.HOME_APP_BAR.tr),
+        // title: Text(AppTranslation.HOME_APP_BAR.tr),
         centerTitle: false,
       ),
 

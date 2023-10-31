@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppTranslation.HOME_APP_BAR.tr),
+        // title: Text(AppTranslation.HOME_APP_BAR.tr),
         centerTitle: false,
         automaticallyImplyLeading: false,
       ),

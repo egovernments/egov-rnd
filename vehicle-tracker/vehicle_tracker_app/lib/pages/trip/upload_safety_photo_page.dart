@@ -19,7 +19,7 @@ class UploadSafetyPhotoPgae extends StatelessWidget {
     return Scaffold(
       // * AppBar
       appBar: AppBar(
-        title: Text(AppTranslation.HOME_APP_BAR.tr),
+        // title: Text(AppTranslation.HOME_APP_BAR.tr),
         centerTitle: false,
       ),
 

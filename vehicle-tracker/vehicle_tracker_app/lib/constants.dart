@@ -6,11 +6,10 @@ final String mdmsUrl = dotenv.env["MDMS_URL"] ?? "";
 final String loginUrl = dotenv.env["LOGIN_URL"] ?? "";
 final int periodicTrackingFrequency = int.parse(dotenv.env["PERIODIC_TRACKING_FREQUENCY"] ?? "10");
 
-
 const Map<String, String> cities = {
-  "City A": "pg.citya",
+  "PG": "pg",
   "Amritsar": "pb.amritsar",
-  "City C": "pg.cityc",
+  "City A": "pg.citya",
 };
 
 final List<String> cityNames = cities.keys.toList();

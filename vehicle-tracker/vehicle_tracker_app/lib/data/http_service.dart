@@ -56,6 +56,9 @@ class HttpService {
       if (response.statusCode == 200) {
         var body = json.decode(response.body);
         return Response(body: body, statusCode: response.statusCode);
+      } else if (response.statusCode == 401) {
+        Get.offAllNamed("/login");
+        return const Response(body: null, statusCode: 401);
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }
@@ -86,6 +89,9 @@ class HttpService {
         var body = json.decode(response.body);
         log(body.toString());
         return Response(body: body, statusCode: response.statusCode);
+      } else if (response.statusCode == 401) {
+        Get.offAllNamed("/login");
+        return const Response(body: null, statusCode: 401);
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }
@@ -146,6 +152,9 @@ class HttpService {
       if (response.statusCode == 200) {
         var body = json.decode(response.body);
         return Response(body: body, statusCode: response.statusCode);
+      } else if (response.statusCode == 401) {
+        Get.offAllNamed("/login");
+        return const Response(body: null, statusCode: 401);
       } else {
         return Response(body: null, statusCode: response.statusCode);
       }

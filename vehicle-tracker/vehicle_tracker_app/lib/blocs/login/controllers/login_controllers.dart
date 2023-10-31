@@ -13,8 +13,12 @@ class LoginController extends GetxController {
   String city = cities.keys.first;
 
   void login(context) async {
-    final isLogin =
-        await LoginHTTPRepository.login(context, userNameController.text, passwordController.text, cities[city] ?? "");
+    final isLogin = await LoginHTTPRepository.login(
+      context,
+      userNameController.text,
+      passwordController.text,
+      cities[city] ?? "",
+    );
 
     if (isLogin) {
       Get.offAllNamed(HOME);
