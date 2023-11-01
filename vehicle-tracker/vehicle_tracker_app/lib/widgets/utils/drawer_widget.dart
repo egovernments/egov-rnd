@@ -1,12 +1,10 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vehicle_tracker_app/blocs/home/controllers/info_controllers.dart';
-import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
-import '../../data/secure_storage_service.dart';
 import '../../router/routes.dart';
+import '../../util/logout.dart';
 import 'custom_outline_button_widget.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -73,19 +71,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           DigitIconTile(
             title: AppTranslation.LOGOUT.tr,
-            onPressed: () async {
-              await SecureStorageService.delete("token");
-
-              if (Get.isRegistered<InfoController>()) {
-                Get.delete<InfoController>(force: true);
-              }
-
-              if (Get.isRegistered<TripControllers>()) {
-                Get.delete<TripControllers>(force: true);
-              }
-
-              Get.offAllNamed(LANG);
-            },
+            onPressed: logout,
             icon: Icons.logout,
           ),
         ],

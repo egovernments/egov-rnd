@@ -33,9 +33,10 @@ class InfoController extends GetxController {
     if (cityId == null) {
       log("City ID is null");
       Get.offAllNamed(LANG);
+      return;
     }
 
-    await fillList(cityId!);
+    await fillList(cityId);
   }
 
   // ? It will get the trip data and filter the data based on the status.
