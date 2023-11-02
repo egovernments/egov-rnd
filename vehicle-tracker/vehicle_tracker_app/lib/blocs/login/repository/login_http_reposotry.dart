@@ -15,6 +15,8 @@ import '../../../util/toaster.dart';
 class LoginHTTPRepository {
   static Future<bool> login(BuildContext context, String username, String password, String city) async {
     try {
+      final loginUrl = "$unifiedDevApiUrl/user/oauth/token";
+
       Map<String, dynamic> formData = {
         "grant_type": "password",
         "scope": "read",
@@ -60,7 +62,8 @@ class LoginHTTPRepository {
   }
 
   static Future<String> getDriverId(String authToken, String uuid, String tenantId) async {
-    final url = "$unifiedDevApiUrl/vendor/driver/v1/_search?tenantId=$tenantId&ownerIds=$uuid";
+    final url = "$unifiedDevApiUrl/vendor/driver/v1/_search";
+    final loginUrl = "$url?tenantId=$tenantId&ownerIds=$uuid";
 
     Map<String, dynamic> body = {
       "RequestInfo": {
@@ -69,7 +72,7 @@ class LoginHTTPRepository {
       }
     };
 
-    final response = await HttpService.postRequest(url, body);
+    final response = await HttpService.postRequest(loginUrl, body);
     if (response.statusCode != 200) {
       log("Error in getting driver id : ${response.statusCode}");
       return "";

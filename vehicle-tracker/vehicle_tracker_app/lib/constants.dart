@@ -3,11 +3,8 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 final String apiUrl = dotenv.env["API_URL"] ?? "";
-final String localizationUrl = dotenv.env["LOCALIZATION_API_URL"] ?? "";
 final String mdmsUrl = dotenv.env["MDMS_URL"] ?? "";
-final String loginUrl = dotenv.env["LOGIN_URL"] ?? "";
 final int periodicTrackingFrequency = int.parse(dotenv.env["PERIODIC_TRACKING_FREQUENCY"] ?? "10");
-final String operatorIdUrl = dotenv.env["OPERATOR_ID_URL"] ?? "";
 final String unifiedDevApiUrl = dotenv.env["UNIFIED_DEV_API_URL"] ?? "";
 
 const Map<String, String> cities = {
