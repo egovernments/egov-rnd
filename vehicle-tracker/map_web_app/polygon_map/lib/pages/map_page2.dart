@@ -14,8 +14,19 @@ class PolygonMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bruh = Get.parameters['userid'] ?? "bruh";
-    log(bruh);
+    
+    final userId = Get.parameters['userid'];
+    if (userId == null) {
+     return const Scaffold(
+       body: Center(
+         child: Text("User Id is null"),
+       ),
+     ); 
+    }
+
+    final mapController = Get.find<MapControllers>();
+    mapController.userID = userId;
+    mapController.fetchData();
 
     return GetX<MapControllers>(
       builder: (controller) {
