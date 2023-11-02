@@ -9,7 +9,6 @@ import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 class LoginController extends GetxController {
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final url = loginUrl;
   String city = cities.keys.first;
 
   void login(context) async {
