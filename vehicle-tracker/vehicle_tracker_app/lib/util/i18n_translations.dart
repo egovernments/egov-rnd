@@ -54,6 +54,12 @@ class AppTranslation extends Translations {
   static String get TRIP_NOT_STARTED_MESSAGE => 'TRIP_NOT_STARTED_MESSAGE';
   static String get NONE_TRIP_STATUS => 'NONE_TRIP_STATUS';
   static String get ODIA => 'ODIA';
+  static String get TRIP_ID => 'TRIP_ID';
+  static String get VEHICLE_NUMBER => 'VEHICLE_NUMBER';
+  static String get PICK_UP_LOCATION => 'PICK_UP_LOCATION';
+  static String get DROP_LOCATION => 'DROP_LOCATION';
+  static String get DATE => 'DATE';
+  static String get STATUS => 'STATUS';
 
   // ? This was the old way of doing translations
   // ? Its not here for reference, will be deleted soon
