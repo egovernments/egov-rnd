@@ -7,7 +7,7 @@ import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.d
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/secure_storage_service.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
-import 'package:vehicle_tracker_app/router/routes.dart';
+import 'package:vehicle_tracker_app/util/logout.dart';
 
 class InfoController extends GetxController {
   RxBool isCompleted = false.obs; // To check if the completed button is pressed or not.
@@ -24,26 +24,30 @@ class InfoController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    log("Info Controller Initialized and getting the trip data");
     getHomeTripData();
   }
 
   // ? Function to call the API to get all the Trips Data.
   Future<void> getHomeTripData() async {
-    final cityId = await SecureStorageService.read(tenantId);
-    if (cityId == null) {
-      log("City ID is null");
-      Get.offAllNamed(LANG);
+    final tenantId = await SecureStorageService.read(TENANT_ID);
+    final operatorId = await SecureStorageService.read(OPERATOR_ID);
+    if (tenantId == null || operatorId == null) {
+      log("City ID OR Driver ID is null");
+      logout();
       return;
     }
 
-    await fillList(cityId);
+    await fillList(tenantId, operatorId);
   }
 
   // ? It will get the trip data and filter the data based on the status.
   // ? The filters are if status is completed or not.
-  Future<void> fillList(String tentantId) async {
+  Future<void> fillList(String tentantId, String operatorId) async {
     isLoading.toggle();
-    final totalList = await homeHTTPRepository.getHomeTripData(tentantId);
+
+    // ! For now we are hardcoding the city id as "pg.citya"
+    final totalList = await homeHTTPRepository.getHomeTripData("pg.citya", operatorId);
 
     normalTripList.value = totalList.where((element) {
       return element.value.status != TripStates.COMPLETED;
