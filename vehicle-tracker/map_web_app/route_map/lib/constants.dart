@@ -15,7 +15,6 @@ LatLng custom = const LatLng(17.428446, 78.302284);
 String urlTemplate = dotenv.env["URL_TEMPLATE"] ?? "";
 List<String> subDomain = ['a', 'b', 'c'];
 String apiUrl = dotenv.env["API_URL"] ?? "";
-String userID = dotenv.env["USER_ID"] ?? "";
 
 List<String> siteTypes = ['Waste Land', 'Dumping Ground', 'Landfill'];
 

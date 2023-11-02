@@ -31,12 +31,7 @@ class MapControllers extends GetxController {
   TextEditingController siteDistanceController = TextEditingController();
 
   DigitTheme theme = DigitTheme.instance;
-
-  @override
-  void onInit() {
-    super.onInit();
-    fetchData();
-  }
+  late String userID;
 
   // ? API to fetch data
   Future<void> fetchData() async {
