@@ -6,7 +6,6 @@ import 'package:vehicle_tracker_app/widgets/utils/scrollable_header_widget.dart'
 import 'package:vehicle_tracker_app/widgets/trip/camera_widget.dart';
 
 import '../../blocs/details/controllers/camera_controllers.dart';
-import '../../util/i18n_translations.dart';
 import '../../widgets/utils/drawer_widget.dart';
 
 class UploadSafetyPhotoPgae extends StatelessWidget {

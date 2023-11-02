@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/constants.dart';
@@ -23,27 +25,56 @@ class LoginHTTPRepository {
       };
 
       final response = await HttpService.postWithFormData(loginUrl, formData);
-      if (response.statusCode == 200) {
-        final loginModel = LoginDataModel.fromJson(response.body);
-
-        await Future.wait([
-          SecureStorageService.write(token, loginModel.access_token),
-          SecureStorageService.write(uuid, loginModel.UserRequest.uuid),
-          SecureStorageService.write(tenantId, loginModel.UserRequest.tenantId)
-        ]);
-
-        toaster(context, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
-        return true;  
-      } else {
+      if (response.statusCode != 200) {
+        log("Error Code: ${response.statusCode}");
         toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
         return false;
       }
+
+      final loginModel = LoginDataModel.fromJson(response.body);
+
+      final driverId = await getDriverId(loginModel.access_token, loginModel.UserRequest.uuid, "pg.citya");
+      if (driverId == "") {
+        toaster(Get.context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+        return false;
+      }
+
+      await SecureStorageService.writeAll(
+        token: loginModel.access_token,
+        uuid: loginModel.UserRequest.uuid,
+        tenantId: loginModel.UserRequest.tenantId,
+        operatorId: driverId,
+      );
+
+      toaster(context, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
+      return true;
     } on FormatException catch (e) {
-      toaster(context, e.message, isError: true);
+      log("Error: ${e.message}");
+      toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
       return false;
     } on Exception catch (e) {
-      toaster(context, e.toString(), isError: true);
+      log("Error: ${e.toString()}");
+      toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
       return false;
     }
+  }
+
+  static Future<String> getDriverId(String authToken, String uuid, String tenantId) async {
+    final url = "$unifiedDevApiUrl/vendor/driver/v1/_search?tenantId=$tenantId&ownerIds=$uuid";
+
+    Map<String, dynamic> body = {
+      "RequestInfo": {
+        "apiId": "Rainmaker",
+        "authToken": authToken,
+      }
+    };
+
+    final response = await HttpService.postRequest(url, body);
+    if (response.statusCode != 200) {
+      log("Error in getting driver id : ${response.statusCode}");
+      return "";
+    }
+
+    return response.body["driver"][0]["id"];
   }
 }

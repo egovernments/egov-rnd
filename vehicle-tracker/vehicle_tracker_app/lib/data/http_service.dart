@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:vehicle_tracker_app/constants.dart';
+import 'package:vehicle_tracker_app/util/logout.dart';
 
 import 'secure_storage_service.dart';
 
@@ -41,7 +42,11 @@ class HttpService {
   }
 
   static Future<Response> postRequest(String url, Map<String, dynamic> jsonMap) async {
-    jsonMap["X-authToken"] = await SecureStorageService.read(token) ?? 'null';
+    final token = await SecureStorageService.read("token");
+    if (token != null) {
+      jsonMap["X-authToken"] = token;
+    }
+
     String body = json.encode(jsonMap);
 
     try {
@@ -57,7 +62,7 @@ class HttpService {
         var body = json.decode(response.body);
         return Response(body: body, statusCode: response.statusCode);
       } else if (response.statusCode == 401) {
-        Get.offAllNamed("/login");
+        logout();
         return const Response(body: null, statusCode: 401);
       } else {
         return Response(body: null, statusCode: response.statusCode);
@@ -78,19 +83,16 @@ class HttpService {
   }
 
   static Future<Response> getRequest(String url) async {
-    log(await SecureStorageService.read(token) ?? 'null');
-
     try {
       var response = await http.get(Uri.parse(url), headers: {
         'accept': 'application/json',
-        'X-authToken': await SecureStorageService.read(token) ?? 'null',
+        'X-authToken': await SecureStorageService.read(TOKEN) ?? 'null',
       });
       if (response.statusCode == 200) {
         var body = json.decode(response.body);
-        log(body.toString());
         return Response(body: body, statusCode: response.statusCode);
       } else if (response.statusCode == 401) {
-        Get.offAllNamed("/login");
+        logout();
         return const Response(body: null, statusCode: 401);
       } else {
         return Response(body: null, statusCode: response.statusCode);
@@ -137,7 +139,7 @@ class HttpService {
   }
 
   static Future<Response> putRequest(String url, Map<String, dynamic> jsonMap) async {
-    jsonMap["X-authToken"] = await SecureStorageService.read(token) ?? 'null';
+    jsonMap["X-authToken"] = await SecureStorageService.read(TOKEN) ?? 'null';
     String body = json.encode(jsonMap);
 
     try {
@@ -153,7 +155,7 @@ class HttpService {
         var body = json.decode(response.body);
         return Response(body: body, statusCode: response.statusCode);
       } else if (response.statusCode == 401) {
-        Get.offAllNamed("/login");
+        logout();
         return const Response(body: null, statusCode: 401);
       } else {
         return Response(body: null, statusCode: response.statusCode);
