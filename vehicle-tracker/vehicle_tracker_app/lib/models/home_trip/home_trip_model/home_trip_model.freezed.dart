@@ -50,6 +50,8 @@ mixin _$HomeTripModel {
   set name(String? value) => throw _privateConstructorUsedError;
   String? get tenantId => throw _privateConstructorUsedError;
   set tenantId(String? value) => throw _privateConstructorUsedError;
+  Vehicle? get vehicle => throw _privateConstructorUsedError;
+  set vehicle(Vehicle? value) => throw _privateConstructorUsedError;
   String? get locationAlerts => throw _privateConstructorUsedError;
   set locationAlerts(String? value) => throw _privateConstructorUsedError;
 
@@ -81,10 +83,12 @@ abstract class $HomeTripModelCopyWith<$Res> {
       String? dropLocation,
       String? name,
       String? tenantId,
+      Vehicle? vehicle,
       String? locationAlerts});
 
   $OperatorCopyWith<$Res>? get operator;
   $CitizenCopyWith<$Res>? get citizen;
+  $VehicleCopyWith<$Res>? get vehicle;
 }
 
 /// @nodoc
@@ -115,6 +119,7 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
     Object? dropLocation = freezed,
     Object? name = freezed,
     Object? tenantId = freezed,
+    Object? vehicle = freezed,
     Object? locationAlerts = freezed,
   }) {
     return _then(_value.copyWith(
@@ -178,6 +183,10 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
           ? _value.tenantId
           : tenantId // ignore: cast_nullable_to_non_nullable
               as String?,
+      vehicle: freezed == vehicle
+          ? _value.vehicle
+          : vehicle // ignore: cast_nullable_to_non_nullable
+              as Vehicle?,
       locationAlerts: freezed == locationAlerts
           ? _value.locationAlerts
           : locationAlerts // ignore: cast_nullable_to_non_nullable
@@ -208,6 +217,18 @@ class _$HomeTripModelCopyWithImpl<$Res, $Val extends HomeTripModel>
       return _then(_value.copyWith(citizen: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VehicleCopyWith<$Res>? get vehicle {
+    if (_value.vehicle == null) {
+      return null;
+    }
+
+    return $VehicleCopyWith<$Res>(_value.vehicle!, (value) {
+      return _then(_value.copyWith(vehicle: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -234,12 +255,15 @@ abstract class _$$_HomeTripModelCopyWith<$Res>
       String? dropLocation,
       String? name,
       String? tenantId,
+      Vehicle? vehicle,
       String? locationAlerts});
 
   @override
   $OperatorCopyWith<$Res>? get operator;
   @override
   $CitizenCopyWith<$Res>? get citizen;
+  @override
+  $VehicleCopyWith<$Res>? get vehicle;
 }
 
 /// @nodoc
@@ -268,6 +292,7 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
     Object? dropLocation = freezed,
     Object? name = freezed,
     Object? tenantId = freezed,
+    Object? vehicle = freezed,
     Object? locationAlerts = freezed,
   }) {
     return _then(_$_HomeTripModel(
@@ -331,6 +356,10 @@ class __$$_HomeTripModelCopyWithImpl<$Res>
           ? _value.tenantId
           : tenantId // ignore: cast_nullable_to_non_nullable
               as String?,
+      vehicle: freezed == vehicle
+          ? _value.vehicle
+          : vehicle // ignore: cast_nullable_to_non_nullable
+              as Vehicle?,
       locationAlerts: freezed == locationAlerts
           ? _value.locationAlerts
           : locationAlerts // ignore: cast_nullable_to_non_nullable
@@ -359,6 +388,7 @@ class _$_HomeTripModel implements _HomeTripModel {
       this.dropLocation,
       this.name,
       this.tenantId,
+      this.vehicle,
       this.locationAlerts});
 
   factory _$_HomeTripModel.fromJson(Map<String, dynamic> json) =>
@@ -395,11 +425,13 @@ class _$_HomeTripModel implements _HomeTripModel {
   @override
   String? tenantId;
   @override
+  Vehicle? vehicle;
+  @override
   String? locationAlerts;
 
   @override
   String toString() {
-    return 'HomeTripModel(id: $id, routeId: $routeId, serviceCode: $serviceCode, status: $status, plannedStartTime: $plannedStartTime, plannedEndTime: $plannedEndTime, operator: $operator, actualStartTime: $actualStartTime, actualEndTime: $actualEndTime, userId: $userId, citizen: $citizen, pickupLocation: $pickupLocation, dropLocation: $dropLocation, name: $name, tenantId: $tenantId, locationAlerts: $locationAlerts)';
+    return 'HomeTripModel(id: $id, routeId: $routeId, serviceCode: $serviceCode, status: $status, plannedStartTime: $plannedStartTime, plannedEndTime: $plannedEndTime, operator: $operator, actualStartTime: $actualStartTime, actualEndTime: $actualEndTime, userId: $userId, citizen: $citizen, pickupLocation: $pickupLocation, dropLocation: $dropLocation, name: $name, tenantId: $tenantId, vehicle: $vehicle, locationAlerts: $locationAlerts)';
   }
 
   @JsonKey(ignore: true)
@@ -433,6 +465,7 @@ abstract class _HomeTripModel implements HomeTripModel {
       String? dropLocation,
       String? name,
       String? tenantId,
+      Vehicle? vehicle,
       String? locationAlerts}) = _$_HomeTripModel;
 
   factory _HomeTripModel.fromJson(Map<String, dynamic> json) =
@@ -483,6 +516,9 @@ abstract class _HomeTripModel implements HomeTripModel {
   @override
   String? get tenantId;
   set tenantId(String? value);
+  @override
+  Vehicle? get vehicle;
+  set vehicle(Vehicle? value);
   @override
   String? get locationAlerts;
   set locationAlerts(String? value);
@@ -856,5 +892,138 @@ abstract class _Citizen implements Citizen {
   @override
   @JsonKey(ignore: true)
   _$$_CitizenCopyWith<_$_Citizen> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Vehicle _$VehicleFromJson(Map<String, dynamic> json) {
+  return _Vehicle.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Vehicle {
+  String? get registrationNumber => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $VehicleCopyWith<Vehicle> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VehicleCopyWith<$Res> {
+  factory $VehicleCopyWith(Vehicle value, $Res Function(Vehicle) then) =
+      _$VehicleCopyWithImpl<$Res, Vehicle>;
+  @useResult
+  $Res call({String? registrationNumber});
+}
+
+/// @nodoc
+class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
+    implements $VehicleCopyWith<$Res> {
+  _$VehicleCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? registrationNumber = freezed,
+  }) {
+    return _then(_value.copyWith(
+      registrationNumber: freezed == registrationNumber
+          ? _value.registrationNumber
+          : registrationNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_VehicleCopyWith<$Res> implements $VehicleCopyWith<$Res> {
+  factory _$$_VehicleCopyWith(
+          _$_Vehicle value, $Res Function(_$_Vehicle) then) =
+      __$$_VehicleCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? registrationNumber});
+}
+
+/// @nodoc
+class __$$_VehicleCopyWithImpl<$Res>
+    extends _$VehicleCopyWithImpl<$Res, _$_Vehicle>
+    implements _$$_VehicleCopyWith<$Res> {
+  __$$_VehicleCopyWithImpl(_$_Vehicle _value, $Res Function(_$_Vehicle) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? registrationNumber = freezed,
+  }) {
+    return _then(_$_Vehicle(
+      registrationNumber: freezed == registrationNumber
+          ? _value.registrationNumber
+          : registrationNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
+class _$_Vehicle implements _Vehicle {
+  const _$_Vehicle({this.registrationNumber});
+
+  factory _$_Vehicle.fromJson(Map<String, dynamic> json) =>
+      _$$_VehicleFromJson(json);
+
+  @override
+  final String? registrationNumber;
+
+  @override
+  String toString() {
+    return 'Vehicle(registrationNumber: $registrationNumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Vehicle &&
+            (identical(other.registrationNumber, registrationNumber) ||
+                other.registrationNumber == registrationNumber));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, registrationNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_VehicleCopyWith<_$_Vehicle> get copyWith =>
+      __$$_VehicleCopyWithImpl<_$_Vehicle>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_VehicleToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Vehicle implements Vehicle {
+  const factory _Vehicle({final String? registrationNumber}) = _$_Vehicle;
+
+  factory _Vehicle.fromJson(Map<String, dynamic> json) = _$_Vehicle.fromJson;
+
+  @override
+  String? get registrationNumber;
+  @override
+  @JsonKey(ignore: true)
+  _$$_VehicleCopyWith<_$_Vehicle> get copyWith =>
       throw _privateConstructorUsedError;
 }

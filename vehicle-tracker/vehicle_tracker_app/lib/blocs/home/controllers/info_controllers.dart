@@ -48,14 +48,36 @@ class InfoController extends GetxController {
 
     // ! For now we are hardcoding the city id as "pg.citya"
     final totalList = await homeHTTPRepository.getHomeTripData("pg.citya", operatorId);
-    
+
     normalTripList.value = totalList.where((element) {
       return element.value.status != TripStates.COMPLETED;
-    }).toList();
+    }).toList()
+      ..sort((a, b) {
+        if (a.value.plannedStartTime == null && b.value.plannedStartTime == null) {
+          return 0;
+        } else if (a.value.plannedStartTime == null) {
+          return 1;
+        } else if (b.value.plannedStartTime == null) {
+          return -1;
+        } else {
+          return b.value.plannedStartTime!.compareTo(a.value.plannedStartTime!);
+        }
+      });
 
     completedTripList.value = totalList.where((element) {
       return element.value.status == TripStates.COMPLETED;
-    }).toList();
+    }).toList()
+      ..sort((a, b) {
+        if (a.value.plannedStartTime == null && b.value.plannedStartTime == null) {
+          return 0;
+        } else if (a.value.plannedStartTime == null) {
+          return 1;
+        } else if (b.value.plannedStartTime == null) {
+          return -1;
+        } else {
+          return b.value.plannedStartTime!.compareTo(a.value.plannedStartTime!);
+        }
+      });
 
     isLoading.toggle();
   }

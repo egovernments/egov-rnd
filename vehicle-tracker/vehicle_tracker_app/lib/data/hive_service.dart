@@ -22,6 +22,10 @@ class HiveService {
     return Hive.box("user").getAt(0);
   }
 
+  static deleteUserData() async {
+    await Hive.box("user").clear();
+  }
+
   // ? For storing of Localization Data into Hive
   static Future<List<LocalizationHiveModel>> storeLocalization(
       List<LocalizationMessageModel> localizationList, String locale) async {

@@ -39,13 +39,13 @@ class TripControllers extends GetxController {
     log("Start TRIP API");
     final status = await homeHTTPRepository.updateTrip(data.value, TripStates.ONGOING);
     if (!status) {
-      toaster(context, AppTranslation.TRIP_NOT_STARTED_MESSAGE.tr, isError: true);
+      toaster(null, AppTranslation.TRIP_NOT_STARTED_MESSAGE.tr, isError: true);
       data.value.status = TripStates.NOTSTARTED;
       update([data.value.id]);
       return;
     }
 
-    toaster(context, AppTranslation.TRIP_STARTED_SUCCESFULLY_MESSAGE.tr, isError: false);
+    toaster(null, AppTranslation.TRIP_STARTED_SUCCESFULLY_MESSAGE.tr, isError: false);
 
     data.value.status = TripStates.ONGOING;
     update([data.value.id]);
@@ -126,7 +126,7 @@ class TripControllers extends GetxController {
       if (status) {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
-        toaster(context, AppTranslation.POSITION_SENT_MESSAGE.tr);
+        toaster(null, AppTranslation.POSITION_SENT_MESSAGE.tr);
         return status;
       } else {
         // If the position sending fails, save the data to hive
@@ -138,7 +138,7 @@ class TripControllers extends GetxController {
       // If not connected to internet, save the data to hive
       log("No internet connection, saving to hive");
       await homeHiveRepository.storeTripData(tripHiveModel);
-      toaster(context, AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
+      toaster(null, AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
       return false;
     }
   }
@@ -194,11 +194,11 @@ class TripControllers extends GetxController {
     if (!status) {
       data.value.status = TripStates.ONGOING;
       update([data.value.id]);
-      toaster(context, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
+      toaster(null, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
       return;
     }
 
-    toaster(context, AppTranslation.TRIP_ENDED_SUCCESFULLY_MESSAGE.tr, isError: false);
+    toaster(null, AppTranslation.TRIP_ENDED_SUCCESFULLY_MESSAGE.tr, isError: false);
 
     log("Deleting trip data from hive");
     await homeHiveRepository.deleteTripData();

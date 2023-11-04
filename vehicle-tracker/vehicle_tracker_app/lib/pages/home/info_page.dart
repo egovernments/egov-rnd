@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/utils/drawer_widget.dart';
 import 'package:vehicle_tracker_app/widgets/home/trip_button.dart';
 import 'package:vehicle_tracker_app/widgets/utils/scrollable_header_widget.dart';
@@ -45,7 +46,7 @@ class InfoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    data.value.routeId?.toUpperCase() ?? "Null",
+                    AppTranslation.DETAILS.tr,
                     style: textTheme.headlineLarge,
                   ),
                   textColumnWidget(data),

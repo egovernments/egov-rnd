@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,10 +41,10 @@ Widget textColumnWidget(Rx<HomeTripModel> data) {
       children: [
         tableRow(AppTranslation.TRIP_ID.tr, data.value.id),
         tableRow(AppTranslation.NAME.tr, data.value.citizen?.name ?? ""),
-        tableRow(AppTranslation.VEHICLE_NUMBER.tr, data.value.operator?.contactNumber ?? ""),
+        tableRow(AppTranslation.VEHICLE_NUMBER.tr, data.value.vehicle?.registrationNumber ?? ""),
         tableRow(AppTranslation.PICK_UP_LOCATION.tr, data.value.pickupLocation ?? ""),
         tableRow(AppTranslation.DROP_LOCATION.tr, data.value.dropLocation ?? ""),
-        tableRow(AppTranslation.DATE.tr, data.value.plannedStartTime ?? ""),
+        tableRow(AppTranslation.DATE.tr, formattedDate(data.value.plannedStartTime)),
         TableRow(
           children: [
             paddedText("Status", bold: true),
@@ -84,3 +86,16 @@ Widget paddedText(String value, {bool bold = false}) => Padding(
         style: bold ? const TextStyle(fontWeight: FontWeight.bold) : null,
       ),
     );
+
+String formattedDate(String? timestamp) {
+  if (timestamp == null) {
+    return "";
+  }
+  try {
+    final date = DateTime.parse(timestamp);
+    return "${date.hour}:${date.minute} ${date.day}/${date.month}/${date.year}";
+  } on Exception catch (e) {
+    log(e.toString());
+    return "";
+  }
+}

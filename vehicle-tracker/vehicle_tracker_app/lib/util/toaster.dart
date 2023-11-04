@@ -24,7 +24,14 @@ toaster(BuildContext? context, String message, {bool isError = false, String? er
         log("Error : $error");
       }
     } else {
-      DigitToast.show(context, options: DigitToastOptions(message, isError, DigitTheme.instance.mobileTheme));
+      DigitToast.show(
+        context,
+        options: DigitToastOptions(
+          message,
+          isError,
+          DigitTheme.instance.mobileTheme,
+        ),
+      );
     }
   } on Exception catch (e) {
     log("Normal Toast Error : $e");
