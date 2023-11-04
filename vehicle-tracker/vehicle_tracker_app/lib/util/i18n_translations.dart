@@ -59,7 +59,11 @@ class AppTranslation extends Translations {
   static String get PICK_UP_LOCATION => 'PICK_UP_LOCATION';
   static String get DROP_LOCATION => 'DROP_LOCATION';
   static String get DATE => 'DATE';
+  static String get DETAILS => 'DETAILS';
   static String get STATUS => 'STATUS';
+  static String get TRIP_STARTED_SUCCESFULLY_MESSAGE => 'TRIP_STARTED_SUCCESFULLY_MESSAGE';
+  static String get TRIP_ENDED_SUCCESFULLY_MESSAGE => 'TRIP_ENDED_SUCCESFULLY_MESSAGE';
+  
 
   // ? This was the old way of doing translations
   // ? Its not here for reference, will be deleted soon
