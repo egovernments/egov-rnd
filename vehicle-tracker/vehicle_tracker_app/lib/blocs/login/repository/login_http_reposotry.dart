@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/constants.dart';
+import 'package:vehicle_tracker_app/data/hive_service.dart';
 
 import '../../../data/http_service.dart';
 import '../../../data/secure_storage_service.dart';
@@ -47,6 +48,8 @@ class LoginHTTPRepository {
         tenantId: loginModel.UserRequest.tenantId,
         operatorId: driverId,
       );
+
+      await HiveService.addUserData(loginModel.UserRequest.name, loginModel.UserRequest.mobileNumber);
 
       toaster(context, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
       return true;

@@ -20,6 +20,8 @@ class UserRequestModel with _$UserRequestModel {
   const factory UserRequestModel({
     required String uuid,
     required String tenantId,
+    required String name,
+    required String mobileNumber,
   }) = _UserRequestModel;
 
   factory UserRequestModel.fromJson(Map<String, dynamic> json) => _$UserRequestModelFromJson(json);

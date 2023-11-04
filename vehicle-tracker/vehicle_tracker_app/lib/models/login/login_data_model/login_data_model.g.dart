@@ -23,10 +23,14 @@ _$_UserRequestModel _$$_UserRequestModelFromJson(Map<String, dynamic> json) =>
     _$_UserRequestModel(
       uuid: json['uuid'] as String,
       tenantId: json['tenantId'] as String,
+      name: json['name'] as String,
+      mobileNumber: json['mobileNumber'] as String,
     );
 
 Map<String, dynamic> _$$_UserRequestModelToJson(_$_UserRequestModel instance) =>
     <String, dynamic>{
       'uuid': instance.uuid,
       'tenantId': instance.tenantId,
+      'name': instance.name,
+      'mobileNumber': instance.mobileNumber,
     };

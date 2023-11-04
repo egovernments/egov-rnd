@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vehicle_tracker_app/data/mdms_service.dart';
+import 'package:vehicle_tracker_app/models/login/login_hive_model/login_hive_model.dart';
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
@@ -70,6 +71,9 @@ registerAdaptersFunc() {
 
   // For tracker storing data
   Hive.registerAdapter(TripHiveModelAdapter());
+
+  // For User Data
+  Hive.registerAdapter(LoginHiveModelAdapter());
 }
 
 // Common function to open all the Hive boxes

@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:vehicle_tracker_app/models/login/login_hive_model/login_hive_model.dart';
 
 import '../models/localization/localization_hive/localization_hive_model.dart';
 import '../models/localization/localiztion_model/localization_model.dart';
@@ -6,6 +7,21 @@ import '../models/mdms/mdms_hive/mdms_hive_model.dart';
 import '../models/mdms/mdms_model/mdms_model.dart';
 
 class HiveService {
+  // ? Add User Data
+  static Future<void> addUserData(String name, String mobileNumber) async {
+    final userHiveData = LoginHiveModel(name: name, mobileNumber: mobileNumber);
+    await Hive.box("user").add(userHiveData);
+  }
+
+  // ? Get User Data
+  static LoginHiveModel getUserData() {
+    if (Hive.box("user").isEmpty) {
+      return LoginHiveModel(name: "", mobileNumber: "");
+    }
+
+    return Hive.box("user").getAt(0);
+  }
+
   // ? For storing of Localization Data into Hive
   static Future<List<LocalizationHiveModel>> storeLocalization(
       List<LocalizationMessageModel> localizationList, String locale) async {

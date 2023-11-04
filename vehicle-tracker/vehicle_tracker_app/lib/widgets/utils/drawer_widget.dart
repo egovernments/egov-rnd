@@ -1,6 +1,7 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../router/routes.dart';
@@ -14,6 +15,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = DigitTheme.instance;
     final textTheme = theme.mobileTheme.textTheme;
+    final userData = HiveService.getUserData();
 
     return Drawer(
       child: ScrollableContent(
@@ -24,8 +26,8 @@ class CustomDrawer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: kPadding * 13),
             child: Column(
               children: [
-                Text("--- Name ---", style: textTheme.displayMedium),
-                Text("--- Phone ---", style: textTheme.headlineLarge),
+                Text(userData.name, style: textTheme.displayMedium),
+                Text(userData.mobileNumber, style: textTheme.headlineLarge),
               ],
             ),
           ),

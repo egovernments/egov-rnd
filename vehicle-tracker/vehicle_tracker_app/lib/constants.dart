@@ -19,5 +19,7 @@ const String TOKEN = "token";
 const String UUID = "uuid";
 const String TENANT_ID = "tenantId";
 const String OPERATOR_ID = "operatorId";
+const String NAME = "name";
+const String MOBILE_NUMBER = "mobileNumber";
 
-const List<String> hiveBoxes = ["en_IN", "or_IN", "mdms", "tracker"];
+const List<String> hiveBoxes = ["en_IN", "or_IN", "mdms", "tracker", "user"];

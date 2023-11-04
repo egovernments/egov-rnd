@@ -192,6 +192,8 @@ UserRequestModel _$UserRequestModelFromJson(Map<String, dynamic> json) {
 mixin _$UserRequestModel {
   String get uuid => throw _privateConstructorUsedError;
   String get tenantId => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get mobileNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -205,7 +207,7 @@ abstract class $UserRequestModelCopyWith<$Res> {
           UserRequestModel value, $Res Function(UserRequestModel) then) =
       _$UserRequestModelCopyWithImpl<$Res, UserRequestModel>;
   @useResult
-  $Res call({String uuid, String tenantId});
+  $Res call({String uuid, String tenantId, String name, String mobileNumber});
 }
 
 /// @nodoc
@@ -223,6 +225,8 @@ class _$UserRequestModelCopyWithImpl<$Res, $Val extends UserRequestModel>
   $Res call({
     Object? uuid = null,
     Object? tenantId = null,
+    Object? name = null,
+    Object? mobileNumber = null,
   }) {
     return _then(_value.copyWith(
       uuid: null == uuid
@@ -232,6 +236,14 @@ class _$UserRequestModelCopyWithImpl<$Res, $Val extends UserRequestModel>
       tenantId: null == tenantId
           ? _value.tenantId
           : tenantId // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      mobileNumber: null == mobileNumber
+          ? _value.mobileNumber
+          : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -245,7 +257,7 @@ abstract class _$$_UserRequestModelCopyWith<$Res>
       __$$_UserRequestModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uuid, String tenantId});
+  $Res call({String uuid, String tenantId, String name, String mobileNumber});
 }
 
 /// @nodoc
@@ -261,6 +273,8 @@ class __$$_UserRequestModelCopyWithImpl<$Res>
   $Res call({
     Object? uuid = null,
     Object? tenantId = null,
+    Object? name = null,
+    Object? mobileNumber = null,
   }) {
     return _then(_$_UserRequestModel(
       uuid: null == uuid
@@ -271,6 +285,14 @@ class __$$_UserRequestModelCopyWithImpl<$Res>
           ? _value.tenantId
           : tenantId // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      mobileNumber: null == mobileNumber
+          ? _value.mobileNumber
+          : mobileNumber // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -278,7 +300,11 @@ class __$$_UserRequestModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserRequestModel implements _UserRequestModel {
-  const _$_UserRequestModel({required this.uuid, required this.tenantId});
+  const _$_UserRequestModel(
+      {required this.uuid,
+      required this.tenantId,
+      required this.name,
+      required this.mobileNumber});
 
   factory _$_UserRequestModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserRequestModelFromJson(json);
@@ -287,10 +313,14 @@ class _$_UserRequestModel implements _UserRequestModel {
   final String uuid;
   @override
   final String tenantId;
+  @override
+  final String name;
+  @override
+  final String mobileNumber;
 
   @override
   String toString() {
-    return 'UserRequestModel(uuid: $uuid, tenantId: $tenantId)';
+    return 'UserRequestModel(uuid: $uuid, tenantId: $tenantId, name: $name, mobileNumber: $mobileNumber)';
   }
 
   @override
@@ -300,12 +330,16 @@ class _$_UserRequestModel implements _UserRequestModel {
             other is _$_UserRequestModel &&
             (identical(other.uuid, uuid) || other.uuid == uuid) &&
             (identical(other.tenantId, tenantId) ||
-                other.tenantId == tenantId));
+                other.tenantId == tenantId) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.mobileNumber, mobileNumber) ||
+                other.mobileNumber == mobileNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uuid, tenantId);
+  int get hashCode =>
+      Object.hash(runtimeType, uuid, tenantId, name, mobileNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -324,7 +358,9 @@ class _$_UserRequestModel implements _UserRequestModel {
 abstract class _UserRequestModel implements UserRequestModel {
   const factory _UserRequestModel(
       {required final String uuid,
-      required final String tenantId}) = _$_UserRequestModel;
+      required final String tenantId,
+      required final String name,
+      required final String mobileNumber}) = _$_UserRequestModel;
 
   factory _UserRequestModel.fromJson(Map<String, dynamic> json) =
       _$_UserRequestModel.fromJson;
@@ -333,6 +369,10 @@ abstract class _UserRequestModel implements UserRequestModel {
   String get uuid;
   @override
   String get tenantId;
+  @override
+  String get name;
+  @override
+  String get mobileNumber;
   @override
   @JsonKey(ignore: true)
   _$$_UserRequestModelCopyWith<_$_UserRequestModel> get copyWith =>
