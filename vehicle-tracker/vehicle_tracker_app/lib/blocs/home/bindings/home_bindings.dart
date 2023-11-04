@@ -24,5 +24,4 @@ class TripStates {
   static const String NOTSTARTED = "NotStarted";
   static const String CANCELLED = "Cancelled";
   static const String LOADING = "Loading";
-  static const String NONE = "none";
 }

@@ -50,7 +50,7 @@ Widget textColumnWidget(Rx<HomeTripModel> data) {
               children: [
                 GetBuilder<TripControllers>(
                   id: data.value.id,
-                  builder: (tripControllers) => statusInfoWidget(data.value.status ?? TripStates.NONE),
+                  builder: (tripControllers) => statusInfoWidget(data.value.status ?? TripStates.NOTSTARTED),
                 ),
               ],
             ),

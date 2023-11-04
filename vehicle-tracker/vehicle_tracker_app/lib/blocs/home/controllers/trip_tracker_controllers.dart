@@ -39,6 +39,8 @@ class TripControllers extends GetxController {
       return;
     }
 
+    toaster(Get.context, AppTranslation.TRIP_STARTED_SUCCESFULLY_MESSAGE.tr, isError: false);
+
     data.value.status = TripStates.ONGOING;
     update([data.value.id]);
 
@@ -169,6 +171,7 @@ class TripControllers extends GetxController {
     await startTracking(data);
     data.value.status = TripStates.ONGOING;
     update([data.value.id]);
+
     isLoading.toggle();
   }
 
@@ -188,6 +191,8 @@ class TripControllers extends GetxController {
       toaster(Get.context, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
       return;
     }
+
+    toaster(Get.context, AppTranslation.TRIP_ENDED_SUCCESFULLY_MESSAGE.tr, isError: false);
 
     log("Deleting trip data from hive");
     await homeHiveRepository.deleteTripData();

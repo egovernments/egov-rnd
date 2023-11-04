@@ -25,7 +25,7 @@ class TripInfoCardWidget extends StatelessWidget {
           // Status Heading
           GetBuilder<TripControllers>(
             id: data.value.id,
-            builder: (tripControllers) => statusInfoWidget(data.value.status ?? TripStates.NONE),
+            builder: (tripControllers) => statusInfoWidget(data.value.status ?? TripStates.NOTSTARTED),
           ),
 
           //  Locality Heading
