@@ -29,7 +29,7 @@ Color colourPicker(String status, DigitTheme theme) {
   switch (status) {
     case TripStates.NONE:
       return theme.colors.cloudGray;
-    case TripStates.CREATED:
+    case TripStates.NOTSTARTED:
       return theme.colors.paleRose;
     case TripStates.COMPLETED:
       return theme.colors.tropicalBlue;
@@ -61,7 +61,7 @@ Widget infoBuilder(String status, DigitTheme theme) {
         ],
       );
 
-    case TripStates.CREATED:
+    case TripStates.NOTSTARTED:
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [

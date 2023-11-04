@@ -18,7 +18,7 @@ class StartTripButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (data.value.status == TripStates.RUNNING) {
+    if (data.value.status == TripStates.ONGOING) {
       log("Running previous trip");
       tripControllers.startPeriodicFunction(data.value);
     }
@@ -33,11 +33,11 @@ class StartTripButton extends StatelessWidget {
         //   );
         // }
 
-        if (data.value.status == TripStates.PROGRESS) {
+        if (data.value.status == TripStates.LOADING) {
           return Center(child: CircularProgressIndicator(color: DigitTheme.instance.colors.mangoOrange));
         }
 
-        if (data.value.status == TripStates.RUNNING) {
+        if (data.value.status == TripStates.ONGOING) {
           return SizedBox(
             width: double.infinity,
             child: DigitOutLineButton(

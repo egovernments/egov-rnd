@@ -31,15 +31,15 @@ class TripControllers extends GetxController {
     log('---- Trip and Tracking started ----');
 
     log("Start TRIP API");
-    final status = await homeHTTPRepository.updateTrip(data.value, true);
+    final status = await homeHTTPRepository.updateTrip(data.value, TripStates.ONGOING);
     if (!status) {
       toaster(Get.context, AppTranslation.TRIP_NOT_STARTED_MESSAGE.tr, isError: true);
-      data.value.status = TripStates.CREATED;
+      data.value.status = TripStates.NOTSTARTED;
       update([data.value.id]);
       return;
     }
 
-    data.value.status = TripStates.RUNNING;
+    data.value.status = TripStates.ONGOING;
     update([data.value.id]);
 
     // Calls the periodic function
@@ -118,7 +118,7 @@ class TripControllers extends GetxController {
       if (status) {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
-        toaster(Get.context, AppTranslation.POSITION_SENT_MESSAGE.tr);
+        toaster(null, AppTranslation.POSITION_SENT_MESSAGE.tr);
         return status;
       } else {
         // If the position sending fails, save the data to hive
@@ -130,7 +130,7 @@ class TripControllers extends GetxController {
       // If not connected to internet, save the data to hive
       log("No internet connection, saving to hive");
       await homeHiveRepository.storeTripData(tripHiveModel);
-      toaster(Get.context, AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
+      toaster(null, AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
       return false;
     }
   }
@@ -156,7 +156,7 @@ class TripControllers extends GetxController {
   // ? This function starts the trip
   Future<void> startTripFunction(Rx<HomeTripModel> data) async {
     // updates the UI
-    data.value.status = TripStates.PROGRESS;
+    data.value.status = TripStates.LOADING;
     update([data.value.id]);
 
     // prevents the screen from sleeping
@@ -167,21 +167,25 @@ class TripControllers extends GetxController {
     // calls the startTracking function
     isLoading.toggle();
     await startTracking(data);
+    data.value.status = TripStates.ONGOING;
+    update([data.value.id]);
     isLoading.toggle();
   }
 
   // ? This function stops the trip
   void endTripFunction(Rx<HomeTripModel> data) async {
-    data.value.status = TripStates.PROGRESS;
+    log("End trip function called");
+
+    data.value.status = TripStates.LOADING;
     update([data.value.id]);
 
     Get.back();
 
-    final status = await homeHTTPRepository.updateTrip(data.value, false);
+    final status = await homeHTTPRepository.updateTrip(data.value, TripStates.COMPLETED);
     if (!status) {
-      data.value.status = TripStates.RUNNING;
-      toaster(Get.context, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
+      data.value.status = TripStates.ONGOING;
       update([data.value.id]);
+      toaster(Get.context, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
       return;
     }
 
@@ -200,6 +204,8 @@ class TripControllers extends GetxController {
 
     // stops the periodic function
     isRunning.value = false;
+
+    update();
   }
 
   // ? Start trip dialog box by using the tripId

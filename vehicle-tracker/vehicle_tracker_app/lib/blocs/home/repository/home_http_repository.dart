@@ -46,15 +46,18 @@ class HomeHTTPRepository {
   // ? API to start and end the Trip
   // ? If start is true, then the trip will start
   // ? If start is false, then the trip will end
-  Future<bool> updateTrip(HomeTripModel data, bool start) async {
+  Future<bool> updateTrip(HomeTripModel data, String status) async {
     String reqUrl = "$apiUrl/trip/_update";
     final operatorId = await SecureStorageService.read(OPERATOR_ID);
 
     Map<String, dynamic> body = {
       "id": data.id,
-      "status": start ? "Ongoing" : "Completed",
+      "status": status,
       "userId": operatorId,
     };
+
+    log("URL: $reqUrl");
+    log("Body: $body");
 
     final response = await HttpService.putRequest(reqUrl, body);
 

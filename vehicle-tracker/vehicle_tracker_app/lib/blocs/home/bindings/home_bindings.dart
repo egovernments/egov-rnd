@@ -19,10 +19,10 @@ class HomeBindings extends Bindings {
 // CANCELLED("Cancelled");
 
 class TripStates {
-  static const String ACTIVE = "active";
-  static const String PROGRESS = "progress";
-  static const String COMPLETED = "completed";
-  static const String RUNNING = "in_progress";
-  static const String CREATED = "created";
+  static const String ONGOING = "Ongoing";
+  static const String COMPLETED = "Completed";
+  static const String NOTSTARTED = "NotStarted";
+  static const String CANCELLED = "Cancelled";
+  static const String LOADING = "Loading";
   static const String NONE = "none";
 }
