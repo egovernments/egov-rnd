@@ -45,7 +45,7 @@ class RouteMapPage extends StatelessWidget {
             body: FlutterMap(
               // * Map Options
               options: MapOptions(
-                center: controller.polyPoints.isNotEmpty ? controller.polyPoints.first : newDelhi,
+                center: controller.polyPoints.isNotEmpty ? controller.polyPoints.first : custom,
                 zoom: 13,
                 maxZoom: 18,
                 minZoom: 1,

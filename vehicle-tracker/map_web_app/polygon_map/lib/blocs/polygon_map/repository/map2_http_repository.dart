@@ -9,7 +9,7 @@ class Map2HttpRepository {
   static Future<bool> createPolygon(AlertPolygon alertPolygon) async {
     String url = "$apiUrl/poi/_create";
 
-    final location = alertPolygon.locationDetails.map((e) => e.toJson()).toList();
+    final location = alertPolygon.locationDetails?.map((e) => e.toJson()).toList();
 
     Map<String, dynamic> jsonMap = {
       "id": alertPolygon.id,
@@ -46,7 +46,7 @@ class Map2HttpRepository {
       "userId": alertPolygon.userId,
       "alert": alertPolygon.alert,
       "distanceMeters": alertPolygon.distanceMeters,
-      "locationDetails": alertPolygon.locationDetails.map((e) => e.toJson()).toList(),
+      "locationDetails": alertPolygon.locationDetails?.map((e) => e.toJson()).toList(),
       "tenantId": alertPolygon.tenantId
     };
 

@@ -251,7 +251,7 @@ class MapControllers extends GetxController {
     isEditing.value = true;
 
     selectedPolygon.value = Polygon(
-      points: oldPolygon.locationDetails.map((e) => LatLng(e.latitude, e.longitude)).toList(),
+      points: oldPolygon.locationDetails!.map((e) => LatLng(e.latitude, e.longitude)).toList(),
       color: theme.colors.curiousBlue.withOpacity(0.5),
       borderColor: theme.colors.curiousBlue,
       borderStrokeWidth: 2,
@@ -299,10 +299,10 @@ class MapControllers extends GetxController {
   // ? sets up the initial location for the map.
   // todo : can be configured later
   LatLng locationSetter() {
-    if (alertMarkers.isNotEmpty && alertMarkers.first.locationDetails.isNotEmpty) {
+    if (alertMarkers.first.locationDetails != null && alertMarkers.isNotEmpty && alertMarkers.first.locationDetails!.isNotEmpty) {
       return LatLng(
-        alertMarkers.first.locationDetails.last.latitude,
-        alertMarkers.first.locationDetails.last.longitude,
+        alertMarkers.first.locationDetails!.last.latitude,
+        alertMarkers.first.locationDetails!.last.longitude,
       );
     } else {
       return custom;
