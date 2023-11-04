@@ -1,63 +1,73 @@
+import 'dart:convert';
+
+List<AlertPolygon> alertPolygonFromJson(String str) => List<AlertPolygon>.from(json.decode(str).map((x) => AlertPolygon.fromJson(x)));
+
+String alertPolygonToJson(List<AlertPolygon> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class AlertPolygon {
-  String? id;
-  String? locationName;
-  String? status;
-  String? type;
-  List<LocationDetails>? locationDetails;
-  List<String>? alert;
-  String? userId;
-  int? distanceMeters;
+    String id;
+    String locationName;
+    dynamic tenantId;
+    String status;
+    String type;
+    List<LocationDetails> locationDetails;
+    String alert;
+    String userId;
+    int distanceMeters;
 
-  AlertPolygon(
-      {this.id, this.locationName, this.status, this.type, this.locationDetails, this.alert, this.userId, this.distanceMeters});
+    AlertPolygon({
+        required this.id,
+        required this.locationName,
+        required this.tenantId,
+        required this.status,
+        required this.type,
+        required this.locationDetails,
+        required this.alert,
+        required this.userId,
+        required this.distanceMeters,
+    });
 
-  AlertPolygon.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    locationName = json['locationName'];
-    status = json['status'];
-    type = json['type'];
-    if (json['locationDetails'] != null) {
-      locationDetails = <LocationDetails>[];
-      json['locationDetails'].forEach((v) {
-        locationDetails!.add(LocationDetails.fromJson(v));
-      });
-    }
-    alert = json['alert'].cast<String>();
-    userId = json['userId'];
-    distanceMeters = json['distanceMeters'];
-  }
+    factory AlertPolygon.fromJson(Map<String, dynamic> json) => AlertPolygon(
+        id: json["id"],
+        locationName: json["locationName"],
+        tenantId: json["tenantId"],
+        status: json["status"],
+        type: json["type"],
+        locationDetails: List<LocationDetails>.from(json["locationDetails"].map((x) => LocationDetails.fromJson(x))),
+        alert: json["alert"],
+        userId: json["userId"],
+        distanceMeters: json["distanceMeters"],
+    );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['locationName'] = locationName;
-    data['status'] = status;
-    data['type'] = type;
-    if (locationDetails != null) {
-      data['locationDetails'] = locationDetails!.map((v) => v.toJson()).toList();
-    }
-    data['alert'] = alert;
-    data['userId'] = userId;
-    data['distanceMeters'] = distanceMeters;
-    return data;
-  }
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "locationName": locationName,
+        "tenantId": tenantId,
+        "status": status,
+        "type": type,
+        "locationDetails": List<dynamic>.from(locationDetails.map((x) => x.toJson())),
+        "alert": alert,
+        "userId": userId,
+        "distanceMeters": distanceMeters,
+    };
 }
 
 class LocationDetails {
-  double? latitude;
-  double? longitude;
+    double latitude;
+    double longitude;
 
-  LocationDetails({this.latitude, this.longitude});
+    LocationDetails({
+        required this.latitude,
+        required this.longitude,
+    });
 
-  LocationDetails.fromJson(Map<String, dynamic> json) {
-    latitude = json['latitude'];
-    longitude = json['longitude'];
-  }
+    factory LocationDetails.fromJson(Map<String, dynamic> json) => LocationDetails(
+        latitude: json["latitude"]?.toDouble(),
+        longitude: json["longitude"]?.toDouble(),
+    );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['latitude'] = latitude;
-    data['longitude'] = longitude;
-    return data;
-  }
+    Map<String, dynamic> toJson() => {
+        "latitude": latitude,
+        "longitude": longitude,
+    };
 }

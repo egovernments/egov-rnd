@@ -3,12 +3,10 @@
 import 'package:get/get.dart';
 import 'package:polygon_map/pages/map_page2.dart';
 
-import 'blocs/polygon_map/bindings/map_bindings.dart';
 
 List<GetPage<dynamic>> getPages = [
   GetPage(
-    name: "/",
+    name: "/map",
     page: () => const PolygonMap(),
-    binding: PolygonMapBindings(),
   ),
 ];

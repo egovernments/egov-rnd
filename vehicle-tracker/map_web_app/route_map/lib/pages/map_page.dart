@@ -22,7 +22,7 @@ class RouteMapPage extends StatelessWidget {
     }
 
     // * Fetch the data from the API using the tripId
-    final mapController = Get.find<RouteControllers>();
+    final mapController = Get.put(RouteControllers(tripId));
     mapController.fetchData(tripId);
 
     return GetBuilder<RouteControllers>(

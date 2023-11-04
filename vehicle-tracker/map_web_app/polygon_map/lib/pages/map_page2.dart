@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
@@ -14,17 +12,17 @@ class PolygonMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final userId = Get.parameters['userid'];
-    if (userId == null) {
-     return const Scaffold(
-       body: Center(
-         child: Text("User Id is null"),
-       ),
-     ); 
+    final tenantId = Get.parameters['tenantid'];
+    if (userId == null || tenantId == null) {
+      return const Scaffold(
+        body: Center(
+          child: Text("User Id or Tenant Id is null"),
+        ),
+      );
     }
 
-    final mapController = Get.find<MapControllers>();
+    final mapController = Get.put(MapControllers(userId, tenantId));
     mapController.userID = userId;
     mapController.fetchData();
 

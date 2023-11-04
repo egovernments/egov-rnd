@@ -9,6 +9,10 @@ import '../../../data/http_service.dart';
 import '../../../models/trip_progress/progress_report_model.dart';
 
 class RouteControllers extends GetxController {
+  final String tripId;
+
+  RouteControllers(this.tripId);
+
   late Timer _timer;
   RxList<ProgressReportModel> progressReportList = <ProgressReportModel>[].obs;
   RxBool isFetching = false.obs;
@@ -42,17 +46,12 @@ class RouteControllers extends GetxController {
     }
 
     for (var item in progressReportList) {
-      final list = item.progressData ?? [];
-      if (list.isEmpty) {
+      final list = item.location;
+      if (list == null) {
         continue;
       }
 
-      for (var point in list) {
-        if (point.location == null) {
-          continue;
-        }
-        polyPoints.add(LatLng(point.location!.latitude, point.location!.longitude));
-      }
+      polyPoints.add(LatLng(list.latitude, list.longitude));
     }
 
     update();

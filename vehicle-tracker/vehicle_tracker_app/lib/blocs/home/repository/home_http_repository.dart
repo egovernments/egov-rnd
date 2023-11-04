@@ -30,6 +30,7 @@ class HomeHTTPRepository {
       final data = response.body as List<dynamic>;
       for (var item in data) {
         homeTripModel.add(Rx(HomeTripModel.fromJson(item)));
+        log(homeTripModel.last.value.status.toString());
       }
     } on FormatException catch (e) {
       toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.message);
@@ -51,7 +52,7 @@ class HomeHTTPRepository {
 
     Map<String, dynamic> body = {
       "id": data.id,
-      "status": start ? "in_progress" : "completed",
+      "status": start ? "Ongoing" : "Completed",
       "userId": operatorId,
     };
 

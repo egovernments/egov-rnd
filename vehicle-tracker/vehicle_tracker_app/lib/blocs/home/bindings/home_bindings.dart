@@ -12,6 +12,11 @@ class HomeBindings extends Bindings {
     Get.put(TripControllers(), permanent: true);
   }
 }
+// * enums
+// NOTSTARTED("NotStarted"),
+// ONGOING("Ongoing"),
+// COMPLETED("Completed"),
+// CANCELLED("Cancelled");
 
 class TripStates {
   static const String ACTIVE = "active";

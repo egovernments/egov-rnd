@@ -9,16 +9,21 @@ class Map2HttpRepository {
   static Future<bool> createPolygon(AlertPolygon alertPolygon) async {
     String url = "$apiUrl/poi/_create";
 
+    final location = alertPolygon.locationDetails.map((e) => e.toJson()).toList();
+
     Map<String, dynamic> jsonMap = {
       "id": alertPolygon.id,
       "locationName": alertPolygon.locationName,
       "status": alertPolygon.status,
       "type": alertPolygon.type,
       "userId": alertPolygon.userId,
-      "alert": alertPolygon.alert,
+      "alert": "Alert",
       "distanceMeters": alertPolygon.distanceMeters,
-      "locationDetails": alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
+      "locationDetails": location,
+      "tenantId": "pg.citya"
     };
+
+    log(url);
 
     final response = await HttpService.postRequestWithoutToken(url, jsonMap);
 
@@ -41,7 +46,8 @@ class Map2HttpRepository {
       "userId": alertPolygon.userId,
       "alert": alertPolygon.alert,
       "distanceMeters": alertPolygon.distanceMeters,
-      "locationDetails": alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
+      "locationDetails": alertPolygon.locationDetails.map((e) => e.toJson()).toList(),
+      "tenantId": alertPolygon.tenantId
     };
 
     final response = await HttpService.putRequestWithoutToken(url, jsonMap);
@@ -54,22 +60,33 @@ class Map2HttpRepository {
     }
   }
 
-  static Future<List<AlertPolygon>> getAllPolygonsWithAlerts() async {
-    String url = "$apiUrl/poi/_search?isAlertLocation=true";
+  static Future<List<AlertPolygon>> getAllPolygonsWithAlerts(String tenantId) async {
+    try {
+      String url = "$apiUrl/poi/_search?tenantId=$tenantId";
 
-    final response = await HttpService.getRequest(url);
-    if (response.statusCode != 200) {
+      final response = await HttpService.getRequest(url);
+      if (response.statusCode != 200) {
+        log("Error in calling GET ALL POLYGONS api");
+        log(response.statusCode.toString());
+        return [];
+      }
+
+      final json = response.body as List<dynamic>;
+      log(json.length.toString());
+
+      List<AlertPolygon> alertPolygon = [];
+
+      for (var item in json) {
+        alertPolygon.add(AlertPolygon.fromJson(item));
+      }
+
+      return alertPolygon;
+    } on FormatException {
+      log("Format Exception");
+      rethrow;
+    } catch (e) {
+      log(e.toString());
       return [];
     }
-
-    final json = response.body as List<dynamic>;
-
-    List<AlertPolygon> alertPolygon = [];
-
-    for (var item in json) {
-      alertPolygon.add(AlertPolygon.fromJson(item));
-    }
-
-    return alertPolygon;
   }
 }

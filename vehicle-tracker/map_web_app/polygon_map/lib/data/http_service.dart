@@ -48,6 +48,8 @@ class HttpService {
         var body = json.decode(response.body);
         return Response(body: body, statusCode: response.statusCode);
       } else {
+        log("Error: ${response.statusCode}");
+        log("Error: ${response.body}");
         return Response(body: null, statusCode: response.statusCode);
       }
     } on SocketException catch (e) {
@@ -65,7 +67,7 @@ class HttpService {
     }
   }
 
-   static Future<Response> putRequestWithoutToken(String url, Map<String, dynamic> jsonMap) async {
+  static Future<Response> putRequestWithoutToken(String url, Map<String, dynamic> jsonMap) async {
     String body = json.encode(jsonMap);
 
     try {

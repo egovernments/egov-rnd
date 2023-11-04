@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:developer';
 
 import 'package:digit_components/theme/digit_theme.dart';
@@ -11,6 +13,11 @@ import '../../../models/alert_polygons.dart';
 import '../repository/map2_http_repository.dart';
 
 class MapControllers extends GetxController {
+  final String userId;
+  final String tenantId;
+
+  MapControllers(this.userId, this.tenantId);
+
   RxList<AlertPolygon> alertPolygons = <AlertPolygon>[].obs;
 
   RxList<Marker> markers = <Marker>[].obs;
@@ -37,7 +44,7 @@ class MapControllers extends GetxController {
   Future<void> fetchData() async {
     isFetching.value = true;
 
-    final alertPolygons = await Map2HttpRepository.getAllPolygonsWithAlerts();
+    final alertPolygons = await Map2HttpRepository.getAllPolygonsWithAlerts(tenantId);
 
     for (var alartPolygon in alertPolygons) {
       if (alartPolygon.type == "point") {
@@ -64,11 +71,11 @@ class MapControllers extends GetxController {
     }
 
     for (var locationDetail in locationDetails) {
-      if (locationDetail.latitude == null || locationDetail.longitude == null) {
+      if (locationDetail.longitude == null) {
         continue;
       }
 
-      points.add(LatLng(locationDetail.latitude!, locationDetail.longitude!));
+      points.add(LatLng(locationDetail.latitude, locationDetail.longitude));
     }
 
     return points;
@@ -126,9 +133,11 @@ class MapControllers extends GetxController {
       status: "active",
       type: shapeTypeSetter(copy.length),
       userId: userID,
-      alert: ["Alert-001"],
+      alert: "Alert-001",
       distanceMeters: int.parse(siteDistanceController.text),
       locationDetails: copy,
+      id: '',
+      tenantId: tenantId,
     );
 
     // * Call the api to create new polygon
@@ -184,9 +193,10 @@ class MapControllers extends GetxController {
       status: "active",
       type: shapeTypeSetter(copy.length),
       userId: userID,
-      alert: ["Alert-001"],
+      alert: "Alert-001",
       distanceMeters: int.parse(siteDistanceController.text),
       locationDetails: copy,
+      tenantId: tenantId,
     );
 
     // * Call the api to create new polygon
@@ -241,7 +251,7 @@ class MapControllers extends GetxController {
     isEditing.value = true;
 
     selectedPolygon.value = Polygon(
-      points: oldPolygon.locationDetails!.map((e) => LatLng(e.latitude!, e.longitude!)).toList(),
+      points: oldPolygon.locationDetails.map((e) => LatLng(e.latitude, e.longitude)).toList(),
       color: theme.colors.curiousBlue.withOpacity(0.5),
       borderColor: theme.colors.curiousBlue,
       borderStrokeWidth: 2,
@@ -272,12 +282,12 @@ class MapControllers extends GetxController {
     double sumY = 0;
 
     for (var point in points) {
-      if (point.latitude == null || point.longitude == null) {
+      if (point.longitude == null) {
         continue;
       }
 
-      sumX += point.latitude!;
-      sumY += point.longitude!;
+      sumX += point.latitude;
+      sumY += point.longitude;
     }
 
     String centreX = (sumX / points.length).toStringAsFixed(4);
@@ -289,10 +299,10 @@ class MapControllers extends GetxController {
   // ? sets up the initial location for the map.
   // todo : can be configured later
   LatLng locationSetter() {
-    if (alertMarkers.isNotEmpty && alertMarkers.first.locationDetails!.isNotEmpty) {
+    if (alertMarkers.isNotEmpty && alertMarkers.first.locationDetails.isNotEmpty) {
       return LatLng(
-        alertMarkers.first.locationDetails!.last.latitude!,
-        alertMarkers.first.locationDetails!.last.longitude!,
+        alertMarkers.first.locationDetails.last.latitude,
+        alertMarkers.first.locationDetails.last.longitude,
       );
     } else {
       return custom;

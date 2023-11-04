@@ -1,77 +1,57 @@
+import 'dart:convert';
+
+List<ProgressReportModel> progressReportModelFromJson(String str) => List<ProgressReportModel>.from(json.decode(str).map((x) => ProgressReportModel.fromJson(x)));
+
+String progressReportModelToJson(List<ProgressReportModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class ProgressReportModel {
-  
-  String? id;
-  String? tripId;
-  String? progressReportedTime;
-  List<ProgressData>? progressData;
-  String? matchedPoiId;
-  String? userId;
+    String? id;
+    String? tripId;
+    DateTime? progressReportedTime;
+    DateTime? progressTime;
+    Location? location;
 
-  ProgressReportModel({this.id, this.tripId, this.progressReportedTime, this.progressData, this.matchedPoiId, this.userId});
+    ProgressReportModel({
+        this.id,
+        this.tripId,
+        this.progressReportedTime,
+        this.progressTime,
+        this.location,
+    });
 
-  ProgressReportModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    tripId = json['tripId'];
-    progressReportedTime = json['progressReportedTime'];
-    if (json['progressData'] != null) {
-      progressData = <ProgressData>[];
-      json['progressData'].forEach((v) {
-        progressData!.add(ProgressData.fromJson(v));
-      });
-    }
-    matchedPoiId = json['matchedPoiId'];
-    userId = json['userId'];
-  }
+    factory ProgressReportModel.fromJson(Map<String, dynamic> json) => ProgressReportModel(
+        id: json["id"],
+        tripId: json["tripId"],
+        progressReportedTime: json["progressReportedTime"] == null ? null : DateTime.parse(json["progressReportedTime"]),
+        progressTime: json["progressTime"] == null ? null : DateTime.parse(json["progressTime"]),
+        location: json["location"] == null ? null : Location.fromJson(json["location"]),
+    );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['tripId'] = tripId;
-    data['progressReportedTime'] = progressReportedTime;
-    if (progressData != null) {
-      data['progressData'] = progressData!.map((v) => v.toJson()).toList();
-    }
-    data['matchedPoiId'] = matchedPoiId;
-    data['userId'] = userId;
-    return data;
-  }
-}
-
-class ProgressData {
-  String? progressTime;
-  Location? location;
-
-  ProgressData({this.progressTime, this.location});
-
-  ProgressData.fromJson(Map<String, dynamic> json) {
-    progressTime = json['progressTime'];
-    location = json['location'] != null ? Location.fromJson(json['location']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['progressTime'] = progressTime;
-    if (location != null) {
-      data['location'] = location!.toJson();
-    }
-    return data;
-  }
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "tripId": tripId,
+        "progressReportedTime": progressReportedTime?.toIso8601String(),
+        "progressTime": progressTime?.toIso8601String(),
+        "location": location?.toJson(),
+    };
 }
 
 class Location {
-  double latitude;
-  double longitude;
+    double latitude;
+    double longitude;
 
-  Location({required this.latitude, required this.longitude});
+    Location({
+        required this.latitude,
+        required this.longitude,
+    });
 
-  Location.fromJson(Map<String, dynamic> json)
-      : latitude = json['latitude'],
-        longitude = json['longitude'];
+    factory Location.fromJson(Map<String, dynamic> json) => Location(
+        latitude: json["latitude"]?.toDouble(),
+        longitude: json["longitude"]?.toDouble(),
+    );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['latitude'] = latitude;
-    data['longitude'] = longitude;
-    return data;
-  }
+    Map<String, dynamic> toJson() => {
+        "latitude": latitude,
+        "longitude": longitude,
+    };
 }
