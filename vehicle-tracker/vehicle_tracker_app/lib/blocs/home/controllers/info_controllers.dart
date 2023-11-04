@@ -69,12 +69,12 @@ class InfoController extends GetxController {
       // If the completed button is pressed then the filtered list is assigned to the completed list.
       filteredCompletedTripList.value = completedTripList.where((element) {
         // avoiding all null values
-        if (element.value.operator == null) return false;
-        if (element.value.operator!.name == null) return false;
-        if (element.value.operator!.contactNumber == null) return false;
+        if (element.value.citizen == null) return false;
+        if (element.value.citizen!.name == null) return false;
+        if (element.value.citizen!.contactNumber == null) return false;
 
-        bool name = element.value.operator!.name!.toLowerCase().contains(value.toLowerCase());
-        bool contactNumber = element.value.operator!.contactNumber!.contains(value);
+        bool name = element.value.citizen!.name!.toLowerCase().contains(value.toLowerCase());
+        bool contactNumber = element.value.citizen!.contactNumber!.contains(value);
         return name || contactNumber;
       }).toList();
       return;
@@ -82,12 +82,12 @@ class InfoController extends GetxController {
       // If the completed button is not pressed then the filtered list is assigned to the normal list.
       filteredNormalTripList.value = normalTripList.where((element) {
         // avoiding all null values
-        if (element.value.operator == null) return false;
-        if (element.value.operator?.name == null) return false;
-        if (element.value.operator?.contactNumber == null) return false;
+        if (element.value.citizen == null) return false;
+        if (element.value.citizen?.name == null) return false;
+        if (element.value.citizen?.contactNumber == null) return false;
 
-        bool name = element.value.operator!.name!.toLowerCase().contains(value.toLowerCase());
-        bool contactNumber = element.value.operator!.contactNumber!.contains(value);
+        bool name = element.value.citizen!.name!.toLowerCase().contains(value.toLowerCase());
+        bool contactNumber = element.value.citizen!.contactNumber!.contains(value);
         return name || contactNumber;
       }).toList();
     }
