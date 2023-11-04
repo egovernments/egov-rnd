@@ -20,6 +20,13 @@ _$_HomeTripModel _$$_HomeTripModelFromJson(Map<String, dynamic> json) =>
       actualStartTime: json['actualStartTime'] as String?,
       actualEndTime: json['actualEndTime'] as String?,
       userId: json['userId'] as String?,
+      citizen: json['citizen'] == null
+          ? null
+          : Citizen.fromJson(json['citizen'] as Map<String, dynamic>),
+      pickupLocation: json['pickupLocation'] as String?,
+      dropLocation: json['dropLocation'] as String?,
+      name: json['name'] as String?,
+      tenantId: json['tenantId'] as String?,
       locationAlerts: json['locationAlerts'] as String?,
     );
 
@@ -43,6 +50,11 @@ Map<String, dynamic> _$$_HomeTripModelToJson(_$_HomeTripModel instance) {
   writeNotNull('actualStartTime', instance.actualStartTime);
   writeNotNull('actualEndTime', instance.actualEndTime);
   writeNotNull('userId', instance.userId);
+  writeNotNull('citizen', instance.citizen?.toJson());
+  writeNotNull('pickupLocation', instance.pickupLocation);
+  writeNotNull('dropLocation', instance.dropLocation);
+  writeNotNull('name', instance.name);
+  writeNotNull('tenantId', instance.tenantId);
   writeNotNull('locationAlerts', instance.locationAlerts);
   return val;
 }
@@ -69,5 +81,24 @@ Map<String, dynamic> _$$_OperatorToJson(_$_Operator instance) {
   writeNotNull('email', instance.email);
   writeNotNull('contactNumber', instance.contactNumber);
   writeNotNull('vehicleNumber', instance.vehicleNumber);
+  return val;
+}
+
+_$_Citizen _$$_CitizenFromJson(Map<String, dynamic> json) => _$_Citizen(
+      name: json['name'] as String?,
+      contactNumber: json['contactNumber'] as String?,
+    );
+
+Map<String, dynamic> _$$_CitizenToJson(_$_Citizen instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  writeNotNull('contactNumber', instance.contactNumber);
   return val;
 }

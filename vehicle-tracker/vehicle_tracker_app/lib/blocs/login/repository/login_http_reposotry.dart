@@ -79,8 +79,6 @@ class LoginHTTPRepository {
         return "";
       }
 
-      log(response.body.toString());
-
       return response.body["driver"][0]["id"];
     } catch (e) {
       log("Error in getting driver id : ${e.toString()}");

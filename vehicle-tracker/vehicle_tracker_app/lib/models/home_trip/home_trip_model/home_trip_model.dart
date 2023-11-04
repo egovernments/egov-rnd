@@ -19,6 +19,11 @@ class HomeTripModel with _$HomeTripModel {
       String? actualStartTime,
       String? actualEndTime,
       String? userId,
+      Citizen? citizen,
+      String? pickupLocation,
+      String? dropLocation,
+      String? name,
+      String? tenantId,
       String? locationAlerts}) = _HomeTripModel;
 
   factory HomeTripModel.fromJson(Map<String, dynamic> json) => _$HomeTripModelFromJson(json);
@@ -36,4 +41,15 @@ class Operator with _$Operator {
   }) = _Operator;
 
   factory Operator.fromJson(Map<String, dynamic> json) => _$OperatorFromJson(json);
+}
+
+@freezed
+class Citizen with _$Citizen {
+  @JsonSerializable(explicitToJson: true, includeIfNull: false)
+  const factory Citizen({
+    String? name,
+    String? contactNumber,
+  }) = _Citizen;
+
+  factory Citizen.fromJson(Map<String, dynamic> json) => _$CitizenFromJson(json);
 }

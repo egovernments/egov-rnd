@@ -34,14 +34,14 @@ Widget textColumnWidget(Rx<HomeTripModel> data) {
     child: Table(
       columnWidths: const {
         0: FlexColumnWidth(2),
-        1: FlexColumnWidth(6),
+        1: FlexColumnWidth(7),
       },
       children: [
         tableRow(AppTranslation.TRIP_ID.tr, data.value.id),
-        tableRow(AppTranslation.NAME.tr, data.value.operator?.name ?? ""),
+        tableRow(AppTranslation.NAME.tr, data.value.citizen?.name ?? ""),
         tableRow(AppTranslation.VEHICLE_NUMBER.tr, data.value.operator?.contactNumber ?? ""),
-        tableRow(AppTranslation.PICK_UP_LOCATION.tr, data.value.routeId ?? ""),
-        tableRow(AppTranslation.DROP_LOCATION.tr, data.value.routeId ?? ""),
+        tableRow(AppTranslation.PICK_UP_LOCATION.tr, data.value.pickupLocation ?? ""),
+        tableRow(AppTranslation.DROP_LOCATION.tr, data.value.dropLocation ?? ""),
         tableRow(AppTranslation.DATE.tr, data.value.plannedStartTime ?? ""),
         TableRow(
           children: [

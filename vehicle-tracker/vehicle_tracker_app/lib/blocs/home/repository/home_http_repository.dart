@@ -30,7 +30,6 @@ class HomeHTTPRepository {
       final data = response.body as List<dynamic>;
       for (var item in data) {
         homeTripModel.add(Rx(HomeTripModel.fromJson(item)));
-        log(homeTripModel.last.value.status.toString());
       }
     } on FormatException catch (e) {
       toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.message);
@@ -46,7 +45,7 @@ class HomeHTTPRepository {
   // ? API to start and end the Trip
   // ? If start is true, then the trip will start
   // ? If start is false, then the trip will end
-  Future<bool> updateTrip(HomeTripModel data, String status) async {
+  Future<bool> updateTrip(HomeTripModel data, String status, {String? tenantId}) async {
     String reqUrl = "$apiUrl/trip/_update";
     final operatorId = await SecureStorageService.read(OPERATOR_ID);
 
@@ -54,6 +53,7 @@ class HomeHTTPRepository {
       "id": data.id,
       "status": status,
       "userId": operatorId,
+      "tenantId": tenantId ?? "pg.citya",
     };
 
     log("URL: $reqUrl");

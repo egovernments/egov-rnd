@@ -34,7 +34,10 @@ class TripInfoCardWidget extends StatelessWidget {
             style: textTheme.headlineMedium,
           ),
 
-          homeTextColumnWidget(data.value.operator?.name ?? "", data.value.operator?.contactNumber ?? ""),
+          homeTextColumnWidget(
+            data.value.citizen?.name ?? "",
+            data.value.citizen?.contactNumber ?? "",
+          ),
 
           DigitIconButton(
             iconText: AppTranslation.VIEW_DETAILS.tr,

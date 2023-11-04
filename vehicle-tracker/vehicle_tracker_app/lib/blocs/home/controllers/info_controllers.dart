@@ -49,7 +49,6 @@ class InfoController extends GetxController {
     // ! For now we are hardcoding the city id as "pg.citya"
     final totalList = await homeHTTPRepository.getHomeTripData("pg.citya", operatorId);
     
-
     normalTripList.value = totalList.where((element) {
       return element.value.status != TripStates.COMPLETED;
     }).toList();
