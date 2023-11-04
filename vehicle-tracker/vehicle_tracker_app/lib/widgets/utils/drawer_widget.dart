@@ -65,11 +65,6 @@ class CustomDrawer extends StatelessWidget {
             icon: Icons.language,
           ),
           DigitIconTile(
-            title: AppTranslation.ORG_PROFILE.tr,
-            onPressed: () {},
-            icon: Icons.person,
-          ),
-          DigitIconTile(
             title: AppTranslation.LOGOUT.tr,
             onPressed: logout,
             icon: Icons.logout,
