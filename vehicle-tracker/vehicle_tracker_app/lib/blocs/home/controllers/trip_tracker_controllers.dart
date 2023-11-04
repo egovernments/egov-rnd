@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 import 'dart:developer';
 import 'package:digit_components/digit_components.dart';
@@ -18,6 +20,8 @@ import 'package:vehicle_tracker_app/util/trip_tracker_utility.dart';
 import 'package:wakelock/wakelock.dart';
 
 class TripControllers extends GetxController {
+  final BuildContext context;
+
   RxBool isRunning = false.obs; // This variable is to check if the tracking is running or not
   RxBool isLoading = false.obs; // This variable is to check if startTracking is loading or not
 
@@ -26,6 +30,8 @@ class TripControllers extends GetxController {
   TripTrackerUtility tripTrackerUtility = TripTrackerUtility();
   InfoController infoController = Get.find<InfoController>();
 
+  TripControllers(this.context);
+
   // * This function starts the tracking peroiodic event
   Future<void> startTracking(Rx<HomeTripModel> data) async {
     log('---- Trip and Tracking started ----');
@@ -33,13 +39,13 @@ class TripControllers extends GetxController {
     log("Start TRIP API");
     final status = await homeHTTPRepository.updateTrip(data.value, TripStates.ONGOING);
     if (!status) {
-      toaster(Get.context, AppTranslation.TRIP_NOT_STARTED_MESSAGE.tr, isError: true);
+      toaster(context, AppTranslation.TRIP_NOT_STARTED_MESSAGE.tr, isError: true);
       data.value.status = TripStates.NOTSTARTED;
       update([data.value.id]);
       return;
     }
 
-    toaster(Get.context, AppTranslation.TRIP_STARTED_SUCCESFULLY_MESSAGE.tr, isError: false);
+    toaster(context, AppTranslation.TRIP_STARTED_SUCCESFULLY_MESSAGE.tr, isError: false);
 
     data.value.status = TripStates.ONGOING;
     update([data.value.id]);
@@ -120,7 +126,7 @@ class TripControllers extends GetxController {
       if (status) {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
-        toaster(null, AppTranslation.POSITION_SENT_MESSAGE.tr);
+        toaster(context, AppTranslation.POSITION_SENT_MESSAGE.tr);
         return status;
       } else {
         // If the position sending fails, save the data to hive
@@ -132,7 +138,7 @@ class TripControllers extends GetxController {
       // If not connected to internet, save the data to hive
       log("No internet connection, saving to hive");
       await homeHiveRepository.storeTripData(tripHiveModel);
-      toaster(null, AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
+      toaster(context, AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
       return false;
     }
   }
@@ -188,11 +194,11 @@ class TripControllers extends GetxController {
     if (!status) {
       data.value.status = TripStates.ONGOING;
       update([data.value.id]);
-      toaster(Get.context, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
+      toaster(context, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
       return;
     }
 
-    toaster(Get.context, AppTranslation.TRIP_ENDED_SUCCESFULLY_MESSAGE.tr, isError: false);
+    toaster(context, AppTranslation.TRIP_ENDED_SUCCESFULLY_MESSAGE.tr, isError: false);
 
     log("Deleting trip data from hive");
     await homeHiveRepository.deleteTripData();

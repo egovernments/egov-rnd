@@ -5,6 +5,7 @@ import 'package:vehicle_tracker_app/blocs/home/controllers/info_controllers.dart
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/widgets/home/toggle_switch.dart';
 
+import '../../blocs/home/controllers/trip_tracker_controllers.dart';
 import '../../widgets/utils/drawer_widget.dart';
 import '../../widgets/home/trip_info_list_widget.dart';
 
@@ -13,7 +14,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(TripControllers(context), permanent: true);
     final infoController = Get.find<InfoController>();
+    
     final theme = DigitTheme.instance;
     final textTheme = theme.mobileTheme.textTheme;
 

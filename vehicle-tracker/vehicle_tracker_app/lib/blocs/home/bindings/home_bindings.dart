@@ -3,13 +3,11 @@
 import 'package:get/get.dart';
 
 import '../controllers/info_controllers.dart';
-import '../controllers/trip_tracker_controllers.dart';
 
 class HomeBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(InfoController(), permanent: true);
-    Get.put(TripControllers(), permanent: true);
   }
 }
 // * enums
