@@ -2,15 +2,13 @@ import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/route_manager.dart';
-import 'package:polygon_map/pages/map_page2.dart';
-import 'package:url_strategy/url_strategy.dart';
+import 'package:polygon_map/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load(fileName: ".env");
 
-  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -23,11 +21,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Polygon Map',
       theme: DigitTheme.instance.mobileTheme,
-      initialRoute: "/",
-      routes: {
-        "/": (context) => const PolygonMap(),
-        "/viewroute": (context) => const PolygonMap(),
-      },
+      initialRoute: "/vehicledumpingsites",
+      getPages: getPages,
     );
   }
 }

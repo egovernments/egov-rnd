@@ -14,6 +14,6 @@ build:
 	docker build -t route_map .
 
 run:
-	docker run -d -p 2205:80 --name route_map route_map
+	docker run -d -p 2206:80 --name route_map route_map
 
 .PHONY: json add apk build run
