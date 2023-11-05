@@ -46,6 +46,7 @@ dependencies:
   json_annotation: ^4.8.1
   flutter_dotenv: ^5.1.0
   fluttertoast: ^8.2.2
+  url_strategy: ^0.2.0
 
 dev_dependencies:
   flutter_test:

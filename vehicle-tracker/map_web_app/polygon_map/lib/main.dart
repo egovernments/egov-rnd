@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/route_manager.dart';
 import 'package:polygon_map/routes.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,6 +11,7 @@ void main() async {
   // Load up the environment variables
   await dotenv.load(fileName: ".env");
 
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
