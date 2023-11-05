@@ -7,6 +7,10 @@ TableRow tableRowHeader() {
   return const TableRow(
     children: [
       Padding(
+        padding: EdgeInsets.all(kPadding),
+        child: Text("Site Name", style: TextStyle(fontWeight: FontWeight.bold)),
+      ),
+      Padding(
         padding: EdgeInsets.symmetric(vertical: kPadding, horizontal: kPadding * 2),
         child: Text("Location", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
@@ -31,12 +35,17 @@ TableRow tableRowItemBuilder(int index, DigitTheme theme, MapControllers control
     children: [
       Padding(
         padding: const EdgeInsets.all(kPadding),
+        child: Text(polygon.locationName ?? ""),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(kPadding),
         child: Text(controller.polygonCentreCalculator(polygon.locationDetails!)),
       ),
-      const Padding(
-        padding: EdgeInsets.all(kPadding),
-        child: Center(child: Text("12")),
-      ),
+      // ! Hiding it for now. Will be used in future when we have Last Week Stops API
+      // const Padding(
+      //   padding: EdgeInsets.all(kPadding),
+      //   child: Center(child: Text("12")),
+      // ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.min,
@@ -50,7 +59,6 @@ TableRow tableRowItemBuilder(int index, DigitTheme theme, MapControllers control
           ),
 
           // ! Can be used to delete the polygon
-          // todo: Add delete functionality when the AP is ready
           // IconButton(
           //   padding: EdgeInsets.zero,
           //   constraints: const BoxConstraints(),
@@ -95,8 +103,8 @@ Widget createPolygonMenuWidget(MapControllers controller, BuildContext context) 
                   border: TableBorder.all(color: theme.colors.white),
                   columnWidths: const {
                     0: FlexColumnWidth(3),
-                    1: FlexColumnWidth(1.5),
-                    2: FlexColumnWidth(1),
+                    1: FlexColumnWidth(3),
+                    2: FlexColumnWidth(1.3),
                   },
                   children: [
                     tableRowHeader(),

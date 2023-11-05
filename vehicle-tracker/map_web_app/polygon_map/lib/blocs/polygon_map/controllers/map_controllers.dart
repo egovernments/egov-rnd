@@ -35,7 +35,7 @@ class MapControllers extends GetxController {
   String siteType = siteTypes.first;
 
   TextEditingController siteNameController = TextEditingController();
-  TextEditingController siteDistanceController = TextEditingController();
+  // TextEditingController siteDistanceController = TextEditingController();
 
   DigitTheme theme = DigitTheme.instance;
   late String userID;
@@ -107,7 +107,7 @@ class MapControllers extends GetxController {
       return;
     }
 
-    if (siteNameController.text.isEmpty || siteDistanceController.text.isEmpty) {
+    if (siteNameController.text.isEmpty) {
       return;
     }
 
@@ -134,7 +134,7 @@ class MapControllers extends GetxController {
       type: shapeTypeSetter(copy.length),
       userId: userID,
       alert: "Alert-001",
-      distanceMeters: int.parse(siteDistanceController.text),
+      distanceMeters: 0,
       locationDetails: copy,
       id: '',
       tenantId: tenantId,
@@ -165,7 +165,7 @@ class MapControllers extends GetxController {
       return;
     }
 
-    if (siteNameController.text.isEmpty || siteDistanceController.text.isEmpty) {
+    if (siteNameController.text.isEmpty) {
       log("empty text field");
       return;
     }
@@ -194,7 +194,7 @@ class MapControllers extends GetxController {
       type: shapeTypeSetter(copy.length),
       userId: userID,
       alert: "Alert-001",
-      distanceMeters: int.parse(siteDistanceController.text),
+      distanceMeters: 0,
       locationDetails: copy,
       tenantId: tenantId,
     );
@@ -272,7 +272,6 @@ class MapControllers extends GetxController {
     isDrawing.value = false;
     isEditing.value = false;
     siteNameController.clear();
-    siteDistanceController.clear();
   }
 
   // ? This will calculate the centre of a polygon by taking avg of all the points in that polygom

@@ -10,10 +10,15 @@ List<Polygon> polygonLayerWidget(MapControllers controller) {
   for (var alertPolygon in controller.alertPolygons) {
     polygons.add(Polygon(
       points: controller.polygonPointBuilder(alertPolygon.locationDetails),
-      color: DigitTheme.instance.colors.lavaRed.withOpacity(0.5),
+      color: DigitTheme.instance.colors.paleRose.withOpacity(0.6),
       borderColor: DigitTheme.instance.colors.lavaRed,
       borderStrokeWidth: 2,
       isFilled: true,
+      label: alertPolygon.locationName,
+      labelStyle: TextStyle(
+        color: DigitTheme.instance.colors.lavaRed,
+        fontWeight: FontWeight.bold,
+      ),
     ));
   }
 

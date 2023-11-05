@@ -40,8 +40,9 @@ Widget addPolygonMenuWidget(MapControllers controller, BuildContext context) {
               onChanged: (value) => controller.siteType = value ?? "",
             ),
 
+            // ! Hiding it for now. Will be used in future when custom polygon is implemented
             // * Text Field for Alert Distance
-            DigitTextField(label: "Alert when within a distance (meters) of ", controller: controller.siteDistanceController),
+            // DigitTextField(label: "Alert when within a distance (meters) of ", controller: controller.siteDistanceController),
 
             // * Buttons
             Row(
