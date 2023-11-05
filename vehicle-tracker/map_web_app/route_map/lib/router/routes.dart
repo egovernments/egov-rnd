@@ -4,7 +4,7 @@ import '../pages/map_page.dart';
 
 List<GetPage<dynamic>> getPages = [
   GetPage(
-    name: "/",
+    name: "/viewroute",
     page: () => const RouteMapPage(),
   ),
 ];

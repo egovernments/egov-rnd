@@ -10,10 +10,11 @@ TableRow tableRowHeader() {
         padding: EdgeInsets.symmetric(vertical: kPadding, horizontal: kPadding * 2),
         child: Text("Location", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
-      Padding(
-        padding: EdgeInsets.all(kPadding),
-        child: Text("Last Week Stops", style: TextStyle(fontWeight: FontWeight.bold)),
-      ),
+      // ! Hiding it for now. Will be used in future when we have Last Week Stops API
+      // Padding(
+      //   padding: EdgeInsets.all(kPadding),
+      //   child: Text("Last Week Stops", style: TextStyle(fontWeight: FontWeight.bold)),
+      // ),
       Padding(
         padding: EdgeInsets.all(kPadding),
         child: Text("Actions", style: TextStyle(fontWeight: FontWeight.bold)),
@@ -82,7 +83,7 @@ Widget createPolygonMenuWidget(MapControllers controller, BuildContext context) 
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Icon(Icons.location_on, color: theme.colors.burningOrange),
-                  Text("Recommended Sites", style: textTheme.headlineLarge),
+                  Text("Illegal Dumping Sites", style: textTheme.headlineLarge),
                 ],
               ),
             ),

@@ -42,11 +42,12 @@ Widget editPolygonMenuWidget(MapControllers controller, BuildContext context) {
               onChanged: (value) => controller.siteType = value ?? "",
             ),
 
+            // ! We are not using this field for now
             // * Text Field for Alert Distance
-            DigitTextField(
-              label: "Alert when within a distance (meters) of ",
-              controller: controller.siteDistanceController,
-            ),
+            // DigitTextField(
+            //   label: "Alert when within a distance (meters) of ",
+            //   controller: controller.siteDistanceController,
+            // ),
 
             // * Buttons
             Row(

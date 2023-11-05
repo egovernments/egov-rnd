@@ -6,7 +6,7 @@ import 'package:polygon_map/pages/map_page2.dart';
 
 List<GetPage<dynamic>> getPages = [
   GetPage(
-    name: "/map",
+    name: "/vehicledumpingsites",
     page: () => const PolygonMap(),
   ),
 ];

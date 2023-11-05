@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Polygon Map',
       theme: DigitTheme.instance.mobileTheme,
       getPages: getPages,
-      initialRoute: "/map",
+      initialRoute: "/vehicledumpingsites",
     );
   }
 }
