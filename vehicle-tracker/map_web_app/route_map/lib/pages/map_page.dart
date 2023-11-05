@@ -6,6 +6,7 @@ import '../blocs/route_map/controllers/route_controllers.dart';
 import '../constants.dart';
 import '../widgets/map_legends_widget.dart';
 import '../widgets/map_tile_widgets.dart';
+import '../widgets/polygon_layer_widget.dart';
 
 class RouteMapPage extends StatelessWidget {
   const RouteMapPage({super.key});
@@ -13,17 +14,21 @@ class RouteMapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // * Get the tripId from the URL
     final tripId = Get.parameters['tripid'];
-    if (tripId == null) {
+    final userId = Get.parameters['userid'];
+    final tenantId = Get.parameters['tenantid'];
+
+    if (tripId == null || userId == null || tenantId == null) {
       return const Scaffold(
         body: Center(
-          child: Text("Trip Id is null"),
+          child: Text("No tripId, userId or tenantId found"),
         ),
       );
     }
 
     // * Fetch the data from the API using the tripId
-    final mapController = Get.put(RouteControllers(tripId));
-    mapController.fetchData(tripId);
+    final mapController = Get.put(RouteControllers(tripId, userId, tenantId));
+    mapController.fetchData();
+    
 
     return GetBuilder<RouteControllers>(
       builder: (controller) {
@@ -46,7 +51,7 @@ class RouteMapPage extends StatelessWidget {
               // * Map Options
               options: MapOptions(
                 center: controller.polyPoints.isNotEmpty ? controller.polyPoints.first : custom,
-                zoom: 13,
+                zoom: 15,
                 maxZoom: 18,
                 minZoom: 1,
               ),
@@ -66,6 +71,12 @@ class RouteMapPage extends StatelessWidget {
 
                 // * Polyline Layer
                 polyLineWidget(controller),
+
+                // * Polygon Layer
+                PolygonLayer(
+                  polygons: polygonLayerWidget(controller),
+                  polygonCulling: false,
+                ),
 
                 // * Marker Layer
                 if (controller.polyPoints.isNotEmpty) markerLayerWidget(controller),
