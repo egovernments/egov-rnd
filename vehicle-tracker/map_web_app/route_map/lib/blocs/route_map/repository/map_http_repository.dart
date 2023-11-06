@@ -19,7 +19,6 @@ class MapHttpRepository {
       }
 
       final json = response.body as List<dynamic>;
-      log(json.length.toString());
 
       List<AlertPolygon> alertPolygon = [];
 

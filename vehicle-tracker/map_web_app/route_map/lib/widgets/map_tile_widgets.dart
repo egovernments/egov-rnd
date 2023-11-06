@@ -30,6 +30,16 @@ MarkerLayer markerLayerWidget(RouteControllers controller) => MarkerLayer(
           point: controller.polyPoints.last,
           builder: (ctx) => Icon(Icons.warehouse, color: DigitTheme.instance.colors.curiousBlue),
         ),
+
+        // * Alert Markers
+        for (final marker in controller.alertMarkers)
+          Marker(
+            point: marker,
+            builder: (ctx) => Icon(
+              Icons.warning,
+              color: DigitTheme.instance.colors.lavaRed,
+            ),
+          ),
       ],
     );
 

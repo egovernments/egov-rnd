@@ -22,7 +22,7 @@ class RouteControllers extends GetxController {
   RxBool isFetching = false.obs;
   RxList<LatLng> polyPoints = <LatLng>[].obs;
 
-  RxList<AlertPolygon> alertMarkers = <AlertPolygon>[].obs;
+  RxList<LatLng> alertMarkers = <LatLng>[].obs;
   RxList<AlertPolygon> alertPolygons = <AlertPolygon>[].obs;
 
   // void startPolling() {
@@ -54,17 +54,9 @@ class RouteControllers extends GetxController {
 
     final alertPolygons = await MapHttpRepository.getAllPolygonsWithAlerts(tenantId);
 
-    for (var alartPolygon in alertPolygons) {
-      if (alartPolygon.type == "point") {
-        alertMarkers.add(alartPolygon);
-      } else {
-        this.alertPolygons.add(alartPolygon);
-      }
-    }
+    this.alertPolygons = alertPolygons.obs;
 
-    log("Alert Markers: ${alertMarkers.length}");
     log("Alert Polygons: ${this.alertPolygons.length}");
-
     update();
   }
 
@@ -86,11 +78,18 @@ class RouteControllers extends GetxController {
         continue;
       }
 
+      if (item.alert != null) {
+        final point = LatLng(list.latitude, list.longitude);
+        alertMarkers.add(point);
+        continue;
+      }
+
       polyPoints.add(LatLng(list.latitude, list.longitude));
     }
 
     update();
 
+    log("Alert Markers: ${alertMarkers.length}");
     log("Polyline Points: ${polyPoints.length}");
   }
 
