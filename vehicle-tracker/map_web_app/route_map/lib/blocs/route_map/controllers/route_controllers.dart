@@ -81,7 +81,6 @@ class RouteControllers extends GetxController {
       if (item.alert != null) {
         final point = LatLng(list.latitude, list.longitude);
         alertMarkers.add(point);
-        continue;
       }
 
       polyPoints.add(LatLng(list.latitude, list.longitude));
