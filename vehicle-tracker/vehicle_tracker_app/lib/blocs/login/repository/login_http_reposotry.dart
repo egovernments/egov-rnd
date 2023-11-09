@@ -51,7 +51,7 @@ class LoginHTTPRepository {
 
       await HiveService.addUserData(loginModel.UserRequest.name, loginModel.UserRequest.mobileNumber);
 
-      toaster(context, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
+      toaster(null, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
       return true;
     } on FormatException catch (e) {
       log("Error: ${e.message}");
