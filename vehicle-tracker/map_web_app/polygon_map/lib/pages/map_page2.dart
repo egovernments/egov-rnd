@@ -14,6 +14,7 @@ class PolygonMap extends StatelessWidget {
   Widget build(BuildContext context) {
     final userId = Get.parameters['userid'];
     final tenantId = Get.parameters['tenantid'];
+
     if (userId == null || tenantId == null) {
       return const Scaffold(
         body: Center(
@@ -32,6 +33,14 @@ class PolygonMap extends StatelessWidget {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(),
+            ),
+          );
+        }
+
+        if (controller.alertPolygons.isEmpty) {
+          return const Scaffold(
+            body: Center(
+              child: Text("No Polygons found"),
             ),
           );
         }
