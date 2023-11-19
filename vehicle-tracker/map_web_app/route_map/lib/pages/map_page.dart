@@ -14,10 +14,9 @@ class RouteMapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // * Get the tripId from the URL
     final tripId = Get.parameters['tripid'];
-    final userId = Get.parameters['userid'];
     final tenantId = Get.parameters['tenantid'];
 
-    if (tripId == null || userId == null || tenantId == null) {
+    if (tripId == null || tenantId == null) {
       return const Scaffold(
         body: Center(
           child: Text("No tripId, userId or tenantId found"),
@@ -26,7 +25,7 @@ class RouteMapPage extends StatelessWidget {
     }
 
     // * Fetch the data from the API using the tripId
-    final mapController = Get.put(RouteControllers(tripId, userId, tenantId));
+    final mapController = Get.put(RouteControllers(tripId, tenantId));
     mapController.fetchData();
     
 

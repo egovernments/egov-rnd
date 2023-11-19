@@ -4,18 +4,16 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:route_map/blocs/route_map/repository/map_http_repository.dart';
+import 'package:route_map/util/distance_calculator.dart';
 
-import '../../../constants.dart';
-import '../../../data/http_service.dart';
 import '../../../models/alert_polygon/alert_polygons.dart';
 import '../../../models/trip_progress/progress_report_model.dart';
 
 class RouteControllers extends GetxController {
   final String tripId;
-  final String userId;
   final String tenantId;
 
-  RouteControllers(this.tripId, this.userId, this.tenantId);
+  RouteControllers(this.tripId, this.tenantId);
 
   late Timer _timer;
   RxList<ProgressReportModel> progressReportList = <ProgressReportModel>[].obs;
@@ -61,29 +59,31 @@ class RouteControllers extends GetxController {
   }
 
   Future<void> fetchRoute() async {
-    String url = "$apiUrl/trip/_progress/_search?tripId=$tripId";
+    log("Fetching Route");
 
-    final response = await HttpService.getRequest(url);
-    if (response.statusCode == 200) {
-      final data = response.body as List<dynamic>;
-      for (var item in data) {
-        final progressReport = ProgressReportModel.fromJson(item);
-        progressReportList.add(progressReport);
-      }
-    }
+    final routeList = await MapHttpRepository.getRoutePolyPoints(tripId);
 
-    for (var item in progressReportList) {
-      final list = item.location;
-      if (list == null) {
+    progressReportList = routeList.obs;
+
+    int listLength = progressReportList.length;
+    for (int i = 0; i < listLength - 1; i++) {
+      final item = progressReportList[i].location;
+      if (item == null) {
         continue;
       }
 
-      if (item.alert != null) {
-        final point = LatLng(list.latitude, list.longitude);
+      if (progressReportList[i].alert != null) {
+        final point = LatLng(item.latitude, item.longitude);
         alertMarkers.add(point);
       }
 
-      polyPoints.add(LatLng(list.latitude, list.longitude));
+      if (listLength > 3 && i < listLength - 3) {
+        final isSlow = isVehicleSlow(item, progressReportList[i + 3].location);
+        if (isSlow) {
+          final point = LatLng(item.latitude, item.longitude);
+          alertMarkers.add(point);
+        }
+      }
     }
 
     update();
@@ -100,13 +100,23 @@ class RouteControllers extends GetxController {
     }
 
     for (var locationDetail in locationDetails) {
-      if (locationDetail.longitude == null) {
-        continue;
-      }
-
       points.add(LatLng(locationDetail.latitude, locationDetail.longitude));
     }
 
     return points;
+  }
+
+  bool isVehicleSlow(Location? marker1, Location? marker2) {
+    if (marker1 == null || marker2 == null) {
+      return false;
+    }
+
+    int distance =
+        calculateDistance(LatLng(marker1.latitude, marker1.longitude), LatLng(marker2.latitude, marker2.longitude)).toInt();
+    if (distance < 10) {
+      return true;
+    }
+
+    return false;
   }
 }
