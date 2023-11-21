@@ -2,8 +2,8 @@ import 'package:digit_components/theme/digit_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
+import '../../blocs/route_map/controllers/route_controllers.dart';
 import '../../constants.dart';
-import '../blocs/route_map/controllers/route_controllers.dart';
 
 PolylineLayer polyLineWidget(RouteControllers controller) => PolylineLayer(
       polylines: [

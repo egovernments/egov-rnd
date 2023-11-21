@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
+import 'package:route_map/widgets/route_map/map_legends_widget.dart';
 
 import '../blocs/route_map/controllers/route_controllers.dart';
 import '../constants.dart';
-import '../widgets/map_legends_widget.dart';
-import '../widgets/map_tile_widgets.dart';
-import '../widgets/polygon_layer_widget.dart';
+import '../widgets/route_map/map_tile_widgets.dart';
+import '../widgets/route_map/polygon_layer_widget.dart';
+
 
 class RouteMapPage extends StatelessWidget {
   const RouteMapPage({super.key});
