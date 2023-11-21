@@ -18,8 +18,8 @@ class RouteControllers extends GetxController {
   late Timer _timer;
   RxList<ProgressReportModel> progressReportList = <ProgressReportModel>[].obs;
   RxBool isFetching = false.obs;
-  RxList<LatLng> polyPoints = <LatLng>[].obs;
 
+  RxList<LatLng> polyPoints = <LatLng>[].obs;
   RxList<LatLng> alertMarkers = <LatLng>[].obs;
   RxList<AlertPolygon> alertPolygons = <AlertPolygon>[].obs;
 
@@ -61,9 +61,7 @@ class RouteControllers extends GetxController {
   Future<void> fetchRoute() async {
     log("Fetching Route");
 
-    final routeList = await MapHttpRepository.getRoutePolyPoints(tripId);
-
-    progressReportList = routeList.obs;
+    progressReportList.value = await MapHttpRepository.getRoutePolyPoints(tripId);
 
     int listLength = progressReportList.length;
     for (int i = 0; i < listLength - 1; i++) {
@@ -71,6 +69,8 @@ class RouteControllers extends GetxController {
       if (item == null) {
         continue;
       }
+
+      polyPoints.add(LatLng(item.latitude, item.longitude));
 
       if (progressReportList[i].alert != null) {
         final point = LatLng(item.latitude, item.longitude);

@@ -78,7 +78,7 @@ class RouteMapPage extends StatelessWidget {
                 ),
 
                 // * Marker Layer
-                if (controller.alertMarkers.isNotEmpty) markerLayerWidget(controller),
+                if (controller.polyPoints.isNotEmpty) markerLayerWidget(controller),
               ],
             ),
           ),
