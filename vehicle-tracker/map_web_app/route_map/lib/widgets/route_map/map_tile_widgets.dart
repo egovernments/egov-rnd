@@ -20,14 +20,14 @@ MarkerLayer markerLayerWidget(RouteControllers controller) => MarkerLayer(
       markers: [
         // * Start Location
         Marker(
-          point: controller.polyPoints.first,
+          point: controller.alertMarkers.first,
           builder: (ctx) => Icon(Icons.fire_truck, color: DigitTheme.instance.colors.curiousBlue),
         ),
 
         // * End Location
         Marker(
           rotate: true,
-          point: controller.polyPoints.last,
+          point: controller.alertMarkers.last,
           builder: (ctx) => Icon(Icons.warehouse, color: DigitTheme.instance.colors.curiousBlue),
         ),
 
