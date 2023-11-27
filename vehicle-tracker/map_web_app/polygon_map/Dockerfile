@@ -31,7 +31,7 @@ WORKDIR $APP
 # Run build: 1 - clean, 2 - pub get, 3 - build web
 RUN flutter clean
 RUN flutter pub get
-RUN flutter build web
+RUN flutter build web --web-renderer canvaskit --release
 
 # once heare the app will be compiled and ready to deploy
 
