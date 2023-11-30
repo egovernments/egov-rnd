@@ -111,8 +111,10 @@ class RouteControllers extends GetxController {
       return false;
     }
 
-    int distance =
-        calculateDistance(LatLng(marker1.latitude, marker1.longitude), LatLng(marker2.latitude, marker2.longitude)).toInt();
+    int distance = calculateDistance(
+      LatLng(marker1.latitude, marker1.longitude),
+      LatLng(marker2.latitude, marker2.longitude),
+    ).toInt();
     if (distance < 10) {
       return true;
     }
