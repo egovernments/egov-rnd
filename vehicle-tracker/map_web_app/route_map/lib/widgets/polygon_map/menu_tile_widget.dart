@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,8 +6,8 @@ import 'add_polygon_menu_widget.dart';
 import 'edit_polygon_widget_menu.dart';
 import 'view_polygons_menu_widget.dart';
 
-class CreatePolygonWidget extends StatelessWidget {
-  const CreatePolygonWidget({super.key});
+class PolygonMenuWidget extends StatelessWidget {
+  const PolygonMenuWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class CreatePolygonWidget extends StatelessWidget {
           return addPolygonMenuWidget(controller, context);
         }
 
-        return createPolygonMenuWidget(controller, context);
+        return polygonListMenuWidget(controller, context);
       },
     );
   }

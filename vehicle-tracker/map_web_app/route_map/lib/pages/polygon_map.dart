@@ -65,7 +65,7 @@ class PolygonMapPage extends StatelessWidget {
 
               nonRotatedChildren: const [
                 // * Menu Icon
-                CreatePolygonWidget(),
+                PolygonMenuWidget(),
               ],
 
               children: [

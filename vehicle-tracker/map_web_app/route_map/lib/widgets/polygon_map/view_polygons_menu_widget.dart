@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../../blocs/polygon_map/controllers/map_controllers.dart';
 
-
 TableRow tableRowHeader() {
   return const TableRow(
     children: [
@@ -60,20 +59,20 @@ TableRow tableRowItemBuilder(int index, DigitTheme theme, MapControllers control
           ),
 
           // ! Can be used to delete the polygon
-          // IconButton(
-          //   padding: EdgeInsets.zero,
-          //   constraints: const BoxConstraints(),
-          //   onPressed: () => controller.removePolygon(polygon),
-          //   icon: const Icon(Icons.delete),
-          //   color: theme.colors.burningOrange,
-          // ),
+          IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
+            onPressed: () => controller.removePolygon(polygon),
+            icon: const Icon(Icons.delete),
+            color: theme.colors.burningOrange,
+          ),
         ],
       ),
     ],
   );
 }
 
-Widget createPolygonMenuWidget(MapControllers controller, BuildContext context) {
+Widget polygonListMenuWidget(MapControllers controller, BuildContext context) {
   final textTheme = DigitTheme.instance.mobileTheme.textTheme;
   final theme = DigitTheme.instance;
 

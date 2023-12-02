@@ -89,4 +89,19 @@ class Map2HttpRepository {
       return [];
     }
   }
-}
+
+  static Future<bool> deletePolygon(String id) async {
+    String url = "$apiUrl/poi/_inactivate";
+    Map<String, dynamic> jsonMap = {"id": id};
+    log(jsonMap.toString());
+
+    final response = await HttpService.putRequestWithoutToken(url, jsonMap);
+    if (response.statusCode == 200) {
+      toaster("Polygon deleted successfully");
+      return true;
+    } else {
+      toaster("Unable to delete polygon with code ${response.statusCode}", isError: true);
+      return false;
+    }
+  }
+} 
