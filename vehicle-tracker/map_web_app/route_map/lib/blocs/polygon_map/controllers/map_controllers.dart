@@ -239,7 +239,7 @@ class MapControllers extends GetxController {
   }
 
   void removePolygon(AlertPolygon alertPolygon) async {
-    final isDeleted = await Map2HttpRepository.deletePolygon(alertPolygon.id ?? "");
+    final isDeleted = await Map2HttpRepository.deletePolygon(alertPolygon.id ?? "", tenantId);
     if (isDeleted == false) {
       return;
     }

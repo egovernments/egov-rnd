@@ -90,18 +90,23 @@ class Map2HttpRepository {
     }
   }
 
-  static Future<bool> deletePolygon(String id) async {
+  static Future<bool> deletePolygon(String id, String tenantId) async {
     String url = "$apiUrl/poi/_inactivate";
-    Map<String, dynamic> jsonMap = {"id": id};
+    Map<String, dynamic> jsonMap = {
+      "id": id,
+      "tenantId": tenantId,
+    };
     log(jsonMap.toString());
 
     final response = await HttpService.putRequestWithoutToken(url, jsonMap);
+    log(response.statusCode.toString());
     if (response.statusCode == 200) {
       toaster("Polygon deleted successfully");
       return true;
     } else {
+      log(response.body.toString());
       toaster("Unable to delete polygon with code ${response.statusCode}", isError: true);
       return false;
     }
   }
-} 
+}
