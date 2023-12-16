@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
+import '../../constants.dart';
+
 class LangSelectCard extends StatelessWidget {
   const LangSelectCard({super.key});
 
@@ -29,29 +31,7 @@ class LangSelectCard extends StatelessWidget {
             ),
 
             // * Language Button
-            Padding(
-              padding: theme.buttonPadding,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  DigitElevatedButton(
-                    child: Padding(
-                      padding: theme.buttonPadding * 0.4,
-                      child: Text(AppTranslation.ODIA.tr),
-                    ),
-                    onPressed: () => Get.updateLocale(
-                      const Locale('or', 'IN'),
-                    ),
-                  ),
-                  DigitOutLineButton(
-                    label: AppTranslation.ENGLISH.tr,
-                    onPressed: () => Get.updateLocale(
-                      const Locale('en', 'IN'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            LanguageButtonWidget(theme: theme),
 
             // * Continue Button
             Padding(
@@ -60,6 +40,60 @@ class LangSelectCard extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class LanguageButtonWidget extends StatelessWidget {
+  const LanguageButtonWidget({
+    super.key,
+    required this.theme,
+  });
+
+  final DigitTheme theme;
+
+  @override
+  Widget build(BuildContext context) {
+    if (Get.locale == ENG_LOCALE) {
+      return Padding(
+        padding: theme.buttonPadding,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            DigitOutLineButton(
+              label: AppTranslation.ODIA.tr,
+              onPressed: () => Get.updateLocale(ORI_LOCALE),
+            ),
+            DigitElevatedButton(
+              child: Padding(
+                padding: theme.buttonPadding * 0.4,
+                child: Text(AppTranslation.ENGLISH.tr),
+              ),
+              onPressed: () => Get.updateLocale(ENG_LOCALE),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return Padding(
+      padding: theme.buttonPadding,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          DigitElevatedButton(
+            child: Padding(
+              padding: theme.buttonPadding * 0.4,
+              child: Text(AppTranslation.ODIA.tr),
+            ),
+            onPressed: () => Get.updateLocale(ORI_LOCALE),
+          ),
+          DigitOutLineButton(
+            label: AppTranslation.ENGLISH.tr,
+            onPressed: () => Get.updateLocale(ENG_LOCALE),
+          ),
+        ],
       ),
     );
   }

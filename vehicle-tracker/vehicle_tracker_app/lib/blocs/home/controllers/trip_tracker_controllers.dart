@@ -3,7 +3,6 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:digit_components/digit_components.dart';
-import 'package:digit_components/widgets/atoms/digit_toaster.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -147,13 +146,10 @@ class TripControllers extends GetxController {
   // ? If not completed, it will show a toast message
   bool spamChecker(BuildContext context) {
     if (isLoading.isTrue) {
-      DigitToast.show(
+      toaster(
         context,
-        options: DigitToastOptions(
-          AppTranslation.START_LOADING_MESSAGE.tr,
-          true,
-          DigitTheme.instance.mobileTheme,
-        ),
+        AppTranslation.START_LOADING_MESSAGE.tr,
+        isError: true,
       );
       return true;
     }
