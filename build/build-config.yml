@@ -1,0 +1,20 @@
+#
+# config:
+# -   name: < Name of the job, foo/bar would create job named bar inside folder foo >
+#     build:
+#     - work-dir: < Working directory of the app to be built >
+#       dockerfile: < Path to the dockerfile, optional, assumes dockerfile in working directory if not provided >
+#       image-name: < Docker image name  >
+# -
+# -
+config:
+  - name: "builds/SANITATION/frontend/map_web_app"
+    build:
+      - work-dir: "vehicle-tracker/map_web_app/"
+        image-name: "map_web_app"
+        dockerfile: "vehicle-tracker/map_web_app/docker/Dockerfile"
+  # - name: "builds/mGramSeva/frontend/mgramseva-web"
+  #   build:
+  #     - work-dir: "frontend/micro-ui"
+  #       image-name: "mgramseva-web"
+  #       dockerfile: "frontend/micro-ui/web/docker/Dockerfile"
