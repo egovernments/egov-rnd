@@ -1,0 +1,1039 @@
+openapi: 3.0.3
+info:
+  title: Tracking service
+  description: |-
+    Tracking service provides client application the capability to create routes, trips and track the trips. This service is also responsible for generating alerts and notifications in case of special event.
+  termsOfService: https://sanitation.digit.org/
+  contact:
+    email: contact@egovernments.org
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about DIGIT and egov
+  url: https://core.digit.org/
+servers:
+  - url: https://core.digit.org/api/v3
+
+tags:
+  - name: POI
+    description: Points of interest (POI) are a combination of location and additional details about that specific location. A POI can be a single LatLong or a polygon (combination of multiple LatLongs)
+  - name: Route
+    description: Route is a sequence of POIs. Route indicate the path the operator should take while delivering a service.
+  - name: Trip
+    description: Assignment of a route to an operator forms a trip. This is the actual work done by the operator. Monitoring of distance covered, route taken, anomalies, service delivery and payment are linked to completion of trip.
+  - name: Config
+    description: Tracking service requires certain configuration information. This includes the list of services supported and types of anomalies for which notifications should be sent out. Configuration information is attached to a trip.
+
+paths:
+  /poi/_updateLocation:
+    put:
+      tags:
+        - POI
+      summary: Update an existing POI geo coordinates using its id, type and location details
+      description: Update an existing POI by Id
+      operationId: updatePOI
+      parameters:
+        - name: X-authToken
+          in: header
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent POI in the system
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/POI'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+
+  /poi/_inactivate:
+    put:
+      tags:
+        - POI
+      summary: Update an existing POI status using its id
+      description: Update an existing POI by Id
+      operationId: inactivatePOI
+      parameters:
+        - name: X-authToken
+          in: header
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/POI'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+
+  /poi/_create:
+    post:
+      tags:
+        - POI
+      summary: Create a new POI by providing location coordinates and additional details
+      description: Create a new POI by Id
+      operationId: createPOI
+      requestBody:
+        description: Create a new POI in the system
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/POI'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACK'
+
+  /poi/_search:
+    get:
+      tags:
+        - POI
+      summary: Finds POIs based on a specific parameters
+      description: Search POIs based on multiple filters
+      operationId: findPOI
+      parameters:
+        - name: tenantId
+          in: query
+          required: true
+          explode: true
+          schema:
+            type: string
+        - name: locationName
+          in: query
+          description: Location name that needs to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: alert
+          in: query
+          description: Alert value set for the location. For example - Stoppage
+          required: false
+          explode: true
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/POI'
+
+  /poi/_searchNearby/{latitude}/{longitude}/{distanceMeters}:
+    get:
+      tags:
+        - POI
+      summary: Find POIs near a user location
+      description: Returns a multiple POIs
+      operationId: searchNearby
+      parameters:
+        - name: latitude
+          in: path
+          description: Latitude of the user location
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: longitude
+          in: path
+          description: longitude of the user location
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: distanceMeters
+          in: path
+          description: Distance near the user to be searched
+          required: true
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/POI'
+  /poi/{poiId}:
+    get:
+      tags:
+        - POI
+      summary: Find POI by its id
+      description: Returns a single POI
+      operationId: getPoiById
+      parameters:
+        - name: poiId
+          in: path
+          description: ID of POI to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/POI'
+  /route/_update:
+    put:
+      tags:
+        - Route
+      summary: Update an existing route by id
+      description: Update an existing route by Id
+      operationId: updateRoute
+      requestBody:
+        description: Update an existent route in the system
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Route'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACK'
+
+  /route/_create:
+    post:
+      tags:
+        - Route
+      summary: Create a new route by providing a list of POIs
+      description: Create a new Route by Id
+      operationId: createRoute
+      requestBody:
+        description: Create a new Route in the system
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Route'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACK'
+  /route/_search:
+    get:
+      tags:
+        - Route
+      summary: Find Route based on supported parameters
+      description: Search Route based on multiple filters
+      operationId: findRoute
+      parameters:
+        - name: userId
+          in: query
+          description: User id that created the route to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: routeName
+          in: query
+          description: route name that needs to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: integer
+        - name: pageNumber
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Route'
+  /route/{routeId}:
+    get:
+      tags:
+        - Route
+      summary: Find Route by its id
+      description: Returns a single Route
+      operationId: getRouteById
+      parameters:
+        - name: routeId
+          in: path
+          description: ID of Route to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+
+  /trip/_update:
+    put:
+      tags:
+        - Trip
+      summary: Update details of an existing trip using its id. Updatable fields include its service code, planned schedule, route id and operator id
+      description: Update an existing trip by Id
+      operationId: updateTrip
+      parameters:
+        - name: X-authToken
+          in: header
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent trip in the system
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trip'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACK'
+
+  /trip/_progress:
+    put:
+      tags:
+        - Trip
+      summary: Provide geo location update of the operator who is on move.
+      description: Update an existing trip by Id
+      operationId: progressTrip
+      parameters:
+        - name: X-authToken
+          in: header
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent trip in the system
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TripProgress'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACK'
+
+  /trip/_progress/_update:
+    put:
+      tags:
+        - Trip
+      summary: Update details of an existing trip progress using its id. Matched POI is the only field which can be updated. Usually this update request is not required on client side, but is sent by internal trip monitoring service
+      description: Update an existing trip progress by Id
+      operationId: updateTripProgress
+      requestBody:
+        description: Update an existent trip progress in the system
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TripProgress'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACK'
+
+  /trip/_progress/_search:
+    get:
+      tags:
+        - Trip
+      summary: Search for trip progress based on its id
+      description: Search for trip progress based on its id
+      operationId: getTripProgressById
+      parameters:
+        - name: progressId
+          in: query
+          description: ID of trip progress to search
+          required: false
+          schema:
+            type: string
+        - name: tripId
+          in: query
+          description: Trip id of trip progress to search
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripProgressResponse'
+
+  /trip/_alerts:
+    get:
+      tags:
+        - Trip
+      summary: Search for trip progress based on alerts
+      description: Search for trip progress based on alerts
+      operationId: getTripAlerts
+      parameters:
+        - name: tenantId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: applicationNos
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: tripIds
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: startDate
+          in: query
+          required: false
+          description: Alert filter start date (YYYY-MM-DD)
+          schema:
+            type: string
+        - name: endDate
+          description: Alert filter end date (YYYY-MM-DD)
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AlertInfoResponse'
+
+  /trip/_create:
+    post:
+      tags:
+        - Trip
+      summary: Create a new trip based on the required set of parameters
+      description: Create a new trip by Id
+      operationId: createTrip
+      requestBody:
+        description: Create a new Trip in the system
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trip'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACK'
+
+  /trip/_searchfsm:
+    post:
+      tags:
+        - Trip
+      operationId: tripSearchFsm
+      parameters:
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: userId
+          in: query
+          description: user id who created the trip
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: operatorId
+          in: query
+          description: Operator id to whom the trip is assigned
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: tenantId
+          in: query
+          description: Tenant id
+          required: true
+          explode: true
+          schema:
+            type: string
+        - name: referenceNos
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: businessService
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: string
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                requestInfoWrapper:
+                  "$ref": "#/components/schemas/RequestInfoWrapper"
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trip'
+
+  /trip/_search:
+    get:
+      tags:
+        - Trip
+      summary: Find trip using supported parameters
+      description: Search Trip based on multiple filters
+      operationId: findTrip
+      parameters:
+        - name: X-authToken
+          in: header
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Trip name that needs to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: userId
+          in: query
+          description: user id who created the trip
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: operatorId
+          in: query
+          description: Operator id to whom the trip is assigned
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: tenantId
+          in: query
+          description: Tenant id
+          required: false
+          explode: true
+          schema:
+            type: string
+        - name: referenceNos
+          in: query
+          required: false
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trip'
+  /trip/{tripId}:
+    get:
+      tags:
+        - Trip
+      summary: Find trip by its id
+      description: Returns a single Route
+      operationId: getTripById
+      parameters:
+        - name: tripId
+          in: path
+          description: ID of Trip to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+
+  /config/_services:
+    get:
+      tags:
+        - Config
+      summary: Get the list of services provided by ULBs. Service id is passed during trip creation.
+      description: Fetch the list of services offered
+      operationId: findServices
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServiceType'
+  /config/_alerts:
+    get:
+      tags:
+        - Config
+      summary: Get the list of alerts. Alerts are tagged to POIs
+      description: Fetch the list of alerts
+      operationId: findAlerts
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LocationAlert'
+components:
+  schemas:
+    POI:
+      type: object
+      properties:
+        id:
+          type: string
+          description: GUID generated during POI creation
+        locationName:
+          type: string
+          example: Any name assigned to the location
+        tenantId:
+          type: string
+        status:
+          type: string
+          description: POI status to help to exclude or include this in route planning
+          example: active
+          enum:
+            - active
+            - inactive
+        type:
+          type: string
+          description: POI type helps identify the shape of the location
+          example: point
+          enum:
+            - point
+            - line
+            - polygon
+        locationDetails:
+          description: A POI can comprise of on geocoordinate in case of single point and multiple geos in case of a polygon
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Location'
+        alert:
+          type: string
+          description: Alert code that may be applicable to the location. This is optional
+        userId:
+          type: string
+          description: DIGIT Id of the user performing this action
+          example: rajan123
+        distanceMeters:
+          type: integer
+          description: This value is present only in API response for search nearby usecase
+          example: 200000
+
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+    ACK:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the entity that is created or updated
+          example: 116bd8d3-e5a9-4e1c-86dc-b2a9c17e3fb1
+        responseMessage:
+          type: string
+          example: Update is succesful
+          description: Date and time in ISO_DATE_TIME format
+        responseCode:
+          type: string
+          example: CODE-123
+
+    Route:
+      type: object
+      properties:
+        id:
+          type: string
+          description: GUID generated during Route creation
+        name:
+          type: string
+        startPoi:
+          type: string
+          description: POI id of the start location for a route
+        endPoi:
+          type: string
+          description: POI id of the end location for a route
+        intermediatePois:
+          type: array
+          items:
+            type: string
+            description: POI ids of all the locations which are in the route.
+        status:
+          type: string
+          description: Route status to help to exclude or include this in trip planning
+          example: active
+          enum:
+            - active
+            - inactive
+        userId:
+          type: string
+          description: DIGIT Id of the user performing this action
+          example: rajan123
+
+    Operator:
+      type: object
+      properties:
+        id:
+          type: string
+          description: User id of the operator of the service (for example, a vehicle driver)
+        name:
+          type: string
+          description: Name of the operator
+        email:
+          type: string
+          description: Email id of the operator
+        contactNumber:
+          type: string
+          description: Phone number of the operator
+        vehicleNumber:
+          type: string
+          description: Vehicle number of the operator
+
+    Citizen:
+      type: object
+      properties:
+        name:
+          type: string
+        contactNumber:
+          type: string
+
+    Vehicle:
+      type: object
+      properties:
+        registrationNumber:
+          type: string
+
+    Address:
+      type: object
+      properties:
+        addressTitle:
+          type: string
+        doorNo:
+          type: string
+        plotNo:
+          type: string
+        landmark:
+          type: string
+        city:
+          type: string
+        district:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        pincode:
+          type: string
+
+    Trip:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the trip
+        tenantId:
+          type: string
+        referenceNo:
+          type: string
+          description: Application number to which this trip belongs to
+        routeId:
+          type: string
+          description: Id of the assigned route
+        name:
+          type: string
+          description: User defined name for the trip
+        serviceCode:
+          type: string
+          description: Code of the service which will be rendered through this trip
+        status:
+          type: string
+          description: Trip status as progress is made
+          example: created
+          enum:
+            - NotStarted
+            - Ongoing
+            - Completed
+            - Cancelled
+        tripEndType:
+          type: string
+          description: End type code for the trip (system, FSTPO, driver etc )
+        operator:
+          $ref: '#/components/schemas/Operator'
+        citizen:
+          $ref: '#/components/schemas/Citizen'
+        vehicle:
+          $ref: '#/components/schemas/Vehicle'
+        plannedStartTime:
+          type: string
+          example: 2023-07-30T10:24:10.547Z
+          description: Date and time in ISO_DATE_TIME format
+        plannedEndTime:
+          type: string
+          example: 2023-07-30T10:24:10.547Z
+          description: Date and time in ISO_DATE_TIME format
+        actualStartTime:
+          type: string
+          example: 2023-07-30T10:24:10.547Z
+          description: Date and time in ISO_DATE_TIME format
+        actualEndTime:
+          type: string
+          example: 2023-07-30T10:24:10.547Z
+          description: Date and time in ISO_DATE_TIME format
+        pickupLocation:
+          type: string
+        dropLocation:
+          type: string
+        userId:
+          type: string
+          description: DIGIT Id of the user performing this action
+          example: rajan123
+
+    AlertInfoResponse:
+      type: object
+      properties:
+        tenantId:
+          type: string
+        applicationNo:
+          type: string
+        tripId:
+          type: string
+        alertId:
+          type: string
+        alert:
+          type: string
+        alertDateTime:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+
+    LocationAlert:
+      type: object
+      properties:
+        code:
+          type: string
+          description: A unique code assigned to alerts of different types
+        title:
+          type: string
+          description: Title of the alert which can be displayed on client side
+
+    ServiceType:
+      type: object
+      description: Citizen service provided by the government agency
+      properties:
+        code:
+          type: string
+          description: Unique code given to each service
+        name:
+          type: string
+          description: Name of the service. For example - Mosquito fumigation, Fecal sludge pickup
+        tenantId:
+          type: string
+          description: Identifier of the ULB where this service is offered
+
+    TripProgress:
+      type: object
+      description: Trip progress is shared by the client continuously as the operator is moving
+      properties:
+        id:
+          type: string
+          description: Id of the trip progress
+        tripId:
+          type: string
+          description: Id of the trip to which this progress update belongs to
+        progressReportedTime:
+          type: string
+          example: 2023-07-30T10:24:10.547Z
+          description: Date and time in ISO_DATE_TIME format. Time at which the client app is reporting this data. This can be different from the time when the geo data was recorded as the app might be offline at that time but reporting it later once the app is online.
+        progressData:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            properties:
+              progressTime:
+                type: string
+                example: 2023-07-30T10:24:10.547Z
+                description: Date and time in ISO_DATE_TIME format. Actual time at which the operator was present at the location
+              location:
+                $ref: '#/components/schemas/Location'
+        matchedPoiId:
+          type: string
+          description: Id of the POI which matched this location. This is not set by client but is updated by an internal trip monitoring service
+        userId:
+          type: string
+          description: DIGIT Id of the user performing this action
+          example: rajan123
+
+    TripProgressResponse:
+      type: object
+      description: Trip progress response is returned by the service
+      properties:
+        id:
+          type: string
+          description: Id of the trip progress
+        tripId:
+          type: string
+          description: Id of the trip to which this progress update belongs to
+        progressReportedTime:
+          type: string
+          example: 2023-07-30T10:24:10.547Z
+          description: Date and time in ISO_DATE_TIME format. Time at which the client app is reporting this data. This can be different from the time when the geo data was recorded as the app might be offline at that time but reporting it later once the app is online.
+        progressTime:
+          type: string
+          example: 2023-07-30T10:24:10.547Z
+          description: Date and time in ISO_DATE_TIME format. Actual time at which the operator was present at the location
+        location:
+          $ref: '#/components/schemas/Location'
+
+    RequestInfo:
+      type: object
+      properties:
+        apiId:
+          type: string
+        ver:
+          type: string
+        ts:
+          type: integer
+          format: int64
+        action:
+          type: string
+        did:
+          type: string
+        key:
+          type: string
+        msgId:
+          type: string
+        authToken:
+          type: string
+        correlationId:
+          type: string
+        userInfo:
+          "$ref": "#/components/schemas/User"
+    RequestInfoWrapper:
+      type: object
+      properties:
+        RequestInfo:
+          "$ref": "#/components/schemas/RequestInfo"
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userName:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        mobileNumber:
+          type: string
+        emailId:
+          type: string
+        roles:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Role"
+        tenantId:
+          type: string
+        uuid:
+          type: string
+    Role:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        code:
+          type: string
+        tenantId:
+          type: string
