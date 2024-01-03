@@ -1,0 +1,121 @@
+---
+# Source: map_web_app_chart/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: map-web-app-release-map_web_app_chart
+  labels:
+    helm.sh/chart: map_web_app_chart-0.1.0
+    app.kubernetes.io/name: map_web_app_chart
+    app.kubernetes.io/instance: map-web-app-release
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  automountServiceAccountToken: true
+---
+# Source: map_web_app_chart/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: map-web-app-release-map_web_app_chart
+  labels:
+    helm.sh/chart: map_web_app_chart-0.1.0
+    app.kubernetes.io/name: map_web_app_chart
+    app.kubernetes.io/instance: map-web-app-release
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: map_web_app_chart
+    app.kubernetes.io/instance: map-web-app-release
+---
+# Source: map_web_app_chart/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: map-web-app-release-map_web_app_chart
+  labels:
+    helm.sh/chart: map_web_app_chart-0.1.0
+    app.kubernetes.io/name: map_web_app_chart
+    app.kubernetes.io/instance: map-web-app-release
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: map_web_app_chart
+      app.kubernetes.io/instance: map-web-app-release
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: map_web_app_chart-0.1.0
+        app.kubernetes.io/name: map_web_app_chart
+        app.kubernetes.io/instance: map-web-app-release
+        app.kubernetes.io/version: "1.16.0"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: map-web-app-release-map_web_app_chart
+      securityContext:
+        {}
+      containers:
+        - name: map_web_app_chart
+          securityContext:
+            {}
+          image: "map_web_app:1.16.0"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {}
+---
+# Source: map_web_app_chart/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: map-web-app-release-map_web_app_chart
+  labels:
+    helm.sh/chart: map_web_app_chart-0.1.0
+    app.kubernetes.io/name: map_web_app_chart
+    app.kubernetes.io/instance: map-web-app-release
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/lua-resty-waf: active
+    nginx.ingress.kubernetes.io/lua-resty-waf-allow-unknown-content-types: true
+    nginx.ingress.kubernetes.io/lua-resty-waf-debug: true
+    nginx.ingress.kubernetes.io/lua-resty-waf-process-multipart-body: false
+    nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: 10
+    nginx.ingress.kubernetes.io/use-regex: true
+spec:
+  tls:
+    - hosts:
+        - "unified-qa.digit.org"
+      secretName: unified-qa.digit.org-tls-certs
+  rules:
+    - host: "unified-qa.digit.org"
+      http:
+        paths:
+          - path: /map2
+            pathType: Prefix
+            backend:
+              service:
+                name: map-web-app-release-map_web_app_chart
+                port:
+                  number: 80
