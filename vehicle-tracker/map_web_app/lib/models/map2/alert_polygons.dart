@@ -4,7 +4,7 @@ class AlertPolygon {
   String? status;
   String? type;
   List<LocationDetails>? locationDetails;
-  List<String>? alert;
+  String? alert;
   String? userId;
   int? distanceMeters;
 
@@ -22,7 +22,7 @@ class AlertPolygon {
         locationDetails!.add(LocationDetails.fromJson(v));
       });
     }
-    alert = json['alert'].cast<String>();
+    alert = json['alert'];
     userId = json['userId'];
     distanceMeters = json['distanceMeters'];
   }
