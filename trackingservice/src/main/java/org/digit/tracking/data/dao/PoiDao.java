@@ -151,8 +151,8 @@ public class PoiDao {
 
         //Prepare input data for the SQL
         String idLocal = dbUtil.getId();
-        //String alerts = JsonUtil.getJsonFromObject(poi.getAlert());
-        String alerts = poi.getAlert();
+        String alerts = JsonUtil.getJsonFromObject(poi.getAlert());
+        //String alerts = poi.getAlert();
 
         String positionGeom = DaoUtil.getGeometryPositionPostgresSQL(poi);
         OffsetDateTime offsetDateTime = OffsetDateTime.now();
