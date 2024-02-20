@@ -299,7 +299,7 @@ class MapControllers extends GetxController {
   // ? sets up the initial location for the map.
   // todo : can be configured later
   LatLng locationSetter() {
-    if (alertMarkers.first.locationDetails != null && alertMarkers.isNotEmpty && alertMarkers.first.locationDetails!.isNotEmpty) {
+    if (alertMarkers.isNotEmpty && alertMarkers.first.locationDetails != null &&  alertMarkers.first.locationDetails!.isNotEmpty) {
       return LatLng(
         alertMarkers.first.locationDetails!.last.latitude,
         alertMarkers.first.locationDetails!.last.longitude,
