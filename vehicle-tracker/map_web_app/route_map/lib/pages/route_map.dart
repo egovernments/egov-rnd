@@ -1,16 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
+import 'package:route_map/constants.dart';
+import 'package:route_map/util/geolocation_permission_util.dart';
 import 'package:route_map/widgets/route_map/map_legends_widget.dart';
 
 import '../blocs/route_map/controllers/route_controllers.dart';
-import '../constants.dart';
 import '../widgets/route_map/map_tile_widgets.dart';
 import '../widgets/route_map/polygon_layer_widget.dart';
 
-
-class RouteMapPage extends StatelessWidget {
+class RouteMapPage extends StatefulWidget {
   const RouteMapPage({super.key});
+
+  @override
+  State<RouteMapPage> createState() => _RouteMapPageState();
+}
+
+class _RouteMapPageState extends State<RouteMapPage> {
+  final geolocationPermission = GeolocationPermissionUtil();
+  var mapCenterPosition = customPosition;
+
+  @override
+  void initState() {
+    _updateMapPosition();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  // * Update the map position to the current location
+  void _updateMapPosition() async {
+    final isPermissionGranted = await geolocationPermission.handleLocationPermission();
+    if (isPermissionGranted) {
+      final position = await geolocationPermission.getCurrentLocation();
+      setState(() {
+        mapCenterPosition = position;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // * Get the tripId from the URL
@@ -26,8 +57,8 @@ class RouteMapPage extends StatelessWidget {
     }
 
     // * Fetch the data from the API using the tripId
-    final mapController = Get.put(RouteControllers(tripId, tenantId));
-    mapController.fetchData();
+    final routeController = Get.put(RouteControllers(tripId, tenantId));
+    routeController.fetchData();
 
     return GetBuilder<RouteControllers>(
       builder: (controller) {
@@ -49,7 +80,7 @@ class RouteMapPage extends StatelessWidget {
             body: FlutterMap(
               // * Map Options
               options: MapOptions(
-                center: controller.polyPoints.isNotEmpty ? controller.polyPoints.first : custom,
+                center: mapCenterPosition,
                 zoom: 15,
                 maxZoom: 18,
                 minZoom: 1,

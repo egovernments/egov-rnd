@@ -3,7 +3,7 @@ import 'dart:developer';
 import '../../../constants.dart';
 import '../../../data/http_service.dart';
 import '../../../models/alert_polygon/alert_polygons.dart';
-import '../../../util/toaster.dart';
+import '../../../util/toaster_util.dart';
 
 class Map2HttpRepository {
   static Future<bool> createPolygon(AlertPolygon alertPolygon) async {
@@ -55,7 +55,7 @@ class Map2HttpRepository {
     if (response.statusCode == 200) {
       return true;
     } else {
-      toaster("Unable to update polygon", isError: true);
+      toaster(null, "Unable to update polygon", isError: true);
       return false;
     }
   }
@@ -101,11 +101,11 @@ class Map2HttpRepository {
     final response = await HttpService.putRequestWithoutToken(url, jsonMap);
     log(response.statusCode.toString());
     if (response.statusCode == 200) {
-      toaster("Polygon deleted successfully");
+      toaster(null, "Polygon deleted successfully");
       return true;
     } else {
       log(response.body.toString());
-      toaster("Unable to delete polygon with code ${response.statusCode}", isError: true);
+      toaster(null, "Unable to delete polygon with code ${response.statusCode}", isError: true);
       return false;
     }
   }
