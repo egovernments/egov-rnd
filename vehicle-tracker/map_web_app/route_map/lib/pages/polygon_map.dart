@@ -20,7 +20,7 @@ class PolygonMapPage extends StatefulWidget {
 
 class _PolygonMapPageState extends State<PolygonMapPage> {
   final geolocationPermission = GeolocationPermissionUtil();
-  var mapCenterPosition = customPosition;
+  var mapCenterPosition = customLatLng;
 
   @override
   void initState() {
