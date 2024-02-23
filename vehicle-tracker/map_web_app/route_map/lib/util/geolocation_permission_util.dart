@@ -38,7 +38,7 @@ class GeolocationPermissionUtil {
       return LatLng(position.latitude, position.longitude);
     } catch (e) {
       log("Error in getting current location : $e");
-      return customLatLng;
+      return defaultLatLng;
     }
   }
 }

@@ -18,7 +18,7 @@ class RouteMapPage extends StatefulWidget {
 
 class _RouteMapPageState extends State<RouteMapPage> {
   final geolocationPermission = GeolocationPermissionUtil();
-  var mapCenterPosition = customLatLng;
+  var mapCenterPosition = defaultLatLng;
 
   @override
   void initState() {
