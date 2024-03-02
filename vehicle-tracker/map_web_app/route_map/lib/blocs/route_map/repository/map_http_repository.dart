@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:route_map/models/trip_progress/progress_report_model.dart';
-import 'package:route_map/util/toaster.dart';
 
 import '../../../constants.dart';
 import '../../../data/http_service.dart';
 import '../../../models/alert_polygon/alert_polygons.dart';
+import '../../../util/toaster_util.dart';
 
 class MapHttpRepository {
   static Future<List<AlertPolygon>> getAllPolygonsWithAlerts(String tenantId) async {
@@ -28,11 +28,11 @@ class MapHttpRepository {
       return alertPolygon;
     } on FormatException {
       log("Format Exception");
-      toaster("Unable to format polygons from API", isError: true);
+      toaster(null, "Unable to format polygons from API", isError: true);
       rethrow;
     } catch (e) {
       log("Error in calling GET ALL POLYGONS api with error: $e");
-      toaster("Unable to fetch polygons from API", isError: true);
+      toaster(null, "Unable to fetch polygons from API", isError: true);
       log(e.toString());
       return [];
     }
@@ -58,11 +58,11 @@ class MapHttpRepository {
       return progressReportList;
     } on FormatException {
       log("Format Exception");
-      toaster("Unable to format route from API", isError: true);
+      toaster(null, "Unable to format route from API", isError: true);
       rethrow;
     } catch (e) {
       log("Error in calling GET ROUTE POLYPOINTS api with error: $e");
-      toaster("Unable to fetch route from API", isError: true);
+      toaster(null, "Unable to fetch route from API", isError: true);
       log(e.toString());
       return [];
     }

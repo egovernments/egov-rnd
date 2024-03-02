@@ -38,7 +38,6 @@ class MapControllers extends GetxController {
   // TextEditingController siteDistanceController = TextEditingController();
 
   DigitTheme theme = DigitTheme.instance;
-  late String userID;
 
   // ? API to fetch data
   Future<void> fetchData() async {
@@ -132,7 +131,7 @@ class MapControllers extends GetxController {
       locationName: siteNameController.text,
       status: "active",
       type: shapeTypeSetter(copy.length),
-      userId: userID,
+      userId: userId,
       alert: "Alert-001",
       distanceMeters: 0,
       locationDetails: copy,
@@ -192,7 +191,7 @@ class MapControllers extends GetxController {
       locationName: siteNameController.text,
       status: "active",
       type: shapeTypeSetter(copy.length),
-      userId: userID,
+      userId: userId,
       alert: "Alert-001",
       distanceMeters: 0,
       locationDetails: copy,
@@ -294,18 +293,5 @@ class MapControllers extends GetxController {
     String centreY = (sumY / points.length).toStringAsFixed(4);
 
     return "$centreX, $centreY";
-  }
-
-  // ? sets up the initial location for the map.
-  // todo : can be configured later
-  LatLng locationSetter() {
-    if (alertMarkers.first.locationDetails != null && alertMarkers.isNotEmpty && alertMarkers.first.locationDetails!.isNotEmpty) {
-      return LatLng(
-        alertMarkers.first.locationDetails!.last.latitude,
-        alertMarkers.first.locationDetails!.last.longitude,
-      );
-    } else {
-      return custom;
-    }
   }
 }
