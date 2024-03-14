@@ -63,7 +63,18 @@ class AppTranslation extends Translations {
   static String get STATUS => 'STATUS';
   static String get TRIP_STARTED_SUCCESFULLY_MESSAGE => 'TRIP_STARTED_SUCCESFULLY_MESSAGE';
   static String get TRIP_ENDED_SUCCESFULLY_MESSAGE => 'TRIP_ENDED_SUCCESFULLY_MESSAGE';
-  
+  // SELECT CITY
+  static String get PLEASE_SELECT_CITY=>"PLEASE_SELECT_CITY";
+  static String get SELECT_CITY_SUB_LINE=>"SELECT_CITY_SUB_LINE";
+  static String get LOGIN_SUB_LINE => "LOGIN_SUB_LINE";
+  static String get OTP_VERIFY=>"OTP_VERIFY";
+  static String get RESEND_OTP=>"RESEND_OTP";
+  static String get ENTER_OTP_SENT=>"ENTER_OTP_SENT";
+  static String get REQUEST_ANOTHER_OTP=>"REQUEST_ANOTHER_OTP";
+
+
+
+
 
   // ? This was the old way of doing translations
   // ? Its not here for reference, will be deleted soon
@@ -122,10 +133,10 @@ class AppTranslation extends Translations {
   // Map of all translations for english and hindi
   @override
   Map<String, Map<String, String>> get keys => {
-        // English
-        'en_IN': LocalizationService.englishMap, // change this to english map when english is ready
+    // English
+    'en_IN': LocalizationService.englishMap, // change this to english map when english is ready
 
-        // Hindi
-        'or_IN': LocalizationService.orissaMap, // change this to hindi map when hindi is ready
-      };
+    // Hindi
+    'or_IN': LocalizationService.orissaMap, // change this to hindi map when hindi is ready
+  };
 }

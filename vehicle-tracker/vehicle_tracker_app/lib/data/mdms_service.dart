@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 
 import '../models/mdms/mdms_hive/mdms_hive_model.dart';
@@ -34,13 +33,14 @@ class MdmsService {
     }
   }
 
-  static Future<MdmsModel?> callMdmsAPI() async {
-    
+  static Future<MdmsResponse?> callMdmsAPI() async {
 
-    var response = await HttpService.getRequestWithoutToken(mdmsUrl);
+    const url= "https://unified-dev.digit.org/egov-mdms-service/v1/_search?tenantId=pg";
+
+    var response = await HttpService.getRequestWithoutToken(url);
     if (response.statusCode == 200) {
       Map<String, dynamic> json = response.body;
-      return MdmsModel.fromJson(json);
+      return MdmsResponse.fromJson(json);
     } else {
       return null;
     }

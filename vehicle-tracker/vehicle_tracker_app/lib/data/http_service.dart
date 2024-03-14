@@ -58,9 +58,10 @@ class HttpService {
         },
         body: body,
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200||response.statusCode == 201) {
         var body = json.decode(response.body);
-        return Response(body: body, statusCode: response.statusCode);
+
+        return Response(body: body, statusCode: response.statusCode==201?200:200);
       } else if (response.statusCode == 401) {
         logout();
         return const Response(body: null, statusCode: 401);
@@ -113,10 +114,64 @@ class HttpService {
   }
 
   static Future<Response> getRequestWithoutToken(String url) async {
+
+    final data= {
+      "MdmsCriteria": {
+        "tenantId": "pg",
+        "moduleDetails": [
+          {
+            "moduleName": "common-masters",
+            "masterDetails": [
+              {
+                "name": "Department"
+              },
+              {
+                "name": "Designation"
+              },
+              {
+                "name": "StateInfo"
+              },
+              {
+                "name": "wfSlaConfig"
+              },
+              {
+                "name": "uiHomePage"
+              }
+            ]
+          },
+          {
+            "moduleName": "tenant",
+            "masterDetails": [
+              {
+                "name": "tenants"
+              },
+              {
+                "name": "citymodule"
+              }
+            ]
+          },
+          {
+            "moduleName": "DIGIT-UI",
+            "masterDetails": [
+              {
+                "name": "ApiCachingSettings"
+              }
+            ]
+          }
+        ]
+      },
+      "RequestInfo": {
+        "apiId": "Rainmaker",
+        "msgId": "1706591204091|en_IN",
+        "plainAccessRequest": {}
+      }
+    };
     try {
-      var response = await http.get(Uri.parse(url), headers: {
+      var response = await http.post(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
-      });
+      },
+          body:jsonEncode(data)
+      );
       if (response.statusCode == 200) {
         var body = json.decode(response.body);
         return Response(body: body, statusCode: response.statusCode);

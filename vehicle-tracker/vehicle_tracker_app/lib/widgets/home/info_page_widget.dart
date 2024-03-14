@@ -13,38 +13,21 @@ import 'status_info_widget.dart';
 Widget textColumnWidget(Rx<HomeTripModel> data) {
   return Padding(
     padding: DigitTheme.instance.verticalMargin,
-    // child: Column(
-    //   children: [
-    //     textRow(AppTranslation.TRIP_ID.tr, data.value.id),
-    //     textRow(AppTranslation.NAME.tr, data.value.operator?.name ?? ""),
-    //     textRow(AppTranslation.VEHICLE_NUMBER.tr, data.value.operator?.contactNumber ?? ""),
-    //     textRow(AppTranslation.PICK_UP_LOCATION.tr, data.value.routeId ?? ""),
-    //     textRow(AppTranslation.DROP_LOCATION.tr, data.value.routeId ?? ""),
-    //     textRow(AppTranslation.DATE.tr, data.value.plannedStartTime ?? ""),
-    //     Row(
-    //       children: [
-    //         paddedText("${AppTranslation.STATUS.tr}\t\t", bold: true),
-    //         GetBuilder<TripControllers>(
-    //           id: "data.value.id",
-    //           builder: (tripControllers) => statusInfoWidget(data.value.status ?? TripStates.NONE),
-    //         ),
-    //       ],
-    //     )
-    //   ],
-    // ),
-
     child: Table(
       columnWidths: const {
         0: FlexColumnWidth(2),
         1: FlexColumnWidth(7),
       },
       children: [
-        tableRow(AppTranslation.TRIP_ID.tr, data.value.id),
-        tableRow(AppTranslation.NAME.tr, data.value.citizen?.name ?? ""),
-        tableRow(AppTranslation.VEHICLE_NUMBER.tr, data.value.vehicle?.registrationNumber ?? ""),
-        tableRow(AppTranslation.PICK_UP_LOCATION.tr, data.value.pickupLocation ?? ""),
-        tableRow(AppTranslation.DROP_LOCATION.tr, data.value.dropLocation ?? ""),
-        tableRow(AppTranslation.DATE.tr, formattedDate(data.value.plannedStartTime)),
+        textRow(AppTranslation.TRIP_ID.tr, data.value.id),
+        textRow(AppTranslation.NAME.tr, data.value.citizen?.name ?? ""),
+        textRow(AppTranslation.VEHICLE_NUMBER.tr,
+            data.value.vehicle?.registrationNumber ?? ""),
+        textRow(AppTranslation.PICK_UP_LOCATION.tr,
+            data.value.pickupLocation ?? ""),
+        textRow(AppTranslation.DROP_LOCATION.tr, data.value.dropLocation ?? ""),
+        textRow(
+            AppTranslation.DATE.tr, formattedDate(data.value.plannedStartTime)),
         TableRow(
           children: [
             paddedText("Status", bold: true),
@@ -52,7 +35,8 @@ Widget textColumnWidget(Rx<HomeTripModel> data) {
               children: [
                 GetBuilder<TripControllers>(
                   id: data.value.id,
-                  builder: (tripControllers) => statusInfoWidget(data.value.status ?? TripStates.NOTSTARTED),
+                  builder: (tripControllers) => statusInfoWidget(
+                      data.value.status ?? TripStates.NOTSTARTED),
                 ),
               ],
             ),
@@ -63,14 +47,7 @@ Widget textColumnWidget(Rx<HomeTripModel> data) {
   );
 }
 
-Widget textRow(String key, String value) => Row(
-      children: [
-        paddedText("$key\t\t", bold: true),
-        Expanded(child: paddedText(value)),
-      ],
-    );
-
-TableRow tableRow(String key, String value) => TableRow(
+TableRow textRow(String key, String value) => TableRow(
       children: [
         paddedText("$key\t\t", bold: true),
         paddedText(value),

@@ -1,4 +1,5 @@
 import 'package:digit_components/digit_components.dart';
+import 'package:digit_components/models/digit_row_card/digit_row_card_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
@@ -8,6 +9,7 @@ import '../../constants.dart';
 import '../../router/routes.dart';
 import '../../util/logout.dart';
 import 'custom_outline_button_widget.dart';
+import 'languages_button_widget.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -50,9 +52,12 @@ class CustomDrawer extends StatelessWidget {
             icon: Icons.home,
           ),
           DigitIconTile(
-            title: Get.locale == ENG_LOCALE ? AppTranslation.ENGLISH.tr : AppTranslation.ODIA.tr,
+            title: Get.locale == ENG_LOCALE
+                ? AppTranslation.ENGLISH.tr
+                : AppTranslation.ODIA.tr,
             onPressed: () {},
-            content: const LanguageButtonsWidget(),
+            content: const LanguageButtonsWidget(
+                bottomPadding: false, isSideBar: true),
             icon: Icons.language,
           ),
           DigitIconTile(
@@ -62,45 +67,6 @@ class CustomDrawer extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class LanguageButtonsWidget extends StatelessWidget {
-  const LanguageButtonsWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    if (Get.locale == ENG_LOCALE) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          CustomOutLineButton(
-            label: AppTranslation.ODIA.tr,
-            onPressed: () => Get.updateLocale(ORI_LOCALE),
-          ),
-          DigitElevatedButton(
-            child: Text(AppTranslation.ENGLISH.tr),
-            onPressed: () => Get.updateLocale(ENG_LOCALE),
-          ),
-        ],
-      );
-    }
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        DigitElevatedButton(
-          child: Text(AppTranslation.ODIA.tr),
-          onPressed: () => Get.updateLocale(ORI_LOCALE),
-        ),
-        CustomOutLineButton(
-          label: AppTranslation.ENGLISH.tr,
-          onPressed: () => Get.updateLocale(ENG_LOCALE),
-        ),
-      ],
     );
   }
 }
