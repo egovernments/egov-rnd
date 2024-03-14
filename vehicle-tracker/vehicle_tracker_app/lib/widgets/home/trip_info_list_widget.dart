@@ -1,6 +1,8 @@
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../blocs/home/controllers/info_controllers.dart';
 import 'trip_info_card_widget.dart';
@@ -40,12 +42,26 @@ class TripInfoListBuilderWidget extends StatelessWidget {
             list = infoController.filteredCompletedTripList;
           }
 
-          return ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (context, index) {
-              return TripInfoCardWidget(data: list[index]);
-            },
-          );
+          return list.isEmpty
+              ? Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        "assets/images/not_found.svg",
+                        height: 200,
+                      ),
+                      Text(AppTranslation.NO_TASK_ASSIGNED),
+                    ],
+                  ),
+                )
+              : ListView.builder(
+                  itemCount: list.length,
+                  itemBuilder: (context, index) {
+                    return TripInfoCardWidget(data: list[index]);
+                  },
+                );
         }),
       ),
     );
