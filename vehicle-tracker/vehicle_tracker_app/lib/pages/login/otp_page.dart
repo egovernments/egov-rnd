@@ -82,8 +82,7 @@ class _OTPPageState extends State<OTPPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppTranslation.OTP_VERIFY.tr??
-                      "OTP Verification",
+                  AppTranslation.OTP_VERIFY.tr ?? "OTP Verification",
                   style: textTheme.displayMedium,
                 ),
                 const SizedBox(
@@ -126,7 +125,7 @@ class _OTPPageState extends State<OTPPage> {
                           onChanged: (value) {
                             setState(() {
                               next = loginController
-                                  .passwordController.text.length ==
+                                      .passwordController.text.length ==
                                   6;
                             });
                           },
@@ -144,19 +143,19 @@ class _OTPPageState extends State<OTPPage> {
                 ),
                 _remainingSeconds == 0
                     ? DigitIconButton(
-                    iconText: AppTranslation.RESEND_OTP.tr??"Resend OTP",
-                    onPressed: () {
-                      loginController.passwordController.clear();
-                      _remainingSeconds = 30;
-                      _timer.cancel();
-                      startTimer();
+                        iconText: AppTranslation.RESEND_OTP.tr,
+                        onPressed: () {
+                          loginController.passwordController.clear();
+                          _remainingSeconds = 30;
+                          _timer.cancel();
+                          startTimer();
 
-                      loginController.sendOTP(context);
-                    })
+                          loginController.sendOTP(context);
+                        })
                     : Text(
-                  '${AppTranslation.REQUEST_ANOTHER_OTP.tr} $_remainingSeconds seconds',
-                  style: const TextStyle(fontSize: 18),
-                ),
+                        '${AppTranslation.REQUEST_ANOTHER_OTP.tr} $_remainingSeconds seconds',
+                        style: const TextStyle(fontSize: 18),
+                      ),
                 // * Login Button
                 Padding(
                   padding: const EdgeInsets.only(top: kPadding) * 2,

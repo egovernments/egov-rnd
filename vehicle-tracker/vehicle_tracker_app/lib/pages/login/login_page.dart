@@ -35,12 +35,14 @@ class LoginPage extends StatelessWidget {
                   AppTranslation.LOGIN.tr,
                   style: textTheme.displayMedium,
                 ),
-                const  SizedBox(height: 8,),
+                const SizedBox(
+                  height: 8,
+                ),
                 Text(
-                  AppTranslation.LOGIN_SUB_LINE.tr?? "Provide mobile number and validate with OTP sent to you through SMS",
+                  AppTranslation.LOGIN_SUB_LINE.tr ??
+                      "Provide mobile number and validate with OTP sent to you through SMS",
                   style: textTheme.titleLarge,
                 ),
-
 
                 DigitTextField(
                   maxLength: 10,
@@ -51,19 +53,20 @@ class LoginPage extends StatelessWidget {
                   controller: loginController.userNameController,
                 ),
 
-
-
                 // * Login Button
                 Padding(
                   padding: const EdgeInsets.only(top: kPadding) * 2,
-                  child: DigitElevatedButton(
-                    child: Text(AppTranslation.CONTINUE.tr),
-                    onPressed: () => loginController.sendOTP(context),
-
-                  ),
+                  child: Obx(() {
+                    if (loginController.isLoading.value) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else {
+                      return DigitElevatedButton(
+                        child: Text(AppTranslation.CONTINUE.tr),
+                        onPressed: () => loginController.sendOTP(context),
+                      );
+                    }
+                  }),
                 ),
-
-
               ],
             ),
           )

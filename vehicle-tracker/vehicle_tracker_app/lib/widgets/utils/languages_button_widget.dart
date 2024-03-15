@@ -19,8 +19,8 @@ class LanguageButtonsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: 16,
-          bottom: bottomPadding ? 0 : 16,
+          top: 20,
+          bottom: bottomPadding ? 0 : 20,
           left: isSideBar ? 0 : 8,
           right: isSideBar ? 0 : 8),
       child: DigitRowCard(

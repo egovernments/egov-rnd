@@ -64,7 +64,6 @@ class _CitySelectPageState extends State<CitySelectPage> {
                   onChanged: (value) {
                     loginController.cityController.text =
                         value!.cityCode.toString();
-
                   },
                   valueMapper: (value) => value.cityName,
                 ),
@@ -72,17 +71,16 @@ class _CitySelectPageState extends State<CitySelectPage> {
                 // * Login Button
                 Padding(
                   padding: const EdgeInsets.only(top: kPadding) * 2,
-                  child: DigitElevatedButton(
-                    child: Text(AppTranslation.CONTINUE.tr),
-                    // onPressed: () => loginController.sendOTP(context),
-                    onPressed: () {
-                      // if (data == null) {
-                      loginController.login();
-                      // } else {
-                      //   Get.offAllNamed(HOME);
-                      // }
-                    },
-                  ),
+                  child: Obx(() {
+                    if (loginController.isLoading.value) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else {
+                      return DigitElevatedButton(
+                        child: Text(AppTranslation.CONTINUE.tr),
+                        onPressed: () => loginController.login(),
+                      );
+                    }
+                  }),
                 ),
               ],
             ),
