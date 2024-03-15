@@ -12,17 +12,19 @@ import '../../../data/secure_storage_service.dart';
 
 class HomeHTTPRepository {
   // ? Uses the userId to get the list of trips.
-  Future<List<Rx<HomeTripModel>>> getHomeTripData(String tenantId, String operatorId) async {
+  Future<List<Rx<HomeTripModel>>> getHomeTripData(
+      String tenantId, String operatorId) async {
     List<Rx<HomeTripModel>> homeTripModel = [];
 
-    String reqUrl = "$apiUrl/trip/_search?operatorId=$operatorId&tenantId=$tenantId";
+    String reqUrl =
+        "$apiUrl/trip/_search?operatorId=$operatorId&tenantId=$tenantId";
     final response = await HttpService.getRequest(reqUrl);
 
     if (response.statusCode != 200) {
       log("Error Code: ${response.statusCode}");
       log("Error: ${response.body}");
 
-      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true);
+      toaster(AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true);
       return homeTripModel;
     }
 
@@ -32,10 +34,12 @@ class HomeHTTPRepository {
         homeTripModel.add(Rx(HomeTripModel.fromJson(item)));
       }
     } on FormatException catch (e) {
-      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.message);
+      toaster(AppTranslation.NETWORK_ERROR_MESSAGE.tr,
+          isError: true, error: e.message);
       homeTripModel.clear();
     } on Exception catch (e) {
-      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.toString());
+      toaster(AppTranslation.NETWORK_ERROR_MESSAGE.tr,
+          isError: true, error: e.toString());
       homeTripModel.clear();
     }
 
@@ -45,7 +49,8 @@ class HomeHTTPRepository {
   // ? API to start and end the Trip
   // ? If start is true, then the trip will start
   // ? If start is false, then the trip will end
-  Future<bool> updateTrip(HomeTripModel data, String status, {String? tenantId}) async {
+  Future<bool> updateTrip(HomeTripModel data, String status,
+      {String? tenantId}) async {
     String reqUrl = "$apiUrl/trip/_update";
     final operatorId = await SecureStorageService.read(OPERATOR_ID);
 
@@ -74,7 +79,8 @@ class HomeHTTPRepository {
   }
 
   // ? API to update the trip progress
-  Future<bool> updateTripProgress(HomeTripModel data, List<TripHiveModel> positions) async {
+  Future<bool> updateTripProgress(
+      HomeTripModel data, List<TripHiveModel> positions) async {
     String reqUrl = "$apiUrl/trip/_progress";
     final operatorId = await SecureStorageService.read(OPERATOR_ID);
 
@@ -114,14 +120,16 @@ class HomeHTTPRepository {
   }
 
   // ? API to create a new POI
-  Future<bool> callTrackingApi(List<TripHiveModel> positions, String alert, String tripId) async {
+  Future<bool> callTrackingApi(
+      List<TripHiveModel> positions, String alert, String tripId) async {
     String reqUrl = "$apiUrl/poi/_create";
     final operatorId = await SecureStorageService.read(OPERATOR_ID);
 
     List<Map<String, double>> latLong = [];
 
     for (var position in positions) {
-      latLong.add({"latitude": position.latitude, "longitude": position.longitude});
+      latLong.add(
+          {"latitude": position.latitude, "longitude": position.longitude});
     }
 
     Map<String, dynamic> body = {

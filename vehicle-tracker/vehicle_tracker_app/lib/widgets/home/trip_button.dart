@@ -53,8 +53,7 @@ class StartTripButton extends StatelessWidget {
             onPressed: () async {
               if (tripControllers.isLoading.isTrue ||
                   tripControllers.isRunning.isTrue) {
-                toaster(context, AppTranslation.TRIP_RUNNING_MESSAGE.tr,
-                    isError: true);
+                toaster(AppTranslation.TRIP_RUNNING_MESSAGE.tr, isError: true);
                 return;
               }
               await tripControllers.startTrip(context, data);

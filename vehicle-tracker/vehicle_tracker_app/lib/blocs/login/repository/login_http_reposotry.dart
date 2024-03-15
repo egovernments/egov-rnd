@@ -33,7 +33,7 @@ class LoginHTTPRepository {
       final response = await HttpService.postRequest(sendOtpUrl, formData);
       if (response.statusCode != 200) {
         log("Error Code: ${response.statusCode}");
-        toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+        toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
         return false;
       }
       return response.body['isSuccessful'] as bool;
@@ -44,7 +44,7 @@ class LoginHTTPRepository {
 
 //
 
-  static Future<bool> login(BuildContext context, String username,
+  static Future<bool> login(String username,
       String password, String city) async {
     try {
       final loginUrl = "$unifiedDevApiUrl/user/oauth/token";
@@ -61,16 +61,17 @@ class LoginHTTPRepository {
       final response = await HttpService.postWithFormData(loginUrl, formData);
       if (response.statusCode != 200) {
         log("Error Code: ${response.statusCode}");
-        toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+        toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
         return false;
       }
 
       final loginModel = LoginDataModel.fromJson(response.body);
-      final data= await SecureStorageService.read(CITYCODE);
+      final data = await SecureStorageService.read(CITYCODE);
       final driverId = await getDriverId(
-          loginModel.access_token, loginModel.UserRequest.uuid, data.toString(), mobileNumber: username.trim());
+          loginModel.access_token, loginModel.UserRequest.uuid, data.toString(),
+          mobileNumber: username.trim());
       if (driverId == "") {
-        toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+        toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
         return false;
       }
 
@@ -84,29 +85,28 @@ class LoginHTTPRepository {
       await HiveService.addUserData(
           loginModel.UserRequest.name, loginModel.UserRequest.mobileNumber);
 
-      toaster(null, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
+      toaster(AppTranslation.LOGIN_SUCCESS_MESSAGE.tr, isError: false);
       return true;
     } on FormatException catch (e) {
       log("Error: ${e.message}");
-      toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+      toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
       return false;
     } on Exception catch (e) {
       log("Error: ${e.toString()}");
-      toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+      toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
       return false;
     }
   }
 
   static Future<String> getDriverId(
-      String authToken, String uuid, String tenantId, {required String mobileNumber}) async {
+      String authToken, String uuid, String tenantId,
+      {required String mobileNumber}) async {
     try {
       final url = "$unifiedDevApiUrl/individual/v1/_search";
       final loginUrl = "$url?tenantId=$tenantId&offset=0&limit=1";
 
       Map<String, dynamic> body = {
-        "Individual": {
-          "mobileNumber": mobileNumber
-        },
+        "Individual": {"mobileNumber": mobileNumber},
         "RequestInfo": {
           "apiId": "Rainmaker",
           "authToken": authToken,

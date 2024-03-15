@@ -40,7 +40,6 @@ dependencies:
   http: ^1.1.0
   flutter_map: ^5.0.0
   geolocator: ^9.0.2
-  fluttertoast: ^8.2.2
   latlong2: any
   flutter_secure_storage: ^8.0.0
   digit_components: ^0.0.1+8

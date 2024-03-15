@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../blocs/home/controllers/info_controllers.dart';
+import '../../util/toaster.dart';
 import 'trip_info_card_widget.dart';
 
 class TripInfoListBuilderWidget extends StatelessWidget {

@@ -23,7 +23,7 @@ class CustomDrawer extends StatelessWidget {
     return Drawer(
       child: ScrollableContent(
         header: Container(
-          color: DigitTheme.instance.colors.cloudGray,
+          color: DigitTheme.instance.colors.quillGray,
           padding: theme.buttonPadding,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: kPadding * 13),

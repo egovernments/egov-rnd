@@ -77,7 +77,7 @@ class _CitySelectPageState extends State<CitySelectPage> {
                     // onPressed: () => loginController.sendOTP(context),
                     onPressed: () {
                       // if (data == null) {
-                      loginController.login(context);
+                      loginController.login();
                       // } else {
                       //   Get.offAllNamed(HOME);
                       // }

@@ -10,7 +10,6 @@ import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/toaster.dart';
 
 class TripTrackerUtility {
-
   // ? This function is to check the location permissions
   // ? If the location permissions are not granted, it will request for the permissions
   // ? If the location services are disabled, it will request to enable the services
@@ -25,7 +24,7 @@ class TripTrackerUtility {
     log("handleLocationPermission called");
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      toaster(context, AppTranslation.LOCATION_SERVICE_DISABLED_MESSAGE.tr);
+      toaster(AppTranslation.LOCATION_SERVICE_DISABLED_MESSAGE.tr);
       return false;
     }
 
@@ -33,12 +32,12 @@ class TripTrackerUtility {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        toaster(context, AppTranslation.LOCATION_PERMISSION_DENIED_MESSAGE.tr);
+        toaster(AppTranslation.LOCATION_PERMISSION_DENIED_MESSAGE.tr);
         return false;
       }
     }
     if (permission == LocationPermission.deniedForever) {
-      toaster(context, AppTranslation.LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE.tr);
+      toaster(AppTranslation.LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE.tr);
       return false;
     }
 
@@ -49,7 +48,8 @@ class TripTrackerUtility {
   // ? It uses the geolocator package to get the current location
   Future<Position?> getCurrentLocation() async {
     try {
-      return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+      return await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.best);
     } catch (e) {
       log('Error getting current location: $e');
       return null;

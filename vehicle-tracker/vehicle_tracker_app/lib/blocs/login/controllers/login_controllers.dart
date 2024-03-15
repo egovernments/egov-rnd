@@ -18,13 +18,12 @@ class LoginController extends GetxController {
     Get.toNamed(SELECTCITY);
   }
 
-  void login(context) async {
+  void login() async {
     // Get.offAllNamed(HOME);
     final data = await SecureStorageService.read(CITYCODE);
     await SecureStorageService.write(CITYCODE, cityController.text);
 
     final isLogin = await LoginHTTPRepository.login(
-      context,
       userNameController.text,
       passwordController.text,
       cityController.text,
