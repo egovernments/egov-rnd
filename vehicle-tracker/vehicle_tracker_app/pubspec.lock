@@ -196,10 +196,9 @@ packages:
   digit_components:
     dependency: "direct main"
     description:
-      name: digit_components
-      sha256: "261f4407e5fe2ab3be3800dfbdc69112b632baa90f87c0e66b5c93f12e10df39"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../packages/digit_components"
+      relative: true
+    source: path
     version: "0.0.1+8"
   fake_async:
     dependency: transitive

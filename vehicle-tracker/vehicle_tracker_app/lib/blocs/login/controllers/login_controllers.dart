@@ -9,19 +9,18 @@ import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import '../../../data/secure_storage_service.dart';
 
 class LoginController extends GetxController {
-  TextEditingController userNameController =
-      TextEditingController(text: '9035169720');
+  TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController cityController = TextEditingController();
 
   RxBool isLoading = false.obs;
   void navgiateTocity(context) async {
+    isLoading.value = false;
     Get.toNamed(SELECTCITY);
   }
 
   void login() async {
     isLoading.value = true;
-    // Get.offAllNamed(HOME);
     final data = await SecureStorageService.read(CITYCODE);
     await SecureStorageService.write(CITYCODE, cityController.text);
 
@@ -61,7 +60,8 @@ class LoginController extends GetxController {
       if (Get.currentRoute != OTP) {
         Get.toNamed(OTP);
       }
+    } else {
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
 }

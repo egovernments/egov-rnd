@@ -40,13 +40,7 @@ class StartTripButton extends StatelessWidget {
             ),
           );
         } else if (data.value.status == TripStates.COMPLETED) {
-          return SizedBox(
-            width: double.infinity,
-            child: DigitOutLineButton(
-              label: AppTranslation.TRIP_COMPLETED.tr,
-              onPressed: () {},
-            ),
-          );
+          return const Offstage();
         } else {
           return DigitElevatedButton(
             child: Text(AppTranslation.START_TRIP.tr),
