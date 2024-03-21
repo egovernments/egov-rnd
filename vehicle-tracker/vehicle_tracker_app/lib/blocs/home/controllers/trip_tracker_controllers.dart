@@ -19,7 +19,13 @@ import 'package:vehicle_tracker_app/util/trip_tracker_utility.dart';
 import 'package:wakelock/wakelock.dart';
 
 class TripControllers extends GetxController {
-  final BuildContext context;
+  static final TripControllers _singleton = TripControllers._internal();
+
+  factory TripControllers() {
+    return _singleton;
+  }
+
+  TripControllers._internal();
 
   RxBool isRunning =
       false.obs; // This variable is to check if the tracking is running or not
@@ -30,8 +36,6 @@ class TripControllers extends GetxController {
   HomeHiveRepository homeHiveRepository = HomeHiveRepository();
   TripTrackerUtility tripTrackerUtility = TripTrackerUtility();
   InfoController infoController = Get.find<InfoController>();
-
-  TripControllers(this.context);
 
   // * This function starts the tracking peroiodic event
   Future<void> startTracking(Rx<HomeTripModel> data) async {
@@ -59,11 +63,17 @@ class TripControllers extends GetxController {
   // ? This functions starts a timer which will call the trackerLogic function every n seconds
   // ? The timer will stop if the isRunning variable is false
   // ? The main point on this function is to get and send tracker function like a cron schedule
+  Timer? _timer;
+
   void startPeriodicFunction(HomeTripModel trip) {
     log('Periodic function started');
     isRunning.value = true;
 
-    Timer.periodic(Duration(seconds: periodicTrackingFrequency), (_) async {
+    // Cancel the existing timer if it's running
+    _timer?.cancel();
+
+    _timer =
+        Timer.periodic(Duration(seconds: periodicTrackingFrequency), (_) async {
       log("Periodic function called");
       if (!isRunning.value) {
         log("Periodic function stopped");

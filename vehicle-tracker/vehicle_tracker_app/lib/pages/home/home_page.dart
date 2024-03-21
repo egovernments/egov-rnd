@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(TripControllers(context), permanent: true);
+    Get.put(TripControllers(), permanent: true);
     final infoController = Get.find<InfoController>();
 
     final theme = DigitTheme.instance;
