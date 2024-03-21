@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DigitOutLineButton extends StatelessWidget {
@@ -26,10 +27,15 @@ class DigitOutLineButton extends StatelessWidget {
               ? theme.colorScheme.secondary
               : theme.colorScheme.outline,
         ),
-        minimumSize: Size(
-          MediaQuery.of(context).size.width / 1.25,
-          50,
-        ),
+        minimumSize: kIsWeb
+            ? Size(
+                MediaQuery.of(context).size.width / 11.25,
+                40,
+              )
+            : Size(
+                MediaQuery.of(context).size.width / 1.25,
+                50,
+              ),
       ),
       child: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
