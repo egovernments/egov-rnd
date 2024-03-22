@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:map_web_app/constants.dart';
 import 'package:map_web_app/models/map2/alert_polygons.dart';
 
@@ -15,7 +16,8 @@ class Map2HttpRepository {
       "userId": alertPolygon.userId,
       "alert": alertPolygon.alert,
       "distanceMeters": alertPolygon.distanceMeters,
-      "locationDetails": alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
+      "locationDetails":
+          alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
     };
 
     final response = await HttpService.postRequestWithoutToken(url, jsonMap);
@@ -38,7 +40,8 @@ class Map2HttpRepository {
       "userId": alertPolygon.userId,
       "alert": alertPolygon.alert,
       "distanceMeters": alertPolygon.distanceMeters,
-      "locationDetails": alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
+      "locationDetails":
+          alertPolygon.locationDetails!.map((e) => e.toJson()).toList(),
     };
 
     final response = await HttpService.putRequestWithoutToken(url, jsonMap);
@@ -51,7 +54,8 @@ class Map2HttpRepository {
   }
 
   static Future<List<AlertPolygon>> getAllPolygonsWithAlerts() async {
-    String url = "$apiUrl/poi/_search?isAlertLocation=true";
+    String url =
+        "$apiUrl/poi/_search?isAlertLocation=true&&tenantId=${Get.parameters['tenantId'] ?? 'pg.citya'}"; // TODO: hardcoding tenantId for testing purpose
 
     final response = await HttpService.getRequest(url);
     if (response.statusCode != 200) {
