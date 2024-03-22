@@ -1,0 +1,3 @@
+dependency_overrides:
+  digit_components:
+    path: ../packages/digit_components

@@ -4,44 +4,18 @@ import 'dart:developer';
 import 'package:digit_components/digit_components.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
-toaster(BuildContext? context, String message, {bool isError = false, String? error}) {
-  try {
-    if (context == null) {
-      Fluttertoast.showToast(
-          msg: message,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          backgroundColor: isError ? Colors.red : Colors.green,
-          textColor: Colors.white,
-          fontSize: 16.0);
-
-      log(message);
-
-      if (error != null) {
-        log("Error : $error");
-      }
-    } else {
-      DigitToast2.show(
-        context,
-        options: DigitToastOptions(
-          message,
-          isError,
-          DigitTheme.instance,
-        ),
-      );
-    }
-  } on Exception catch (e) {
-    log("Normal Toast Error : $e");
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: isError ? Colors.red : Colors.green,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
-  }
+toaster(String message,
+    {bool isError = false, String? error}) {
+  DigitToast2.show(
+    Get.overlayContext!,
+    options: DigitToastOptions(
+      message,
+      isError,
+      DigitTheme.instance,
+    ),
+  );
 }
 
 class DigitToast2 {
@@ -62,7 +36,9 @@ class DigitToast2 {
 
     return ftoast.showToast(
       child: Container(
-        color: options.isError ? options.theme.colorScheme.error : options.theme.colors.darkSpringGreen,
+        color: options.isError
+            ? options.theme.colorScheme.error
+            : options.theme.colors.darkSpringGreen,
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
         child: Row(
           mainAxisSize: MainAxisSize.min,

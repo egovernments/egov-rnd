@@ -6,18 +6,31 @@ import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
+import '../../../data/secure_storage_service.dart';
+
 class LoginController extends GetxController {
   TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  String city = cities.keys.first;
+  TextEditingController cityController = TextEditingController();
 
-  void login(context) async {
+  RxBool isLoading = false.obs;
+  void navgiateTocity(context) async {
+    isLoading.value = false;
+    Get.toNamed(SELECTCITY);
+  }
+
+  void login() async {
+    isLoading.value = true;
+    final data = await SecureStorageService.read(CITYCODE);
+    await SecureStorageService.write(CITYCODE, cityController.text);
+
     final isLogin = await LoginHTTPRepository.login(
-      context,
       userNameController.text,
       passwordController.text,
-      cities[city] ?? "",
+      cityController.text,
     );
+
+    isLoading.value = false;
 
     if (isLogin) {
       Get.offAllNamed(HOME);
@@ -32,7 +45,23 @@ class LoginController extends GetxController {
           titleText: AppTranslation.FORGOT_PASSWORD.tr,
           titleIcon: const Icon(Icons.warning_rounded, color: Colors.red),
           contentText: AppTranslation.FORGOT_PASSWORD_MESSAGE.tr,
-          primaryAction: DigitDialogActions(label: AppTranslation.OK.tr, action: (context) => Get.back())),
+          primaryAction: DigitDialogActions(
+              label: AppTranslation.OK.tr, action: (context) => Get.back())),
     );
+  }
+
+  void sendOTP(context) async {
+    isLoading.value = true;
+
+    final isSent = await LoginHTTPRepository.sendOtp(context,
+        mobileNumber: userNameController.text);
+
+    if (isSent) {
+      if (Get.currentRoute != OTP) {
+        Get.toNamed(OTP);
+      }
+    } else {
+      isLoading.value = false;
+    }
   }
 }

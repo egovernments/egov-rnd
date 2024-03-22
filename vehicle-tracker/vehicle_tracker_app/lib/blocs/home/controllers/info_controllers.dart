@@ -7,6 +7,7 @@ import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.d
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/secure_storage_service.dart';
 import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_model.dart';
+import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/logout.dart';
 
 class InfoController extends GetxController {
@@ -37,8 +38,8 @@ class InfoController extends GetxController {
       logout();
       return;
     }
-
-    await fillList(tenantId, operatorId);
+    final selectedCity= await SecureStorageService.read(CITYCODE);
+    await fillList(selectedCity!, operatorId);
   }
 
   // ? It will get the trip data and filter the data based on the status.
@@ -47,7 +48,7 @@ class InfoController extends GetxController {
     isLoading.toggle();
 
     // ! For now we are hardcoding the city id as "pg.citya"
-    final totalList = await homeHTTPRepository.getHomeTripData("pg.citya", operatorId);
+    final totalList = await homeHTTPRepository.getHomeTripData(tentantId, operatorId);
 
     normalTripList.value = totalList.where((element) {
       return element.value.status != TripStates.COMPLETED;
