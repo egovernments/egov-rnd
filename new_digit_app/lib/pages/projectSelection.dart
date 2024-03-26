@@ -59,7 +59,6 @@ class _ProjectSelectionPageState
                                                 context: context,
                                                 actionMap: actionMap,
                                                 roles: user.roles),
-                                            //TO-DO, what if the list of roles contains more elements
                                             boundaryName: '',
                                             isDistributor: true,
                                             isWareHouseMgr: true,

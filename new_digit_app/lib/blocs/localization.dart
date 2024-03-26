@@ -85,7 +85,6 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
       //Change the bloc to make it not necessary to take a localizationsList
       emit(LocalizationState.selected(locale: event.locale));
     } catch (err) {
-      print(err);
       rethrow;
     }
   }

@@ -17,16 +17,6 @@ class Constants {
     return _instance;
   }
 
-  // Future initialize(version) async {
-  //   await _initializeIsar(version);
-  // }
-
-  // Future<void> _initializeIsar(version) async {
-  //   _isar = Constants().isar;
-  //   final isar = await _isar;
-  //   _version = version;
-  // }
-
   Future<Isar> get isar {
     return _isar;
   }

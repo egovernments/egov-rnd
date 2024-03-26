@@ -28,7 +28,6 @@ class SideBar extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: state.maybeWhen(
                       orElse: () => const Offstage(),
-                      // orElse: () => const Text('Side Bar could not load'),
                       authenticated: (accessToken, refreshToken, userRequest) {
                         return Column(
                           children: [
@@ -50,7 +49,6 @@ class SideBar extends StatelessWidget {
               ),
               icon: Icons.home,
               onPressed: () {
-                // Navigator.of(context, rootNavigator: true).pop();
                 context.router.popUntilRoot();
                 context.router.push(HomeRoute());
               },

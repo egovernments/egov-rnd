@@ -67,7 +67,6 @@ class SecureStore {
     try {
       return ResponseModel.fromJson(json.decode(jsonAccessInfo));
     } catch (err) {
-      print(err);
       rethrow;
     }
   }
@@ -90,7 +89,6 @@ class SecureStore {
     try {
       return RoleActionsWrapperModel.fromJson(json.decode(jsonActionsWrapper));
     } catch (err) {
-      print(err);
       rethrow;
     }
   }

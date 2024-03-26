@@ -42,19 +42,6 @@ class IndividualSearchRemoteRepository {
         );
       }
 
-      // if (!responseMap.containsKey(
-      //   EntityPlurals.getPluralForEntityName(entityName),
-      // )) {
-      //   throw InvalidApiResponseException(
-      //     data: body.toMap(),
-      //     path: searchPath,
-      //     response: responseMap,
-      //   );
-      // }
-
-      // final entityResponse =
-      //     await responseMap[EntityPlurals.getPluralForEntityName(entityName)];
-
       final entityResponse = await responseMap[entityName];
 
       if (entityResponse is! List) {
@@ -67,11 +54,7 @@ class IndividualSearchRemoteRepository {
 
       final entityList = entityResponse.whereType<Map<String, dynamic>>();
 
-      return entityList
-          .map((e) => IndividualModelMapper.fromMap(e)
-              // attendanceRegister: AttendanceRegisterModelMapper.fromMap(e),
-              )
-          .toList();
+      return entityList.map((e) => IndividualModelMapper.fromMap(e)).toList();
     } catch (err) {
       log("${err}error is in individual repo");
       rethrow;
