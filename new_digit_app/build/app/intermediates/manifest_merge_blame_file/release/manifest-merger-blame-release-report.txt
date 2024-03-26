@@ -1,0 +1,148 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.new_digit_app"
+4    android:versionCode="1"
+5    android:versionName="0.1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:33:5-66
+11-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:33:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:34:5-78
+12-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:34:22-76
+13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+13-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-81
+13-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:9:22-78
+14    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+14-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:10:5-79
+14-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:10:22-76
+15
+16    <permission
+16-->[androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:22:5-24:47
+17        android:name="com.example.new_digit_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+17-->[androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:23:9-81
+18        android:protectionLevel="signature" />
+18-->[androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:24:9-44
+19
+20    <uses-permission android:name="com.example.new_digit_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+20-->[androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:26:5-97
+20-->[androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:26:22-94
+21
+22    <application
+23        android:name="android.app.Application"
+23-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:4:9-42
+24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+24-->[androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:28:18-86
+25        android:icon="@mipmap/ic_launcher"
+25-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:5:9-43
+26        android:label="new_digit_app" >
+26-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:3:9-38
+27        <activity
+27-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:6:9-26:20
+28            android:name="com.example.new_digit_app.MainActivity"
+28-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:7:13-41
+29            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+29-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:11:13-163
+30            android:exported="true"
+30-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:8:13-36
+31            android:hardwareAccelerated="true"
+31-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:12:13-47
+32            android:launchMode="singleTop"
+32-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:9:13-43
+33            android:theme="@style/LaunchTheme"
+33-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:10:13-47
+34            android:windowSoftInputMode="adjustResize" >
+34-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:13:13-55
+35
+36            <!--
+37                 Specifies an Android theme to apply to this Activity as soon as
+38                 the Android process has started. This theme is visible to the user
+39                 while the Flutter UI initializes. After that, this theme continues
+40                 to determine the Window background behind the Flutter UI.
+41            -->
+42            <meta-data
+42-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:18:13-21:17
+43                android:name="io.flutter.embedding.android.NormalTheme"
+43-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:19:15-70
+44                android:resource="@style/NormalTheme" />
+44-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:20:15-52
+45
+46            <intent-filter>
+46-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:22:13-25:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:23:17-68
+47-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:23:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:24:17-76
+49-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:24:27-74
+50            </intent-filter>
+51        </activity>
+52        <!--
+53             Don't delete the meta-data below.
+54             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+55        -->
+56        <meta-data
+56-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:29:9-31:33
+57            android:name="flutterEmbedding"
+57-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:30:13-44
+58            android:value="2" />
+58-->/home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:31:13-30
+59
+60        <service
+60-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:13:9-17:56
+61            android:name="com.lyokone.location.FlutterLocationService"
+61-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-71
+62            android:enabled="true"
+62-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-35
+63            android:exported="false"
+63-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-37
+64            android:foregroundServiceType="location" />
+64-->[:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:17:13-53
+65
+66        <activity
+66-->[com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+67            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+67-->[com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+68            android:exported="false"
+68-->[com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+69            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+69-->[com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+70
+71        <meta-data
+71-->[com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+72            android:name="com.google.android.gms.version"
+72-->[com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+73            android:value="@integer/google_play_services_version" />
+73-->[com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+74
+75        <uses-library
+75-->[androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+76            android:name="androidx.window.extensions"
+76-->[androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+77            android:required="false" />
+77-->[androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+78        <uses-library
+78-->[androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+79            android:name="androidx.window.sidecar"
+79-->[androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+80            android:required="false" />
+80-->[androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+81
+82        <provider
+82-->[androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+83            android:name="androidx.startup.InitializationProvider"
+83-->[androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:27:13-67
+84            android:authorities="com.example.new_digit_app.androidx-startup"
+84-->[androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:28:13-68
+85            android:exported="false" />
+85-->[androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:29:13-37
+86    </application>
+87
+88</manifest>

@@ -1,0 +1,401 @@
+-- Merging decision tree log ---
+application
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:2:5-32:19
+MERGED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:12:5-18:19
+MERGED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:12:5-18:19
+MERGED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.android.gms:play-services-location:21.0.1] /home/satwik-egov/.gradle/caches/transforms-3/d3dc5df08d5818cbc2d03155241fb9f8/transformed/jetified-play-services-location-21.0.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:21.0.1] /home/satwik-egov/.gradle/caches/transforms-3/d3dc5df08d5818cbc2d03155241fb9f8/transformed/jetified-play-services-location-21.0.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:8:5-24:19
+MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/satwik-egov/.gradle/caches/transforms-3/b6b720b9ef098aba1426bee0b3f8360d/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/satwik-egov/.gradle/caches/transforms-3/b6b720b9ef098aba1426bee0b3f8360d/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/a2f16cba7e0cddae5973ee9f9e3bb416/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/a2f16cba7e0cddae5973ee9f9e3bb416/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /home/satwik-egov/.gradle/caches/transforms-3/174e2d85acd9fbf9597a69672ad9dec8/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /home/satwik-egov/.gradle/caches/transforms-3/174e2d85acd9fbf9597a69672ad9dec8/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:7:5-20
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:28:18-86
+	android:name
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+manifest
+ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+MERGED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+MERGED from [:camera_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-12:12
+MERGED from [:flutter_plugin_android_lifecycle] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:audioplayers_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/audioplayers_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:sqlite3_flutter_libs] /home/satwik-egov/digit_fresh/app/new_digit_app/build/sqlite3_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:path_provider_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_secure_storage] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_secure_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:shared_preferences_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:google_mlkit_barcode_scanning] /home/satwik-egov/digit_fresh/app/new_digit_app/build/google_mlkit_barcode_scanning/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:google_mlkit_commons] /home/satwik-egov/digit_fresh/app/new_digit_app/build/google_mlkit_commons/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:isar_flutter_libs] /home/satwik-egov/digit_fresh/app/new_digit_app/build/isar_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-10:12
+MERGED from [:flutter_keyboard_visibility] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_keyboard_visibility/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:package_info_plus] /home/satwik-egov/digit_fresh/app/new_digit_app/build/package_info_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:fluttertoast] /home/satwik-egov/digit_fresh/app/new_digit_app/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-20:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/acfe402c9e9326acbfbc2d45655eb14d/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
+MERGED from [com.google.mlkit:barcode-scanning:17.1.0] /home/satwik-egov/.gradle/caches/transforms-3/7ab6702cec498d3971714223c49f5e93/transformed/jetified-barcode-scanning-17.1.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] /home/satwik-egov/.gradle/caches/transforms-3/2dd575e03f31a034c05ae75cbcfd7113/transformed/jetified-barcode-scanning-common-17.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.android.gms:play-services-location:21.0.1] /home/satwik-egov/.gradle/caches/transforms-3/d3dc5df08d5818cbc2d03155241fb9f8/transformed/jetified-play-services-location-21.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.mlkit:vision-interfaces:16.2.0] /home/satwik-egov/.gradle/caches/transforms-3/fb7ae1899bde805c8bbabf7f7e5b9bef/transformed/jetified-vision-interfaces-16.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/satwik-egov/.gradle/caches/transforms-3/b6b720b9ef098aba1426bee0b3f8360d/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.1.0] /home/satwik-egov/.gradle/caches/transforms-3/04f939f50a026b21b7f40f603fe6f41e/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/4002d826388e65e14cbee77605a728fe/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/76c54c4aa7314bc72aa113ec0b406aa2/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/cf8cb723a8a19831f18a58c5b6f8dd93/transformed/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/871bb9d66f9a989636e56a2df35bf512/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.core:core-ktx:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/fb73caa49f1892fee8d409818e83296f/transformed/jetified-core-ktx-1.10.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /home/satwik-egov/.gradle/caches/transforms-3/e2f187faf0aba75df4cd664ef0971537/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/4c73af32d0e0d230d2a7b0e5b59a43e0/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/a2f16cba7e0cddae5973ee9f9e3bb416/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/aa3522ddbe6538caf518dd3cf1f7802d/transformed/exifinterface-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:15:1-41:12
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /home/satwik-egov/.gradle/caches/transforms-3/761adbdb077dc4919820d79771cccf65/transformed/jetified-transport-api-2.2.1/AndroidManifest.xml:15:1-22:12
+MERGED from [com.google.firebase:firebase-components:16.1.0] /home/satwik-egov/.gradle/caches/transforms-3/74aab06a0e85b8fdd126d5927cd08e2c/transformed/jetified-firebase-components-16.1.0/AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /home/satwik-egov/.gradle/caches/transforms-3/76274a82349d37c26dfa553b1a366797/transformed/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /home/satwik-egov/.gradle/caches/transforms-3/546e7a318f367441ea06c88ff316c913/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/f4af10e05cde3d156b6a20686b236d13/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/satwik-egov/.gradle/caches/transforms-3/922c786461a80d842ff1c55ef26359b0/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/cf948dcdcd693bed853670def814d557/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/satwik-egov/.gradle/caches/transforms-3/64d27801c25831310059ba38a8f31f8d/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/satwik-egov/.gradle/caches/transforms-3/76117569d6efcdd62f385115fccb37d7/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/satwik-egov/.gradle/caches/transforms-3/f905d61e683b51948d0dbfc92021a200/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/satwik-egov/.gradle/caches/transforms-3/619ab1255f635c78a29e8ba9c2f9b0ec/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
+MERGED from [eu.simonbinder:sqlite3-native-library:3.45.1] /home/satwik-egov/.gradle/caches/transforms-3/6f62ba349e5c2f065c7d7ac26eaaa1ce/transformed/jetified-sqlite3-native-library-3.45.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /home/satwik-egov/.gradle/caches/transforms-3/174e2d85acd9fbf9597a69672ad9dec8/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:2:1-9:12
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+	package
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+		ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:1-35:12
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:33:5-66
+MERGED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:33:5-66
+MERGED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:33:5-66
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:26:5-67
+	android:name
+		ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:33:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:34:5-78
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml:34:22-76
+uses-sdk
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+MERGED from [:camera_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:camera_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:audioplayers_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/audioplayers_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:audioplayers_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/audioplayers_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:sqlite3_flutter_libs] /home/satwik-egov/digit_fresh/app/new_digit_app/build/sqlite3_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:sqlite3_flutter_libs] /home/satwik-egov/digit_fresh/app/new_digit_app/build/sqlite3_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_secure_storage] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_secure_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-9:53
+MERGED from [:flutter_secure_storage] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_secure_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-9:53
+MERGED from [:shared_preferences_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:google_mlkit_barcode_scanning] /home/satwik-egov/digit_fresh/app/new_digit_app/build/google_mlkit_barcode_scanning/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:google_mlkit_barcode_scanning] /home/satwik-egov/digit_fresh/app/new_digit_app/build/google_mlkit_barcode_scanning/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:google_mlkit_commons] /home/satwik-egov/digit_fresh/app/new_digit_app/build/google_mlkit_commons/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:google_mlkit_commons] /home/satwik-egov/digit_fresh/app/new_digit_app/build/google_mlkit_commons/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:isar_flutter_libs] /home/satwik-egov/digit_fresh/app/new_digit_app/build/isar_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:isar_flutter_libs] /home/satwik-egov/digit_fresh/app/new_digit_app/build/isar_flutter_libs/intermediates/merged_manifest/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:flutter_keyboard_visibility] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_keyboard_visibility/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_keyboard_visibility] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_keyboard_visibility/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:package_info_plus] /home/satwik-egov/digit_fresh/app/new_digit_app/build/package_info_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:package_info_plus] /home/satwik-egov/digit_fresh/app/new_digit_app/build/package_info_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:fluttertoast] /home/satwik-egov/digit_fresh/app/new_digit_app/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:fluttertoast] /home/satwik-egov/digit_fresh/app/new_digit_app/build/fluttertoast/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/acfe402c9e9326acbfbc2d45655eb14d/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/acfe402c9e9326acbfbc2d45655eb14d/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.mlkit:barcode-scanning:17.1.0] /home/satwik-egov/.gradle/caches/transforms-3/7ab6702cec498d3971714223c49f5e93/transformed/jetified-barcode-scanning-17.1.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:barcode-scanning:17.1.0] /home/satwik-egov/.gradle/caches/transforms-3/7ab6702cec498d3971714223c49f5e93/transformed/jetified-barcode-scanning-17.1.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] /home/satwik-egov/.gradle/caches/transforms-3/2dd575e03f31a034c05ae75cbcfd7113/transformed/jetified-barcode-scanning-common-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] /home/satwik-egov/.gradle/caches/transforms-3/2dd575e03f31a034c05ae75cbcfd7113/transformed/jetified-barcode-scanning-common-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-location:21.0.1] /home/satwik-egov/.gradle/caches/transforms-3/d3dc5df08d5818cbc2d03155241fb9f8/transformed/jetified-play-services-location-21.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:21.0.1] /home/satwik-egov/.gradle/caches/transforms-3/d3dc5df08d5818cbc2d03155241fb9f8/transformed/jetified-play-services-location-21.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.mlkit:vision-interfaces:16.2.0] /home/satwik-egov/.gradle/caches/transforms-3/fb7ae1899bde805c8bbabf7f7e5b9bef/transformed/jetified-vision-interfaces-16.2.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:vision-interfaces:16.2.0] /home/satwik-egov/.gradle/caches/transforms-3/fb7ae1899bde805c8bbabf7f7e5b9bef/transformed/jetified-vision-interfaces-16.2.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/satwik-egov/.gradle/caches/transforms-3/b6b720b9ef098aba1426bee0b3f8360d/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /home/satwik-egov/.gradle/caches/transforms-3/b6b720b9ef098aba1426bee0b3f8360d/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.1.0] /home/satwik-egov/.gradle/caches/transforms-3/04f939f50a026b21b7f40f603fe6f41e/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /home/satwik-egov/.gradle/caches/transforms-3/04f939f50a026b21b7f40f603fe6f41e/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/4002d826388e65e14cbee77605a728fe/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/4002d826388e65e14cbee77605a728fe/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/76c54c4aa7314bc72aa113ec0b406aa2/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/76c54c4aa7314bc72aa113ec0b406aa2/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/cf8cb723a8a19831f18a58c5b6f8dd93/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/cf8cb723a8a19831f18a58c5b6f8dd93/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/871bb9d66f9a989636e56a2df35bf512/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/871bb9d66f9a989636e56a2df35bf512/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/fb73caa49f1892fee8d409818e83296f/transformed/jetified-core-ktx-1.10.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/fb73caa49f1892fee8d409818e83296f/transformed/jetified-core-ktx-1.10.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /home/satwik-egov/.gradle/caches/transforms-3/e2f187faf0aba75df4cd664ef0971537/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:20:5-44
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] /home/satwik-egov/.gradle/caches/transforms-3/e2f187faf0aba75df4cd664ef0971537/transformed/jetified-security-crypto-1.1.0-alpha06/AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/4c73af32d0e0d230d2a7b0e5b59a43e0/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/4c73af32d0e0d230d2a7b0e5b59a43e0/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/a2f16cba7e0cddae5973ee9f9e3bb416/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/a2f16cba7e0cddae5973ee9f9e3bb416/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/aa3522ddbe6538caf518dd3cf1f7802d/transformed/exifinterface-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/aa3522ddbe6538caf518dd3cf1f7802d/transformed/exifinterface-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /home/satwik-egov/.gradle/caches/transforms-3/761adbdb077dc4919820d79771cccf65/transformed/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-api:2.2.1] /home/satwik-egov/.gradle/caches/transforms-3/761adbdb077dc4919820d79771cccf65/transformed/jetified-transport-api-2.2.1/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-components:16.1.0] /home/satwik-egov/.gradle/caches/transforms-3/74aab06a0e85b8fdd126d5927cd08e2c/transformed/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:16.1.0] /home/satwik-egov/.gradle/caches/transforms-3/74aab06a0e85b8fdd126d5927cd08e2c/transformed/jetified-firebase-components-16.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /home/satwik-egov/.gradle/caches/transforms-3/76274a82349d37c26dfa553b1a366797/transformed/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:17.1.0] /home/satwik-egov/.gradle/caches/transforms-3/76274a82349d37c26dfa553b1a366797/transformed/jetified-firebase-encoders-json-17.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /home/satwik-egov/.gradle/caches/transforms-3/546e7a318f367441ea06c88ff316c913/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /home/satwik-egov/.gradle/caches/transforms-3/546e7a318f367441ea06c88ff316c913/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/f4af10e05cde3d156b6a20686b236d13/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/f4af10e05cde3d156b6a20686b236d13/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/satwik-egov/.gradle/caches/transforms-3/922c786461a80d842ff1c55ef26359b0/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/satwik-egov/.gradle/caches/transforms-3/922c786461a80d842ff1c55ef26359b0/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/cf948dcdcd693bed853670def814d557/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/satwik-egov/.gradle/caches/transforms-3/cf948dcdcd693bed853670def814d557/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/satwik-egov/.gradle/caches/transforms-3/64d27801c25831310059ba38a8f31f8d/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/satwik-egov/.gradle/caches/transforms-3/64d27801c25831310059ba38a8f31f8d/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/satwik-egov/.gradle/caches/transforms-3/76117569d6efcdd62f385115fccb37d7/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/satwik-egov/.gradle/caches/transforms-3/76117569d6efcdd62f385115fccb37d7/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/satwik-egov/.gradle/caches/transforms-3/f905d61e683b51948d0dbfc92021a200/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/satwik-egov/.gradle/caches/transforms-3/f905d61e683b51948d0dbfc92021a200/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/satwik-egov/.gradle/caches/transforms-3/619ab1255f635c78a29e8ba9c2f9b0ec/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/satwik-egov/.gradle/caches/transforms-3/619ab1255f635c78a29e8ba9c2f9b0ec/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [eu.simonbinder:sqlite3-native-library:3.45.1] /home/satwik-egov/.gradle/caches/transforms-3/6f62ba349e5c2f065c7d7ac26eaaa1ce/transformed/jetified-sqlite3-native-library-3.45.1/AndroidManifest.xml:5:5-44
+MERGED from [eu.simonbinder:sqlite3-native-library:3.45.1] /home/satwik-egov/.gradle/caches/transforms-3/6f62ba349e5c2f065c7d7ac26eaaa1ce/transformed/jetified-sqlite3-native-library-3.45.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /home/satwik-egov/.gradle/caches/transforms-3/174e2d85acd9fbf9597a69672ad9dec8/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.odml:image:1.0.0-beta1] /home/satwik-egov/.gradle/caches/transforms-3/174e2d85acd9fbf9597a69672ad9dec8/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml:5:5-44
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml
+INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [:flutter_secure_storage] /home/satwik-egov/digit_fresh/app/new_digit_app/build/flutter_secure_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:9:9-50
+	android:targetSdkVersion
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/satwik-egov/digit_fresh/app/new_digit_app/android/app/src/debug/AndroidManifest.xml
+uses-permission#android.permission.CAMERA
+ADDED from [:camera_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-65
+	android:name
+		ADDED from [:camera_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-62
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from [:camera_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-71
+	android:name
+		ADDED from [:camera_android] /home/satwik-egov/digit_fresh/app/new_digit_app/build/camera_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-68
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-76
+service#com.lyokone.location.FlutterLocationService
+ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:13:9-17:56
+	android:enabled
+		ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-35
+	android:exported
+		ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-37
+	android:foregroundServiceType
+		ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-53
+	android:name
+		ADDED from [:location] /home/satwik-egov/digit_fresh/app/new_digit_app/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-71
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
+ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:15:9-23:19
+MERGED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:15:9-23:19
+	android:exported
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:11:13-37
+	tools:targetApi
+		ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:19:13-32
+	android:directBootAware
+		ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:17:13-43
+	android:name
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:10:13-91
+meta-data#com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar
+ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:12:13-14:85
+	android:value
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:14:17-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] /home/satwik-egov/.gradle/caches/transforms-3/b0585dd5763cfa6a7fa90f7d21c5e4c0/transformed/jetified-play-services-mlkit-barcode-scanning-18.2.0/AndroidManifest.xml:13:17-120
+meta-data#com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar
+ADDED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
+	android:value
+		ADDED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
+	android:name
+		ADDED from [com.google.mlkit:vision-common:17.3.0] /home/satwik-egov/.gradle/caches/transforms-3/4c3968aec308e689e5533ff370f9f75c/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
+provider#com.google.mlkit.common.internal.MlKitInitProvider
+ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:9:9-13:38
+	android:authorities
+		ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:11:13-69
+	android:exported
+		ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:12:13-37
+	android:initOrder
+		ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:13:13-35
+	android:name
+		ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:10:13-78
+meta-data#com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar
+ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:20:13-22:85
+	android:value
+		ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:22:17-82
+	android:name
+		ADDED from [com.google.mlkit:common:18.7.0] /home/satwik-egov/.gradle/caches/transforms-3/10fbe1d3f0fec4e08aad0916b0fec30a/transformed/jetified-common-18.7.0/AndroidManifest.xml:21:17-120
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/07634d2838796d427d5cb44d7b403d6b/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.1.0] /home/satwik-egov/.gradle/caches/transforms-3/e6f6f685b3fe7a2d8fb2f09ebfe40fb2/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:23:9-81
+permission#com.example.new_digit_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:26:22-94
+uses-permission#com.example.new_digit_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.10.1] /home/satwik-egov/.gradle/caches/transforms-3/f2c1b21e2617b8adc4232d8977a76481/transformed/core-1.10.1/AndroidManifest.xml:26:22-94
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:30:13-31
+	android:authorities
+		ADDED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:28:13-68
+	android:exported
+		ADDED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:29:13-37
+	android:name
+		ADDED from [androidx.startup:startup-runtime:1.1.1] /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:27:13-67
+service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:36:9-38:40
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:36:9-38:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+	android:value
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.3.3] /home/satwik-egov/.gradle/caches/transforms-3/0f29f76a2b0333a3402f0bcb241a8c1b/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
+	android:permission
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
+receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.6] /home/satwik-egov/.gradle/caches/transforms-3/28c8613011c6e3bbed7d185a8d879e8e/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:33:13-132
