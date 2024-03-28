@@ -1,1 +1,0 @@
-{"valid_import":true,"imports":[{"uri":"package:flutter/material.dart","transitive":false},{"uri":"package:isar/isar.dart","transitive":false},{"uri":"package:new_digit_app/data/nosql/localization.dart","transitive":false},{"uri":"package:path_provider/path_provider.dart","transitive":false}],"elements":[]}
