@@ -1,1 +1,0 @@
-{"valid_import":true,"imports":[{"uri":"package:flutter/material.dart","transitive":false},{"uri":"package:isar/isar.dart","transitive":false},{"uri":"package:new_digit_app/blocs/app_localization.dart","transitive":false},{"uri":"package:new_digit_app/model/appconfig/mdmsResponse.dart","transitive":false}],"elements":[]}
