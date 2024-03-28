@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.lyokone.location-merged_res-14:/color/common_google_signin_btn_text_light.xml",
+        "source": "com.lyokone.location-jetified-play-services-base-18.1.0-0:/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "com.lyokone.location-merged_res-14:/color/common_google_signin_btn_tint.xml",
+        "source": "com.lyokone.location-jetified-play-services-base-18.1.0-0:/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "com.lyokone.location-merged_res-14:/color/common_google_signin_btn_text_dark.xml",
+        "source": "com.lyokone.location-jetified-play-services-base-18.1.0-0:/color/common_google_signin_btn_text_dark.xml"
+    }
+]

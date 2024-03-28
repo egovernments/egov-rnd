@@ -1,0 +1,1 @@
+ /home/satwik-egov/digit_fresh/app/new_digit_app/.dart_tool/flutter_build/96b94ca2782aaafbd14ceb43b6223171/native_assets.yaml: 
