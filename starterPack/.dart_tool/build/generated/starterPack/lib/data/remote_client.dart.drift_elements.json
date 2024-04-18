@@ -1,1 +1,0 @@
-{"valid_import":true,"imports":[{"uri":"package:dio/dio.dart","transitive":false},{"uri":"package:starterPack/utils/envConfig.dart","transitive":false},{"uri":"package:starterPack/data/api_interceptors.dart","transitive":false}],"elements":[]}
