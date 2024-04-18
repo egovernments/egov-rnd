@@ -44,54 +44,6 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "attendance_management",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/git/health-campaign-field-worker-app-aeafbc8853a98ccccbba9edb43771bfa6964a6d0/packages/attendance_management",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "audioplayers",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/audioplayers-5.2.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "audioplayers_android",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/audioplayers_android-4.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "audioplayers_darwin",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/audioplayers_darwin-5.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "audioplayers_linux",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/audioplayers_linux-3.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "audioplayers_platform_interface",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/audioplayers_platform_interface-6.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "audioplayers_web",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/audioplayers_web-4.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "audioplayers_windows",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/audioplayers_windows-3.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "auto_route",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/auto_route-7.9.2",
       "packageUri": "lib/",
@@ -164,36 +116,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "camera",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/camera-0.10.5+9",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "camera_android",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/camera_android-0.10.9+1",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
-      "name": "camera_avfoundation",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.13+10",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "camera_platform_interface",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/camera_platform_interface-2.7.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
-      "name": "camera_web",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/camera_web-0.3.3",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
       "name": "characters",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/characters-1.3.0",
       "packageUri": "lib/",
@@ -242,20 +164,8 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "cross_file",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/cross_file-0.3.3+8",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
       "name": "crypto",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/crypto-3.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
-      "name": "cupertino_icons",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -300,12 +210,6 @@
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/digit_components-0.0.2+1",
       "packageUri": "lib/",
       "languageVersion": "2.19"
-    },
-    {
-      "name": "digit_scanner",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/git/health-campaign-field-worker-app-ea6586b3af47e5dce0428f25a4c5d6de8acdb194/packages/digit_scanner",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
     },
     {
       "name": "dio",
@@ -434,12 +338,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.18",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
       "name": "flutter_secure_storage",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/flutter_secure_storage-8.1.0",
       "packageUri": "lib/",
@@ -480,12 +378,6 @@
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/flutter_spinkit-5.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "flutter_svg",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/flutter_svg-2.0.10+1",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
     },
     {
       "name": "flutter_test",
@@ -542,28 +434,10 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "google_mlkit_barcode_scanning",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/google_mlkit_barcode_scanning-0.10.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.16"
-    },
-    {
-      "name": "google_mlkit_commons",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/google_mlkit_commons-0.6.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.16"
-    },
-    {
       "name": "graphs",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/graphs-2.3.1",
       "packageUri": "lib/",
       "languageVersion": "2.18"
-    },
-    {
-      "name": "gs1_barcode_parser",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/gs1_barcode_parser-1.0.5",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "horizontal_data_table",
@@ -594,12 +468,6 @@
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/intl-0.18.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "inventory_management",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/git/health-campaign-field-worker-app-aeafbc8853a98ccccbba9edb43771bfa6964a6d0/packages/inventory_management",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
     },
     {
       "name": "io",
@@ -740,12 +608,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "path_parsing",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/path_parsing-1.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "path_provider",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/path_provider-2.1.3",
       "packageUri": "lib/",
@@ -800,12 +662,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "pluto_grid",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/pluto_grid-7.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "pointer_interceptor",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/pointer_interceptor-0.9.3+7",
       "packageUri": "lib/",
@@ -856,12 +712,6 @@
     {
       "name": "recase",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/recase-4.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "rxdart",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -950,12 +800,6 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "sqlite3_flutter_libs",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/sqlite3_flutter_libs-0.5.20",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "sqlparser",
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/sqlparser-0.34.1",
       "packageUri": "lib/",
@@ -984,12 +828,6 @@
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/string_scanner-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
-    },
-    {
-      "name": "synchronized",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/synchronized-3.1.0+1",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
     },
     {
       "name": "term_glyph",
@@ -1032,24 +870,6 @@
       "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/uuid-3.0.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "vector_graphics",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/vector_graphics-1.1.11+1",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
-      "name": "vector_graphics_codec",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.11+1",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
-      "name": "vector_graphics_compiler",
-      "rootUri": "file:///home/satwik-egov/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.11+1",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
     },
     {
       "name": "vector_math",
@@ -1112,7 +932,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-04-18T10:28:44.944014Z",
+  "generated": "2024-04-18T11:49:54.955789Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }

@@ -1,5 +1,4 @@
 import 'package:digit_components/digit_components.dart';
-import 'package:digit_scanner/blocs/scanner.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,10 +16,6 @@ import 'package:starterPack/model/data_model.init.dart';
 import 'package:starterPack/routes/routes.dart';
 import 'package:starterPack/utils/constants.dart';
 import 'package:starterPack/utils/envConfig.dart';
-import 'package:attendance_management/blocs/app_localization.dart'
-    as attendance_localization;
-import 'package:inventory_management/blocs/app_localization.dart'
-    as inventory_localization;
 import 'blocs/authbloc.dart';
 
 late Isar _isar; //new addition
@@ -85,14 +80,6 @@ class _MainAppState extends State<MainApp> {
                 return ProjectBloc();
               },
             ),
-            BlocProvider(
-              create: (_) {
-                return DigitScannerBloc(
-                  const DigitScannerState(),
-                );
-              },
-              lazy: false,
-            ),
             BlocProvider(create: (_) {
               return LocationBloc(location: Location());
             })
@@ -142,19 +129,6 @@ class _MainAppState extends State<MainApp> {
                             GlobalWidgetsLocalizations.delegate,
                             GlobalCupertinoLocalizations.delegate,
                             GlobalMaterialLocalizations.delegate,
-                            attendance_localization.AttendanceLocalization
-                                .getDelegate(
-                              // Fetch the localization string based on selected locale
-                              getLocalizationString(
-                                  widget.isar, selectedLocale),
-                              // Pass available languages
-                              languages!,
-                            ),
-                            inventory_localization.InventoryLocalization
-                                .getDelegate(
-                                    getLocalizationString(
-                                        widget.isar, selectedLocale),
-                                    languages)
                           ],
                           // Set the locale for the app
                           locale: languages != null

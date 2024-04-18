@@ -79,8 +79,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UnauthenticatedScreenWrapper(),
       );
     },
-    ...InventoryRoute().pagesMap,
-    ...AttendanceRoute().pagesMap,
   };
 }
 

@@ -5,7 +5,6 @@ import 'package:starterPack/blocs/authbloc.dart';
 import 'package:starterPack/blocs/localization.dart';
 import 'package:starterPack/blocs/project.dart';
 import 'package:starterPack/blocs/userbloc.dart';
-import 'package:starterPack/pages/sideBar.dart';
 import 'package:starterPack/widget/localized.dart';
 import 'package:auto_route/auto_route.dart';
 

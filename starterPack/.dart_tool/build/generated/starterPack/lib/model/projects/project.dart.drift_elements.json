@@ -1,0 +1,1 @@
+{"valid_import":true,"imports":[{"uri":"package:dart_mappable/dart_mappable.dart","transitive":false},{"uri":"package:drift/drift.dart","transitive":false},{"uri":"package:starterPack/model/entities/address.dart","transitive":false}],"elements":[]}

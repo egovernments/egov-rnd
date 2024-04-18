@@ -8,7 +8,6 @@ import 'package:starterPack/model/dataModel.dart';
 import 'package:starterPack/model/login/loginModel.dart';
 import 'package:starterPack/model/response/responsemodel.dart';
 import 'package:starterPack/repositories/app_init_Repo.dart';
-import 'package:starterPack/repositories/individualSearchRepo.dart';
 import 'package:starterPack/repositories/authRepo.dart';
 
 part 'authbloc.freezed.dart';

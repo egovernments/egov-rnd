@@ -24,24 +24,6 @@ dependencies:
   dart_mappable: ^4.2.0
   recase: ^4.1.0
   reactive_forms: ^14.1.0
-  attendance_management:
-    git:
-      url: https://github.com/egovernments/health-campaign-field-worker-app
-      ref: HLM-5562
-      path: ./packages/attendance_management
-
-  digit_scanner:
-      git:
-        url: https://github.com/egovernments/health-campaign-field-worker-app/
-        ref: HLM-5097
-        path: ./packages/digit_scanner
-
-  inventory_management:
-    git:
-      url: https://github.com/egovernments/health-campaign-field-worker-app
-      ref: HLM-5562
-      path: ./packages/inventory_management
-  
   isar: ^3.1.0+1
   isar_flutter_libs: ^3.1.0+1
   path_provider: ^2.1.2
