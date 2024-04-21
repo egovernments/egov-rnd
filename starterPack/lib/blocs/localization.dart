@@ -45,6 +45,7 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
         'locale': event.locale.toString(),
         'module': moduleNameList.join(','),
         'tenantId': 'mz'
+        // TODO Need to read this from env file
       };
 
       //initialize appLocalizations for searching ISAR or setting locmodel
@@ -85,7 +86,6 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
       //Change the bloc to make it not necessary to take a localizationsList
       emit(LocalizationState.selected(locale: event.locale));
     } catch (err) {
-      print(err);
       rethrow;
     }
   }

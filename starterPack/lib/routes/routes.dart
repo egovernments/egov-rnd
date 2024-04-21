@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:starterPack/blocs/app_localization.dart';
 import 'package:starterPack/pages/authenticated.dart';
 import 'package:starterPack/pages/home.dart';
-import 'package:starterPack/pages/langSelection.dart';
-import 'package:starterPack/pages/loginPage.dart';
+import 'package:starterPack/pages/lang_selection.dart';
+import 'package:starterPack/pages/login.dart';
 import 'package:starterPack/pages/profile.dart';
-import 'package:starterPack/pages/projectSelection.dart';
+import 'package:starterPack/pages/project_selection.dart';
 import 'package:starterPack/pages/unauthenticated.dart';
 
 part 'routes.gr.dart';

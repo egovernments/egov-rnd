@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:digit_components/models/digit_row_card/digit_row_card_model.dart';
 import 'package:digit_components/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +8,11 @@ import '../blocs/localization.dart';
 import '../routes/routes.dart';
 import '../utils/i18_key_constants.dart' as i18;
 
+import 'package:auto_route/auto_route.dart';
+
 @RoutePage()
 class SelectLanguageScreen extends StatelessWidget {
-  SelectLanguageScreen({super.key});
+  const SelectLanguageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
