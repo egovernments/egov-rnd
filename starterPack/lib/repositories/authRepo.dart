@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:starterPack/data/remote_client.dart';
 import 'package:starterPack/model/login/loginModel.dart';
-import 'package:starterPack/model/request/requestInfo.dart';
 import 'package:starterPack/model/response/responsemodel.dart';
 import 'package:starterPack/model/role_actions/role_actions_model.dart';
 import 'package:starterPack/repositories/app_init_Repo.dart';
@@ -10,8 +9,6 @@ import 'package:starterPack/utils/constants.dart';
 
 class AuthRepository {
   AuthRepository();
-  final client = DioClient().dio;
-
   Future<ResponseModel> validateLogin(String url, LoginModel body) async {
     final formData = body.toJson();
 
@@ -43,24 +40,9 @@ class AuthRepository {
     Map<String, dynamic> body,
   ) async {
     String url = envConfig.variables.actionMapApiPath;
-
+    final client = DioClient().dio;
+    
     try {
-      client.interceptors.add(InterceptorsWrapper(onRequest:
-          (RequestOptions options, RequestInterceptorHandler handler) {
-        options.data = {
-          ...options.data,
-          "RequestInfo": RequestInfoModel(
-            apiId: RequestInfoData.apiId,
-            ver: RequestInfoData.ver,
-            ts: DateTime.now().millisecondsSinceEpoch,
-            action: options.path.split('/').last,
-            did: RequestInfoData.did,
-            key: RequestInfoData.key,
-          ).toJson(),
-        };
-        return handler.next(options);
-      }));
-
       final Response response = await client.post(url, data: body);
       return RoleActionsWrapperModel.fromJson(json.decode(response.toString()));
     } catch (_) {
