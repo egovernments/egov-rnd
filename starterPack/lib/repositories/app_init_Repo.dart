@@ -16,7 +16,7 @@ EnvironmentConfiguration envConfig = EnvironmentConfiguration.instance;
 class AppInitRepo {
   Future<MdmsResponseModel> searchAppConfiguration(
       MdmsRequestModel mdmsRequestBody) async {
-    final client = Dio();
+    final client = DioClient().dio;
     final body = mdmsRequestBody.toJson();
 
     final SecureStore storage = SecureStore();
@@ -34,23 +34,7 @@ class AppInitRepo {
     };
 
     try {
-      client.interceptors.add(InterceptorsWrapper(onRequest:
-          (RequestOptions options, RequestInterceptorHandler handler) {
-        options.data = {
-          ...options.data,
-          "RequestInfo": RequestInfoModel(
-            apiId: RequestInfoData.apiId,
-            ver: RequestInfoData.ver,
-            ts: DateTime.now().millisecondsSinceEpoch,
-            action: options.path.split('/').last,
-            did: RequestInfoData.did,
-            key: RequestInfoData.key,
-          ).toJson(),
-        };
-        return handler.next(options);
-      }));
-
-      //make am api call
+      //make an api call
       final response = await client.post(envConfig.variables.completeMdmsApiUrl,
           data: body, options: Options(headers: headers));
 
@@ -79,7 +63,7 @@ class AppInitRepo {
     }
 
     //fetch from the mdms
-    final client = Dio();
+    final client = DioClient().dio;
 
     final headers = <String, String>{
       "Access-Control-Allow-Origin": "*",
@@ -88,23 +72,7 @@ class AppInitRepo {
 
     //this request needs an interceptor to add RequestInfo
     try {
-      client.interceptors.add(InterceptorsWrapper(onRequest:
-          (RequestOptions options, RequestInterceptorHandler handler) {
-        options.data = {
-          ...options.data,
-          "RequestInfo": RequestInfoModel(
-            apiId: 'hcm',
-            ver: '0.1',
-            ts: DateTime.now().millisecondsSinceEpoch,
-            action: options.path.split('/').last,
-            did: "1",
-            key: "1",
-          ).toJson(),
-        };
-        return handler.next(options);
-      }));
-
-      //make an api call
+       //make an api call
       final response = await client.post(envConfig.variables.completeMdmsApiUrl,
           data: body, options: Options(headers: headers));
 
