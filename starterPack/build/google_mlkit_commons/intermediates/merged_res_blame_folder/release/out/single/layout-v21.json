@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "com.google_mlkit_commons-merged_res-12:/layout-v21/notification_action.xml",
+        "source": "com.google_mlkit_commons-core-1.6.0-5:/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "com.google_mlkit_commons-merged_res-12:/layout-v21/notification_template_custom_big.xml",
+        "source": "com.google_mlkit_commons-core-1.6.0-5:/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "com.google_mlkit_commons-merged_res-12:/layout-v21/notification_action_tombstone.xml",
+        "source": "com.google_mlkit_commons-core-1.6.0-5:/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "com.google_mlkit_commons-merged_res-12:/layout-v21/notification_template_icon_group.xml",
+        "source": "com.google_mlkit_commons-core-1.6.0-5:/layout-v21/notification_template_icon_group.xml"
+    }
+]

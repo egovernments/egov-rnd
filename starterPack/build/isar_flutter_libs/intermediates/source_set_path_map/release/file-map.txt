@@ -1,0 +1,13 @@
+dev.isar.isar_flutter_libs-jetified-annotation-experimental-1.1.0-0 /home/satwik-egov/.gradle/caches/transforms-3/8c6e003f34e5b5702429dd41f00fc330/transformed/jetified-annotation-experimental-1.1.0/res
+dev.isar.isar_flutter_libs-jetified-window-1.0.0-beta04-1 /home/satwik-egov/.gradle/caches/transforms-3/9d49facf698b424265aaadef2393f467/transformed/jetified-window-1.0.0-beta04/res
+dev.isar.isar_flutter_libs-jetified-window-java-1.0.0-beta04-2 /home/satwik-egov/.gradle/caches/transforms-3/acfe402c9e9326acbfbc2d45655eb14d/transformed/jetified-window-java-1.0.0-beta04/res
+dev.isar.isar_flutter_libs-jetified-startup-runtime-1.1.1-3 /home/satwik-egov/.gradle/caches/transforms-3/fcfcb975c459ec2043dc1984df57ee09/transformed/jetified-startup-runtime-1.1.1/res
+dev.isar.isar_flutter_libs-core-1.6.0-4 /home/satwik-egov/.gradle/caches/transforms-3/fd14df1f5a0afc263e07a933851853a2/transformed/core-1.6.0/res
+dev.isar.isar_flutter_libs-main-5 /home/satwik-egov/.pub-cache/hosted/pub.dev/isar_flutter_libs-3.1.0+1/android/src/main/res
+dev.isar.isar_flutter_libs-release-6 /home/satwik-egov/.pub-cache/hosted/pub.dev/isar_flutter_libs-3.1.0+1/android/src/release/res
+dev.isar.isar_flutter_libs-pngs-7 /home/satwik-egov/digit_fresh/app/starterPack/build/isar_flutter_libs/generated/res/pngs/release
+dev.isar.isar_flutter_libs-resValues-8 /home/satwik-egov/digit_fresh/app/starterPack/build/isar_flutter_libs/generated/res/resValues/release
+dev.isar.isar_flutter_libs-rs-9 /home/satwik-egov/digit_fresh/app/starterPack/build/isar_flutter_libs/generated/res/rs/release
+dev.isar.isar_flutter_libs-mergeReleaseResources-10 /home/satwik-egov/digit_fresh/app/starterPack/build/isar_flutter_libs/intermediates/incremental/release/mergeReleaseResources/merged.dir
+dev.isar.isar_flutter_libs-mergeReleaseResources-11 /home/satwik-egov/digit_fresh/app/starterPack/build/isar_flutter_libs/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+dev.isar.isar_flutter_libs-merged_res-12 /home/satwik-egov/digit_fresh/app/starterPack/build/isar_flutter_libs/intermediates/merged_res/release

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "eu.simonbinder.sqlite3_flutter_libs-merged_res-10:/layout/notification_action_tombstone.xml",
+        "source": "eu.simonbinder.sqlite3_flutter_libs-core-1.6.0-3:/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "eu.simonbinder.sqlite3_flutter_libs-merged_res-10:/layout/notification_template_part_chronometer.xml",
+        "source": "eu.simonbinder.sqlite3_flutter_libs-core-1.6.0-3:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "eu.simonbinder.sqlite3_flutter_libs-merged_res-10:/layout/custom_dialog.xml",
+        "source": "eu.simonbinder.sqlite3_flutter_libs-core-1.6.0-3:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "eu.simonbinder.sqlite3_flutter_libs-merged_res-10:/layout/notification_template_icon_group.xml",
+        "source": "eu.simonbinder.sqlite3_flutter_libs-core-1.6.0-3:/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "eu.simonbinder.sqlite3_flutter_libs-merged_res-10:/layout/notification_template_part_time.xml",
+        "source": "eu.simonbinder.sqlite3_flutter_libs-core-1.6.0-3:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "eu.simonbinder.sqlite3_flutter_libs-merged_res-10:/layout/notification_action.xml",
+        "source": "eu.simonbinder.sqlite3_flutter_libs-core-1.6.0-3:/layout/notification_action.xml"
+    }
+]
