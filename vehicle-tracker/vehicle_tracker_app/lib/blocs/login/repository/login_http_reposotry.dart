@@ -14,7 +14,38 @@ import '../../../util/i18n_translations.dart';
 import '../../../util/toaster.dart';
 
 class LoginHTTPRepository {
-  static Future<bool> login(BuildContext context, String username, String password, String city) async {
+// sendOtp
+
+  static Future<bool> sendOtp(BuildContext context,
+      {required String mobileNumber}) async {
+    try {
+      final sendOtpUrl = "$unifiedDevApiUrl/user-otp/v1/_send";
+
+      Map<String, dynamic> formData = {
+        "otp": {
+          "mobileNumber": mobileNumber,
+          "tenantId": "pg",
+          "type": "login",
+          "userType": "citizen"
+        }
+      };
+
+      final response = await HttpService.postRequest(sendOtpUrl, formData);
+      if (response.statusCode != 200) {
+        log("Error Code: ${response.statusCode}");
+        toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+        return false;
+      }
+      return response.body['isSuccessful'] as bool;
+    } catch (e) {
+      return false;
+    }
+  }
+
+//
+
+  static Future<bool> login(String username,
+      String password, String city) async {
     try {
       final loginUrl = "$unifiedDevApiUrl/user/oauth/token";
 
@@ -23,53 +54,59 @@ class LoginHTTPRepository {
         "scope": "read",
         "username": username.trim(),
         "password": password.trim(),
-        "userType": "EMPLOYEE",
+        "userType": "citizen",
         "tenantId": city,
       };
 
       final response = await HttpService.postWithFormData(loginUrl, formData);
       if (response.statusCode != 200) {
         log("Error Code: ${response.statusCode}");
-        toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+        toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
         return false;
       }
 
       final loginModel = LoginDataModel.fromJson(response.body);
-
-      final driverId = await getDriverId(loginModel.access_token, loginModel.UserRequest.uuid, "pg.citya");
+      final data = await SecureStorageService.read(CITYCODE);
+      final driverId = await getDriverId(
+          loginModel.access_token, loginModel.UserRequest.uuid, data.toString(),
+          mobileNumber: username.trim());
       if (driverId == "") {
-        toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+        toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
         return false;
       }
 
       await SecureStorageService.writeAll(
         token: loginModel.access_token,
         uuid: loginModel.UserRequest.uuid,
-        tenantId: loginModel.UserRequest.tenantId,
+        tenantId: data.toString(),
         operatorId: driverId,
       );
 
-      await HiveService.addUserData(loginModel.UserRequest.name, loginModel.UserRequest.mobileNumber);
+      await HiveService.addUserData(
+          loginModel.UserRequest.name, loginModel.UserRequest.mobileNumber);
 
-      toaster(null, AppTranslation.LOGIN_SUCCESS_MESSAGE.tr);
+      toaster(AppTranslation.LOGIN_SUCCESS_MESSAGE.tr, isError: false);
       return true;
     } on FormatException catch (e) {
       log("Error: ${e.message}");
-      toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+      toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
       return false;
     } on Exception catch (e) {
       log("Error: ${e.toString()}");
-      toaster(context, AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
+      toaster(AppTranslation.LOGIN_FAILED_MESSAGE.tr, isError: true);
       return false;
     }
   }
 
-  static Future<String> getDriverId(String authToken, String uuid, String tenantId) async {
+  static Future<String> getDriverId(
+      String authToken, String uuid, String tenantId,
+      {required String mobileNumber}) async {
     try {
-      final url = "$unifiedDevApiUrl/vendor/driver/v1/_search";
-      final loginUrl = "$url?tenantId=$tenantId&ownerIds=$uuid";
+      final url = "$unifiedDevApiUrl/individual/v1/_search";
+      final loginUrl = "$url?tenantId=$tenantId&offset=0&limit=1";
 
       Map<String, dynamic> body = {
+        "Individual": {"mobileNumber": mobileNumber},
         "RequestInfo": {
           "apiId": "Rainmaker",
           "authToken": authToken,
@@ -78,13 +115,13 @@ class LoginHTTPRepository {
 
       final response = await HttpService.postRequest(loginUrl, body);
       if (response.statusCode != 200) {
-        log("Error in getting driver id : ${response.statusCode}");
+        log("Error in getting Individual id : ${response.statusCode}");
         return "";
       }
 
-      return response.body["driver"][0]["id"];
+      return response.body["Individual"][0]["id"];
     } catch (e) {
-      log("Error in getting driver id : ${e.toString()}");
+      log("Error in getting Individual id : ${e.toString()}");
       return "";
     }
   }

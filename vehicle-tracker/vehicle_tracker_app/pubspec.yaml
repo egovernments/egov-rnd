@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.2 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,7 +40,6 @@ dependencies:
   http: ^1.1.0
   flutter_map: ^5.0.0
   geolocator: ^9.0.2
-  fluttertoast: ^8.2.2
   latlong2: any
   flutter_secure_storage: ^8.0.0
   digit_components: ^0.0.1+8
@@ -53,7 +52,9 @@ dependencies:
   image_picker: ^1.0.2
   wakelock: ^0.6.2
   toggle_switch: ^2.1.0
-  
+  pin_input_text_field: ^4.5.1
+  flutter_svg: ^2.0.8
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -81,6 +82,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see

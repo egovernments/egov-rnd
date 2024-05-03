@@ -20,19 +20,22 @@ class MdmsHiveModelAdapter extends TypeAdapter<MdmsHiveModel> {
       name: fields[0] as String,
       code: fields[1] as String,
       languages: (fields[2] as List).cast<LanguageHiveModel>(),
+      cityHive: (fields[3] as List).cast<CityHiveModel>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, MdmsHiveModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
       ..write(obj.code)
       ..writeByte(2)
-      ..write(obj.languages);
+      ..write(obj.languages)
+      ..writeByte(3)
+      ..write(obj.cityHive);
   }
 
   @override
@@ -79,6 +82,43 @@ class LanguageHiveModelAdapter extends TypeAdapter<LanguageHiveModel> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is LanguageHiveModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class CityHiveModelAdapter extends TypeAdapter<CityHiveModel> {
+  @override
+  final int typeId = 5;
+
+  @override
+  CityHiveModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CityHiveModel(
+      cityCode: fields[0] as String,
+      cityName: fields[1] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CityHiveModel obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.cityCode)
+      ..writeByte(1)
+      ..write(obj.cityName);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CityHiveModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -7,28 +7,22 @@ import 'package:vehicle_tracker_app/widgets/trip/camera_widget.dart';
 import '../../blocs/details/controllers/camera_controllers.dart';
 import '../../widgets/utils/drawer_widget.dart';
 
-class UploadDropPhotoPgae extends StatelessWidget {
-  const UploadDropPhotoPgae({super.key});
+enum PhotoType { Drop, Safety }
+
+class UploadPhotoPage extends StatelessWidget {
+  final PhotoType photoType;
+
+  const UploadPhotoPage({Key? key, required this.photoType}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final cameraController = Get.find<CameraControllers>();
 
     return Scaffold(
-      // * AppBar
-      appBar: AppBar(
-        // title: Text(AppTranslation.HOME_APP_BAR.tr),
-        centerTitle: false,
-      ),
-
-      // * Drawer
+      appBar: AppBar(centerTitle: false),
       drawer: const CustomDrawer(),
-
-      // * Body
       body: ScrollableContent(
-        // * Headers
         header: scrollableHeaderWidget(true, true),
-
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -36,14 +30,15 @@ class UploadDropPhotoPgae extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Your drop location is not within FSTP boundary!"),
-                const Text("Please upload Photograph at FSTP for additional verification"),
-
-                // todo: Take image widget
+                Text(photoType == PhotoType.Drop
+                    ? "Your drop location is not within FSTP boundary!"
+                    : "Your safety location is not within FSTP boundary!"),
+                const Text(
+                    "Please upload Photograph at FSTP for additional verification"),
                 CameraWidget(),
-
-                DigitElevatedButton(child: const Text("End Trip"), onPressed: () {}),
-
+                DigitElevatedButton(
+                    child: const Text("End Trip"),
+                    onPressed: () {}), // TODO: Implement End Trip Functionality
                 Obx(() {
                   if (cameraController.imageDrop.value != null) {
                     return Center(
@@ -53,12 +48,11 @@ class UploadDropPhotoPgae extends StatelessWidget {
                       ),
                     );
                   }
-
                   return const SizedBox();
-                })
+                }),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

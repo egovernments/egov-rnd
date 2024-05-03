@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(TripControllers(context), permanent: true);
+    Get.put(TripControllers(), permanent: true);
     final infoController = Get.find<InfoController>();
 
     final theme = DigitTheme.instance;
@@ -35,18 +35,19 @@ class HomePage extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // * Help Button
-            Padding(
-              padding: theme.buttonPadding,
-              child: Align(
-                alignment: Alignment.topRight,
-                child: DigitIconButton(
-                  icon: Icons.help_outline_rounded,
-                  iconText: AppTranslation.HELP.tr,
-                  onPressed: () {},
-                ),
-              ),
-            ),
+
+            // * Help Button // Removed as per UIUX audit feedback
+            // Padding(
+            //   padding: theme.buttonPadding,
+            //   child: Align(
+            //     alignment: Alignment.topRight,
+            //     child: DigitIconButton(
+            //       icon: Icons.help_outline_rounded,
+            //       iconText: AppTranslation.HELP.tr,
+            //       onPressed: () {},
+            //     ),
+            //   ),
+            // ),
 
             // * App heading
             Padding(

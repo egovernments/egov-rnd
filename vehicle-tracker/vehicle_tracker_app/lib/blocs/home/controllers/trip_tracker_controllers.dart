@@ -19,48 +19,94 @@ import 'package:vehicle_tracker_app/util/trip_tracker_utility.dart';
 import 'package:wakelock/wakelock.dart';
 
 class TripControllers extends GetxController {
-  final BuildContext context;
+  static final TripControllers _singleton = TripControllers._internal();
 
-  RxBool isRunning = false.obs; // This variable is to check if the tracking is running or not
-  RxBool isLoading = false.obs; // This variable is to check if startTracking is loading or not
+  factory TripControllers() {
+    return _singleton;
+  }
+
+  TripControllers._internal();
+
+  RxBool isRunning =
+      false.obs; // This variable is to check if the tracking is running or not
+  RxBool isLoading =
+      false.obs; // This variable is to check if startTracking is loading or not
 
   HomeHTTPRepository homeHTTPRepository = HomeHTTPRepository();
   HomeHiveRepository homeHiveRepository = HomeHiveRepository();
   TripTrackerUtility tripTrackerUtility = TripTrackerUtility();
   InfoController infoController = Get.find<InfoController>();
 
-  TripControllers(this.context);
-
   // * This function starts the tracking peroiodic event
   Future<void> startTracking(Rx<HomeTripModel> data) async {
     log('---- Trip and Tracking started ----');
 
     log("Start TRIP API");
-    final status = await homeHTTPRepository.updateTrip(data.value, TripStates.ONGOING);
+    final status =
+        await homeHTTPRepository.updateTrip(data.value, TripStates.ONGOING);
     if (!status) {
-      toaster(null, AppTranslation.TRIP_NOT_STARTED_MESSAGE.tr, isError: true);
+      toaster(AppTranslation.TRIP_NOT_STARTED_MESSAGE.tr, isError: true);
       data.value.status = TripStates.NOTSTARTED;
       update([data.value.id]);
       return;
     }
 
-    toaster(null, AppTranslation.TRIP_STARTED_SUCCESFULLY_MESSAGE.tr, isError: false);
+    toaster(AppTranslation.TRIP_STARTED_SUCCESFULLY_MESSAGE.tr, isError: false);
 
     data.value.status = TripStates.ONGOING;
     update([data.value.id]);
 
     // Calls the periodic function
     startPeriodicFunction(data.value);
+
+    // Start tracking immediately
+    trackerLogic("In Progress", data.value);
+  }
+
+  //send the positions stored in local storage to the server
+  Future<void> sendStoredPositions(HomeTripModel trip) async {
+    log("Sending stored positions to server");
+    final isConnected = await tripTrackerUtility.isConnected();
+    if (!isConnected) {
+      log("No internet connection");
+      return;
+    }
+
+    await trackerLogic('Completed', trip);
+
+    final List<TripHiveModel> positions = homeHiveRepository.getTripData();
+    if (positions.isEmpty) {
+      log("No positions to send");
+      return;
+    } else {
+      log("Sending positions to server");
+      final status =
+          await homeHTTPRepository.updateTripProgress(trip, positions);
+      if (status) {
+        log("Positions sent successfully");
+        await homeHiveRepository.deleteTripData();
+        toaster(AppTranslation.POSITION_SENT_MESSAGE.tr);
+      } else {
+        log("Error sending positions");
+        toaster(AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr, isError: true);
+      }
+    }
   }
 
   // ? This functions starts a timer which will call the trackerLogic function every n seconds
   // ? The timer will stop if the isRunning variable is false
   // ? The main point on this function is to get and send tracker function like a cron schedule
+  Timer? _timer;
+
   void startPeriodicFunction(HomeTripModel trip) {
     log('Periodic function started');
     isRunning.value = true;
 
-    Timer.periodic(Duration(seconds: periodicTrackingFrequency), (_) async {
+    // Cancel the existing timer if it's running
+    _timer?.cancel();
+
+    _timer =
+        Timer.periodic(Duration(seconds: periodicTrackingFrequency), (_) async {
       log("Periodic function called");
       if (!isRunning.value) {
         log("Periodic function stopped");
@@ -75,7 +121,8 @@ class TripControllers extends GetxController {
   // ? If the location permissions are not granted, the function will stop and return early
   // ? If the location permissions are granted, the function will get the current location and use it accordingly
   Future<void> trackerLogic(String alert, HomeTripModel trip) async {
-    bool permissions = await tripTrackerUtility.handleLocationPermission(Get.context);
+    bool permissions =
+        await tripTrackerUtility.handleLocationPermission(Get.context);
     if (!permissions) {
       isRunning.value = false;
       log('Location permissions not granted');
@@ -101,7 +148,8 @@ class TripControllers extends GetxController {
   // ? It will check if the device is connected to internet or not
   // ? If there is internet connection, it will send the data to server
   // ? If by any chance the data sending fails, it will store the data to hive
-  Future<bool> positionSender(Position? position, String alert, HomeTripModel trip) async {
+  Future<bool> positionSender(
+      Position? position, String alert, HomeTripModel trip) async {
     TripHiveModel tripHiveModel = TripHiveModel(
       latitude: position?.latitude ?? 0,
       longitude: position?.longitude ?? 0,
@@ -121,11 +169,12 @@ class TripControllers extends GetxController {
       // if success delete the hive data
       // else save the data to hive
       log("Sending position to server");
-      final status = await homeHTTPRepository.updateTripProgress(trip, positions);
+      final status =
+          await homeHTTPRepository.updateTripProgress(trip, positions);
       if (status) {
         log("Position sent successfully");
         await homeHiveRepository.deleteTripData();
-        toaster(null, AppTranslation.POSITION_SENT_MESSAGE.tr);
+        toaster(AppTranslation.POSITION_SENT_MESSAGE.tr);
         return status;
       } else {
         // If the position sending fails, save the data to hive
@@ -137,7 +186,7 @@ class TripControllers extends GetxController {
       // If not connected to internet, save the data to hive
       log("No internet connection, saving to hive");
       await homeHiveRepository.storeTripData(tripHiveModel);
-      toaster(null, AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
+      toaster(AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr);
       return false;
     }
   }
@@ -147,7 +196,6 @@ class TripControllers extends GetxController {
   bool spamChecker(BuildContext context) {
     if (isLoading.isTrue) {
       toaster(
-        context,
         AppTranslation.START_LOADING_MESSAGE.tr,
         isError: true,
       );
@@ -186,15 +234,16 @@ class TripControllers extends GetxController {
 
     Get.back();
 
-    final status = await homeHTTPRepository.updateTrip(data.value, TripStates.COMPLETED);
+    final status =
+        await homeHTTPRepository.updateTrip(data.value, TripStates.COMPLETED);
     if (!status) {
       data.value.status = TripStates.ONGOING;
       update([data.value.id]);
-      toaster(null, AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
+      toaster(AppTranslation.TRIP_NOT_END_MESSAGE.tr, isError: true);
       return;
     }
 
-    toaster(null, AppTranslation.TRIP_ENDED_SUCCESFULLY_MESSAGE.tr, isError: false);
+    toaster(AppTranslation.TRIP_ENDED_SUCCESFULLY_MESSAGE.tr, isError: false);
 
     log("Deleting trip data from hive");
     await homeHiveRepository.deleteTripData();

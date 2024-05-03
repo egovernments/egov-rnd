@@ -5,6 +5,7 @@ import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
 import '../../constants.dart';
+import '../utils/languages_button_widget.dart';
 
 class LangSelectCard extends StatelessWidget {
   const LangSelectCard({super.key});
@@ -17,83 +18,29 @@ class LangSelectCard extends StatelessWidget {
     return Padding(
       padding: theme.verticalMargin,
       child: DigitCard(
-        child: Column(
-          children: [
-            // * Heading
-            Padding(
-              padding: theme.buttonPadding,
-              child: Row(
+        child: Padding(
+          padding: theme.buttonPadding,
+          child: Column(
+            children: [
+              // * Heading
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(AppTranslation.LOGIN.tr, style: textTheme.headlineLarge),
                 ],
               ),
-            ),
 
-            // * Language Button
-            LanguageButtonWidget(theme: theme),
+              // * Language Button
+              const LanguageButtonsWidget(
+                  bottomPadding: false, isSideBar: false),
 
-            // * Continue Button
-            Padding(
-              padding: theme.buttonPadding,
-              child: DigitElevatedButton(child: Text(AppTranslation.CONTINUE.tr), onPressed: () => Get.toNamed(LOGIN)),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class LanguageButtonWidget extends StatelessWidget {
-  const LanguageButtonWidget({
-    super.key,
-    required this.theme,
-  });
-
-  final DigitTheme theme;
-
-  @override
-  Widget build(BuildContext context) {
-    if (Get.locale == ENG_LOCALE) {
-      return Padding(
-        padding: theme.buttonPadding,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            DigitOutLineButton(
-              label: AppTranslation.ODIA.tr,
-              onPressed: () => Get.updateLocale(ORI_LOCALE),
-            ),
-            DigitElevatedButton(
-              child: Padding(
-                padding: theme.buttonPadding * 0.4,
-                child: Text(AppTranslation.ENGLISH.tr),
-              ),
-              onPressed: () => Get.updateLocale(ENG_LOCALE),
-            ),
-          ],
-        ),
-      );
-    }
-
-    return Padding(
-      padding: theme.buttonPadding,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          DigitElevatedButton(
-            child: Padding(
-              padding: theme.buttonPadding * 0.4,
-              child: Text(AppTranslation.ODIA.tr),
-            ),
-            onPressed: () => Get.updateLocale(ORI_LOCALE),
+              // * Continue Button
+              DigitElevatedButton(
+                  child: Text(AppTranslation.CONTINUE.tr),
+                  onPressed: () => Get.toNamed(LOGIN))
+            ],
           ),
-          DigitOutLineButton(
-            label: AppTranslation.ENGLISH.tr,
-            onPressed: () => Get.updateLocale(ENG_LOCALE),
-          ),
-        ],
+        ),
       ),
     );
   }
