@@ -70,7 +70,7 @@ String formattedDate(String? timestamp) {
   }
   try {
     final date = DateTime.parse(timestamp);
-    return "${date.hour}:${date.minute} ${date.day}/${date.month}/${date.year}";
+    return "${date.day}/${date.month}/${date.year}";
   } on Exception catch (e) {
     log(e.toString());
     return "";

@@ -7,6 +7,8 @@ import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_m
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/toaster.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart'
+    as send_local_data;
 
 import '../../../data/secure_storage_service.dart';
 
@@ -63,6 +65,8 @@ class HomeHTTPRepository {
 
     log("URL: $reqUrl");
     log("Body: $body");
+
+    await send_local_data.TripControllers().sendStoredPositions(data);
 
     final response = await HttpService.putRequest(reqUrl, body);
 

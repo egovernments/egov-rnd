@@ -58,6 +58,39 @@ class TripControllers extends GetxController {
 
     // Calls the periodic function
     startPeriodicFunction(data.value);
+
+    // Start tracking immediately
+    trackerLogic("In Progress", data.value);
+  }
+
+  //send the positions stored in local storage to the server
+  Future<void> sendStoredPositions(HomeTripModel trip) async {
+    log("Sending stored positions to server");
+    final isConnected = await tripTrackerUtility.isConnected();
+    if (!isConnected) {
+      log("No internet connection");
+      return;
+    }
+
+    await trackerLogic('Completed', trip);
+
+    final List<TripHiveModel> positions = homeHiveRepository.getTripData();
+    if (positions.isEmpty) {
+      log("No positions to send");
+      return;
+    } else {
+      log("Sending positions to server");
+      final status =
+          await homeHTTPRepository.updateTripProgress(trip, positions);
+      if (status) {
+        log("Positions sent successfully");
+        await homeHiveRepository.deleteTripData();
+        toaster(AppTranslation.POSITION_SENT_MESSAGE.tr);
+      } else {
+        log("Error sending positions");
+        toaster(AppTranslation.POSITION_HIVE_STORE_MESSAGE.tr, isError: true);
+      }
+    }
   }
 
   // ? This functions starts a timer which will call the trackerLogic function every n seconds
