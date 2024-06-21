@@ -35,78 +35,90 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:digit_components/digit_components.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+
 
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _MyCustomFormState createState() => _MyCustomFormState();
 }
 
 class _MyCustomFormState extends State<MyCustomForm> {
 
-  // _formkey is used to access the form state and validate the form fields
-  final _formKey = GlobalKey<FormState>();
+  // form is used to access the form state and validate the form fields
+  // Using Reactive form with DigitTextFormField 
 
-  // _nameController, _emailController, _phoneController are used to control the text input of the form fields
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
+  // Shifted DigitTextField ----> DigitTextFormField 
 
-  // _speech is used to listen for voice commands and update the form fields with the recognized text
+  // FormGroup basically is a group of form controls that enables you to 
+  //track the value and validation state of the form controls in a single place.
+
+  final form = FormGroup({
+    'name': FormControl<String>(
+      validators: [Validators.required],
+    ),
+    'phone': FormControl<String>(
+      validators: [Validators.required],
+    ),
+    'email': FormControl<String>(
+      validators: [Validators.required, Validators.email],
+    ),
+  });
+
   late stt.SpeechToText _speech;
   late FlutterTts flutterTts;
 
-
-  // here we are creating focus nodes for each field which will help us to know which field is currently focused
   FocusNode _nameFocus = FocusNode();
   FocusNode _phoneFocus = FocusNode();
   FocusNode _emailFocus = FocusNode();
 
-  // _isListening is used to track if the app is currently listening for voice commands
   bool _isListening = false;
-  //Initializing the current field to an empty string
   String _currentField = '';
 
+  @override
 
   // initState is called when the state object is created and 
   // when initstate is called we are initializing the speech to text object along with flutter tts object
-  @override
   void initState() {
     super.initState();
     _speech = stt.SpeechToText();
     flutterTts = FlutterTts();
   }
 
-
-  // dispose is called when the state object is removed to release resources
   @override
   void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _phoneController.dispose();
+    // disposing the controllers and focus nodes to ensure no memory leaks
+    // memory leaks can cause the app to slow down and crash and it may leads to performance issues
+
     _nameFocus.dispose();
     _phoneFocus.dispose();
     _emailFocus.dispose();
     flutterTts.stop();
-    //flutterTts.dispose();
     super.dispose();
   }
 
+
+  // _submitForm is used to submit the form
+  // here we are checking if the form is valid
+  // if the form is valid then we are showing a snackbar with the message 'Form successfully submitted'
+  // and resetting the form
+  // if the form is not valid then we are marking all the fields as touched
+  // which will show the validation error messages for the fields that are not valid
+  
   void _submitForm() {
-    if (_formKey.currentState!.validate()) {
+    if (form.valid) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Form successfully submitted')),
       );
-      _nameController.clear();
-      _emailController.clear();
-      _phoneController.clear();
+      form.reset();
+    } else {
+      form.markAllAsTouched();
     }
   }
 
-
-  // _speakLabelText is used to speak the label of the focused field to guide the user on what to say
+  //  _speakLabelText is used to speak the label of the focused field to guide the user on what to say
   // here we are setting the language to 'en-US' and speaking the labelText
   // we are using flutter tts to speak the labelText
   // we are using async and await to make the function asynchronous 
@@ -116,20 +128,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
     await flutterTts.setLanguage('en-US');
     await flutterTts.speak(labelText);
   }
-
-
-  // _listen is used to listen for voice commands and update the form fields with the recognized text
-  // here we are checking if the app is currently listening for voice commands
-  // if the app is not listening then we are initializing the speech to text object
-  // and checking if the speech to text is available
-  // if the speech to text is available then we are setting the current field to the field that is currently focused
-  // and listening for voice commands
-  // when the voice command is recognized we are updating the corresponding field with the recognized text
-  // if the field is 'name' then we are updating the name field with the recognized text
-  // if the field is 'phone' then we are updating the phone field with the recognized text
-  // if the field is 'email' then we are updating the email field with the recognized text
-  // if the app is currently listening for voice commands then we are stopping the speech to text object
-  // and setting the current field to an empty string
 
   void _listen(String field) async {
     if (!_isListening) {
@@ -143,31 +141,38 @@ class _MyCustomFormState extends State<MyCustomForm> {
           }
         }),
         onError: (val) => setState(() {
+          // here we are using setstate to update the isListening and currentField variables
+          // if the app is currently listening for voice commands then we are stopping the speech to text object
           _isListening = false;
           _currentField = '';
         }),
       );
-      
-      if (available) {
+
+      if (available) { 
+
+        // if the speech to text is available then we are setting the current \
+        //field to the field that is currently focused
         setState(() {
           _currentField = field;
         });
-        
+
         _speech.listen(onResult: (val) {
           setState(() {
             if (field == 'name') {
-              _nameController.text = val.recognizedWords;
+              form.control(field).value = val.recognizedWords;
             } else if (field == 'phone') {
-              _phoneController.text = val.recognizedWords;
+              form.control(field).value = val.recognizedWords;
             } else if (field == 'email') {
-              
-              _emailController.text = val.recognizedWords + '@gmail.com';
+              String recognizedWords = val.recognizedWords;
+              if (!recognizedWords.contains('@')) {
+                recognizedWords += '@gmail.com';
+              }
+              form.control(field).value = recognizedWords;
             }
           });
         });
 
         await flutterTts.setLanguage('en-US');
-      //  await flutterTts.speak('Please say $field');
       }
     } else {
       setState(() {
@@ -184,14 +189,12 @@ class _MyCustomFormState extends State<MyCustomForm> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 9, 9, 9),
         centerTitle: true,
-        title: Text('Digit Test Form App' , style: TextStyle(color: Colors.white),)
+        title: Text('Digit Test Form App', style: TextStyle(color: Colors.white)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        // child: Form widget is used to validate the form fields and show a snackbar when the form is successfully submitted
-        // along with DigitTextField widget to create the form fields
-        child: Form(
-          key: _formKey,
+        child: ReactiveForm(
+          formGroup: this.form,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,38 +203,29 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   children: [
                     Expanded(
                       child: Focus(
+                        // onFocusChange is called when the focus of the field changes
+                        // here we are checking if the field is currently focused
+                        // if the field is focused then we are speaking the label text
+                        // we are calling the _speakLabelText function with the label text 'Name'
                         onFocusChange: (hasFocus) {
                           if (hasFocus) {
                             _speakLabelText('Name');
                           }
                         },
-                        child: DigitTextField(
+                        child: DigitTextFormField(
+                          formControlName: 'name', 
+                          // formcontrolname is used to bind the form field to the form control
+                          // here we are binding the name field to the name form control
+
                           label: 'Name',
-                          controller: _nameController,
-
-                          // focusNode is used to track which field is currently focused
-                          // here we are setting the focusNode to the nameFocus
-                          // _nameFocus is a private variable that is used to track the focus of the name field
-
-                          focusNode: _nameFocus, 
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your name';
-                            }
-                            return null;
+                          focusNode: _nameFocus,
+                          validationMessages: {
+                            'required': (_) => 'Please enter your name',
                           },
                         ),
                       ),
                     ),
-                    IconButton( 
-
-                      // IconButton widget is used to start and stop listening for voice commands
-                      // here we are checking if the app is currently listening for voice commands
-                      // if the app is listening then we are showing the mic icon
-                      // if the app is not listening then we are showing the mic_none icon
-                      // when the mic icon is clicked we are calling the _listen function with the field name
-                      // which will start listening for voice commands and update the name field with the recognized text
-
+                    IconButton(
                       icon: Icon(_isListening && _currentField == 'name'
                           ? Icons.mic
                           : Icons.mic_none),
@@ -242,28 +236,18 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 Row(
                   children: [
                     Expanded(
-                      child: Focus( // Focus widget is used to track the focus of the field
-
-                        // onFocusChange is called when the focus of the field changes
-                        // here we are checking if the field is currently focused
-                        // if the field is focused then we are speaking the label text
-                        // we are calling the _speakLabelText function with the label text 'Phone Number'
-                        // which will speak the label text 'Phone Number' when the phone field is focused
-
+                      child: Focus(
                         onFocusChange: (hasFocus) {
                           if (hasFocus) {
                             _speakLabelText('Phone Number');
                           }
                         },
-                        child: DigitTextField(
+                        child: DigitTextFormField(
+                          formControlName: 'phone',
                           label: 'Phone Number',
-                          controller: _phoneController,
                           focusNode: _phoneFocus,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your phone number';
-                            }
-                            return null;
+                          validationMessages: {
+                            'required': (_) => 'Please enter your phone number',
                           },
                         ),
                       ),
@@ -285,15 +269,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
                             _speakLabelText('Email');
                           }
                         },
-                        child: DigitTextField(
+                        child: DigitTextFormField(
+                          formControlName: 'email',
                           label: 'Email',
-                          controller: _emailController,
                           focusNode: _emailFocus,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter your email';
-                            }
-                            return null;
+                          validationMessages: {
+                            'required': (_) => 'Please enter your email',
+                            'email': (_) => 'Invalid email format',
                           },
                         ),
                       ),
@@ -308,11 +290,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  // child: ElevatedButton(
-                  //   onPressed: _submitForm,
-                  //   child: Text('Submit'),
-                  // ),
-                  child: DigitOutLineButton(label: 'Submit', onPressed: _submitForm, ),
+                  child: DigitOutLineButton(
+                    label: 'Submit',
+                    onPressed: _submitForm,
+                  ),
                 ),
               ],
             ),
@@ -322,15 +303,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -351,6 +323,15 @@ class _MyCustomFormState extends State<MyCustomForm> {
 // added the submit form function
 
 
+// added the reactive form to the form
+// added the form control name to the form fields
+// added the validation messages to the form fields
+// added the form reset function to reset the form after submission
+// added the mark all as touched function to show the validation error messages for the fields that are not valid
+// added the reactive form widget to the scaffold widget
+// shiftef DigitTextField to DigitTextFormField
+
+
 
 
 
@@ -361,11 +342,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
 // tried talkback but was not effective
 // flutter tts was a better option to make it work 
-
-
-
-
-
 
 
 
