@@ -1,3 +1,47 @@
+/*
+
+
+
+               This is an example app that demonstrates how a form can be filled using voice commands.
+ */
+
+
+// The app has three fields: Name, Phone Number, and Email. The user can fill these fields by speaking into the microphone.
+// The app uses the speech_to_text package to convert speech to text and the flutter_tts package to convert text to speech.
+// The app also uses the DigitTextField widget from the digit_components package to create the form fields.
+// The app listens for voice commands when a field is focused and updates the corresponding field with the recognized text.
+// The app also speaks the label of the focused field to guide the user on what to say.
+// The app uses the Form widget to validate the form fields and show a snackbar when the form is successfully submitted.
+// The app uses the IconButton widget to start and stop listening for voice commands.
+// The app uses the FocusNode widget to track which field is currently focused.
+// The app uses the ScaffoldMessenger widget to show a snackbar when the form is successfully submitted.
+// The app uses the FlutterTts widget to speak the label of the focused field.
+
+// Links to the packages used in this app:
+// [Fluttertts](https://pub.dev/packages/flutter_tts)
+// [Speech to text](https://pub.dev/packages/speech_to_text)
+// [Digit components](https://pub.dev/packages/digit_components)
+
+// The app uses the stt.SpeechToText widget to listen for voice commands and update the form fields with the recognized text.
+// The app uses the GlobalKey widget to access the form state and validate the form fields.
+// The app uses the TextEditingController widget to control the text input of the form fields.
+// The app uses the Scaffold widget to create the app bar and body of the app.
+// The app uses the Padding widget to add padding around the form fields.
+// The app uses the SingleChildScrollView widget to make the form scrollable when the keyboard is open.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
