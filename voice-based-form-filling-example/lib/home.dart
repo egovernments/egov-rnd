@@ -1,36 +1,3 @@
-/*
-
-               This is an example app that demonstrates how a form can be filled using voice commands.
-
- */
-
-
-// The app has three fields: Name, Phone Number, and Email. The user can fill these fields by speaking into the microphone.
-// The app uses the speech_to_text package to convert speech to text and the flutter_tts package to convert text to speech.
-// The app also uses the DigitTextField widget from the digit_components package to create the form fields.
-// The app listens for voice commands when a field is focused and updates the corresponding field with the recognized text.
-// The app also speaks the label of the focused field to guide the user on what to say.
-// The app uses the Form widget to validate the form fields and show a snackbar when the form is successfully submitted.
-// The app uses the IconButton widget to start and stop listening for voice commands.
-// The app uses the FocusNode widget to track which field is currently focused.
-// The app uses the ScaffoldMessenger widget to show a snackbar when the form is successfully submitted.
-// The app uses the FlutterTts widget to speak the label of the focused field.
-
-// Links to the packages used in this app:
-// [Fluttertts](https://pub.dev/packages/flutter_tts)
-// [Speech to text](https://pub.dev/packages/speech_to_text)
-// [Digit components](https://pub.dev/packages/digit_components)
-
-// The app uses the stt.SpeechToText widget to listen for voice commands and update the form fields with the recognized text.
-// The app uses the GlobalKey widget to access the form state and validate the form fields.
-// The app uses the TextEditingController widget to control the text input of the form fields.
-// The app uses the Scaffold widget to create the app bar and body of the app.
-// The app uses the Padding widget to add padding around the form fields.
-// The app uses the SingleChildScrollView widget to make the form scrollable when the keyboard is open.
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -56,6 +23,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
       validators: [Validators.required, Validators.email],
     ),
     'bloodGroup': FormControl<String>(value: 'A+'), // Initial value can be set here
+    'agreed': FormControl<bool>(value: false), // Checkbox field
   });
 
   late stt.SpeechToText _speech;
@@ -159,6 +127,15 @@ class _MyCustomFormState extends State<MyCustomForm> {
               } else if (recognizedWords.contains('ab negative') ||
                   recognizedWords.contains('ab minus')) {
                 form.control(field).value = 'AB-';
+              }
+            } else if (field == 'agreed') {
+              String recognizedWords = val.recognizedWords.toLowerCase();
+              if (recognizedWords.contains('agree') ||
+                  recognizedWords.contains('yes')) {
+                form.control(field).value = true;
+              } else if (recognizedWords.contains('disagree') ||
+                  recognizedWords.contains('no')) {
+                form.control(field).value = false;
               }
             }
           });
@@ -308,6 +285,30 @@ class _MyCustomFormState extends State<MyCustomForm> {
                             ? Icons.mic
                             : Icons.mic_none),
                         onPressed: () => _listen('bloodGroup'),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: DigitCheckboxTile(
+                          margin: const EdgeInsets.only(top: 16),
+                          padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
+                          label: 'I agree to the terms and conditions',
+                          value: (form.control('agreed').value ?? false) as bool,
+                          onChanged: (value) {
+                            form.control('agreed').value = value;
+                          },
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(_isListening && _currentField == 'agreed'
+                            ? Icons.mic
+                            : Icons.mic_none),
+                        onPressed: () => _listen('agreed'),
                       ),
                     ],
                   ),
