@@ -37,7 +37,6 @@ import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:digit_components/digit_components.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({super.key});
 
@@ -46,15 +45,6 @@ class MyCustomForm extends StatefulWidget {
 }
 
 class _MyCustomFormState extends State<MyCustomForm> {
-
-  // form is used to access the form state and validate the form fields
-  // Using Reactive form with DigitTextFormField 
-
-  // Shifted DigitTextField ----> DigitTextFormField 
-
-  // FormGroup basically is a group of form controls that enables you to 
-  //track the value and validation state of the form controls in a single place.
-
   final form = FormGroup({
     'name': FormControl<String>(
       validators: [Validators.required],
@@ -65,6 +55,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
     'email': FormControl<String>(
       validators: [Validators.required, Validators.email],
     ),
+    'bloodGroup': FormControl<String>(value: 'A+'), // Initial value can be set here
   });
 
   late stt.SpeechToText _speech;
@@ -78,9 +69,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
   String _currentField = '';
 
   @override
-
-  // initState is called when the state object is created and 
-  // when initstate is called we are initializing the speech to text object along with flutter tts object
   void initState() {
     super.initState();
     _speech = stt.SpeechToText();
@@ -89,9 +77,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
   @override
   void dispose() {
-    // disposing the controllers and focus nodes to ensure no memory leaks
-    // memory leaks can cause the app to slow down and crash and it may leads to performance issues
-
     _nameFocus.dispose();
     _phoneFocus.dispose();
     _emailFocus.dispose();
@@ -99,14 +84,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
     super.dispose();
   }
 
-
-  // _submitForm is used to submit the form
-  // here we are checking if the form is valid
-  // if the form is valid then we are showing a snackbar with the message 'Form successfully submitted'
-  // and resetting the form
-  // if the form is not valid then we are marking all the fields as touched
-  // which will show the validation error messages for the fields that are not valid
-  
   void _submitForm() {
     if (form.valid) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -117,12 +94,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
       form.markAllAsTouched();
     }
   }
-
-  //  _speakLabelText is used to speak the label of the focused field to guide the user on what to say
-  // here we are setting the language to 'en-US' and speaking the labelText
-  // we are using flutter tts to speak the labelText
-  // we are using async and await to make the function asynchronous 
-  // which will help us to speak the labelText even if the app is busy
 
   void _speakLabelText(String labelText) async {
     await flutterTts.setLanguage('en-US');
@@ -141,26 +112,19 @@ class _MyCustomFormState extends State<MyCustomForm> {
           }
         }),
         onError: (val) => setState(() {
-          // here we are using setstate to update the isListening and currentField variables
-          // if the app is currently listening for voice commands then we are stopping the speech to text object
           _isListening = false;
           _currentField = '';
         }),
       );
 
-      if (available) { 
-
-        // if the speech to text is available then we are setting the current \
-        //field to the field that is currently focused
+      if (available) {
         setState(() {
           _currentField = field;
         });
 
         _speech.listen(onResult: (val) {
           setState(() {
-            if (field == 'name') {
-              form.control(field).value = val.recognizedWords;
-            } else if (field == 'phone') {
+            if (field == 'name' || field == 'phone') {
               form.control(field).value = val.recognizedWords;
             } else if (field == 'email') {
               String recognizedWords = val.recognizedWords;
@@ -168,6 +132,34 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 recognizedWords += '@gmail.com';
               }
               form.control(field).value = recognizedWords;
+            } else if (field == 'bloodGroup') {
+              String recognizedWords = val.recognizedWords.toLowerCase();
+              // Matching recognized words to blood group options
+              if (recognizedWords.contains('a positive') ||
+                  recognizedWords.contains('a plus')) {
+                form.control(field).value = 'A+';
+              } else if (recognizedWords.contains('a negative') ||
+                  recognizedWords.contains('a minus')) {
+                form.control(field).value = 'A-';
+              } else if (recognizedWords.contains('b positive') ||
+                  recognizedWords.contains('b plus')) {
+                form.control(field).value = 'B+';
+              } else if (recognizedWords.contains('b negative') ||
+                  recognizedWords.contains('b minus')) {
+                form.control(field).value = 'B-';
+              } else if (recognizedWords.contains('o positive') ||
+                  recognizedWords.contains('o plus')) {
+                form.control(field).value = 'O+';
+              } else if (recognizedWords.contains('o negative') ||
+                  recognizedWords.contains('o minus')) {
+                form.control(field).value = 'O-';
+              } else if (recognizedWords.contains('ab positive') ||
+                  recognizedWords.contains('ab plus')) {
+                form.control(field).value = 'AB+';
+              } else if (recognizedWords.contains('ab negative') ||
+                  recognizedWords.contains('ab minus')) {
+                form.control(field).value = 'AB-';
+              }
             }
           });
         });
@@ -203,20 +195,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   children: [
                     Expanded(
                       child: Focus(
-                        // onFocusChange is called when the focus of the field changes
-                        // here we are checking if the field is currently focused
-                        // if the field is focused then we are speaking the label text
-                        // we are calling the _speakLabelText function with the label text 'Name'
                         onFocusChange: (hasFocus) {
                           if (hasFocus) {
                             _speakLabelText('Name');
                           }
                         },
                         child: DigitTextFormField(
-                          formControlName: 'name', 
-                          // formcontrolname is used to bind the form field to the form control
-                          // here we are binding the name field to the name form control
-
+                          formControlName: 'name',
                           label: 'Name',
                           focusNode: _nameFocus,
                           validationMessages: {
@@ -290,6 +275,43 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Row(
+                    children: [
+                      Text('Blood Group:'),
+                      SizedBox(width: 16),
+                      DropdownButton<String>(
+                        value: form.control('bloodGroup').value,
+                        onChanged: (value) {
+                          form.control('bloodGroup').value = value;
+                          setState(() {});
+                        },
+                        items: [
+                          'A+',
+                          'A-',
+                          'B+',
+                          'B-',
+                          'O+',
+                          'O-',
+                          'AB+',
+                          'AB-',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                      IconButton(
+                        icon: Icon(_isListening && _currentField == 'bloodGroup'
+                            ? Icons.mic
+                            : Icons.mic_none),
+                        onPressed: () => _listen('bloodGroup'),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: DigitOutLineButton(
                     label: 'Submit',
                     onPressed: _submitForm,
@@ -303,7 +325,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
     );
   }
 }
-
 
 
 
