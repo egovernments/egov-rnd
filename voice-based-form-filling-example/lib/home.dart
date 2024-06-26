@@ -87,7 +87,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
   void _submitForm() {
     if (form.valid) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Form successfully submitted')),
+        const SnackBar(content: Text('Form successfully submitted')),
       );
       form.reset();
     } else {
@@ -181,7 +181,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 9, 9, 9),
         centerTitle: true,
-        title: Text('Digit Test Form App', style: TextStyle(color: Colors.white)),
+        title: const Text('Digit Test Form App', style: TextStyle(color: Colors.white)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -277,29 +277,31 @@ class _MyCustomFormState extends State<MyCustomForm> {
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Row(
                     children: [
-                      Text('Blood Group:'),
-                      SizedBox(width: 16),
-                      DropdownButton<String>(
-                        value: form.control('bloodGroup').value,
-                        onChanged: (value) {
-                          form.control('bloodGroup').value = value;
-                          setState(() {});
-                        },
-                        items: [
-                          'A+',
-                          'A-',
-                          'B+',
-                          'B-',
-                          'O+',
-                          'O-',
-                          'AB+',
-                          'AB-',
-                        ].map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
+                      const Text('Blood Group:'),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: DigitReactiveDropdown<String>(
+                          label: 'Blood Group',
+                          menuItems: const [
+                            'A+',
+                            'A-',
+                            'B+',
+                            'B-',
+                            'O+',
+                            'O-',
+                            'AB+',
+                            'AB-',
+                          ],
+                          isRequired: true,
+                          formControlName: 'bloodGroup',
+                          valueMapper: (value) => value,
+                          onChanged: (value) {
+                            form.control('bloodGroup').value = value;
+                          },
+                          validationMessages: {
+                            'required': (_) => 'Please select your blood group',
+                          },
+                        ),
                       ),
                       IconButton(
                         icon: Icon(_isListening && _currentField == 'bloodGroup'
@@ -325,44 +327,3 @@ class _MyCustomFormState extends State<MyCustomForm> {
     );
   }
 }
-
-
-
-
-// Code Timeline 
-
-
-// started with the basic form
-// added the speech to text package
-// earlier tried to use the talkback but was not effective so used the flutter tts package
-// flutter tts showed better results due to its flexibility
-// added the digit components package
-// added the form fields
-// added the focus nodes
-// added the speak label text function
-// added the listen function
-// added the submit form function
-
-
-// added the reactive form to the form
-// added the form control name to the form fields
-// added the validation messages to the form fields
-// added the form reset function to reset the form after submission
-// added the mark all as touched function to show the validation error messages for the fields that are not valid
-// added the reactive form widget to the scaffold widget
-// shiftef DigitTextField to DigitTextFormField
-
-
-
-
-
-
-
-
-
-
-// tried talkback but was not effective
-// flutter tts was a better option to make it work 
-
-
-
