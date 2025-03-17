@@ -264,6 +264,8 @@ class TripControllers extends GetxController {
     update();
   }
 
+
+
   // ? Start trip dialog box by using the tripId
   Future<void> startTrip(BuildContext context, Rx<HomeTripModel> data) async {
 
@@ -309,11 +311,9 @@ class TripControllers extends GetxController {
     );
   }
 
- // Check active trips on logout
-void isActiveTrips(){
 
-  
-
+void disableIsRunning(val){
+    isRunning.value = val;
+    update();
 } 
-
 }
