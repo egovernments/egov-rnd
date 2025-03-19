@@ -5,6 +5,8 @@ import 'package:toggle_switch/toggle_switch.dart';
 import 'package:vehicle_tracker_app/blocs/home/controllers/info_controllers.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
+import '../../util/toaster.dart';
+
 Widget toggler(BuildContext context, InfoController infoController) {
   final theme = DigitTheme.instance;
 

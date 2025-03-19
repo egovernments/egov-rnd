@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
@@ -7,22 +8,26 @@ import 'package:vehicle_tracker_app/models/home_trip/home_trip_model/home_trip_m
 import 'package:vehicle_tracker_app/models/trip/trip_tracker_info/trip_tracker_hive_model.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 import 'package:vehicle_tracker_app/util/toaster.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart'
+    as send_local_data;
 
 import '../../../data/secure_storage_service.dart';
 
 class HomeHTTPRepository {
   // ? Uses the userId to get the list of trips.
-  Future<List<Rx<HomeTripModel>>> getHomeTripData(String tenantId, String operatorId) async {
+  Future<List<Rx<HomeTripModel>>> getHomeTripData(
+      String tenantId, String operatorId) async {
     List<Rx<HomeTripModel>> homeTripModel = [];
 
-    String reqUrl = "$apiUrl/trip/_search?operatorId=$operatorId&tenantId=$tenantId";
+    String reqUrl =
+        "$apiUrl/trip/_search?operatorId=$operatorId&tenantId=$tenantId";
     final response = await HttpService.getRequest(reqUrl);
 
     if (response.statusCode != 200) {
       log("Error Code: ${response.statusCode}");
       log("Error: ${response.body}");
 
-      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true);
+      toaster(AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true);
       return homeTripModel;
     }
 
@@ -30,12 +35,15 @@ class HomeHTTPRepository {
       final data = response.body as List<dynamic>;
       for (var item in data) {
         homeTripModel.add(Rx(HomeTripModel.fromJson(item)));
+
       }
     } on FormatException catch (e) {
-      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.message);
+      toaster(AppTranslation.NETWORK_ERROR_MESSAGE.tr,
+          isError: true, error: e.message);
       homeTripModel.clear();
     } on Exception catch (e) {
-      toaster(Get.context, AppTranslation.NETWORK_ERROR_MESSAGE.tr, isError: true, error: e.toString());
+      toaster(AppTranslation.NETWORK_ERROR_MESSAGE.tr,
+          isError: true, error: e.toString());
       homeTripModel.clear();
     }
 
@@ -45,7 +53,8 @@ class HomeHTTPRepository {
   // ? API to start and end the Trip
   // ? If start is true, then the trip will start
   // ? If start is false, then the trip will end
-  Future<bool> updateTrip(HomeTripModel data, String status, {String? tenantId}) async {
+  Future<bool> updateTrip(HomeTripModel data, String status,
+      {String? tenantId}) async {
     String reqUrl = "$apiUrl/trip/_update";
     final operatorId = await SecureStorageService.read(OPERATOR_ID);
 
@@ -58,6 +67,8 @@ class HomeHTTPRepository {
 
     log("URL: $reqUrl");
     log("Body: $body");
+
+    await send_local_data.TripControllers().sendStoredPositions(data);
 
     final response = await HttpService.putRequest(reqUrl, body);
 
@@ -74,7 +85,8 @@ class HomeHTTPRepository {
   }
 
   // ? API to update the trip progress
-  Future<bool> updateTripProgress(HomeTripModel data, List<TripHiveModel> positions) async {
+  Future<bool> updateTripProgress(
+      HomeTripModel data, List<TripHiveModel> positions) async {
     String reqUrl = "$apiUrl/trip/_progress";
     final operatorId = await SecureStorageService.read(OPERATOR_ID);
 
@@ -114,14 +126,16 @@ class HomeHTTPRepository {
   }
 
   // ? API to create a new POI
-  Future<bool> callTrackingApi(List<TripHiveModel> positions, String alert, String tripId) async {
+  Future<bool> callTrackingApi(
+      List<TripHiveModel> positions, String alert, String tripId) async {
     String reqUrl = "$apiUrl/poi/_create";
     final operatorId = await SecureStorageService.read(OPERATOR_ID);
 
     List<Map<String, double>> latLong = [];
 
     for (var position in positions) {
-      latLong.add({"latitude": position.latitude, "longitude": position.longitude});
+      latLong.add(
+          {"latitude": position.latitude, "longitude": position.longitude});
     }
 
     Map<String, dynamic> body = {

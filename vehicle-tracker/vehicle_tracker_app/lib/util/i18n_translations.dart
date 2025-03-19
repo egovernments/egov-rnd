@@ -30,6 +30,7 @@ class AppTranslation extends Translations {
   static String get NAME => 'NAME';
   static String get MOBILE_NUMBER => 'MOBILE_NUMBER';
   static String get VIEW_DETAILS => 'VIEW_DETAILS';
+  static String get NO_TASK_ASSIGNED => 'NO_TASK_ASSIGNED';
   static String get START_TRIP => 'START_TRIP';
   static String get END_TRIP => 'END_TRIP';
   static String get TRIP_COMPLETED => 'TRIP_COMPLETED';
@@ -43,13 +44,17 @@ class AppTranslation extends Translations {
   static String get END_TRIP_MESSAGE => 'END_TRIP_MESSAGE';
   static String get START_LOADING_MESSAGE => 'START_LOADING_MESSAGE';
   static String get POSITION_SENT_MESSAGE => 'POSITION_SENT_MESSAGE';
-  static String get POSITION_HIVE_STORE_MESSAGE => 'POSITION_HIVE_STORE_MESSAGE';
+  static String get POSITION_HIVE_STORE_MESSAGE =>
+      'POSITION_HIVE_STORE_MESSAGE';
   static String get NETWORK_ERROR_MESSAGE => 'NETWORK_ERROR_MESSAGE';
   static String get LOGIN_SUCCESS_MESSAGE => 'LOGIN_SUCCESS_MESSAGE';
   static String get LOGIN_FAILED_MESSAGE => 'LOGIN_FAILED_MESSAGE';
-  static String get LOCATION_SERVICE_DISABLED_MESSAGE => 'LOCATION_SERVICE_DISABLED_MESSAGE';
-  static String get LOCATION_PERMISSION_DENIED_MESSAGE => 'LOCATION_PERMISSION_DENIED_MESSAGE';
-  static String get LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE => 'LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE';
+  static String get LOCATION_SERVICE_DISABLED_MESSAGE =>
+      'LOCATION_SERVICE_DISABLED_MESSAGE';
+  static String get LOCATION_PERMISSION_DENIED_MESSAGE =>
+      'LOCATION_PERMISSION_DENIED_MESSAGE';
+  static String get LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE =>
+      'LOCATION_PERMISSION_DENIED_FOREVER_MESSAGE';
   static String get TRIP_NOT_END_MESSAGE => 'TRIP_NOT_END_MESSAGE';
   static String get TRIP_NOT_STARTED_MESSAGE => 'TRIP_NOT_STARTED_MESSAGE';
   static String get NONE_TRIP_STATUS => 'NONE_TRIP_STATUS';
@@ -61,9 +66,18 @@ class AppTranslation extends Translations {
   static String get DATE => 'DATE';
   static String get DETAILS => 'DETAILS';
   static String get STATUS => 'STATUS';
-  static String get TRIP_STARTED_SUCCESFULLY_MESSAGE => 'TRIP_STARTED_SUCCESFULLY_MESSAGE';
-  static String get TRIP_ENDED_SUCCESFULLY_MESSAGE => 'TRIP_ENDED_SUCCESFULLY_MESSAGE';
-  
+  static String get TRIP_STARTED_SUCCESFULLY_MESSAGE =>
+      'TRIP_STARTED_SUCCESFULLY_MESSAGE';
+  static String get TRIP_ENDED_SUCCESFULLY_MESSAGE =>
+      'TRIP_ENDED_SUCCESFULLY_MESSAGE';
+  // SELECT CITY
+  static String get PLEASE_SELECT_CITY => "PLEASE_SELECT_CITY";
+  static String get SELECT_CITY_SUB_LINE => "SELECT_CITY_SUB_LINE";
+  static String get LOGIN_SUB_LINE => "LOGIN_SUB_LINE";
+  static String get OTP_VERIFY => "OTP_VERIFY";
+  static String get RESEND_OTP => "RESEND_OTP";
+  static String get ENTER_OTP_SENT => "ENTER_OTP_SENT";
+  static String get REQUEST_ANOTHER_OTP => "REQUEST_ANOTHER_OTP";
 
   // ? This was the old way of doing translations
   // ? Its not here for reference, will be deleted soon
@@ -123,9 +137,11 @@ class AppTranslation extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         // English
-        'en_IN': LocalizationService.englishMap, // change this to english map when english is ready
+        'en_IN': LocalizationService
+            .englishMap, // change this to english map when english is ready
 
         // Hindi
-        'or_IN': LocalizationService.orissaMap, // change this to hindi map when hindi is ready
+        'or_IN': LocalizationService
+            .orissaMap, // change this to hindi map when hindi is ready
       };
 }

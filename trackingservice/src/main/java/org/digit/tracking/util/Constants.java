@@ -14,9 +14,9 @@ public class Constants {
     final public static int POI_MATCH_THRESHOLD_METERS = 100;
     final public static String MONITORING_USER_ID = "MonitoringService";
     @Value("${DIGIT_FSM_URL}")
-    final public static String DIGIT_FSM_URL = "https://unified-dev.digit.org/fsm/v1/";
+    final public static String DIGIT_FSM_URL = "https://fsm-demo.digit.org/fsm/v1";
     @Value("${DIGIT_VEHICLE_TRIP_URL}")
-    final public static String DIGIT_VEHICLE_TRIP_URL = "https://unified-dev.digit.org/vehicle/trip/v1/";
+    final public static String DIGIT_VEHICLE_TRIP_URL = "https://fsm-demo.digit.org/vehicle/trip/v1";
     final public static String ILLEGAL_DUMP_YARD_STOPPAGE_CODE = "Stoppage";
     final public static int ILLEGAL_DUMP_YARD_STOPPAGE_THRESHOLD = 5;
     final public static int TRIP_PROGRESS_FETCH_LIMIT = 1000;

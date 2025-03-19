@@ -58,13 +58,13 @@ class HiveService {
   }
 
   // ? For storing of MDMS data into Hive
-  static Future<List<MdmsHiveModel>> storeMdmsData(MdmsModel mdmsModel) async {
+  static Future<List<MdmsHiveModel>> storeMdmsData(MdmsResponse mdmsModel) async {
     List<MdmsHiveModel> mdmsHiveModelList = [];
 
     // Loops through all the StateInfo for lanuage
-    for (var item in mdmsModel.StateInfo) {
+    for (var item in mdmsModel!.mdmsRes!.commonMasters!.stateInfo!) {
       List<LanguageHiveModel> languageHiveModelList = [];
-      for (var language in item.languages) {
+      for (var language in item!.languages!) {
         languageHiveModelList.add(LanguageHiveModel(
           label: language.label,
           value: language.value,
@@ -72,11 +72,21 @@ class HiveService {
       }
 
       mdmsHiveModelList.add(MdmsHiveModel(
-        name: item.name,
-        code: item.code,
+        name: item.name!,
+        code: item.code!,
         languages: languageHiveModelList,
+        cityHive: [],
       ));
     }
+    List<CityHiveModel> cityHiveModel=[];
+    for (var element in mdmsModel!.mdmsRes!.tenant!.tenants!) {
+
+
+
+      cityHiveModel.add(CityHiveModel(cityCode: element.code!, cityName: element.city!.name!));
+    }
+
+    mdmsHiveModelList.first.cityHive.addAll(cityHiveModel);
 
     await Hive.box("mdms").addAll(mdmsHiveModelList);
 
@@ -92,4 +102,6 @@ class HiveService {
   static deleteMdmsData() async {
     await Hive.box("mdms").clear();
   }
+
+
 }

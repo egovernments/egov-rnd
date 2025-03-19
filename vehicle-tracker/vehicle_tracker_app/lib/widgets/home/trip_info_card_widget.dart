@@ -41,6 +41,7 @@ class TripInfoCardWidget extends StatelessWidget {
 
           DigitIconButton(
             iconText: AppTranslation.VIEW_DETAILS.tr,
+            textDecoration: TextDecoration.underline,
             icon: Icons.arrow_forward,
             onPressed: () => Get.toNamed(INFO, arguments: data),
           ),

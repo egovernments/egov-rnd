@@ -11,10 +11,9 @@ import '../../models/home_trip/home_trip_model/home_trip_model.dart';
 import '../../util/i18n_translations.dart';
 
 class StartTripButton extends StatelessWidget {
-  StartTripButton({super.key, required this.data});
+  StartTripButton({Key? key, required this.data}) : super(key: key);
   final Rx<HomeTripModel> data;
-
-  final tripControllers = Get.find<TripControllers>();
+  final TripControllers tripControllers = Get.find<TripControllers>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +25,11 @@ class StartTripButton extends StatelessWidget {
     return GetBuilder<TripControllers>(
       id: data.value.id,
       builder: (tripControllers) {
-        // if (data.value.status == null) {
-        //   return SizedBox(
-        //     width: double.infinity,
-        //     child: DigitOutLineButton(label: AppTranslation.NONE_TRIP.tr, onPressed: null),
-        //   );
-        // }
-
         if (data.value.status == TripStates.LOADING) {
-          return Center(child: CircularProgressIndicator(color: DigitTheme.instance.colors.mangoOrange));
-        }
-
-        if (data.value.status == TripStates.ONGOING) {
+          return Center(
+              child: CircularProgressIndicator(
+                  color: DigitTheme.instance.colors.mangoOrange));
+        } else if (data.value.status == TripStates.ONGOING) {
           return SizedBox(
             width: double.infinity,
             child: DigitOutLineButton(
@@ -47,38 +39,22 @@ class StartTripButton extends StatelessWidget {
               },
             ),
           );
-        }
-
-        if (data.value.status == TripStates.COMPLETED) {
-          return SizedBox(
-            width: double.infinity,
-            child: DigitOutLineButton(
-              label: AppTranslation.TRIP_COMPLETED.tr,
-              onPressed: () {},
-            ),
+        } else if (data.value.status == TripStates.COMPLETED) {
+          return const Offstage();
+        } else {
+          return DigitElevatedButton(
+            child: Text(AppTranslation.START_TRIP.tr),
+            onPressed: () async {
+              if (tripControllers.isLoading.isTrue ||
+                  tripControllers.isRunning.isTrue) {
+                toaster(AppTranslation.TRIP_RUNNING_MESSAGE.tr, isError: true);
+                return;
+              }
+              await tripControllers.startTrip(context, data);
+            },
           );
         }
-
-        return DigitElevatedButton(
-          child: Text(AppTranslation.START_TRIP.tr),
-          onPressed: () async {
-            if (tripControllers.isLoading.isTrue || tripControllers.isRunning.isTrue) {
-              toaster(context, AppTranslation.TRIP_RUNNING_MESSAGE.tr, isError: true);
-              return;
-            }
-
-            await tripControllers.startTrip(context, data);
-          },
-        );
       },
     );
   }
 }
-
-Widget customOutlineButton() => OutlinedButton(
-      onPressed: () {},
-      style: OutlinedButton.styleFrom(
-        minimumSize: const Size.fromWidth(double.infinity),
-      ),
-      child: const Text("Start Trip"),
-    );

@@ -17,8 +17,9 @@ class LocalizationService {
 
   static Future<void> i18nMapBuilder() async {
     await Future.wait([
+      // fetchhLocalizationData("or_IN"),
       fetchhLocalizationData("en_IN"),
-      fetchhLocalizationData("or_IN"),
+
     ]);
   }
 
@@ -79,7 +80,7 @@ class LocalizationService {
   // get localization from API
   static Future<List<LocalizationMessageModel>?> getLocalicationFromAPI(String locale) async {
     final localizationUrl = "$unifiedDevApiUrl/localization/messages/v1/_search";
-    final url = "$localizationUrl?module=rainmaker-fsm&locale=$locale&tenantId=pb.amritsar";
+    final url = "$localizationUrl?module=rainmaker-fsm&locale=$locale&tenantId=pg";
 
     Map<String, dynamic> body = {
       "RequestInfo": {

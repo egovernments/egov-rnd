@@ -35,42 +35,38 @@ class LoginPage extends StatelessWidget {
                   AppTranslation.LOGIN.tr,
                   style: textTheme.displayMedium,
                 ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  AppTranslation.LOGIN_SUB_LINE.tr ??
+                      "Provide mobile number and validate with OTP sent to you through SMS",
+                  style: textTheme.titleLarge,
+                ),
 
-                // * Text Fields for User ID and Password
                 DigitTextField(
-                  label: AppTranslation.USER_ID.tr,
+                  maxLength: 10,
+                  prefixText: '+91',
+                  textInputType: TextInputType.number,
+                  isRequired: true,
+                  label: MOBILE_NUMBER,
                   controller: loginController.userNameController,
-                ),
-                DigitTextField(
-                  label: AppTranslation.PASSWORD.tr,
-                  controller: loginController.passwordController,
-                ),
-
-                // * City Dropdown
-                DigitDropdown<String>(
-                  value: loginController.city,
-                  label: AppTranslation.CITY.tr,
-                  menuItems: cityNames,
-                  onChanged: (value) => loginController.city = value ?? "",
-                  valueMapper: (value) => value,
                 ),
 
                 // * Login Button
                 Padding(
                   padding: const EdgeInsets.only(top: kPadding) * 2,
-                  child: DigitElevatedButton(
-                    child: Text(AppTranslation.LOGIN.tr),
-                    onPressed: () => loginController.login(context),
-                  ),
+                  child: Obx(() {
+                    if (loginController.isLoading.value) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else {
+                      return DigitElevatedButton(
+                        child: Text(AppTranslation.CONTINUE.tr),
+                        onPressed: () => loginController.sendOTP(context),
+                      );
+                    }
+                  }),
                 ),
-
-                // * Forgot Password Button
-                Center(
-                  child: DigitIconButton(
-                    iconText: AppTranslation.FORGOT_PASSWORD.tr,
-                    onPressed: () => loginController.forgetPassword(context),
-                  ),
-                )
               ],
             ),
           )

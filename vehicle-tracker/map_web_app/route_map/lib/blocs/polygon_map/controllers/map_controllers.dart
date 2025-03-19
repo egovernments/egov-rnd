@@ -45,6 +45,9 @@ class MapControllers extends GetxController {
 
     final alertPolygons = await Map2HttpRepository.getAllPolygonsWithAlerts(tenantId);
 
+    if(alertMarkers.isNotEmpty) alertMarkers.clear();
+    if(this.alertPolygons.isNotEmpty) this.alertPolygons.clear();
+
     for (var alartPolygon in alertPolygons) {
       if (alartPolygon.type == "point") {
         alertMarkers.add(alartPolygon);

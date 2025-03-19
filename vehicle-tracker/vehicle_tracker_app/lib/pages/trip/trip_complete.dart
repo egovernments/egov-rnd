@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/trip/trip_info_widget.dart';
 
-class TripCompletepage extends StatelessWidget {
-  const TripCompletepage({super.key});
+class TripCompletePage extends StatelessWidget {
+  const TripCompletePage({super.key});
 
   @override
   Widget build(BuildContext context) {

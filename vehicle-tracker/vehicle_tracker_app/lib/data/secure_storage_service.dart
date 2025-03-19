@@ -25,6 +25,7 @@ class SecureStorageService {
       delete(UUID),
       delete(TENANT_ID),
       delete(OPERATOR_ID),
+      delete(CITYCODE)
     ]);
 
     log("All data deleted from secure storage");
