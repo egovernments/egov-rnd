@@ -106,7 +106,7 @@ class LoginHTTPRepository {
       final loginUrl = "$url?tenantId=$tenantId&offset=0&limit=1";
 
       Map<String, dynamic> body = {
-        "Individual": {"mobileNumber": mobileNumber},
+        "Individual": {"mobileNumber": [mobileNumber]},
         "RequestInfo": {
           "apiId": "Rainmaker",
           "authToken": authToken,

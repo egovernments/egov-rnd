@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_tracker_app/blocs/home/bindings/home_bindings.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart';
 import 'package:vehicle_tracker_app/blocs/home/repository/home_http_repository.dart';
 import 'package:vehicle_tracker_app/constants.dart';
 import 'package:vehicle_tracker_app/data/secure_storage_service.dart';
@@ -11,9 +12,11 @@ import 'package:vehicle_tracker_app/router/routes.dart';
 import 'package:vehicle_tracker_app/util/logout.dart';
 
 class InfoController extends GetxController {
-  RxBool isCompleted = false.obs; // To check if the completed button is pressed or not.
+  RxBool isCompleted =
+      false.obs; // To check if the completed button is pressed or not.
   RxBool isLoading = false.obs; // To check if the data is loading or not.
-  RxBool isTextControllerEmpty = true.obs; // To check if the search text is empty or not.
+  RxBool isTextControllerEmpty =
+      true.obs; // To check if the search text is empty or not.
 
   HomeHTTPRepository homeHTTPRepository = HomeHTTPRepository();
   final TextEditingController searchController = TextEditingController();
@@ -38,7 +41,7 @@ class InfoController extends GetxController {
       logout();
       return;
     }
-    final selectedCity= await SecureStorageService.read(CITYCODE);
+    final selectedCity = await SecureStorageService.read(CITYCODE);
     await fillList(selectedCity!, operatorId);
   }
 
@@ -48,13 +51,15 @@ class InfoController extends GetxController {
     isLoading.toggle();
 
     // ! For now we are hardcoding the city id as "pg.citya"
-    final totalList = await homeHTTPRepository.getHomeTripData(tentantId, operatorId);
+    final totalList =
+        await homeHTTPRepository.getHomeTripData(tentantId, operatorId);
 
     normalTripList.value = totalList.where((element) {
       return element.value.status != TripStates.COMPLETED;
     }).toList()
       ..sort((a, b) {
-        if (a.value.plannedStartTime == null && b.value.plannedStartTime == null) {
+        if (a.value.plannedStartTime == null &&
+            b.value.plannedStartTime == null) {
           return 0;
         } else if (a.value.plannedStartTime == null) {
           return 1;
@@ -65,11 +70,19 @@ class InfoController extends GetxController {
         }
       });
 
+    // Check if all items in normalTripList are NOTSTARTED
+    if (normalTripList.value.isNotEmpty &&
+        normalTripList.value.every(
+            (element) => element.value.status == TripStates.NOTSTARTED)) {
+      onAllNormalTripsNotStarted();
+    }
+
     completedTripList.value = totalList.where((element) {
       return element.value.status == TripStates.COMPLETED;
     }).toList()
       ..sort((a, b) {
-        if (a.value.plannedStartTime == null && b.value.plannedStartTime == null) {
+        if (a.value.plannedStartTime == null &&
+            b.value.plannedStartTime == null) {
           return 0;
         } else if (a.value.plannedStartTime == null) {
           return 1;
@@ -96,8 +109,11 @@ class InfoController extends GetxController {
         if (element.value.citizen!.name == null) return false;
         if (element.value.citizen!.contactNumber == null) return false;
 
-        bool name = element.value.citizen!.name!.toLowerCase().contains(value.toLowerCase());
-        bool contactNumber = element.value.citizen!.contactNumber!.contains(value);
+        bool name = element.value.citizen!.name!
+            .toLowerCase()
+            .contains(value.toLowerCase());
+        bool contactNumber =
+            element.value.citizen!.contactNumber!.contains(value);
         return name || contactNumber;
       }).toList();
       return;
@@ -109,10 +125,20 @@ class InfoController extends GetxController {
         if (element.value.citizen?.name == null) return false;
         if (element.value.citizen?.contactNumber == null) return false;
 
-        bool name = element.value.citizen!.name!.toLowerCase().contains(value.toLowerCase());
-        bool contactNumber = element.value.citizen!.contactNumber!.contains(value);
+        bool name = element.value.citizen!.name!
+            .toLowerCase()
+            .contains(value.toLowerCase());
+        bool contactNumber =
+            element.value.citizen!.contactNumber!.contains(value);
         return name || contactNumber;
       }).toList();
     }
+  }
+
+  void onAllNormalTripsNotStarted() {
+    final tripController = Get.find<TripControllers>();
+    tripController.disableIsRunning(false);
+
+    // Add any additional logic for this trigger here
   }
 }

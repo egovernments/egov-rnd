@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:digit_components/digit_components.dart';
 import 'package:digit_components/models/digit_row_card/digit_row_card_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_tracker_app/blocs/home/controllers/trip_tracker_controllers.dart';
 import 'package:vehicle_tracker_app/data/hive_service.dart';
 import 'package:vehicle_tracker_app/util/i18n_translations.dart';
 
@@ -60,10 +63,23 @@ class CustomDrawer extends StatelessWidget {
                 bottomPadding: false, isSideBar: true),
             icon: Icons.language,
           ),
-          DigitIconTile(
-            title: AppTranslation.LOGOUT.tr,
-            onPressed: logout,
-            icon: Icons.logout,
+          GetBuilder<TripControllers>(
+            builder: (tripControllers) {
+              return DigitIconTile(
+                title: AppTranslation.LOGOUT.tr,
+                // onPressed: (){
+                  
+                //   if(
+                //   tripControllers.isLoading.isTrue ||
+                //  tripControllers.isRunning.isTrue){
+                //   tripControllers.endTrip(context, data);
+                  
+                //  }
+                // },
+                onPressed: logout,
+                icon: Icons.logout,
+              );
+            }
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
@@ -34,6 +35,7 @@ class HomeHTTPRepository {
       final data = response.body as List<dynamic>;
       for (var item in data) {
         homeTripModel.add(Rx(HomeTripModel.fromJson(item)));
+
       }
     } on FormatException catch (e) {
       toaster(AppTranslation.NETWORK_ERROR_MESSAGE.tr,

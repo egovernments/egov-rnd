@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:vehicle_tracker_app/data/hive_service.dart';
@@ -35,7 +36,7 @@ class MdmsService {
 
   static Future<MdmsResponse?> callMdmsAPI() async {
 
-    const url= "https://unified-dev.digit.org/egov-mdms-service/v1/_search?tenantId=pg";
+    const url= "https://unified-qa.digit.org/egov-mdms-service/v1/_search?tenantId=pg";
 
     var response = await HttpService.getRequestWithoutToken(url);
     if (response.statusCode == 200) {
