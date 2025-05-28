@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/rule_set_builder" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
