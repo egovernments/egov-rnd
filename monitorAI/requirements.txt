@@ -1,0 +1,16 @@
+lark
+langchain
+langchain-elasticsearch
+text-generation
+transformers
+google-search-results
+numexpr
+langchainhub
+sentencepiece
+jinja2
+bitsandbytes
+accelerate
+langchain-openai
+langchain-huggingface
+streamlit
+langchain-community
