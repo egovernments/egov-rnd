@@ -3,6 +3,7 @@
 ## Links to prior material
 
 [Concept Note](https://docs.google.com/document/d/1wKE7yjcyO35zAw9wqWCOOQBexn4U5taNeD8lVeHQXic/edit?tab=t.okuaud9kio42#heading=h.91zitcp1tpk) for the project, designed at the start of the project
+
 [Presentation](https://docs.google.com/presentation/d/1E6m_o12gsyBmaehgIg3sI1eh9OMp05DCe_UpuhUnJRI/edit?usp=sharing) at the end of the internship, detailing current state and future work
 
 ## Design
@@ -41,6 +42,8 @@ Now you can run the app using the following.
 Once it finishes setting up, it provides the link where it has opened the app (currently `localhost:8501`) and sets up again once the link is clicked.
 
 ## Usage
+
+https://github.com/user-attachments/assets/9b52dd2b-fb6a-4cbe-897b-ec6beed89dca
 
 Usage is rather easy here, once the app is running, send in a natural language query on the app to get its response. Please note that currently it is limited to some archived data for the PGR module, which has been uploaded as structured data to the elasticsearch instance made for this app. 
 
