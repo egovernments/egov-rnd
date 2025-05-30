@@ -1,5 +1,15 @@
 # Urban Heat Risk Assessment
 
+Author: Aravind S
+
+Institution: Indian Institute for Human Settlements (IIHS)
+
+Period: April – May 2025
+
+## Overview
+
+This project focuses on assessing urban heat risk in Bhubaneswar Municipal Corporation (BMC) using satellite data and spatial analysis. The aim is to identify heat-vulnerable areas and support urban climate adaptation planning through geospatial tools like Google Earth Engine (GEE) and QGIS.
+
 ## Links to prior material
 
 [Presentation](https://docs.google.com/presentation/d/1E6m_o12gsyBmaehgIg3sI1eh9OMp05DCe_UpuhUnJRI/edit?usp=sharing) at the end of the internship, detailing current state and future work
