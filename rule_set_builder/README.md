@@ -3,6 +3,7 @@
 ## Links to prior material
 
 [Concept Note](https://docs.google.com/document/d/12tt-EvcoYBwY2MMMYrELt0-7JeMQ7qag91O7RA87ViQ/edit?usp=sharing) for the project, designed at the start of the project
+
 [Presentation](https://docs.google.com/presentation/d/1E6m_o12gsyBmaehgIg3sI1eh9OMp05DCe_UpuhUnJRI/edit?usp=sharing) at the end of the internship, detailing current state and future work
 
 ## Design
@@ -52,6 +53,8 @@ The version is specific to the version of ES running on the server, that might a
 Installation location will be subject to change on testing.
 
 ## Usage
+
+https://github.com/user-attachments/assets/779a9c43-24cf-4d23-ab2d-e948d5c3a266
 
 ### Initial setup
 
