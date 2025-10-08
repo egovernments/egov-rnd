@@ -1012,10 +1012,10 @@
         </div>
 
         <div class="card load-section">
-            <h2>Load Campaign Data</h2>
+            <h2 style="margin-bottom: 20px;">Load Campaign Data</h2>
             <div id="message"></div>
 
-            <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; max-width: 300px;">
+            <div style="margin-bottom: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
                 <button class="btn" onclick="showGoogleSheet()">📊 Google Sheet</button>
                 <button class="btn" onclick="showCSVUpload()">📁 Upload CSV</button>
                 <button class="btn" onclick="showAssets()">💾 Load from Assets</button>
@@ -1371,99 +1371,160 @@
             // Load campaigns grouped by country with timeline
             await loadCampaignsByCountry(analytics.timeline);
 
-            // Load alerts for date conflicts
-            await loadAlerts();
+            // Show alerts button (data will be loaded when clicked)
+            const alertsButton = document.getElementById('alertsButton');
+            alertsButton.style.display = 'flex';
         }
 
         let allCampaignsData = [];
         let timelineData = [];
 
-        let alertsData = null;
+        async function openAlertsModal() {
+            const modal = document.getElementById('alertsModal');
+            const container = document.getElementById('alertsContainer');
 
-        async function loadAlerts() {
+            // Show loading state
+            container.innerHTML = '<div style="text-align: center; padding: 40px; color: #666;"><div style="font-size: 2rem; margin-bottom: 10px;">⏳</div><div>Loading conflicts...</div></div>';
+            modal.style.display = 'block';
+
             try {
+                // Fetch conflicts data
                 const response = await fetch('/api/conflicts');
-                const data = await response.json();
-                alertsData = data;
+                const alertsData = await response.json();
 
+                // Update button appearance based on conflict count
                 const alertsButton = document.getElementById('alertsButton');
                 const alertsBadge = document.getElementById('alertsBadge');
 
-                // Show alerts button
-                alertsButton.style.display = 'flex';
-
-                if (data.conflict_count > 0) {
-                    // Show warning button with count
+                if (alertsData.conflict_count > 0) {
                     alertsButton.className = 'alerts-button';
-                    alertsBadge.textContent = data.conflict_count;
+                    alertsBadge.textContent = alertsData.conflict_count;
                     alertsBadge.style.display = 'flex';
                 } else {
-                    // Show green check button
                     alertsButton.className = 'alerts-button no-alerts';
                     alertsBadge.style.display = 'none';
                 }
-            } catch (error) {
-                console.error('Error loading alerts:', error);
-            }
-        }
 
-        function openAlertsModal() {
-            const modal = document.getElementById('alertsModal');
-            const container = document.getElementById('alertsContainer');
-            container.innerHTML = '';
-
-            if (!alertsData) return;
+                // Clear loading state
+                container.innerHTML = '';
 
             if (alertsData.conflict_count > 0) {
+                // Add summary header
+                const summaryHeader = document.createElement('div');
+                summaryHeader.style.cssText = 'background: #fff3cd; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #d63031;';
+                summaryHeader.innerHTML = `
+                    <div style="font-weight: 600; color: #d63031; font-size: 1.1rem; margin-bottom: 8px;">
+                        ⚠️ ${alertsData.conflict_count} Schedule Conflict${alertsData.conflict_count > 1 ? 's' : ''} Detected
+                    </div>
+                    <div style="color: #666; font-size: 0.9rem;">
+                        ${alertsData.notes?.intervals_considered || 0} campaigns analyzed • Using ${alertsData.notes?.used_month_columns ? 'month columns' : 'start/end dates'} for scheduling
+                    </div>
+                `;
+                container.appendChild(summaryHeader);
+
+                // Group conflicts by country
+                const conflictsByCountry = {};
                 alertsData.conflicts.forEach(conflict => {
-                    const alertItem = document.createElement('div');
-                    alertItem.className = 'alert-item';
+                    const country = conflict.country || 'Unknown';
+                    if (!conflictsByCountry[country]) {
+                        conflictsByCountry[country] = [];
+                    }
+                    conflictsByCountry[country].push(conflict);
+                });
 
-                    alertItem.innerHTML = `
-                        <div class="alert-header">
-                            <div class="alert-title">
-                                <span class="alert-icon">⚠️</span>
-                                Date Conflict Detected
-                            </div>
-                            ${conflict.country ? `<span class="alert-country">🌍 ${conflict.country}</span>` : ''}
-                        </div>
-                        <div class="alert-details">
-                            <div class="alert-campaign">
-                                <div class="alert-campaign-name">${conflict.a_campaign}</div>
-                                <div class="alert-dates">📅 ${conflict.a_window[0]} to ${conflict.a_window[1]}</div>
-                            </div>
-                            <div style="text-align: center; color: #d63031; font-weight: bold;">
-                                ⚡ Overlaps with ⚡
-                            </div>
-                            <div class="alert-campaign">
-                                <div class="alert-campaign-name">${conflict.b_campaign}</div>
-                                <div class="alert-dates">📅 ${conflict.b_window[0]} to ${conflict.b_window[1]}</div>
-                            </div>
-                        </div>
-                    `;
+                // Render conflicts grouped by country
+                Object.keys(conflictsByCountry).sort().forEach(country => {
+                    const countrySection = document.createElement('div');
+                    countrySection.style.marginBottom = '20px';
 
-                    container.appendChild(alertItem);
+                    const countryHeader = document.createElement('div');
+                    countryHeader.style.cssText = 'background: #C84C0E; color: white; padding: 10px 15px; border-radius: 8px; font-weight: 600; margin-bottom: 10px;';
+                    countryHeader.innerHTML = `🌍 ${country} (${conflictsByCountry[country].length} conflict${conflictsByCountry[country].length > 1 ? 's' : ''})`;
+                    countrySection.appendChild(countryHeader);
+
+                    conflictsByCountry[country].forEach((conflict, index) => {
+                        const alertItem = document.createElement('div');
+                        alertItem.className = 'alert-item';
+
+                        const overlapDays = calculateOverlapDays(conflict.a_window, conflict.b_window);
+
+                        alertItem.innerHTML = `
+                            <div class="alert-header">
+                                <div class="alert-title">
+                                    <span class="alert-icon">⚠️</span>
+                                    Conflict #${index + 1}
+                                </div>
+                                <span style="background: #d63031; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem;">
+                                    ${overlapDays} day${overlapDays > 1 ? 's' : ''} overlap
+                                </span>
+                            </div>
+                            <div class="alert-details">
+                                <div class="alert-campaign">
+                                    <div class="alert-campaign-name">${conflict.a_campaign}</div>
+                                    <div class="alert-dates">📅 ${formatDate(conflict.a_window[0])} to ${formatDate(conflict.a_window[1])}</div>
+                                </div>
+                                <div style="text-align: center; color: #d63031; font-weight: bold; padding: 10px 0;">
+                                    ⚡ Overlaps with ⚡
+                                </div>
+                                <div class="alert-campaign">
+                                    <div class="alert-campaign-name">${conflict.b_campaign}</div>
+                                    <div class="alert-dates">📅 ${formatDate(conflict.b_window[0])} to ${formatDate(conflict.b_window[1])}</div>
+                                </div>
+                            </div>
+                        `;
+
+                        countrySection.appendChild(alertItem);
+                    });
+
+                    container.appendChild(countrySection);
                 });
 
                 // Add summary if there are more conflicts than displayed
                 if (alertsData.conflict_count > alertsData.conflicts.length) {
                     const summary = document.createElement('div');
-                    summary.style.textAlign = 'center';
-                    summary.style.padding = '10px';
-                    summary.style.color = '#666';
-                    summary.innerHTML = `<em>Showing ${alertsData.conflicts.length} of ${alertsData.conflict_count} conflicts</em>`;
+                    summary.style.cssText = 'text-align: center; padding: 15px; color: #666; background: #f8f9fa; border-radius: 8px; margin-top: 20px;';
+                    summary.innerHTML = `<em>Showing ${alertsData.conflicts.length} of ${alertsData.conflict_count} total conflicts</em>`;
                     container.appendChild(summary);
                 }
             } else {
                 container.innerHTML = `
                     <div class="no-alerts">
                         <div class="no-alerts-icon">✅</div>
-                        <div>No date conflicts detected! All campaigns are scheduled without overlaps.</div>
+                        <div style="font-weight: 600; margin-bottom: 10px;">No date conflicts detected!</div>
+                        <div style="color: #666; font-size: 0.9rem;">All campaigns are scheduled without overlaps.</div>
+                        ${alertsData.notes?.intervals_considered ? `<div style="color: #666; font-size: 0.85rem; margin-top: 10px;">${alertsData.notes.intervals_considered} campaigns analyzed</div>` : ''}
                     </div>
                 `;
             }
+            } catch (error) {
+                console.error('Error loading conflicts:', error);
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #d63031;">
+                        <div style="font-size: 2rem; margin-bottom: 10px;">⚠️</div>
+                        <div style="font-weight: 600; margin-bottom: 10px;">Error Loading Conflicts</div>
+                        <div style="color: #666; font-size: 0.9rem;">${error.message}</div>
+                    </div>
+                `;
+            }
+        }
 
-            modal.style.display = 'block';
+        function calculateOverlapDays(window1, window2) {
+            const start1 = new Date(window1[0]);
+            const end1 = new Date(window1[1]);
+            const start2 = new Date(window2[0]);
+            const end2 = new Date(window2[1]);
+
+            const overlapStart = new Date(Math.max(start1, start2));
+            const overlapEnd = new Date(Math.min(end1, end2));
+
+            const days = Math.ceil((overlapEnd - overlapStart) / (1000 * 60 * 60 * 24)) + 1;
+            return Math.max(0, days);
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const options = { month: 'short', day: 'numeric', year: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
         }
 
         function closeAlertsModal() {
