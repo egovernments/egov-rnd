@@ -1,18 +1,14 @@
 import { Container, Typography, Box, Paper, Button } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleDummyLogin = () => {
-    const dummyCredential = {
-      credential: 'dummy-token-12345',
-      user: {
-        name: 'Test User',
-        email: 'test@example.com'
-      }
-    };
-    login(dummyCredential);
+    login();
+    navigate('/');
   };
 
   return (
