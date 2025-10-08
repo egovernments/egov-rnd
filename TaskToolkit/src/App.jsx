@@ -10,6 +10,7 @@ import Login from './screens/Login'
 import ProtectedRoute from './components/ProtectedRoute'
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
+const basename = import.meta.env.DEV ? '/' : '/egov-rnd/'
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <CssBaseline />
       <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         <AuthProvider>
-          <Router>
+          <Router basename={basename}>
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route
