@@ -25,6 +25,7 @@ import {
 } from '@mui/material';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import { getCampaignDetailByEpicLink } from '../services/jiraService';
+import Riskometer from '../components/Riskometer';
 
 function CampaignDetailPage() {
   const { key } = useParams();
@@ -218,6 +219,7 @@ function CampaignDetailPage() {
           </Box>
         </Paper>
 
+        <Riskometer issues={issues} />
         {/* Analytics Charts */}
         <Paper elevation={3} sx={{ p: 4, mb: 3 }}>
           <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
