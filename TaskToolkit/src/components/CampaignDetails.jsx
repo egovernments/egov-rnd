@@ -107,10 +107,16 @@ const CampaignDetails = () => {
     window.open(`https://digit-discuss.atlassian.net/browse/${campaignKey}`, '_blank');
   };
 
+  const formatDate = (dateString) => {
+    if (!dateString) return 'Not set';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  };
+
   return (
     <Box sx={{ width: '100%', mt: 3 }}>
       <Typography variant="h5" component="h2" gutterBottom sx={{ mb: 3 }}>
-        Campaign Details
+        Smart Campaign Manager Toolkit
       </Typography>
 
       {loading && (
@@ -184,48 +190,56 @@ const CampaignDetails = () => {
               <TableCell sx={{ fontWeight: 'bold' }}>Status</TableCell>
               <TableCell sx={{ fontWeight: 'bold' }}>Assignee</TableCell>
               <TableCell sx={{ fontWeight: 'bold' }}>Project</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>Start Date</TableCell>
+              <TableCell sx={{ fontWeight: 'bold' }}>End Date</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredCampaigns.map((campaign) => (
-              <TableRow
-                key={campaign.id}
-                onClick={() => handleRowClick(campaign)}
-                sx={{
-                  '&:last-child td, &:last-child th': { border: 0 },
-                  '&:hover': { backgroundColor: '#f0f7ff', cursor: 'pointer' },
-                  transition: 'background-color 0.2s'
-                }}
-              >
-                <TableCell component="th" scope="row">
-                  <Link
-                    component="button"
-                    variant="body2"
-                    onClick={(e) => handleKeyClick(e, campaign.key)}
-                    sx={{
-                      cursor: 'pointer',
-                      textDecoration: 'none',
-                      color: 'primary.main',
-                      '&:hover': {
-                        textDecoration: 'underline'
-                      }
-                    }}
-                  >
-                    {campaign.key}
-                  </Link>
-                </TableCell>
-                <TableCell>{campaign.fields?.summary || 'N/A'}</TableCell>
-                <TableCell>
-                  <Chip
-                    label={campaign.fields?.status?.name || 'Unknown'}
-                    color={getStatusColor(campaign.fields?.status?.name)}
-                    size="small"
-                  />
-                </TableCell>
-                <TableCell>{campaign.fields?.assignee?.displayName || 'Unassigned'}</TableCell>
-                <TableCell>{campaign.fields?.project?.name || 'N/A'}</TableCell>
-              </TableRow>
-            ))}
+            {filteredCampaigns.map((campaign) => {
+              const startDate = campaign.fields?.customfield_10015;
+              const endDate = campaign.fields?.customfield_10069;
+              return (
+                <TableRow
+                  key={campaign.id}
+                  onClick={() => handleRowClick(campaign)}
+                  sx={{
+                    '&:last-child td, &:last-child th': { border: 0 },
+                    '&:hover': { backgroundColor: '#f0f7ff', cursor: 'pointer' },
+                    transition: 'background-color 0.2s'
+                  }}
+                >
+                  <TableCell component="th" scope="row">
+                    <Link
+                      component="button"
+                      variant="body2"
+                      onClick={(e) => handleKeyClick(e, campaign.key)}
+                      sx={{
+                        cursor: 'pointer',
+                        textDecoration: 'none',
+                        color: 'primary.main',
+                        '&:hover': {
+                          textDecoration: 'underline'
+                        }
+                      }}
+                    >
+                      {campaign.key}
+                    </Link>
+                  </TableCell>
+                  <TableCell>{campaign.fields?.summary || 'N/A'}</TableCell>
+                  <TableCell>
+                    <Chip
+                      label={campaign.fields?.status?.name || 'Unknown'}
+                      color={getStatusColor(campaign.fields?.status?.name)}
+                      size="small"
+                    />
+                  </TableCell>
+                  <TableCell>{campaign.fields?.assignee?.displayName || 'Unassigned'}</TableCell>
+                  <TableCell>{campaign.fields?.project?.name || 'N/A'}</TableCell>
+                  <TableCell>{formatDate(startDate)}</TableCell>
+                  <TableCell>{formatDate(endDate)}</TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>

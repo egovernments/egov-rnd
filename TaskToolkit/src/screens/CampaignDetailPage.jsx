@@ -1,5 +1,5 @@
-import { useEffect, useState, useMemo } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState, useMemo } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   Container,
   Box,
@@ -21,32 +21,28 @@ import {
   Select,
   MenuItem,
   TextField,
-  Link
-} from '@mui/material';
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
-import { getCampaignDetailByEpicLink } from '../services/jiraService';
-import Riskometer from '../components/Riskometer';
+  Link,
+} from "@mui/material";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
+import { getCampaignDetailByEpicLink } from "../services/jiraService";
+import Riskometer from "../components/Riskometer";
 
 function CampaignDetailPage() {
   const { key } = useParams();
   const navigate = useNavigate();
   const [campaignData, setCampaignData] = useState(null);
+  const [epicData, setEpicData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [statusFilter, setStatusFilter] = useState('all');
-  const [assigneeFilter, setAssigneeFilter] = useState('all');
-  const [priorityFilter, setPriorityFilter] = useState('all');
-  const [keyFilter, setKeyFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [assigneeFilter, setAssigneeFilter] = useState("all");
+  const [priorityFilter, setPriorityFilter] = useState("all");
+  const [keyFilter, setKeyFilter] = useState("");
 
   // Simple Arrow Back icon using SVG
   const ArrowBackIcon = () => (
-    <Box
-      component="svg"
-      sx={{ width: 20, height: 20, mr: 0.5 }}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    <Box component="svg" sx={{ width: 20, height: 20, mr: 0.5 }} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
     </Box>
   );
 
@@ -55,15 +51,21 @@ function CampaignDetailPage() {
       setLoading(true);
       setError(null);
       try {
-        const response = await getCampaignDetailByEpicLink(key);
-        if (response && response.issues) {
-          setCampaignData(response);
+        // Fetch both campaign issues and epic details in parallel
+        const [campaignResponse, epicResponse] = await Promise.all([getCampaignDetailByEpicLink(key)]);
+
+        if (campaignResponse && campaignResponse.issues) {
+          setCampaignData(campaignResponse);
         } else {
-          setError('No campaign data found');
+          setError("No campaign data found");
+        }
+
+        if (epicResponse && epicResponse.issues && epicResponse.issues.length > 0) {
+          setEpicData(epicResponse.issues[0]);
         }
       } catch (err) {
-        setError(err.message || 'Failed to fetch campaign details');
-        console.error('Error fetching campaign:', err);
+        setError(err.message || "Failed to fetch campaign details");
+        console.error("Error fetching campaign:", err);
       } finally {
         setLoading(false);
       }
@@ -75,28 +77,61 @@ function CampaignDetailPage() {
   const issues = campaignData?.issues || [];
   const total = campaignData?.total || issues.length;
 
+  // Get epic details from the fetched epic data
+  const epicTitle = epicData?.fields?.summary || "N/A";
+  const epicDescription = epicData?.fields?.description || null;
+
+  // Helper function to parse and render description
+  const renderDescription = (description) => {
+    if (!description || !description.content) return "No description available";
+
+    const parseContent = (content) => {
+      return content
+        .map((node, index) => {
+          if (node.type === "paragraph" && node.content) {
+            return node.content
+              .map((textNode, i) => {
+                if (textNode.type === "text") {
+                  return textNode.text;
+                } else if (textNode.type === "hardBreak") {
+                  return "\n";
+                }
+                return "";
+              })
+              .join("");
+          } else if (node.type === "blockquote" && node.content) {
+            return parseContent(node.content);
+          }
+          return "";
+        })
+        .join("\n");
+    };
+
+    return parseContent(description.content);
+  };
+
   // Extract unique values for filters - must be at top level before any returns
   const uniqueStatuses = useMemo(() => {
-    const statuses = issues.map(issue => issue.fields?.status?.name).filter(Boolean);
+    const statuses = issues.map((issue) => issue.fields?.status?.name).filter(Boolean);
     return [...new Set(statuses)];
   }, [issues]);
 
   const uniqueAssignees = useMemo(() => {
-    const assignees = issues.map(issue => issue.fields?.assignee?.displayName).filter(Boolean);
+    const assignees = issues.map((issue) => issue.fields?.assignee?.displayName).filter(Boolean);
     return [...new Set(assignees)];
   }, [issues]);
 
   const uniquePriorities = useMemo(() => {
-    const priorities = issues.map(issue => issue.fields?.priority?.name).filter(Boolean);
+    const priorities = issues.map((issue) => issue.fields?.priority?.name).filter(Boolean);
     return [...new Set(priorities)];
   }, [issues]);
 
   // Filter issues
   const filteredIssues = useMemo(() => {
-    return issues.filter(issue => {
-      const matchesStatus = statusFilter === 'all' || issue.fields?.status?.name === statusFilter;
-      const matchesAssignee = assigneeFilter === 'all' || issue.fields?.assignee?.displayName === assigneeFilter;
-      const matchesPriority = priorityFilter === 'all' || issue.fields?.priority?.name === priorityFilter;
+    return issues.filter((issue) => {
+      const matchesStatus = statusFilter === "all" || issue.fields?.status?.name === statusFilter;
+      const matchesAssignee = assigneeFilter === "all" || issue.fields?.assignee?.displayName === assigneeFilter;
+      const matchesPriority = priorityFilter === "all" || issue.fields?.priority?.name === priorityFilter;
       const matchesKey = !keyFilter || issue.key?.toLowerCase().includes(keyFilter.toLowerCase());
       return matchesStatus && matchesAssignee && matchesPriority && matchesKey;
     });
@@ -105,8 +140,8 @@ function CampaignDetailPage() {
   // Prepare data for pie charts
   const statusChartData = useMemo(() => {
     const statusCount = {};
-    issues.forEach(issue => {
-      const status = issue.fields?.status?.name || 'Unknown';
+    issues.forEach((issue) => {
+      const status = issue.fields?.status?.name || "Unknown";
       statusCount[status] = (statusCount[status] || 0) + 1;
     });
     return Object.entries(statusCount).map(([name, value]) => ({ name, value }));
@@ -114,8 +149,8 @@ function CampaignDetailPage() {
 
   const assigneeChartData = useMemo(() => {
     const assigneeCount = {};
-    issues.forEach(issue => {
-      const assignee = issue.fields?.assignee?.displayName || 'Unassigned';
+    issues.forEach((issue) => {
+      const assignee = issue.fields?.assignee?.displayName || "Unassigned";
       assigneeCount[assignee] = (assigneeCount[assignee] || 0) + 1;
     });
     return Object.entries(assigneeCount).map(([name, value]) => ({ name, value }));
@@ -123,41 +158,41 @@ function CampaignDetailPage() {
 
   const priorityChartData = useMemo(() => {
     const priorityCount = {};
-    issues.forEach(issue => {
-      const priority = issue.fields?.priority?.name || 'None';
+    issues.forEach((issue) => {
+      const priority = issue.fields?.priority?.name || "None";
       priorityCount[priority] = (priorityCount[priority] || 0) + 1;
     });
     return Object.entries(priorityCount).map(([name, value]) => ({ name, value }));
   }, [issues]);
 
   // Better color palettes for each chart
-  const STATUS_COLORS = ['#4CAF50', '#2196F3', '#FF9800', '#F44336', '#9C27B0', '#00BCD4', '#FFEB3B', '#795548'];
-  const ASSIGNEE_COLORS = ['#3F51B5', '#E91E63', '#009688', '#FF5722', '#607D8B', '#8BC34A', '#FFC107', '#673AB7'];
-  const PRIORITY_COLORS = ['#F44336', '#FF9800', '#FFC107', '#4CAF50', '#2196F3', '#9E9E9E', '#00BCD4', '#8BC34A'];
+  const STATUS_COLORS = ["#4CAF50", "#2196F3", "#FF9800", "#F44336", "#9C27B0", "#00BCD4", "#FFEB3B", "#795548"];
+  const ASSIGNEE_COLORS = ["#3F51B5", "#E91E63", "#009688", "#FF5722", "#607D8B", "#8BC34A", "#FFC107", "#673AB7"];
+  const PRIORITY_COLORS = ["#F44336", "#FF9800", "#FFC107", "#4CAF50", "#2196F3", "#9E9E9E", "#00BCD4", "#8BC34A"];
 
   const getStatusColor = (statusName) => {
     const statusColors = {
-      'Backlog': 'default',
-      'In Progress': 'primary',
-      'Done': 'success',
-      'To Do': 'info',
-      'Review': 'warning'
+      Backlog: "default",
+      "In Progress": "primary",
+      Done: "success",
+      "To Do": "info",
+      Review: "warning",
     };
-    return statusColors[statusName] || 'default';
+    return statusColors[statusName] || "default";
   };
   const handleKeyClick = (e, campaignKey) => {
     e.stopPropagation(); // Prevent row click
-    window.open(`https://digit-discuss.atlassian.net/browse/${campaignKey}`, '_blank');
+    window.open(`https://digit-discuss.atlassian.net/browse/${campaignKey}`, "_blank");
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return 'Not set';
+    if (!dateString) return "Not set";
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    return date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
   };
 
   const calculateDueDate = (startDate, endDate) => {
-    if (!startDate || !endDate) return 'N/A';
+    if (!startDate || !endDate) return "N/A";
     const start = new Date(startDate);
     const end = new Date(endDate);
     const diffTime = Math.abs(end - start);
@@ -168,7 +203,7 @@ function CampaignDetailPage() {
   if (loading) {
     return (
       <Container maxWidth="lg">
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh" }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -179,11 +214,7 @@ function CampaignDetailPage() {
     return (
       <Container maxWidth="lg">
         <Box sx={{ py: 4 }}>
-          <Button
-            variant="outlined"
-            onClick={() => navigate('/campaign-details')}
-            sx={{ mb: 3 }}
-          >
+          <Button variant="outlined" onClick={() => navigate("/campaign-details")} sx={{ mb: 3 }}>
             <ArrowBackIcon />
             Back to Campaigns
           </Button>
@@ -195,12 +226,8 @@ function CampaignDetailPage() {
 
   return (
     <Container maxWidth="lg">
-      <Box sx={{ minHeight: '100vh', py: 4 }}>
-        <Button
-          variant="outlined"
-          onClick={() => navigate('/campaign-details')}
-          sx={{ mb: 3 }}
-        >
+      <Box sx={{ minHeight: "100vh", py: 4 }}>
+        <Button variant="outlined" onClick={() => navigate("/campaign-details")} sx={{ mb: 3 }}>
           <ArrowBackIcon />
           Back to Campaigns
         </Button>
@@ -210,10 +237,35 @@ function CampaignDetailPage() {
             <Typography variant="h4" component="h1" gutterBottom>
               Campaign Details
             </Typography>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" color="text.secondary" gutterBottom>
               Epic: {key}
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+
+            {/* Epic Title */}
+            <Typography
+              variant="h6"
+              sx={{
+                mt: 2,
+                fontWeight: 600,
+                color: "primary.main",
+              }}>
+              {epicTitle}
+            </Typography>
+
+            {/* Epic Description */}
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{
+                mt: 1.5,
+                mb: 2,
+                lineHeight: 1.6,
+                whiteSpace: "pre-wrap",
+              }}>
+              {renderDescription(epicDescription)}
+            </Typography>
+
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
               Total Issues: {total}
             </Typography>
           </Box>
@@ -225,12 +277,12 @@ function CampaignDetailPage() {
           <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
             Task Analytics
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
-            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: 3 }}>
+            <Box sx={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Typography variant="h6" gutterBottom>
                 Status Distribution
               </Typography>
-              <Box sx={{ width: '100%', height: 300 }}>
+              <Box sx={{ width: "100%", height: 300 }}>
                 <ResponsiveContainer>
                   <PieChart>
                     <Pie
@@ -245,27 +297,22 @@ function CampaignDetailPage() {
                       fill="#8884d8"
                       dataKey="value"
                       animationBegin={0}
-                      animationDuration={800}
-                    >
+                      animationDuration={800}>
                       {statusChartData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={STATUS_COLORS[index % STATUS_COLORS.length]} />
                       ))}
                     </Pie>
                     <Tooltip />
-                    <Legend
-                      verticalAlign="bottom"
-                      height={36}
-                      wrapperStyle={{ fontSize: '11px' }}
-                    />
+                    <Legend verticalAlign="bottom" height={36} wrapperStyle={{ fontSize: "11px" }} />
                   </PieChart>
                 </ResponsiveContainer>
               </Box>
             </Box>
-            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Typography variant="h6" gutterBottom>
                 Assignee Distribution
               </Typography>
-              <Box sx={{ width: '100%', height: 300 }}>
+              <Box sx={{ width: "100%", height: 300 }}>
                 <ResponsiveContainer>
                   <PieChart>
                     <Pie
@@ -280,27 +327,22 @@ function CampaignDetailPage() {
                       fill="#8884d8"
                       dataKey="value"
                       animationBegin={0}
-                      animationDuration={800}
-                    >
+                      animationDuration={800}>
                       {assigneeChartData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={ASSIGNEE_COLORS[index % ASSIGNEE_COLORS.length]} />
                       ))}
                     </Pie>
                     <Tooltip />
-                    <Legend
-                      verticalAlign="bottom"
-                      height={36}
-                      wrapperStyle={{ fontSize: '11px' }}
-                    />
+                    <Legend verticalAlign="bottom" height={36} wrapperStyle={{ fontSize: "11px" }} />
                   </PieChart>
                 </ResponsiveContainer>
               </Box>
             </Box>
-            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Typography variant="h6" gutterBottom>
                 Priority Distribution
               </Typography>
-              <Box sx={{ width: '100%', height: 300 }}>
+              <Box sx={{ width: "100%", height: 300 }}>
                 <ResponsiveContainer>
                   <PieChart>
                     <Pie
@@ -315,18 +357,13 @@ function CampaignDetailPage() {
                       fill="#8884d8"
                       dataKey="value"
                       animationBegin={0}
-                      animationDuration={800}
-                    >
+                      animationDuration={800}>
                       {priorityChartData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={PRIORITY_COLORS[index % PRIORITY_COLORS.length]} />
                       ))}
                     </Pie>
                     <Tooltip />
-                    <Legend
-                      verticalAlign="bottom"
-                      height={36}
-                      wrapperStyle={{ fontSize: '11px' }}
-                    />
+                    <Legend verticalAlign="bottom" height={36} wrapperStyle={{ fontSize: "11px" }} />
                   </PieChart>
                 </ResponsiveContainer>
               </Box>
@@ -343,14 +380,12 @@ function CampaignDetailPage() {
             <Grid item xs={12} sm={6} md={3}>
               <FormControl fullWidth>
                 <InputLabel>Status</InputLabel>
-                <Select
-                  value={statusFilter}
-                  label="Status"
-                  onChange={(e) => setStatusFilter(e.target.value)}
-                >
+                <Select value={statusFilter} label="Status" onChange={(e) => setStatusFilter(e.target.value)}>
                   <MenuItem value="all">All Statuses</MenuItem>
-                  {uniqueStatuses.map(status => (
-                    <MenuItem key={status} value={status}>{status}</MenuItem>
+                  {uniqueStatuses.map((status) => (
+                    <MenuItem key={status} value={status}>
+                      {status}
+                    </MenuItem>
                   ))}
                 </Select>
               </FormControl>
@@ -358,14 +393,12 @@ function CampaignDetailPage() {
             <Grid item xs={12} sm={6} md={3}>
               <FormControl fullWidth>
                 <InputLabel>Assignee</InputLabel>
-                <Select
-                  value={assigneeFilter}
-                  label="Assignee"
-                  onChange={(e) => setAssigneeFilter(e.target.value)}
-                >
+                <Select value={assigneeFilter} label="Assignee" onChange={(e) => setAssigneeFilter(e.target.value)}>
                   <MenuItem value="all">All Assignees</MenuItem>
-                  {uniqueAssignees.map(assignee => (
-                    <MenuItem key={assignee} value={assignee}>{assignee}</MenuItem>
+                  {uniqueAssignees.map((assignee) => (
+                    <MenuItem key={assignee} value={assignee}>
+                      {assignee}
+                    </MenuItem>
                   ))}
                 </Select>
               </FormControl>
@@ -373,14 +406,12 @@ function CampaignDetailPage() {
             <Grid item xs={12} sm={6} md={3}>
               <FormControl fullWidth>
                 <InputLabel>Priority</InputLabel>
-                <Select
-                  value={priorityFilter}
-                  label="Priority"
-                  onChange={(e) => setPriorityFilter(e.target.value)}
-                >
+                <Select value={priorityFilter} label="Priority" onChange={(e) => setPriorityFilter(e.target.value)}>
                   <MenuItem value="all">All Priorities</MenuItem>
-                  {uniquePriorities.map(priority => (
-                    <MenuItem key={priority} value={priority}>{priority}</MenuItem>
+                  {uniquePriorities.map((priority) => (
+                    <MenuItem key={priority} value={priority}>
+                      {priority}
+                    </MenuItem>
                   ))}
                 </Select>
               </FormControl>
@@ -401,15 +432,15 @@ function CampaignDetailPage() {
         <TableContainer component={Paper} elevation={3}>
           <Table>
             <TableHead>
-              <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
-                <TableCell sx={{ fontWeight: 'bold' }}>Key</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Summary</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Status</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Priority</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Assignee</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Start Date</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>End Date</TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>Duration</TableCell>
+              <TableRow sx={{ backgroundColor: "#f5f5f5" }}>
+                <TableCell sx={{ fontWeight: "bold" }}>Key</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Summary</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Status</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Priority</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Assignee</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Start Date</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>End Date</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Duration</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -417,37 +448,33 @@ function CampaignDetailPage() {
                 const startDate = issue.fields?.customfield_10015;
                 const endDate = issue.fields?.customfield_10069;
                 return (
-                  <TableRow
-                    key={issue.id}
-                    sx={{ '&:hover': { backgroundColor: '#f9f9f9' } }}
-                  >
+                  <TableRow key={issue.id} sx={{ "&:hover": { backgroundColor: "#f9f9f9" } }}>
                     <TableCell>
-                    <Link
-                      component="button"
-                      variant="body2"
-                      onClick={(e) => handleKeyClick(e, issue.key)}
-                      sx={{
-                        cursor: 'pointer',
-                        textDecoration: 'none',
-                        color: 'primary.main',
-                        '&:hover': {
-                          textDecoration: 'underline'
-                        }
-                      }}
-                    >
-                      {issue.key}
-                    </Link>
-                  </TableCell>
-                    <TableCell>{issue.fields?.summary || 'N/A'}</TableCell>
+                      <Link
+                        component="button"
+                        variant="body2"
+                        onClick={(e) => handleKeyClick(e, issue.key)}
+                        sx={{
+                          cursor: "pointer",
+                          textDecoration: "none",
+                          color: "primary.main",
+                          "&:hover": {
+                            textDecoration: "underline",
+                          },
+                        }}>
+                        {issue.key}
+                      </Link>
+                    </TableCell>
+                    <TableCell>{issue.fields?.summary || "N/A"}</TableCell>
                     <TableCell>
                       <Chip
-                        label={issue.fields?.status?.name || 'Unknown'}
+                        label={issue.fields?.status?.name || "Unknown"}
                         color={getStatusColor(issue.fields?.status?.name)}
                         size="small"
                       />
                     </TableCell>
-                    <TableCell>{issue.fields?.priority?.name || 'N/A'}</TableCell>
-                    <TableCell>{issue.fields?.assignee?.displayName || 'Unassigned'}</TableCell>
+                    <TableCell>{issue.fields?.priority?.name || "N/A"}</TableCell>
+                    <TableCell>{issue.fields?.assignee?.displayName || "Unassigned"}</TableCell>
                     <TableCell>{formatDate(startDate)}</TableCell>
                     <TableCell>{formatDate(endDate)}</TableCell>
                     <TableCell>{calculateDueDate(startDate, endDate)}</TableCell>
