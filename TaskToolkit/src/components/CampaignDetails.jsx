@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import {
   Table,
   TableBody,
@@ -14,15 +14,53 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Grid
+  Grid,
+  CircularProgress,
+  Alert,
+  TextField
 } from '@mui/material';
-import dummyResponse from '../configs/dummyresponse.json';
+import { getCampaigns } from '../services/jiraService';
 
 const CampaignDetails = () => {
-  const [campaigns] = useState(dummyResponse.issues || []);
+  const [campaigns, setCampaigns] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [statusFilter, setStatusFilter] = useState('all');
-  const [projectFilter, setProjectFilter] = useState('all');
-  const [issueTypeFilter, setIssueTypeFilter] = useState('all');
+  const [epicFilter, setEpicFilter] = useState('all');
+  const [debouncedCampaignName, setDebouncedCampaignName] = useState('');
+
+  useEffect(() => {
+    const fetchCampaigns = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await getCampaigns();
+        setCampaigns(response.issues || []);
+      } catch (err) {
+        setError(err.message || 'Failed to fetch campaigns');
+        console.error('Error fetching campaigns:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCampaigns();
+  }, []);
+
+  // Debounced handler for campaign name input
+  const handleCampaignNameChange = useCallback((e) => {
+    const value = e.target.value;
+
+    // Clear existing timer
+    if (handleCampaignNameChange.timer) {
+      clearTimeout(handleCampaignNameChange.timer);
+    }
+
+    // Set new timer
+    handleCampaignNameChange.timer = setTimeout(() => {
+      setDebouncedCampaignName(value);
+    }, 500);
+  }, []);
 
   // Extract unique values for filters
   const uniqueStatuses = useMemo(() => {
@@ -30,25 +68,21 @@ const CampaignDetails = () => {
     return [...new Set(statuses)];
   }, [campaigns]);
 
-  const uniqueProjects = useMemo(() => {
-    const projects = campaigns.map(c => c.fields?.project?.name).filter(Boolean);
-    return [...new Set(projects)];
-  }, [campaigns]);
-
-  const uniqueIssueTypes = useMemo(() => {
-    const types = campaigns.map(c => c.fields?.issuetype?.name).filter(Boolean);
-    return [...new Set(types)];
+  const uniqueEpics = useMemo(() => {
+    const epics = campaigns.map(c => c.fields?.parent?.fields?.summary).filter(Boolean);
+    return [...new Set(epics)];
   }, [campaigns]);
 
   // Filter campaigns
   const filteredCampaigns = useMemo(() => {
     return campaigns.filter(campaign => {
       const matchesStatus = statusFilter === 'all' || campaign.fields?.status?.name === statusFilter;
-      const matchesProject = projectFilter === 'all' || campaign.fields?.project?.name === projectFilter;
-      const matchesIssueType = issueTypeFilter === 'all' || campaign.fields?.issuetype?.name === issueTypeFilter;
-      return matchesStatus && matchesProject && matchesIssueType;
+      const matchesEpic = epicFilter === 'all' || campaign.fields?.parent?.fields?.summary === epicFilter;
+      const matchesCampaignName = !debouncedCampaignName ||
+        campaign.fields?.summary?.toLowerCase().includes(debouncedCampaignName.toLowerCase());
+      return matchesStatus && matchesEpic && matchesCampaignName;
     });
-  }, [campaigns, statusFilter, projectFilter, issueTypeFilter]);
+  }, [campaigns, statusFilter, epicFilter, debouncedCampaignName]);
 
   const getStatusColor = (statusName) => {
     const statusColors = {
@@ -67,6 +101,20 @@ const CampaignDetails = () => {
         Campaign Details
       </Typography>
 
+      {loading && (
+        <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
+          <CircularProgress />
+        </Box>
+      )}
+
+      {error && (
+        <Alert severity="error" sx={{ mb: 3 }}>
+          {error}
+        </Alert>
+      )}
+
+      {!loading && !error && (
+        <>
       {/* Filters */}
       <Paper elevation={2} sx={{ p: 3, mb: 3 }}>
         <Typography variant="h6" gutterBottom>
@@ -90,33 +138,27 @@ const CampaignDetails = () => {
           </Grid>
           <Grid item xs={12} sm={4}>
             <FormControl fullWidth>
-              <InputLabel>Project</InputLabel>
+              <InputLabel>Epic</InputLabel>
               <Select
-                value={projectFilter}
-                label="Project"
-                onChange={(e) => setProjectFilter(e.target.value)}
+                value={epicFilter}
+                label="Epic"
+                onChange={(e) => setEpicFilter(e.target.value)}
               >
-                <MenuItem value="all">All Projects</MenuItem>
-                {uniqueProjects.map(project => (
-                  <MenuItem key={project} value={project}>{project}</MenuItem>
+                <MenuItem value="all">All Epics</MenuItem>
+                {uniqueEpics.map(epic => (
+                  <MenuItem key={epic} value={epic}>{epic}</MenuItem>
                 ))}
               </Select>
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <FormControl fullWidth>
-              <InputLabel>Issue Type</InputLabel>
-              <Select
-                value={issueTypeFilter}
-                label="Issue Type"
-                onChange={(e) => setIssueTypeFilter(e.target.value)}
-              >
-                <MenuItem value="all">All Types</MenuItem>
-                {uniqueIssueTypes.map(type => (
-                  <MenuItem key={type} value={type}>{type}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            <TextField
+              fullWidth
+              label="Campaign Name"
+              variant="outlined"
+              onChange={handleCampaignNameChange}
+              placeholder="Search by name..."
+            />
           </Grid>
         </Grid>
       </Paper>
@@ -160,6 +202,8 @@ const CampaignDetails = () => {
       <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
         Showing {filteredCampaigns.length} of {campaigns.length} campaigns
       </Typography>
+        </>
+      )}
     </Box>
   );
 };

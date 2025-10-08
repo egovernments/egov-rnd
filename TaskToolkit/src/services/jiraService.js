@@ -1,19 +1,12 @@
 import axios from "axios";
 
-const JIRA_API_BASE_URL = "/api/jira";
-
-// Base64 encoded credentials
-const getAuthHeader = () => {
-  const email = import.meta.env.VITE_JIRA_EMAIL;
-  const token = import.meta.env.VITE_JIRA_API_TOKEN;
-  const credentials = btoa(`${email}:${token}`);
-  return `Basic ${credentials}`;
-};
+const JIRA_API_URL = import.meta.env.VITE_JIRA_API_URL;
+const BEARER_TOKEN = import.meta.env.VITE_JIRA_BEARER_TOKEN;
 
 export const searchJiraIssues = async (jql, maxResults = 50, fields = ["key", "summary", "status", "assignee", "project"]) => {
   try {
     const response = await axios.post(
-      `${JIRA_API_BASE_URL}/search/jql`,
+      JIRA_API_URL,
       {
         jql,
         maxResults,
@@ -23,7 +16,7 @@ export const searchJiraIssues = async (jql, maxResults = 50, fields = ["key", "s
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: getAuthHeader(),
+          Authorization: `Bearer ${BEARER_TOKEN}`,
         },
       }
     );
@@ -38,4 +31,10 @@ export const searchJiraIssues = async (jql, maxResults = 50, fields = ["key", "s
 export const getProjectEpics = async (projectKey = "HDDF", maxResults = 50) => {
   const jql = `project = ${projectKey} AND issuetype = Epic ORDER BY created DESC`;
   return searchJiraIssues(jql, maxResults);
+};
+
+export const getCampaigns = async () => {
+  const jql = "updated > -365d ORDER BY created DESC";
+  const fields = ["summary", "status", "priority", "parent", "duedate"];
+  return searchJiraIssues(jql, 100, fields);
 };
