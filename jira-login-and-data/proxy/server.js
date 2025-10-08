@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // Jira credentials for Basic Auth
-const JIRA_EMAIL = "ashish.tiwari@egovernments.org";
+const JIRA_EMAIL = "";
 const JIRA_API_TOKEN = ""
 const JIRA_DOMAIN = "digit-discuss.atlassian.net";
 
