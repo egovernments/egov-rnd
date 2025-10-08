@@ -9,7 +9,7 @@ const theme = createTheme({
       contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#0D4B66', // Header Sidenav color
+      main: 'rgb(11, 75, 102)', // Header Sidenav color
       light: '#4A7A94',
       dark: '#052F42',
       contrastText: '#FFFFFF',
