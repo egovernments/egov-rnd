@@ -31,11 +31,14 @@ function AppBar() {
         padding: 0,
         paddingTop: 0,
         width: '100%',
-        borderRadius: 0,
+        borderRadius: '0 !important',
         boxShadow: 2,
         backgroundColor: 'white',
-        '& .MuiAppBar-root': {
-          borderRadius: 0
+        '& .MuiToolbar-root': {
+          borderRadius: '0 !important'
+        },
+        '&.MuiAppBar-root': {
+          borderRadius: '0 !important'
         }
       }}
     >

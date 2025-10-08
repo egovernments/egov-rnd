@@ -30,7 +30,7 @@ function Sidebar() {
   return (
     <Box
       sx={{
-        width: 240,
+        width: 60,
         height: '100%',
         backgroundColor: '#f5f5f5',
         borderRight: '1px solid #e0e0e0',
@@ -40,11 +40,17 @@ function Sidebar() {
     >
       <List sx={{ flexGrow: 1, pt: 2 }}>
         <ListItem disablePadding>
-          <ListItemButton onClick={handleHomeClick}>
-            <ListItemIcon>
+          <ListItemButton 
+            onClick={handleHomeClick}
+            sx={{ 
+              minHeight: 48,
+              justifyContent: 'center',
+              px: 1
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 0, justifyContent: 'center' }}>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary="Home" />
           </ListItemButton>
         </ListItem>
       </List>
@@ -53,11 +59,17 @@ function Sidebar() {
       
       <List sx={{ pb: 2 }}>
         <ListItem disablePadding>
-          <ListItemButton onClick={handleLogoutClick}>
-            <ListItemIcon>
+          <ListItemButton 
+            onClick={handleLogoutClick}
+            sx={{ 
+              minHeight: 48,
+              justifyContent: 'center',
+              px: 1
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 0, justifyContent: 'center' }}>
               <LogoutIcon />
             </ListItemIcon>
-            <ListItemText primary="Logout" />
           </ListItemButton>
         </ListItem>
       </List>
