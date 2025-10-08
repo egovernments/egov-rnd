@@ -18,7 +18,8 @@
     "axios": "^1.12.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.3"
+    "react-router-dom": "^7.9.3",
+    "recharts": "^3.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
