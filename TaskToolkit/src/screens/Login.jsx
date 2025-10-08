@@ -72,7 +72,7 @@ function Login() {
           }}
         >
           <Typography variant="h4" component="h1" gutterBottom>
-            Welcome to HCM Campaign Tracking
+            Welcome to Smart Campaign Manager Toolkit
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
             Please sign in to continue
