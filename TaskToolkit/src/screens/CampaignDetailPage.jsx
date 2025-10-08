@@ -26,6 +26,9 @@ import {
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 import { getCampaignDetailByEpicLink } from "../services/jiraService";
 import Riskometer from "../components/Riskometer";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+
 
 function CampaignDetailPage() {
   const { key } = useParams();
@@ -45,6 +48,49 @@ function CampaignDetailPage() {
       <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
     </Box>
   );
+  const handleDownloadPDF = async () => {
+    const element = document.getElementById("campaign-detail-page");
+
+    if (!element) {
+      alert("Unable to find content for PDF generation.");
+      return;
+    }
+
+    // Scroll to top before capturing (to avoid lazy-loaded blank areas)
+    window.scrollTo(0, 0);
+
+    const canvas = await html2canvas(element, {
+      scale: 2, // Higher scale for better quality
+      useCORS: true,
+      scrollY: -window.scrollY,
+      windowWidth: document.documentElement.scrollWidth,
+      windowHeight: document.documentElement.scrollHeight,
+    });
+
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const imgProps = pdf.getImageProperties(imgData);
+
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+    let heightLeft = pdfHeight;
+    let position = 0;
+
+    // Add image chunks if page is taller than A4
+    pdf.addImage(imgData, "PNG", 0, position, pdfWidth, pdfHeight);
+    heightLeft -= pdf.internal.pageSize.getHeight();
+
+    while (heightLeft > 0) {
+      position = heightLeft - pdfHeight;
+      pdf.addPage();
+      pdf.addImage(imgData, "PNG", 0, position, pdfWidth, pdfHeight);
+      heightLeft -= pdf.internal.pageSize.getHeight();
+    }
+
+    pdf.save(`Campaign_${key}.pdf`);
+  };
+
 
   useEffect(() => {
     const fetchCampaignDetail = async () => {
@@ -212,6 +258,7 @@ function CampaignDetailPage() {
 
   if (error) {
     return (
+      
       <Container maxWidth="lg">
         <Box sx={{ py: 4 }}>
           <Button variant="outlined" onClick={() => navigate("/campaign-details")} sx={{ mb: 3 }}>
@@ -225,12 +272,21 @@ function CampaignDetailPage() {
   }
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" id="campaign-detail-page">
       <Box sx={{ minHeight: "100vh", py: 4 }}>
-        <Button variant="outlined" onClick={() => navigate("/campaign-details")} sx={{ mb: 3 }}>
-          <ArrowBackIcon />
-          Back to Campaigns
-        </Button>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+          <Button variant="outlined" onClick={() => navigate("/campaign-details")}>
+            <ArrowBackIcon />
+            Back to Campaigns
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleDownloadPDF}
+          >
+            📄 Download PDF
+          </Button>
+        </Box>
 
         <Paper elevation={3} sx={{ p: 4, mb: 3 }}>
           <Box sx={{ mb: 4 }}>
