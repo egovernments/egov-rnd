@@ -1,8 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy TaskToolkit to GitHub Pages
 
 on:
   push:
     branches: [ "fastrack-ai" ]
+    paths: [ "TaskToolkit/**" ]
   workflow_dispatch:
 
 permissions:
@@ -17,6 +18,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./TaskToolkit
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,6 +30,7 @@ jobs:
         with:
           node-version: '20.19'
           cache: 'npm'
+          cache-dependency-path: './TaskToolkit/package-lock.json'
           
       - name: Install dependencies
         run: npm ci
@@ -39,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './TaskToolkit/dist'
 
   deploy:
     environment:
