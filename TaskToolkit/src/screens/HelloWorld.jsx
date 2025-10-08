@@ -29,8 +29,8 @@ function HelloWorld() {
             Welcome to TaskToolkit! You've successfully logged in.
           </Typography>
           <Button
-            variant="outlined"
-            color="secondary"
+            variant="contained"
+            color="primary"
             onClick={logout}
             sx={{ mt: 2 }}
           >

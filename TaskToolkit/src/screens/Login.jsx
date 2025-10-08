@@ -7,14 +7,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleDummyLogin = () => {
-    const dummyCredential = {
-      credential: 'dummy-token-12345',
-      user: {
-        name: 'Test User',
-        email: 'test@example.com'
-      }
-    };
-    login(dummyCredential);
+    login();
     navigate('/');
   };
 
@@ -49,7 +42,6 @@ function Login() {
             size="large"
             onClick={handleDummyLogin}
             fullWidth
-            sx={{ mt: 2 }}
           >
             Login
           </Button>

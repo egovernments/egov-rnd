@@ -15,10 +15,10 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (credentialResponse) => {
+  const login = () => {
     const userData = {
-      credential: credentialResponse.credential,
-      timestamp: new Date().toISOString()
+      name: 'Test User',
+      email: 'test@example.com'
     };
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
