@@ -20,7 +20,8 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  TextField
+  TextField,
+  Link
 } from '@mui/material';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import { getCampaignDetailByEpicLink } from '../services/jiraService';
@@ -142,6 +143,10 @@ function CampaignDetailPage() {
       'Review': 'warning'
     };
     return statusColors[statusName] || 'default';
+  };
+  const handleKeyClick = (e, campaignKey) => {
+    e.stopPropagation(); // Prevent row click
+    window.open(`https://digit-discuss.atlassian.net/browse/${campaignKey}`, '_blank');
   };
 
   const formatDate = (dateString) => {
@@ -414,7 +419,23 @@ function CampaignDetailPage() {
                     key={issue.id}
                     sx={{ '&:hover': { backgroundColor: '#f9f9f9' } }}
                   >
-                    <TableCell>{issue.key}</TableCell>
+                    <TableCell>
+                    <Link
+                      component="button"
+                      variant="body2"
+                      onClick={(e) => handleKeyClick(e, issue.key)}
+                      sx={{
+                        cursor: 'pointer',
+                        textDecoration: 'none',
+                        color: 'primary.main',
+                        '&:hover': {
+                          textDecoration: 'underline'
+                        }
+                      }}
+                    >
+                      {issue.key}
+                    </Link>
+                  </TableCell>
                     <TableCell>{issue.fields?.summary || 'N/A'}</TableCell>
                     <TableCell>
                       <Chip
