@@ -249,7 +249,7 @@ function CampaignDetailPage() {
                 fontWeight: 600,
                 color: "primary.main",
               }}>
-              {epicTitle}
+              {/* {epicTitle} */}
             </Typography>
 
             {/* Epic Description */}
@@ -262,7 +262,7 @@ function CampaignDetailPage() {
                 lineHeight: 1.6,
                 whiteSpace: "pre-wrap",
               }}>
-              {renderDescription(epicDescription)}
+              {/* {renderDescription(epicDescription)} */}
             </Typography>
 
             <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
