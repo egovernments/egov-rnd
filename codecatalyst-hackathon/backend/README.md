@@ -38,6 +38,9 @@ setx OPENAI_API_KEY "sk-..."
 
 # 5) Run
 streamlit run app.py
+
+# For new ui use this
+python3 fastapi_app.py
 ```
 
 If you only use **Excel uploads**, you don’t need Google APIs.
