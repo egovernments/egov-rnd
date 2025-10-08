@@ -1,0 +1,49 @@
+.gauge-container {
+    position: relative;
+    width: 200px;
+    height: 100px; /* Half circle */
+    margin: 20px auto;
+    overflow: hidden; /* To hide the bottom half of the circle */
+  }
+  
+  .gauge {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    top: 0;
+    left: 0;
+  }
+  
+  .gauge-arc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 20px solid #eee;
+    border-bottom-color: transparent; /* Makes it a semi-circle */
+    border-left-color: transparent; /* Makes it a semi-circle */
+    transform: rotate(-135deg); /* Adjust start angle */
+  }
+  
+  .gauge-needle {
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background: #333;
+    top: 20px;
+    left: 99px;
+    transform-origin: bottom center;
+  }
+  
+  .gauge-center {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #333;
+    border-radius: 50%;
+    top: 95px;
+    left: 95px;
+  }

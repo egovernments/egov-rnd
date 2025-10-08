@@ -18,7 +18,8 @@ import {
   Grid,
   CircularProgress,
   Alert,
-  TextField
+  TextField,
+  Link
 } from '@mui/material';
 import { getCampaigns } from '../services/jiraService';
 
@@ -99,6 +100,11 @@ const CampaignDetails = () => {
 
   const handleRowClick = (campaign) => {
     navigate(`/campaign/${campaign.key}`);
+  };
+
+  const handleKeyClick = (e, campaignKey) => {
+    e.stopPropagation(); // Prevent row click
+    window.open(`https://digit-discuss.atlassian.net/browse/${campaignKey}`, '_blank');
   };
 
   return (
@@ -192,7 +198,21 @@ const CampaignDetails = () => {
                 }}
               >
                 <TableCell component="th" scope="row">
-                  {campaign.key}
+                  <Link
+                    component="button"
+                    variant="body2"
+                    onClick={(e) => handleKeyClick(e, campaign.key)}
+                    sx={{
+                      cursor: 'pointer',
+                      textDecoration: 'none',
+                      color: 'primary.main',
+                      '&:hover': {
+                        textDecoration: 'underline'
+                      }
+                    }}
+                  >
+                    {campaign.key}
+                  </Link>
                 </TableCell>
                 <TableCell>{campaign.fields?.summary || 'N/A'}</TableCell>
                 <TableCell>
