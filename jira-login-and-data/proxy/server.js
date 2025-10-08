@@ -11,7 +11,7 @@ app.use(express.json());
 // Jira credentials for Basic Auth
 const JIRA_EMAIL = "";
 const JIRA_API_TOKEN = ""
-const JIRA_DOMAIN = "digit-discuss.atlassian.net";
+const JIRA_DOMAIN = "";
 
 // Create Base64-encoded string for Basic Auth
 const BASIC_AUTH = Buffer.from(`${JIRA_EMAIL}:${JIRA_API_TOKEN}`).toString("base64");
