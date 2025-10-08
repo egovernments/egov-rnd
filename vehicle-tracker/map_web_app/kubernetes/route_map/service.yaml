@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: route-map-app-service
+  namespace: apps
+  labels:
+    app: route-map-app
+spec:
+  selector:
+    app: route-map-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
