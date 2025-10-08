@@ -10,8 +10,8 @@ app.use(express.json());
 
 // Jira credentials for Basic Auth
 const JIRA_EMAIL = "ashish.tiwari@egovernments.org";
-const JIRA_API_TOKEN =
-  "ATATT3xFfGF0s9AOKDaUjwB4fq_42SuhI7KVqEPh5nqGhm649EXH3t8lQ88zU5PWxO-U9M3p5Xi1Vkg5yxSSb95x2vtTh74LXSzfYqDD4AJO2uxcH8Sy9Gwcc-4a-f33Uox9Ie2vsTLUi2CkPrB6tbsbxjFta_cFQrPwzeLjdWaylsJGIeO5lxY=4EFB4414";
+// const JIRA_API_TOKEN =
+  // "ATATT3xFfGF0s9AOKDaUjwB4fq_42SuhI7KVqEPh5nqGhm649EXH3t8lQ88zU5PWxO-U9M3p5Xi1Vkg5yxSSb95x2vtTh74LXSzfYqDD4AJO2uxcH8Sy9Gwcc-4a-f33Uox9Ie2vsTLUi2CkPrB6tbsbxjFta_cFQrPwzeLjdWaylsJGIeO5lxY=4EFB4414";
 const JIRA_DOMAIN = "digit-discuss.atlassian.net";
 
 // Create Base64-encoded string for Basic Auth
