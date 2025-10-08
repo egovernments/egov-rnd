@@ -46,6 +46,7 @@ function Login() {
             size="large"
             onClick={handleDummyLogin}
             fullWidth
+            sx={{ mt: 2 }}
           >
             Login
           </Button>
