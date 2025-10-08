@@ -3,9 +3,9 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#F47738', // Primary color from design system
-      light: '#FF9E6B',
-      dark: '#E55A1B',
+      main: '#c84c0e', // Primary color from design system
+      light: '#d66d3a', // Lighter variant of #c84c0e
+      dark: '#a13d0b', // Darker variant of #c84c0e
       contrastText: '#FFFFFF',
     },
     secondary: {
@@ -138,7 +138,7 @@ const theme = createTheme({
               borderColor: '#505A5F',
             },
             '&.Mui-focused fieldset': {
-              borderColor: '#F47738',
+              borderColor: '#c84c0e',
             },
           },
         },
