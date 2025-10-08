@@ -1,0 +1,2854 @@
+{
+  "issues": [
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "99280",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/99280",
+      "key": "HDDF-4543",
+      "fields": {
+        "summary": "Implementation kit for the partners",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "98919",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/98919",
+      "key": "HDDF-4488",
+      "fields": {
+        "summary": "Nigeria Azithromycin Campaign in Adamawa and Gombe state respectively - MC ",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "98336",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/98336",
+      "key": "HDDF-4411",
+      "fields": {
+        "summary": "Congo Brazaville Zero Dose Campaign",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Aa9dfb93b-0620-4ac8-b94d-7327615306b3",
+          "accountId": "712020:a9dfb93b-0620-4ac8-b94d-7327615306b3",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/c60c6bdb29b2fe2ee039e6268a050d5a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FTD-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/c60c6bdb29b2fe2ee039e6268a050d5a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FTD-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/c60c6bdb29b2fe2ee039e6268a050d5a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FTD-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/c60c6bdb29b2fe2ee039e6268a050d5a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FTD-3.png"
+          },
+          "displayName": "Tranquillin Dagan",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10275",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "TO DO",
+          "id": "10275",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "97463",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/97463",
+      "key": "HDDF-4048",
+      "fields": {
+        "summary": "Senegal MDA 2025 Campaign",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A0f4f9a0b-a458-42f5-8bbd-92c1949caf62",
+          "accountId": "712020:0f4f9a0b-a458-42f5-8bbd-92c1949caf62",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/7d1c7eb2aa51964a50646d28a6355a82?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAG-0.png",
+            "24x24": "https://secure.gravatar.com/avatar/7d1c7eb2aa51964a50646d28a6355a82?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAG-0.png",
+            "16x16": "https://secure.gravatar.com/avatar/7d1c7eb2aa51964a50646d28a6355a82?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAG-0.png",
+            "32x32": "https://secure.gravatar.com/avatar/7d1c7eb2aa51964a50646d28a6355a82?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAG-0.png"
+          },
+          "displayName": "Aviral Gupta",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "97127",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/97127",
+      "key": "HDDF-3766",
+      "fields": {
+        "summary": "Senegal SMC  2025 Campaign ",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4e870882-a599-48cf-93b6-0eba66e27d1f",
+          "accountId": "712020:4e870882-a599-48cf-93b6-0eba66e27d1f",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png"
+          },
+          "displayName": "Susmita Behera",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "96491",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/96491",
+      "key": "HDDF-3675",
+      "fields": {
+        "summary": "Upgrade of Nigeria MC instances to latest version and movement to Central Instance",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "96488",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/96488",
+      "key": "HDDF-3674",
+      "fields": {
+        "summary": "Common changes in Mozambique Campaigns",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "96311",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/96311",
+      "key": "HDDF-3597",
+      "fields": {
+        "summary": "Jigawa state Azithromycin Campaign",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "96298",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/96298",
+      "key": "HDDF-3590",
+      "fields": {
+        "summary": "Salama Migration for Moz",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "96283",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/96283",
+      "key": "HDDF-3584",
+      "fields": {
+        "summary": "Guinea SMC 2025",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4e870882-a599-48cf-93b6-0eba66e27d1f",
+          "accountId": "712020:4e870882-a599-48cf-93b6-0eba66e27d1f",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png"
+          },
+          "displayName": "Susmita Behera",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10281",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "SIGNED OFF",
+          "id": "10281",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "95846",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/95846",
+      "key": "HDDF-3496",
+      "fields": {
+        "summary": "Burundi National Rollout CRs",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "95720",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/95720",
+      "key": "HDDF-3392",
+      "fields": {
+        "summary": " Nigeria Azithromycin Campaign in Kano state- Solina Group",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "95661",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/95661",
+      "key": "HDDF-3379",
+      "fields": {
+        "summary": "Kano State Polio/ Measles Campaign - CHAI",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "95399",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/95399",
+      "key": "HDDF-3355",
+      "fields": {
+        "summary": "Moz(Nampula) Bednet+NTD ICD campaign",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=5f4f7e7632360700381e5f65",
+          "accountId": "5f4f7e7632360700381e5f65",
+          "emailAddress": "ankit.sharma@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/3",
+          "description": "This work item is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "94745",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/94745",
+      "key": "HDDF-3300",
+      "fields": {
+        "summary": "Setup Filestore on Congo UAT",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A27c0e278-1cd9-4f6e-94d9-ae135ee9998f",
+          "accountId": "712020:27c0e278-1cd9-4f6e-94d9-ae135ee9998f",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cecd357773330fb106cc1087c3c0ed77?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/cecd357773330fb106cc1087c3c0ed77?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/cecd357773330fb106cc1087c3c0ed77?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/cecd357773330fb106cc1087c3c0ed77?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png"
+          },
+          "displayName": "Ankit Sharma(beehyv)",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10281",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "SIGNED OFF",
+          "id": "10281",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "94421",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/94421",
+      "key": "HDDF-3211",
+      "fields": {
+        "summary": "Moz Prod | Microplan | upgrade to 0.3",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A27c0e278-1cd9-4f6e-94d9-ae135ee9998f",
+          "accountId": "712020:27c0e278-1cd9-4f6e-94d9-ae135ee9998f",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cecd357773330fb106cc1087c3c0ed77?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/cecd357773330fb106cc1087c3c0ed77?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/cecd357773330fb106cc1087c3c0ed77?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/cecd357773330fb106cc1087c3c0ed77?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png"
+          },
+          "displayName": "Ankit Sharma(beehyv)",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10281",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "SIGNED OFF",
+          "id": "10281",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "94351",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/94351",
+      "key": "HDDF-3165",
+      "fields": {
+        "summary": "MC SMC Campaigns 2025",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Ade9b9819-1665-4383-8b15-85a2cd8592d2",
+          "accountId": "712020:de9b9819-1665-4383-8b15-85a2cd8592d2",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png"
+          },
+          "displayName": "James Debra",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/3",
+          "description": "This work item is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "94111",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/94111",
+      "key": "HDDF-3088",
+      "fields": {
+        "summary": "TOGO SMC +Zero Dose Campaign",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Aa9dfb93b-0620-4ac8-b94d-7327615306b3",
+          "accountId": "712020:a9dfb93b-0620-4ac8-b94d-7327615306b3",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/c60c6bdb29b2fe2ee039e6268a050d5a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FTD-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/c60c6bdb29b2fe2ee039e6268a050d5a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FTD-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/c60c6bdb29b2fe2ee039e6268a050d5a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FTD-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/c60c6bdb29b2fe2ee039e6268a050d5a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FTD-3.png"
+          },
+          "displayName": "Tranquillin Dagan",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "94093",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/94093",
+      "key": "HDDF-3086",
+      "fields": {
+        "summary": "Nigeria Polio(Kano State) with CHAI",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=63da090b86a66a7cc7a5b0c1",
+          "accountId": "63da090b86a66a7cc7a5b0c1",
+          "emailAddress": "megha.s@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/0fc43403410bcc78c4bf286aa7c90ab8?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FMS-4.png",
+            "24x24": "https://secure.gravatar.com/avatar/0fc43403410bcc78c4bf286aa7c90ab8?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FMS-4.png",
+            "16x16": "https://secure.gravatar.com/avatar/0fc43403410bcc78c4bf286aa7c90ab8?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FMS-4.png",
+            "32x32": "https://secure.gravatar.com/avatar/0fc43403410bcc78c4bf286aa7c90ab8?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FMS-4.png"
+          },
+          "displayName": "Megha S",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "93903",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/93903",
+      "key": "HDDF-3056",
+      "fields": {
+        "summary": "Congo Payments Integration",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=63b2894e6ad11358a0992447",
+          "accountId": "63b2894e6ad11358a0992447",
+          "emailAddress": "sarasani.vishalreddy@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/6a3e7fb319551a545666c58640595758?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVS-4.png",
+            "24x24": "https://secure.gravatar.com/avatar/6a3e7fb319551a545666c58640595758?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVS-4.png",
+            "16x16": "https://secure.gravatar.com/avatar/6a3e7fb319551a545666c58640595758?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVS-4.png",
+            "32x32": "https://secure.gravatar.com/avatar/6a3e7fb319551a545666c58640595758?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVS-4.png"
+          },
+          "displayName": "Vishal Sarasani",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "93692",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/93692",
+      "key": "HDDF-2991",
+      "fields": {
+        "summary": "CRS/NMEP Taraba SMC + ITN 2025",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Ade9b9819-1665-4383-8b15-85a2cd8592d2",
+          "accountId": "712020:de9b9819-1665-4383-8b15-85a2cd8592d2",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png"
+          },
+          "displayName": "James Debra",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "93541",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/93541",
+      "key": "HDDF-2933",
+      "fields": {
+        "summary": "Nigeria Bauchi SMC + VAS Campaign",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Ade9b9819-1665-4383-8b15-85a2cd8592d2",
+          "accountId": "712020:de9b9819-1665-4383-8b15-85a2cd8592d2",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png"
+          },
+          "displayName": "James Debra",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "93307",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/93307",
+      "key": "HDDF-2886",
+      "fields": {
+        "summary": "Vehicle Tracking Module development",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=5f4f7e7632360700381e5f65",
+          "accountId": "5f4f7e7632360700381e5f65",
+          "emailAddress": "ankit.sharma@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "93141",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/93141",
+      "key": "HDDF-2867",
+      "fields": {
+        "summary": "CMS Nigeria - IEV checklist ",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/3",
+          "description": "This work item is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "93017",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/93017",
+      "key": "HDDF-2791",
+      "fields": {
+        "summary": "Schisto APK Upgrade to v.1.7",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Ade9b9819-1665-4383-8b15-85a2cd8592d2",
+          "accountId": "712020:de9b9819-1665-4383-8b15-85a2cd8592d2",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png"
+          },
+          "displayName": "James Debra",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "93008",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/93008",
+      "key": "HDDF-2782",
+      "fields": {
+        "summary": "STH Upgrade to v.1.7",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Ade9b9819-1665-4383-8b15-85a2cd8592d2",
+          "accountId": "712020:de9b9819-1665-4383-8b15-85a2cd8592d2",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png"
+          },
+          "displayName": "James Debra",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10401",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "Dropped",
+          "id": "10401",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "92966",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/92966",
+      "key": "HDDF-2765",
+      "fields": {
+        "summary": "MC  SMC Nigeria Campaign Upgrade to 1.7 ",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10281",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "SIGNED OFF",
+          "id": "10281",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "92927",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/92927",
+      "key": "HDDF-2757",
+      "fields": {
+        "summary": "CMS Nigeria - eCHIS Enrolment tool ",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10401",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "Dropped",
+          "id": "10401",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "92862",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/92862",
+      "key": "HDDF-2738",
+      "fields": {
+        "summary": "Stock Management Revamp",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Ade9b9819-1665-4383-8b15-85a2cd8592d2",
+          "accountId": "712020:de9b9819-1665-4383-8b15-85a2cd8592d2",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png"
+          },
+          "displayName": "James Debra",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "92651",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/92651",
+      "key": "HDDF-2647",
+      "fields": {
+        "summary": "Taraba Microplan Modification",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Ade9b9819-1665-4383-8b15-85a2cd8592d2",
+          "accountId": "712020:de9b9819-1665-4383-8b15-85a2cd8592d2",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cda1d76b149983f0bb8a5b6f093ef73b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FJD-6.png"
+          },
+          "displayName": "James Debra",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "92589",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/92589",
+      "key": "HDDF-2642",
+      "fields": {
+        "summary": "Taraba ITN Campaign",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4e870882-a599-48cf-93b6-0eba66e27d1f",
+          "accountId": "712020:4e870882-a599-48cf-93b6-0eba66e27d1f",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/dca0c50e96f223f6a85f44fef433eb8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSB-3.png"
+          },
+          "displayName": "Susmita Behera",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "91960",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/91960",
+      "key": "HDDF-2492",
+      "fields": {
+        "summary": "Soil Transmitted Helminths Campaign For Kano Nigeria",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "90342",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/90342",
+      "key": "HDDF-2358",
+      "fields": {
+        "summary": "Togo SMC UAT",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=5f4f7e7632360700381e5f65",
+          "accountId": "5f4f7e7632360700381e5f65",
+          "emailAddress": "ankit.sharma@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "90341",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/90341",
+      "key": "HDDF-2357",
+      "fields": {
+        "summary": "Senegal (ITN) bednet go-live",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "90340",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/90340",
+      "key": "HDDF-2356",
+      "fields": {
+        "summary": "Nigeria (Ondo) Bednet Campaign",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "90339",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/90339",
+      "key": "HDDF-2355",
+      "fields": {
+        "summary": "Congo Brazaville(ITN) bednet campaign go-live",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": null,
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/3",
+          "description": "This work item is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "90338",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/90338",
+      "key": "HDDF-2354",
+      "fields": {
+        "summary": "Soil Transmitted Helminths(STH) go-live in Kano",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "90334",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/90334",
+      "key": "HDDF-2350",
+      "fields": {
+        "summary": "Enhancements by HCM Solutions Engineering",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "89649",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/89649",
+      "key": "HDDF-2150",
+      "fields": {
+        "summary": "Moz(Cabo Delgado) bednet UAT and go-live",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/3",
+          "description": "This work item is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "89493",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/89493",
+      "key": "HDDF-2128",
+      "fields": {
+        "summary": "Nigeria Azithromycin Campaign in Kaduna and Kebbi",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "accountId": "712020:4b54099c-e11d-4e9e-846b-9e819a16fdc7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/17b406d05b9c83b875b803bf1620690a?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSA-3.png"
+          },
+          "displayName": "Sandra Nguwasen Akura",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "87771",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/87771",
+      "key": "HDDF-1660",
+      "fields": {
+        "summary": "Microplanning module go-live",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "87596",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/87596",
+      "key": "HDDF-1574",
+      "fields": {
+        "summary": "Burundi Bednet campaign UAT and go-live",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=5f4f7e7632360700381e5f65",
+          "accountId": "5f4f7e7632360700381e5f65",
+          "emailAddress": "ankit.sharma@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "87442",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/87442",
+      "key": "HDDF-1529",
+      "fields": {
+        "summary": "Kebbi - Project not assigned for an user.",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Aa25f927d-08cd-4898-9ca5-38a3b75f5c1b",
+          "accountId": "712020:a25f927d-08cd-4898-9ca5-38a3b75f5c1b",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/8d15c191b478e7da65f8c7c7f773082c?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSG-4.png",
+            "24x24": "https://secure.gravatar.com/avatar/8d15c191b478e7da65f8c7c7f773082c?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSG-4.png",
+            "16x16": "https://secure.gravatar.com/avatar/8d15c191b478e7da65f8c7c7f773082c?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSG-4.png",
+            "32x32": "https://secure.gravatar.com/avatar/8d15c191b478e7da65f8c7c7f773082c?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSG-4.png"
+          },
+          "displayName": "Sahil Gupta",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10264",
+          "description": "This status is managed internally by Jira Software",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "INVALID",
+          "id": "10264",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "87012",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/87012",
+      "key": "HDDF-1438",
+      "fields": {
+        "summary": "Schistosomiasis campaign for Nigeria Kano",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A28cf3e57-8996-4a01-a3d8-0780e91621f7",
+          "accountId": "712020:28cf3e57-8996-4a01-a3d8-0780e91621f7",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/2f5ce6b3f493bec8437216c8b814f26c?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FM-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/2f5ce6b3f493bec8437216c8b814f26c?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FM-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/2f5ce6b3f493bec8437216c8b814f26c?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FM-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/2f5ce6b3f493bec8437216c8b814f26c?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FM-3.png"
+          },
+          "displayName": "megha.s",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10281",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "SIGNED OFF",
+          "id": "10281",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "86317",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/86317",
+      "key": "HDDF-1324",
+      "fields": {
+        "summary": "Kebbi bug bash observations",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=61d42b34326554006cf876e0",
+          "accountId": "61d42b34326554006cf876e0",
+          "emailAddress": "swathi.g@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/89e67114aa8ec0514a2df0964cf588bf?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSG-5.png",
+            "24x24": "https://secure.gravatar.com/avatar/89e67114aa8ec0514a2df0964cf588bf?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSG-5.png",
+            "16x16": "https://secure.gravatar.com/avatar/89e67114aa8ec0514a2df0964cf588bf?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSG-5.png",
+            "32x32": "https://secure.gravatar.com/avatar/89e67114aa8ec0514a2df0964cf588bf?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FSG-5.png"
+          },
+          "displayName": "Swathi Ghanate",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/3",
+          "description": "This work item is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "86054",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/86054",
+      "key": "HDDF-1275",
+      "fields": {
+        "summary": "Transformer changes to add project details in all indices",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A183c9cb4-efe4-43b6-8e4a-e21a43ed8f8f",
+          "accountId": "712020:183c9cb4-efe4-43b6-8e4a-e21a43ed8f8f",
+          "emailAddress": "prerna.kumari@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/a01ba7e4652dd6e3dcaff0b4a7e487e9?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FPK-2.png",
+            "24x24": "https://secure.gravatar.com/avatar/a01ba7e4652dd6e3dcaff0b4a7e487e9?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FPK-2.png",
+            "16x16": "https://secure.gravatar.com/avatar/a01ba7e4652dd6e3dcaff0b4a7e487e9?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FPK-2.png",
+            "32x32": "https://secure.gravatar.com/avatar/a01ba7e4652dd6e3dcaff0b4a7e487e9?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FPK-2.png"
+          },
+          "displayName": "Prerna Kumari",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10264",
+          "description": "This status is managed internally by Jira Software",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "INVALID",
+          "id": "10264",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "85600",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/85600",
+      "key": "HDDF-1197",
+      "fields": {
+        "summary": "Tasks other than planned/regular campaigns",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3A595ad146-929c-4c38-971b-43e4da889917",
+          "accountId": "712020:595ad146-929c-4c38-971b-43e4da889917",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:595ad146-929c-4c38-971b-43e4da889917/b6e593d2-63eb-420a-8932-cd165fe3d950/32"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/3",
+          "description": "This work item is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "84636",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/84636",
+      "key": "HDDF-980",
+      "fields": {
+        "summary": "Pull performance changes to nigeria",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=63b2894e6ad11358a0992447",
+          "accountId": "63b2894e6ad11358a0992447",
+          "emailAddress": "sarasani.vishalreddy@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/6a3e7fb319551a545666c58640595758?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVS-4.png",
+            "24x24": "https://secure.gravatar.com/avatar/6a3e7fb319551a545666c58640595758?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVS-4.png",
+            "16x16": "https://secure.gravatar.com/avatar/6a3e7fb319551a545666c58640595758?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVS-4.png",
+            "32x32": "https://secure.gravatar.com/avatar/6a3e7fb319551a545666c58640595758?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FVS-4.png"
+          },
+          "displayName": "Vishal Sarasani",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10401",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/generic.png",
+          "name": "Dropped",
+          "id": "10401",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/3",
+            "id": 3,
+            "key": "done",
+            "colorName": "green",
+            "name": "Done"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "84490",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/84490",
+      "key": "HDDF-941",
+      "fields": {
+        "summary": "Nigeria Kebbi & Borno SMC campaign readiness",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=5f4f7e7632360700381e5f65",
+          "accountId": "5f4f7e7632360700381e5f65",
+          "emailAddress": "ankit.sharma@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "24x24": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "16x16": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png",
+            "32x32": "https://secure.gravatar.com/avatar/42ac807ad50e3496e6eb8d1ada12001b?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAS-3.png"
+          },
+          "displayName": "Ankit Sharma",
+          "active": true,
+          "timeZone": "Asia/Calcutta",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/3",
+          "description": "This work item is being actively worked on at the moment by the assignee.",
+          "iconUrl": "https://digit-discuss.atlassian.net/images/icons/statuses/inprogress.png",
+          "name": "In Progress",
+          "id": "3",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/4",
+            "id": 4,
+            "key": "indeterminate",
+            "colorName": "yellow",
+            "name": "In Progress"
+          }
+        }
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "83579",
+      "self": "https://digit-discuss.atlassian.net/rest/api/3/issue/83579",
+      "key": "HDDF-779",
+      "fields": {
+        "summary": "Salama (Mozambique) Roadmap execution ",
+        "project": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/project/10167",
+          "id": "10167",
+          "key": "HDDF",
+          "name": "Demand Fulfilment for Campaign in Countries",
+          "projectTypeKey": "software",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405",
+            "24x24": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=small",
+            "16x16": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=xsmall",
+            "32x32": "https://digit-discuss.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/10405?size=medium"
+          },
+          "projectCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/projectCategory/10007",
+            "id": "10007",
+            "description": "Implementation  projects",
+            "name": "Implementation"
+          }
+        },
+        "assignee": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/user?accountId=712020%3Adbb10ade-a8b1-4a29-bbc6-482fd54e85d8",
+          "accountId": "712020:dbb10ade-a8b1-4a29-bbc6-482fd54e85d8",
+          "emailAddress": "herve.muneza@egovernments.org",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:dbb10ade-a8b1-4a29-bbc6-482fd54e85d8/f68d1f07-9966-459e-9250-bc1973e13898/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:dbb10ade-a8b1-4a29-bbc6-482fd54e85d8/f68d1f07-9966-459e-9250-bc1973e13898/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:dbb10ade-a8b1-4a29-bbc6-482fd54e85d8/f68d1f07-9966-459e-9250-bc1973e13898/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:dbb10ade-a8b1-4a29-bbc6-482fd54e85d8/f68d1f07-9966-459e-9250-bc1973e13898/32"
+          },
+          "displayName": "Hervé Muneza",
+          "active": true,
+          "timeZone": "Africa/Maputo",
+          "accountType": "atlassian"
+        },
+        "status": {
+          "self": "https://digit-discuss.atlassian.net/rest/api/3/status/10001",
+          "description": "",
+          "iconUrl": "https://digit-discuss.atlassian.net/",
+          "name": "Backlog",
+          "id": "10001",
+          "statusCategory": {
+            "self": "https://digit-discuss.atlassian.net/rest/api/3/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "To Do"
+          }
+        }
+      }
+    }
+  ],
+  "nextPageToken": "Ck1jcmVhdGVkJmNyZWF0ZWQmT1JERVJfREVTQyNMb25nJk1UY3lNREEzT1RNek5UTXlOUT09JVN0cmluZyZTRVJFUmc9PSVJbnQmTnpjNRAyGL_V-ZWcMyI5cHJvamVjdCA9IEhEREYgQU5EIGlzc3VldHlwZSA9IEVwaWMgT1JERVIgQlkgY3JlYXRlZCBERVND",
+  "isLast": false
+}

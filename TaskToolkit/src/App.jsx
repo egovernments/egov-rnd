@@ -8,7 +8,8 @@ import './App.css'
 import HelloWorld from './screens/HelloWorld'
 import Login from './screens/Login'
 import ProtectedRoute from './components/ProtectedRoute'
-import JiraTest from './components/JiraTest'
+import CampaignDetailsScreen from './screens/CampaignDetailsScreen'
+import JiraTestScreen from './screens/JiraTestScreen'
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
 const basename = import.meta.env.DEV ? '/' : '/egov-rnd/'
@@ -27,6 +28,22 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <HelloWorld />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/campaign-details"
+                element={
+                  <ProtectedRoute>
+                    <CampaignDetailsScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/jira-test"
+                element={
+                  <ProtectedRoute>
+                    <JiraTestScreen />
                   </ProtectedRoute>
                 }
               />
