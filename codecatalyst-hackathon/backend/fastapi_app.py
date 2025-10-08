@@ -237,6 +237,19 @@ async def get_campaign_detail(campaign_name: str):
     return JSONResponse({"campaign": details})
 
 
+import re
+from fastapi.responses import JSONResponse
+
+def strip_markdown(md: str) -> str:
+    """Remove Markdown symbols for plain text output."""
+    md = re.sub(r'\*\*(.*?)\*\*', r'\1', md)       # bold
+    md = re.sub(r'__(.*?)__', r'\1', md)           # alt bold
+    md = re.sub(r'_([^_]+)_', r'\1', md)           # italic
+    md = re.sub(r'#+\s*(.*)', r'\1', md)           # headers
+    md = re.sub(r'`([^`]+)`', r'\1', md)           # inline code
+    md = re.sub(r'\n{3,}', '\n\n', md)             # collapse extra newlines
+    return md.strip()
+
 @app.post("/api/chat")
 async def chat(request: Request):
     """
@@ -247,6 +260,7 @@ async def chat(request: Request):
         body = await request.json()
         question = body.get("question", "")
         intent = body.get("intent", "query")
+        render_md = body.get("render_markdown", False)  # optional flag from frontend
 
         if not question and intent == "query":
             return JSONResponse({"error": "No question provided"}, status_code=400)
@@ -255,10 +269,18 @@ async def chat(request: Request):
         if not dfs:
             return JSONResponse({"answer": "Please load a dataset first."})
 
+        # run schedule detection intent
         if intent == "schedule":
             return JSONResponse(detect_conflicts(dfs))
 
+        # normal Q&A
         answer = answer_question(question, dfs)
+
+        # Option A: render markdown on frontend → keep raw markdown
+        # Option B: return plain text → strip markdown here
+        if not render_md:
+            answer = strip_markdown(answer)
+
         return JSONResponse({"answer": answer, "question": question})
     except Exception as e:
         return JSONResponse({"error": str(e)}, status_code=500)
