@@ -13,7 +13,7 @@ function Layout({ children }) {
       width: '100%'
     }}>
       <AppBar />
-      <Box sx={{ display: 'flex', flexGrow: 1, height: 'calc(100vh - 64px)' }}>
+      <Box sx={{ display: 'flex', flexGrow: 1, height: 'calc(100vh - 100px)' }}>
         <Sidebar />
         <Box component="main" sx={{ flexGrow: 1, padding: 2, overflow: 'auto' }}>
           {children}
