@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCM Campaign Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .load-section {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .kpi-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .kpi-card p {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 0;
+            border-radius: 12px;
+            max-width: 800px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .detail-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            color: #333;
+            font-size: 1rem;
+            white-space: pre-wrap;
+        }
+
+        .clickable {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .clickable:hover {
+            transform: translateX(5px);
+            background: #f0f0f0;
+        }
+
+        .campaign-list-item {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .campaign-list-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .campaign-list-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .campaign-list-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .campaign-list-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-ongoing {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-yet {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        #assetsList .btn {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            margin-bottom: 10px;
+        }
+
+        #assetsList .btn:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* Chatbot styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 400px;
+            max-width: calc(100vw - 40px);
+            height: 600px;
+            max-height: calc(100vh - 120px);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .chatbot-window.open {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.user {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .chat-message.bot {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .chat-message.user .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.bot .message-bubble {
+            background: white;
+            color: #333;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatbot-input-area {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .chatbot-input:focus {
+            border-color: #667eea;
+        }
+
+        .chatbot-send {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .chatbot-send:hover {
+            transform: translateY(-2px);
+        }
+
+        .chatbot-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: fit-content;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-window {
+                width: calc(100vw - 40px);
+                height: calc(100vh - 120px);
+                bottom: 90px;
+            }
+
+            .chatbot-button {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+
+        .timeline-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            align-items: center;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-campaign {
+            flex: 0 0 250px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .timeline-country {
+            flex: 0 0 100px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .timeline-months {
+            flex: 1;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .month-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .month-badge.tot {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .month-badge.golive {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .month-badge.uat {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .timeline-campaign,
+            .timeline-country {
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌍 HCM Campaign Dashboard</h1>
+            <p>Global Campaign Planning & Analytics</p>
+        </div>
+
+        <div class="card load-section">
+            <h2>Load Campaign Data</h2>
+            <div id="message"></div>
+
+            <div style="margin-bottom: 20px;">
+                <button class="btn" onclick="showGoogleSheet()" style="margin-right: 10px;">Google Sheet</button>
+                <button class="btn" onclick="showCSVUpload()" style="margin-right: 10px;">Upload CSV</button>
+                <button class="btn" onclick="showAssets()">Load from Assets</button>
+            </div>
+
+            <form id="loadForm" style="display: none;">
+                <div class="form-group">
+                    <label for="sheetUrl">Google Sheet URL</label>
+                    <input type="text" id="sheetUrl" name="sheet_url" placeholder="https://docs.google.com/spreadsheets/d/...">
+                </div>
+                <div class="form-group">
+                    <label for="saFile">Service Account JSON (Optional)</label>
+                    <input type="file" id="saFile" name="sa_file" accept=".json">
+                </div>
+                <button type="submit" class="btn" id="loadBtn">Load Google Sheet</button>
+            </form>
+
+            <form id="csvForm" style="display: none;">
+                <div class="form-group">
+                    <label for="csvFile">CSV File</label>
+                    <input type="file" id="csvFile" name="csv_file" accept=".csv" required>
+                </div>
+                <button type="submit" class="btn" id="csvBtn">Upload CSV</button>
+            </form>
+
+            <div id="assetsForm" style="display: block;">
+                <div class="form-group">
+                    <label>Available Files in Assets Folder</label>
+                    <div id="assetsList" style="display: grid; gap: 10px; margin-top: 10px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>Total Campaigns</h3>
+                    <p id="kpi-campaigns">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Countries</h3>
+                    <p id="kpi-countries">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Ongoing</h3>
+                    <p id="kpi-ongoing">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Yet to Start</h3>
+                    <p id="kpi-yettostart">0</p>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h2>Campaign Status</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h2>Country Distribution</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="countryChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h2>Campaign Type</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h2>Infrastructure</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="infraChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h2>Complexity Level</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="complexityChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h2>Campaign Partners</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="partnerChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-container">
+                <h2 style="margin-bottom: 20px;">Campaign Timeline</h2>
+                <div id="timelineView"></div>
+            </div>
+
+            <div class="card">
+                <h2 style="margin-bottom: 20px;">All Campaigns</h2>
+                <div class="form-group">
+                    <input type="text" id="campaignSearch" placeholder="Search campaigns..." style="margin-bottom: 15px;">
+                </div>
+                <div id="campaignsList" style="display: grid; gap: 10px;"></div>
+            </div>
+        </div>
+
+        <!-- Campaign Detail Modal -->
+        <div id="campaignModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Campaign Details</h2>
+                    <button class="close" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalContent" class="detail-grid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Chatbot -->
+        <div class="chatbot-container">
+            <div id="chatbotWindow" class="chatbot-window">
+                <div class="chatbot-header">
+                    <h3>🤖 Campaign Assistant</h3>
+                    <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+                </div>
+                <div id="chatMessages" class="chatbot-messages">
+                    <div class="chat-message bot">
+                        <div class="message-bubble">
+                            Hello! I'm your Campaign Assistant. I can help you analyze your campaign data. Try asking:
+                            <br><br>
+                            • "Which campaigns are ongoing?"
+                            • "Show me campaigns by country"
+                            • "What are the upcoming deadlines?"
+                            • "Which campaigns have high complexity?"
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbot-input-area">
+                    <input
+                        type="text"
+                        id="chatInput"
+                        class="chatbot-input"
+                        placeholder="Ask me anything about your campaigns..."
+                        onkeypress="handleChatKeypress(event)"
+                    >
+                    <button id="chatSend" class="chatbot-send" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+            <button class="chatbot-button" onclick="toggleChatbot()">💬</button>
+        </div>
+    </div>
+
+    <script>
+        let charts = {};
+
+        function showGoogleSheet() {
+            document.getElementById('loadForm').style.display = 'block';
+            document.getElementById('csvForm').style.display = 'none';
+            document.getElementById('assetsForm').style.display = 'none';
+        }
+
+        function showCSVUpload() {
+            document.getElementById('loadForm').style.display = 'none';
+            document.getElementById('csvForm').style.display = 'block';
+            document.getElementById('assetsForm').style.display = 'none';
+        }
+
+        function showAssets() {
+            document.getElementById('loadForm').style.display = 'none';
+            document.getElementById('csvForm').style.display = 'none';
+            document.getElementById('assetsForm').style.display = 'block';
+            loadAssetsList();
+        }
+
+        async function loadAssetsList() {
+            try {
+                const response = await fetch('/api/assets/files');
+                const data = await response.json();
+
+                const container = document.getElementById('assetsList');
+                container.innerHTML = '';
+
+                if (!data.files || data.files.length === 0) {
+                    container.innerHTML = '<p style="color: #666;">No CSV files found in assets folder</p>';
+                    return;
+                }
+
+                data.files.forEach(filename => {
+                    const btn = document.createElement('button');
+                    btn.className = 'btn';
+                    btn.textContent = filename;
+                    btn.style.width = '100%';
+                    btn.style.textAlign = 'left';
+                    btn.onclick = () => loadAssetFile(filename);
+                    container.appendChild(btn);
+                });
+            } catch (error) {
+                console.error('Error loading assets:', error);
+                showMessage('Error loading assets folder', 'error');
+            }
+        }
+
+        async function loadAssetFile(filename) {
+            try {
+                showMessage('Loading ' + filename + '...', 'success');
+
+                const response = await fetch(`/api/assets/load/${encodeURIComponent(filename)}`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    showMessage(data.message, 'success');
+                    loadDashboard();
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Error loading file: ' + error.message, 'error');
+            }
+        }
+
+        // Load assets list on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAssetsList();
+        });
+
+        // Google Sheet Form submission
+        document.getElementById('loadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = document.getElementById('loadBtn');
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
+
+            const formData = new FormData();
+            formData.append('sheet_url', document.getElementById('sheetUrl').value);
+
+            const saFile = document.getElementById('saFile').files[0];
+            if (saFile) {
+                formData.append('sa_file', saFile);
+            }
+
+            try {
+                const response = await fetch('/load-sheet', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    showMessage(data.message, 'success');
+                    loadDashboard();
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Error loading sheet: ' + error.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Load Google Sheet';
+            }
+        });
+
+        // CSV Upload Form submission
+        document.getElementById('csvForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = document.getElementById('csvBtn');
+            btn.disabled = true;
+            btn.textContent = 'Uploading...';
+
+            const formData = new FormData();
+            const csvFile = document.getElementById('csvFile').files[0];
+            formData.append('csv_file', csvFile);
+
+            try {
+                const response = await fetch('/upload-csv', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    showMessage(data.message, 'success');
+                    loadDashboard();
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Error uploading CSV: ' + error.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Upload CSV';
+            }
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = text;
+            setTimeout(() => {
+                messageDiv.className = '';
+                messageDiv.textContent = '';
+            }, 5000);
+        }
+
+        let allCampaigns = [];
+
+        async function loadDashboard() {
+            document.getElementById('dashboard').classList.remove('hidden');
+
+            // Debug: Check columns
+            const debugData = await fetch('/api/debug/columns').then(r => r.json());
+            console.log('Loaded columns:', debugData);
+
+            const analytics = await fetch('/api/campaign-analytics').then(r => r.json());
+            console.log('Analytics data:', analytics);
+
+            // Update KPIs
+            document.getElementById('kpi-campaigns').textContent = analytics.summary.total_campaigns || 0;
+            document.getElementById('kpi-countries').textContent = analytics.summary.countries || 0;
+            document.getElementById('kpi-ongoing').textContent = analytics.summary.ongoing || 0;
+            document.getElementById('kpi-yettostart').textContent = analytics.summary.yet_to_start || 0;
+
+            // Render charts
+            renderPieChart('statusChart', analytics.status_breakdown, 'Campaign Status');
+            renderBarChart('countryChart', analytics.country_breakdown, 'Countries');
+            renderBarChart('typeChart', analytics.campaign_type_breakdown, 'Campaign Types');
+            renderPieChart('infraChart', analytics.infrastructure_breakdown, 'Infrastructure');
+            renderPieChart('complexityChart', analytics.complexity_breakdown, 'Complexity');
+            renderBarChart('partnerChart', analytics.partner_breakdown, 'Partners');
+
+            // Render timeline
+            renderTimeline(analytics.timeline);
+
+            // Load campaigns list
+            await loadCampaignsList();
+        }
+
+        async function loadCampaignsList() {
+            const response = await fetch('/api/campaigns/list');
+            const data = await response.json();
+            allCampaigns = data.campaigns || [];
+
+            renderCampaignsList(allCampaigns);
+
+            // Setup search
+            document.getElementById('campaignSearch').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filtered = allCampaigns.filter(c =>
+                    c.name.toLowerCase().includes(searchTerm) ||
+                    c.country.toLowerCase().includes(searchTerm) ||
+                    c.type.toLowerCase().includes(searchTerm)
+                );
+                renderCampaignsList(filtered);
+            });
+        }
+
+        function renderCampaignsList(campaigns) {
+            const container = document.getElementById('campaignsList');
+            container.innerHTML = '';
+
+            if (campaigns.length === 0) {
+                container.innerHTML = '<p>No campaigns found</p>';
+                return;
+            }
+
+            campaigns.forEach(campaign => {
+                const item = document.createElement('div');
+                item.className = 'campaign-list-item';
+                item.onclick = () => showCampaignDetail(campaign.name);
+
+                const name = document.createElement('div');
+                name.className = 'campaign-list-name';
+                name.textContent = campaign.name;
+
+                const meta = document.createElement('div');
+                meta.className = 'campaign-list-meta';
+
+                if (campaign.country) {
+                    const country = document.createElement('span');
+                    country.innerHTML = `🌍 ${campaign.country}`;
+                    meta.appendChild(country);
+                }
+
+                if (campaign.status) {
+                    const status = document.createElement('span');
+                    const badge = document.createElement('span');
+                    badge.className = 'status-badge';
+                    if (campaign.status.toLowerCase().includes('on going')) {
+                        badge.classList.add('status-ongoing');
+                    } else if (campaign.status.toLowerCase().includes('yet')) {
+                        badge.classList.add('status-yet');
+                    }
+                    badge.textContent = campaign.status;
+                    status.appendChild(badge);
+                    meta.appendChild(status);
+                }
+
+                if (campaign.type) {
+                    const type = document.createElement('span');
+                    type.innerHTML = `📋 ${campaign.type}`;
+                    meta.appendChild(type);
+                }
+
+                item.appendChild(name);
+                item.appendChild(meta);
+                container.appendChild(item);
+            });
+        }
+
+        function renderPieChart(canvasId, data, title) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+
+            if (charts[canvasId]) {
+                charts[canvasId].destroy();
+            }
+
+            const labels = Object.keys(data).filter(k => k && k !== 'nan' && k !== '');
+            const values = labels.map(k => data[k]);
+
+            if (labels.length === 0) {
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('No data available', ctx.canvas.width / 2, ctx.canvas.height / 2);
+                return;
+            }
+
+            charts[canvasId] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: [
+                            'rgba(102, 126, 234, 0.8)',
+                            'rgba(118, 75, 162, 0.8)',
+                            'rgba(240, 147, 251, 0.8)',
+                            'rgba(79, 172, 254, 0.8)',
+                            'rgba(67, 233, 123, 0.8)',
+                            'rgba(245, 87, 108, 0.8)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderBarChart(canvasId, data, title) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+
+            if (charts[canvasId]) {
+                charts[canvasId].destroy();
+            }
+
+            const labels = Object.keys(data).filter(k => k && k !== 'nan' && k !== '');
+            const values = labels.map(k => data[k]);
+
+            if (labels.length === 0) {
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('No data available', ctx.canvas.width / 2, ctx.canvas.height / 2);
+                return;
+            }
+
+            charts[canvasId] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Count',
+                        data: values,
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderTimeline(timeline) {
+            const container = document.getElementById('timelineView');
+            container.innerHTML = '';
+
+            if (!timeline || timeline.length === 0) {
+                container.innerHTML = '<p>No timeline data available</p>';
+                return;
+            }
+
+            timeline.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'timeline-item clickable';
+                div.onclick = () => showCampaignDetail(item.campaign);
+
+                const campaign = document.createElement('div');
+                campaign.className = 'timeline-campaign';
+                campaign.textContent = item.campaign;
+
+                const country = document.createElement('div');
+                country.className = 'timeline-country';
+                country.textContent = item.country;
+
+                const months = document.createElement('div');
+                months.className = 'timeline-months';
+
+                item.months.forEach(m => {
+                    const badge = document.createElement('span');
+                    badge.className = 'month-badge';
+
+                    const activity = m.activity.toLowerCase();
+                    if (activity.includes('tot')) badge.classList.add('tot');
+                    else if (activity.includes('go-live')) badge.classList.add('golive');
+                    else if (activity.includes('uat')) badge.classList.add('uat');
+
+                    badge.textContent = `${m.month}: ${m.activity}`;
+                    months.appendChild(badge);
+                });
+
+                div.appendChild(campaign);
+                div.appendChild(country);
+                div.appendChild(months);
+                container.appendChild(div);
+            });
+        }
+
+        // Campaign detail modal functions
+        async function showCampaignDetail(campaignName) {
+            try {
+                const response = await fetch(`/api/campaigns/${encodeURIComponent(campaignName)}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    alert('Campaign not found');
+                    return;
+                }
+
+                const campaign = data.campaign;
+                document.getElementById('modalTitle').textContent = campaignName;
+
+                const modalContent = document.getElementById('modalContent');
+                modalContent.innerHTML = '';
+
+                // Define important fields to show first
+                const priorityFields = [
+                    'Country',
+                    'Campaign Status',
+                    'Quarter Year',
+                    'Campaign Type',
+                    'Region (State/ Province)',
+                    'Pilot or National or Regional',
+                    'Campaign Partner',
+                    'SI Partner or eGov',
+                    'Level of Complexity',
+                    'Infrastructure',
+                    'Actual Dates',
+                    '# of Provinces/ Counties/ Districts',
+                    'MoU expiry date',
+                    'BYOD (Yes or No)',
+                    'Console Version Used'
+                ];
+
+                // Show priority fields first
+                priorityFields.forEach(field => {
+                    if (campaign[field]) {
+                        addDetailItem(modalContent, field, campaign[field]);
+                    }
+                });
+
+                // Show remaining fields (months and others)
+                Object.keys(campaign).forEach(key => {
+                    if (!priorityFields.includes(key) && key !== '#' && key !== 'Campaign Name (only confirmed ones to be added)') {
+                        addDetailItem(modalContent, key, campaign[key]);
+                    }
+                });
+
+                document.getElementById('campaignModal').style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching campaign details:', error);
+                alert('Error loading campaign details');
+            }
+        }
+
+        function addDetailItem(container, label, value) {
+            const item = document.createElement('div');
+            item.className = 'detail-item';
+
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'detail-label';
+            labelDiv.textContent = label;
+
+            const valueDiv = document.createElement('div');
+            valueDiv.className = 'detail-value';
+            valueDiv.textContent = value;
+
+            item.appendChild(labelDiv);
+            item.appendChild(valueDiv);
+            container.appendChild(item);
+        }
+
+        function closeModal() {
+            document.getElementById('campaignModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('campaignModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Chatbot functions
+        function toggleChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.toggle('open');
+
+            if (window.classList.contains('open')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const question = input.value.trim();
+
+            if (!question) return;
+
+            const messagesContainer = document.getElementById('chatMessages');
+            const sendButton = document.getElementById('chatSend');
+
+            // Add user message
+            addChatMessage(question, 'user');
+
+            // Clear input
+            input.value = '';
+
+            // Disable send button
+            sendButton.disabled = true;
+
+            // Show typing indicator
+            const typingId = 'typing-' + Date.now();
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message bot';
+            typingDiv.id = typingId;
+            typingDiv.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
+
+                const data = await response.json();
+
+                // Remove typing indicator
+                document.getElementById(typingId).remove();
+
+                // Add bot response
+                if (data.answer) {
+                    addChatMessage(data.answer, 'bot');
+                } else if (data.error) {
+                    addChatMessage('Sorry, I encountered an error: ' + data.error, 'bot');
+                }
+            } catch (error) {
+                // Remove typing indicator
+                document.getElementById(typingId).remove();
+                addChatMessage('Sorry, I had trouble connecting. Please try again.', 'bot');
+                console.error('Chat error:', error);
+            } finally {
+                sendButton.disabled = false;
+                input.focus();
+            }
+        }
+
+        function addChatMessage(text, type) {
+            const messagesContainer = document.getElementById('chatMessages');
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${type}`;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.textContent = text;
+
+            messageDiv.appendChild(bubble);
+            messagesContainer.appendChild(messageDiv);
+
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>

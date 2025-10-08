@@ -45,7 +45,38 @@ def load_google_sheet_all_tabs(sheet_url: str, sa_json_bytes: Optional[bytes]) -
         sh = client.open_by_url(sheet_url)
         out = {}
         for ws in sh.worksheets():
-            df = pd.DataFrame(ws.get_all_records())
+            # Get all values to handle duplicate/empty headers
+            all_values = ws.get_all_values()
+            if not all_values:
+                out[ws.title] = pd.DataFrame()
+                continue
+
+            # First row as headers
+            headers = all_values[0]
+            data_rows = all_values[1:]
+
+            # Handle duplicate or empty column names
+            seen = {}
+            clean_headers = []
+            for i, h in enumerate(headers):
+                if not h or h.strip() == '':
+                    h = f'Column_{i+1}'
+                # Remove newlines and extra whitespace
+                h = str(h).replace('\n', ' ').strip()
+                if h in seen:
+                    seen[h] += 1
+                    clean_headers.append(f'{h}_{seen[h]}')
+                else:
+                    seen[h] = 0
+                    clean_headers.append(h)
+
+            df = pd.DataFrame(data_rows, columns=clean_headers)
+
+            # Clean string data - strip whitespace from all cells
+            for col in df.columns:
+                if df[col].dtype == 'object':
+                    df[col] = df[col].apply(lambda x: str(x).strip() if x and str(x).strip() != '' else x)
+
             out[ws.title] = df
         return out
     else:

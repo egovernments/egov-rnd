@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sheets Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .load-section {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .kpi-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .kpi-card p {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            table th,
+            table td {
+                padding: 8px;
+            }
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 AI Sheets Dashboard</h1>
+            <p>Campaign & Planning Analytics</p>
+        </div>
+
+        <div class="card load-section">
+            <h2>Load Google Sheet</h2>
+            <div id="message"></div>
+            <form id="loadForm">
+                <div class="form-group">
+                    <label for="sheetUrl">Google Sheet URL</label>
+                    <input type="text" id="sheetUrl" name="sheet_url" placeholder="https://docs.google.com/spreadsheets/d/..." required>
+                </div>
+                <div class="form-group">
+                    <label for="saFile">Service Account JSON (Optional)</label>
+                    <input type="file" id="saFile" name="sa_file" accept=".json">
+                </div>
+                <button type="submit" class="btn" id="loadBtn">Load Sheet</button>
+            </form>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>Sheets</h3>
+                    <p id="kpi-sheets">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Total Rows</h3>
+                    <p id="kpi-rows">0</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Campaigns</h3>
+                    <p id="kpi-campaigns">0</p>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h2>Status Breakdown</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h2>Owner Workload</h2>
+                    <div class="chart-wrapper">
+                        <canvas id="ownerChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Upcoming Deadlines (45 days)</h2>
+                <div id="deadlinesTable"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let statusChart = null;
+        let ownerChart = null;
+
+        // Form submission
+        document.getElementById('loadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = document.getElementById('loadBtn');
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
+
+            const formData = new FormData();
+            formData.append('sheet_url', document.getElementById('sheetUrl').value);
+
+            const saFile = document.getElementById('saFile').files[0];
+            if (saFile) {
+                formData.append('sa_file', saFile);
+            }
+
+            try {
+                const response = await fetch('/load-sheet', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    showMessage(data.message, 'success');
+                    loadDashboard();
+                } else {
+                    showMessage(data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('Error loading sheet: ' + error.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Load Sheet';
+            }
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = text;
+            setTimeout(() => {
+                messageDiv.className = '';
+                messageDiv.textContent = '';
+            }, 5000);
+        }
+
+        async function loadDashboard() {
+            document.getElementById('dashboard').classList.remove('hidden');
+
+            // Load KPIs
+            const kpiData = await fetch('/api/kpis').then(r => r.json());
+            document.getElementById('kpi-sheets').textContent = kpiData.sheets || 0;
+            document.getElementById('kpi-rows').textContent = kpiData.rows || 0;
+            document.getElementById('kpi-campaigns').textContent = kpiData.campaigns || 0;
+
+            // Load Status Breakdown Chart
+            const statusData = await fetch('/api/status-breakdown').then(r => r.json());
+            renderStatusChart(statusData);
+
+            // Load Owner Workload Chart
+            const ownerData = await fetch('/api/owner-workload').then(r => r.json());
+            renderOwnerChart(ownerData);
+
+            // Load Deadlines
+            const deadlinesData = await fetch('/api/upcoming-deadlines').then(r => r.json());
+            renderDeadlinesTable(deadlinesData);
+        }
+
+        function renderStatusChart(data) {
+            const ctx = document.getElementById('statusChart').getContext('2d');
+
+            if (statusChart) {
+                statusChart.destroy();
+            }
+
+            if (!data.labels || data.labels.length === 0) {
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('No status data available', ctx.canvas.width / 2, ctx.canvas.height / 2);
+                return;
+            }
+
+            statusChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Count',
+                        data: data.values,
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderOwnerChart(data) {
+            const ctx = document.getElementById('ownerChart').getContext('2d');
+
+            if (ownerChart) {
+                ownerChart.destroy();
+            }
+
+            if (!data.labels || data.labels.length === 0) {
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('No owner data available', ctx.canvas.width / 2, ctx.canvas.height / 2);
+                return;
+            }
+
+            ownerChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Tasks',
+                        data: data.values,
+                        backgroundColor: 'rgba(118, 75, 162, 0.8)',
+                        borderColor: 'rgba(118, 75, 162, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderDeadlinesTable(data) {
+            const container = document.getElementById('deadlinesTable');
+
+            if (!data.data || data.data.length === 0) {
+                container.innerHTML = '<p>No upcoming deadlines found.</p>';
+                return;
+            }
+
+            const table = document.createElement('table');
+            const thead = document.createElement('thead');
+            const tbody = document.createElement('tbody');
+
+            // Get column headers (exclude internal columns)
+            const columns = Object.keys(data.data[0]).filter(col => !col.startsWith('__'));
+
+            // Create header row
+            const headerRow = document.createElement('tr');
+            columns.forEach(col => {
+                const th = document.createElement('th');
+                th.textContent = col;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+
+            // Create data rows
+            data.data.forEach(row => {
+                const tr = document.createElement('tr');
+                columns.forEach(col => {
+                    const td = document.createElement('td');
+                    td.textContent = row[col] || '';
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            container.innerHTML = '';
+            container.appendChild(table);
+        }
+    </script>
+</body>
+</html>

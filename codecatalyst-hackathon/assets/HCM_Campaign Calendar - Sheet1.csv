@@ -1,0 +1,63 @@
+#,Country,Campaign to happen (Yes or No),Campaign Status,Quarter Year,Region (State/ Province),BYOD (Yes or No),Campaign Type,Console Version Used,"Campaign Name 
+(only confirmed ones to be added)",Pilot or National or Regional,Campaign Partner,SI Partner or eGov,MoU expiry date,# of Provinces/ Counties/ Districts,Level of Complexity,Infrastructure,Actual Dates,Apr 2025,May 2025,Jun 2025,Jul 2025,Aug 2025,Sep 2025,Oct 2025,Nov 2025,Dec 2025,Jan 2026,Feb 2026,Mar 2026
+16,Burundi,Yes,Yet to Start,Q2 25-26,Multiple,No,ITN,,Burundi - Bednet - National roll out,National,Bluesquare,eGov,Burundi-MoU with MoH -22-jan-25 for 2 years,17 Provinces,Low,UNICC,"UAT:
+ToT:
+Go-Live: 8 Oct",,,,ToT,ToT,Go-Live,,,,,,
+22,Nigeria,Yes,On going,Q2 25-26,Taraba,Yes,SMC+ITN,V 0.4,Nigeria - Taraba (SMC+ITN),Regional,CRS,eGov+Beehyv,LOA signed,1 State (Taraba),Medium,Azure,"UAT:30 Sept
+ToT:2 Oct
+Go-Live: 7 Oct",,UAT,ToT,Go-Live,Go-Live,Go-Live,Go-Live,,,,,
+24,Congo B,Yes,On going,Q2 25-26,Multiple,No,ITN,,Congo ITN (National Rollout),National,CRS,eGov,LOA signed,Nation-wide,High,Azure,"UAT:
+ToT:
+Go-Live:",,,,ToT,Go-Live,,Go-Live,Go-Live,,,,
+26,Nigeria,Yes,On going,Q1 25-26,Bauchi,Yes,SMC+VAS,,Bauchi - ICD (SMC+VAS),Regional,MC,eGov+Beehyv,"Yes, with MC",1 State (Bauchi),High,AWS,"UAT: 2 May
+ToT: 29 May
+Go-Live: 26 June",,UAT+ToT,ToT+Go-Live,Go-Live,Go-Live,Go-Live,Go-Live,,,,,
+27,Togo,Yes,On going,Q1 25-26,Multiple,Yes,SMC,,Togo - SMC,Regional,CRS,Beehyv,Not yet - CRS,4 Districts,Medium,Azure,"UAT:
+ToT:
+Go-Live:",,,UAT+ToT+Go-Live,Go-Live,Go-Live,Go-Live,Go-Live,,,,,
+28,Nigeria,Yes,On going,Q1 25-26,Multiple - 8 states,Yes,SMC,,Nigeria - SMC (8 States),Regional,MC,eGov,"Yes, with MC",8 States,Low,AWS,"UAT:2 May
+ToT: Multiple dates starting from 29 may
+Go-Live:",,UAT+ToT+Go-Live,Go-Live,Go-Live,Go-Live,Go-Live,Go-Live,,,,,
+31,Nigeria,Yes,On going,Q2 25-26,Ondo,Yes,ITN,V 0.4,Nigeria - Ondo - Bednet,Regional,MC,eGov,"Yes, with MC",18 LGAs,Medium,AWS,"UAT:
+ToT:
+Go-Live:",,,,UAT,ToT,Go-Live,,,,,,
+33,Senegal,Yes,On going,Q2 25-26,Multiple,No,SMC+MDA,,Senegal SMC+MDA,Regional,CRS,Beehyv,Not yet - CRS,16 Districts,Medium,Azure,"UAT:
+ToT:
+Go-Live:",,,,,UAT+ToT+Go-Live,Go-Live,Go-Live,,,,,
+34,Mozambique,Yes,On going,Q2 25-26,Multiple,No,IRS,,"Mozambique - Maputo, Gaza, Inhambane - IRS ",Regional,Goodbye Malaria,eGov,Expiring in Dec 2025,"Maputo, Gaza, Inhambane",Low,On Prem,"UAT:
+ToT:
+Go-Live:",,,,,ToT,Go-Live,Go-Live,Go-Live,Go-Live,,,
+35,Nigeria,Yes,Yet to Start,Q3 25-26,Kano,Yes,Polio+Measles+SMC+NTD,,Nigeria - Kano - Polio + Measles + SMC + NTD ,Regional,CHAI,eGov,"Yes, with CHAI",Kano,High,AWS,"UAT:
+ToT:
+Go-Live:",,,,,,UAT+ToT,Go-Live,,,,,
+38,Mozambique,Yes,Yet to Start,Q3 25-26,Multiple,No,SMC,,"Mozambique - SMC - Nampula, Tete, Cabo Delgado and Niassa",Regional,World Vision,eGov,Expiring in Dec 2025,TBC,Low,On Prem,"UAT:
+ToT:
+Go-Live:",,,,,,,,ToT,Go-Live,Go-Live,Go-Live,Go-Live
+40,Congo B,Yes,Yet to Start,Q2 25-26,Multiple,No,Zero Dose,,Zero Dose,TBC,CRS,BAO Systems,Not yet - CRS,TBC,High,Azure,"UAT:
+ToT:
+Go-Live:",,,,,,UAT+ToT,Go-Live,,,,,
+41,Nigeria,Yes,Yet to Start,Q3 25-26,Adamawa,,AZM,,AZM - Round 1,Regional,MC,Beehyv,"Yes, with MC",,Low,AWS,"UAT:
+ToT:
+Go-Live: 11th -14th October 202; 18th – 21st April 2026",,,,,,,Go-Live,,,,,
+42,Nigeria,Yes,Yet to Start,Q3 25-26,Gombe,,AZM,,AZM - Round 1,Regional,MC,Beehyv,"Yes, with MC",,Low,AWS,"UAT:
+ToT:
+Go-Live: 1st – 4th November 2025; 7th – 10th May 2026",,,,,,,,Go-Live,,,,
+43,Nigeria,Yes,Yet to Start,Q3 25-26,"Kaduna, Kebbi and Jigawa",,AZM,,AZM - Round 2,Regional,MC,,"Yes, with MC","Kaduna, Kebbi and Jigawa",Low,AWS,"UAT:
+ToT:
+Go-Live: Around Nov/Dec",,,,,,,,Go-Live,Go-Live,,,
+44,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+45,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+46,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+47,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+48,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+49,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+50,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+51,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+52,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+53,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+54,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+55,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+56,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+57,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+58,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+59,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
