@@ -7,6 +7,7 @@ from fastapi import FastAPI, Request, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 
 from dotenv import load_dotenv
 
@@ -43,6 +44,11 @@ app.add_middleware(
 
 # Setup templates
 templates = Jinja2Templates(directory="templates")
+
+# Mount static files (assets folder)
+assets_path = os.path.join(os.path.dirname(__file__), "..", "assets")
+if os.path.exists(assets_path):
+    app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
 
 # In-memory storage for loaded data
 data_store = {}

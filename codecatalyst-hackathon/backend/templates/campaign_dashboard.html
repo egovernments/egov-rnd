@@ -357,7 +357,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: #C84C0E;
+            background: transparent;
             border: none;
             box-shadow: 0 4px 20px rgba(200, 76, 14, 0.4);
             cursor: pointer;
@@ -367,6 +367,16 @@
             color: white;
             font-size: 28px;
             transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            padding: 0;
+            position: relative;
+        }
+
+        .chatbot-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .chatbot-button:hover {
@@ -374,13 +384,82 @@
             box-shadow: 0 6px 30px rgba(200, 76, 14, 0.6);
         }
 
+        .chatbot-button.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(200, 76, 14, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(200, 76, 14, 0),
+                            0 0 0 30px rgba(200, 76, 14, 0);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(200, 76, 14, 0.4);
+            }
+        }
+
+        .chatbot-tooltip {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            background: #C84C0E;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(200, 76, 14, 0.4);
+            animation: tooltipBounce 0.5s ease-out;
+            z-index: 10000;
+        }
+
+        .chatbot-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #C84C0E;
+        }
+
+        @keyframes tooltipBounce {
+            0% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .chatbot-tooltip.hide {
+            animation: tooltipFadeOut 0.3s ease-out forwards;
+        }
+
+        @keyframes tooltipFadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
         .chatbot-window {
             position: fixed;
             bottom: 90px;
             right: 20px;
-            width: 400px;
+            width: 500px;
             max-width: calc(100vw - 40px);
-            height: 600px;
+            height: 700px;
             max-height: calc(100vh - 120px);
             background: white;
             border-radius: 16px;
@@ -418,6 +497,17 @@
         .chatbot-header h3 {
             margin: 0;
             font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chatbot-header-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: white;
+            padding: 4px;
         }
 
         .chatbot-close {
@@ -478,6 +568,48 @@
             border-radius: 16px;
             word-wrap: break-word;
             white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .message-bubble h3,
+        .message-bubble h4 {
+            margin: 10px 0 8px 0;
+            font-weight: 700;
+        }
+
+        .chat-message.bot .message-bubble h3 {
+            font-size: 1.1rem;
+            color: #C84C0E;
+        }
+
+        .chat-message.bot .message-bubble h4 {
+            font-size: 1rem;
+            color: #0A4A66;
+        }
+
+        .chat-message.bot .message-bubble strong {
+            font-weight: 700;
+            color: #0A4A66;
+        }
+
+        .chat-message.user .message-bubble h3,
+        .chat-message.user .message-bubble h4,
+        .chat-message.user .message-bubble strong {
+            color: white;
+        }
+
+        .message-bubble ol,
+        .message-bubble ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .message-bubble li {
+            margin: 4px 0;
+        }
+
+        .message-bubble p {
+            margin: 8px 0;
         }
 
         .chat-message.user .message-bubble {
@@ -673,7 +805,7 @@
         }
 
         .month-badge.golive {
-            background: rgba(240, 147, 251, 0.8);
+            background: #C84C0E;
         }
 
         .month-badge.uat {
@@ -690,6 +822,143 @@
 
         .collapsed .collapse-icon {
             transform: rotate(-90deg);
+        }
+
+        /* Alerts Button */
+        .alerts-button {
+            position: relative;
+            background: #ff6b6b;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s;
+        }
+
+        .alerts-button:hover {
+            background: #ee5a52;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        }
+
+        .alerts-icon {
+            font-size: 1.5rem;
+        }
+
+        .alerts-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #d63031;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 2px solid white;
+        }
+
+        .alerts-button.no-alerts {
+            background: #28a745;
+        }
+
+        .alerts-button.no-alerts:hover {
+            background: #218838;
+        }
+
+        .alerts-button.no-alerts .alerts-icon::before {
+            content: '✅';
+        }
+
+        /* Alert Styles */
+        .alert-item {
+            background: #fff3cd;
+            border-left: 4px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .alert-item:hover {
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+            transform: translateX(5px);
+        }
+
+        .alert-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .alert-title {
+            font-weight: 600;
+            color: #d63031;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alert-icon {
+            font-size: 1.2rem;
+        }
+
+        .alert-details {
+            display: grid;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #0A4A66;
+        }
+
+        .alert-campaign {
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #C84C0E;
+        }
+
+        .alert-campaign-name {
+            font-weight: 600;
+            color: #0A4A66;
+            margin-bottom: 5px;
+        }
+
+        .alert-dates {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .alert-country {
+            display: inline-block;
+            background: #C84C0E;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .no-alerts {
+            text-align: center;
+            padding: 30px;
+            color: #28a745;
+            font-size: 1.1rem;
+        }
+
+        .no-alerts-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
 
         @media (max-width: 768px) {
@@ -732,7 +1001,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌍 HCM Campaign Dashboard</h1>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 20px; position: relative;">
+                <h1>🌍 HCM Campaign Dashboard</h1>
+                <button id="alertsButton" class="alerts-button" onclick="openAlertsModal()" style="display: none;">
+                    <span class="alerts-icon">⚠️</span>
+                    <span class="alerts-badge" id="alertsBadge">0</span>
+                </button>
+            </div>
             <p>Global Campaign Planning & Analytics</p>
         </div>
 
@@ -740,10 +1015,10 @@
             <h2>Load Campaign Data</h2>
             <div id="message"></div>
 
-            <div style="margin-bottom: 20px;">
-                <button class="btn" onclick="showGoogleSheet()" style="margin-right: 10px;">Google Sheet</button>
-                <button class="btn" onclick="showCSVUpload()" style="margin-right: 10px;">Upload CSV</button>
-                <button class="btn" onclick="showAssets()">Load from Assets</button>
+            <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; max-width: 300px;">
+                <button class="btn" onclick="showGoogleSheet()">📊 Google Sheet</button>
+                <button class="btn" onclick="showCSVUpload()">📁 Upload CSV</button>
+                <button class="btn" onclick="showAssets()">💾 Load from Assets</button>
             </div>
 
             <form id="loadForm" style="display: none;">
@@ -855,21 +1130,39 @@
             </div>
         </div>
 
+        <!-- Alerts Modal -->
+        <div id="alertsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #ff6b6b;">
+                    <h2>⚠️ Campaign Date Conflicts</h2>
+                    <button class="close" onclick="closeAlertsModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="alertsContainer"></div>
+                </div>
+            </div>
+        </div>
+
         <!-- Floating Chatbot -->
         <div class="chatbot-container">
+            <div id="chatbotTooltip" class="chatbot-tooltip" style="display: none;">
+                💬 Need help? Ask me anything!
+            </div>
             <div id="chatbotWindow" class="chatbot-window">
                 <div class="chatbot-header">
-                    <h3>🤖 Campaign Assistant</h3>
+                    <h3>
+                        <img src="/assets/logo/iconAI.png" alt="AI" class="chatbot-header-logo">
+                        Campaign Assistant
+                    </h3>
                     <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
                 </div>
                 <div id="chatMessages" class="chatbot-messages">
                     <div class="chat-message bot">
-                        <div class="message-bubble">
-                            Hello! I'm your Campaign Assistant. I can help you analyze your campaign data. Try asking:
-                            <br><br>
-                            • "Which campaigns are ongoing?"
-                            • "Show me campaigns by country"
-                            • "What are the upcoming deadlines?"
+                        <div class="message-bubble" style="white-space: normal;">
+                            Hello! I'm your Campaign Assistant. I can help you analyze your campaign data. Try asking:<br>
+                            • "Which campaigns are ongoing?"<br>
+                            • "Show me campaigns by country"<br>
+                            • "What are the upcoming deadlines?"<br>
                             • "Which campaigns have high complexity?"
                         </div>
                     </div>
@@ -885,7 +1178,9 @@
                     <button id="chatSend" class="chatbot-send" onclick="sendMessage()">Send</button>
                 </div>
             </div>
-            <button class="chatbot-button" onclick="toggleChatbot()">💬</button>
+            <button class="chatbot-button" onclick="toggleChatbot()">
+                <img src="/assets/logo/iconAI.png" alt="AI Assistant">
+            </button>
         </div>
     </div>
 
@@ -1075,10 +1370,105 @@
 
             // Load campaigns grouped by country with timeline
             await loadCampaignsByCountry(analytics.timeline);
+
+            // Load alerts for date conflicts
+            await loadAlerts();
         }
 
         let allCampaignsData = [];
         let timelineData = [];
+
+        let alertsData = null;
+
+        async function loadAlerts() {
+            try {
+                const response = await fetch('/api/conflicts');
+                const data = await response.json();
+                alertsData = data;
+
+                const alertsButton = document.getElementById('alertsButton');
+                const alertsBadge = document.getElementById('alertsBadge');
+
+                // Show alerts button
+                alertsButton.style.display = 'flex';
+
+                if (data.conflict_count > 0) {
+                    // Show warning button with count
+                    alertsButton.className = 'alerts-button';
+                    alertsBadge.textContent = data.conflict_count;
+                    alertsBadge.style.display = 'flex';
+                } else {
+                    // Show green check button
+                    alertsButton.className = 'alerts-button no-alerts';
+                    alertsBadge.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error loading alerts:', error);
+            }
+        }
+
+        function openAlertsModal() {
+            const modal = document.getElementById('alertsModal');
+            const container = document.getElementById('alertsContainer');
+            container.innerHTML = '';
+
+            if (!alertsData) return;
+
+            if (alertsData.conflict_count > 0) {
+                alertsData.conflicts.forEach(conflict => {
+                    const alertItem = document.createElement('div');
+                    alertItem.className = 'alert-item';
+
+                    alertItem.innerHTML = `
+                        <div class="alert-header">
+                            <div class="alert-title">
+                                <span class="alert-icon">⚠️</span>
+                                Date Conflict Detected
+                            </div>
+                            ${conflict.country ? `<span class="alert-country">🌍 ${conflict.country}</span>` : ''}
+                        </div>
+                        <div class="alert-details">
+                            <div class="alert-campaign">
+                                <div class="alert-campaign-name">${conflict.a_campaign}</div>
+                                <div class="alert-dates">📅 ${conflict.a_window[0]} to ${conflict.a_window[1]}</div>
+                            </div>
+                            <div style="text-align: center; color: #d63031; font-weight: bold;">
+                                ⚡ Overlaps with ⚡
+                            </div>
+                            <div class="alert-campaign">
+                                <div class="alert-campaign-name">${conflict.b_campaign}</div>
+                                <div class="alert-dates">📅 ${conflict.b_window[0]} to ${conflict.b_window[1]}</div>
+                            </div>
+                        </div>
+                    `;
+
+                    container.appendChild(alertItem);
+                });
+
+                // Add summary if there are more conflicts than displayed
+                if (alertsData.conflict_count > alertsData.conflicts.length) {
+                    const summary = document.createElement('div');
+                    summary.style.textAlign = 'center';
+                    summary.style.padding = '10px';
+                    summary.style.color = '#666';
+                    summary.innerHTML = `<em>Showing ${alertsData.conflicts.length} of ${alertsData.conflict_count} conflicts</em>`;
+                    container.appendChild(summary);
+                }
+            } else {
+                container.innerHTML = `
+                    <div class="no-alerts">
+                        <div class="no-alerts-icon">✅</div>
+                        <div>No date conflicts detected! All campaigns are scheduled without overlaps.</div>
+                    </div>
+                `;
+            }
+
+            modal.style.display = 'block';
+        }
+
+        function closeAlertsModal() {
+            document.getElementById('alertsModal').style.display = 'none';
+        }
 
         async function loadCampaignsByCountry(timeline) {
             const response = await fetch('/api/campaigns/list');
@@ -1390,9 +1780,13 @@
 
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('campaignModal');
-            if (event.target === modal) {
+            const campaignModal = document.getElementById('campaignModal');
+            const alertsModal = document.getElementById('alertsModal');
+            if (event.target === campaignModal) {
                 closeModal();
+            }
+            if (event.target === alertsModal) {
+                closeAlertsModal();
             }
         }
 
@@ -1400,18 +1794,53 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
+                closeAlertsModal();
             }
         });
 
         // Chatbot functions
         function toggleChatbot() {
             const window = document.getElementById('chatbotWindow');
+            const tooltip = document.getElementById('chatbotTooltip');
+            const button = document.querySelector('.chatbot-button');
+
             window.classList.toggle('open');
 
             if (window.classList.contains('open')) {
                 document.getElementById('chatInput').focus();
+                // Hide tooltip when chatbot opens
+                if (tooltip.style.display !== 'none') {
+                    tooltip.classList.add('hide');
+                    setTimeout(() => {
+                        tooltip.style.display = 'none';
+                    }, 300);
+                }
+                // Remove pulse animation
+                button.classList.remove('pulse');
             }
         }
+
+        // Show chatbot tooltip on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const tooltip = document.getElementById('chatbotTooltip');
+                const button = document.querySelector('.chatbot-button');
+
+                if (tooltip && button) {
+                    tooltip.style.display = 'block';
+                    button.classList.add('pulse');
+
+                    // Auto-hide tooltip after 10 seconds
+                    setTimeout(() => {
+                        tooltip.classList.add('hide');
+                        setTimeout(() => {
+                            tooltip.style.display = 'none';
+                            button.classList.remove('pulse');
+                        }, 300);
+                    }, 10000);
+                }
+            }, 2000); // Show tooltip 2 seconds after page load
+        });
 
         function handleChatKeypress(event) {
             if (event.key === 'Enter') {
@@ -1485,13 +1914,58 @@
 
             const bubble = document.createElement('div');
             bubble.className = 'message-bubble';
-            bubble.textContent = text;
+
+            // Convert markdown-like formatting to HTML for bot messages
+            if (type === 'bot') {
+                bubble.innerHTML = formatMarkdown(text);
+            } else {
+                bubble.textContent = text;
+            }
 
             messageDiv.appendChild(bubble);
             messagesContainer.appendChild(messageDiv);
 
             // Scroll to bottom
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function formatMarkdown(text) {
+            // Convert markdown to HTML
+            let html = text;
+
+            // Headers (### and ####)
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
+
+            // Bold (**text**)
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+            // Lists with proper line breaks
+            html = html.replace(/^(\d+\.\s.+)$/gm, '<li>$1</li>');
+            html = html.replace(/^(•\s.+)$/gm, '<li>$1</li>');
+            html = html.replace(/^(-\s.+)$/gm, '<li>$1</li>');
+
+            // Wrap consecutive list items
+            html = html.replace(/(<li>.*?<\/li>\s*)+/g, match => {
+                if (match.includes('<li>1.') || match.includes('<li>2.')) {
+                    return '<ol>' + match + '</ol>';
+                } else {
+                    return '<ul>' + match + '</ul>';
+                }
+            });
+
+            // Remove numbered prefixes from list items
+            html = html.replace(/<li>(\d+\.\s)/g, '<li>');
+            html = html.replace(/<li>(•\s)/g, '<li>');
+            html = html.replace(/<li>(-\s)/g, '<li>');
+
+            // Line breaks (but not inside HTML tags)
+            html = html.replace(/\n(?![<])/g, '<br>');
+
+            // Remove excessive line breaks
+            html = html.replace(/(<br>\s*){3,}/g, '<br><br>');
+
+            return html;
         }
     </script>
 </body>
