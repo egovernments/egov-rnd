@@ -4,8 +4,10 @@ import pandas as pd
 import re
 import requests
 import io
+import time
 from google.oauth2 import service_account
 import gspread
+from gspread.exceptions import APIError
 
 SCOPE = ["https://www.googleapis.com/auth/spreadsheets.readonly",
          "https://www.googleapis.com/auth/drive.readonly"]
@@ -36,7 +38,7 @@ def _worksheet_to_dataframe(ws) -> pd.DataFrame:
     """Robustly convert a gspread Worksheet to a DataFrame, tolerating
     blank/duplicate headers by constructing unique column names.
     """
-    values = ws.get_all_values()
+    values = _get_all_values_with_retry(ws)
     if not values:
         return pd.DataFrame()
     headers = _make_unique_headers(values[0])
@@ -45,6 +47,26 @@ def _worksheet_to_dataframe(ws) -> pd.DataFrame:
     normalized_rows = [r + [None] * (len(headers) - len(r)) if len(r) < len(headers) else r[:len(headers)] for r in rows]
     df = pd.DataFrame(normalized_rows, columns=headers)
     return df
+
+def _get_all_values_with_retry(ws, max_attempts: int = 6, base_sleep: float = 0.5):
+    """Fetch worksheet values with exponential backoff on 429 rate limits.
+    Sleeps base_sleep * 2^attempt seconds on each retry when a 429 is detected.
+    """
+    attempt = 0
+    while True:
+        try:
+            return ws.get_all_values()
+        except APIError as e:
+            # gspread APIError contains response with status code in message
+            msg = str(e)
+            if "[429]" in msg or "quota" in msg.lower():
+                if attempt + 1 >= max_attempts:
+                    raise
+                sleep_s = base_sleep * (2 ** attempt)
+                time.sleep(sleep_s)
+                attempt += 1
+                continue
+            raise
 
 def _public_export_to_csv(sheet_url: str) -> Optional[pd.DataFrame]:
     """
