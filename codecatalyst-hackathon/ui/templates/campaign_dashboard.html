@@ -14,7 +14,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #EEEEEE;
             min-height: 100vh;
             padding: 20px;
         }
@@ -26,7 +26,7 @@
 
         .header {
             text-align: center;
-            color: white;
+            color: #0B4B66;
             margin-bottom: 30px;
         }
 
@@ -68,7 +68,7 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #C84C0E 0%, #C84C0E 100%);
             color: white;
             padding: 12px 30px;
             border: none;
@@ -96,7 +96,7 @@
         }
 
         .kpi-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #C84C0E 0%, #C84C0E 100%);
             color: white;
             padding: 20px;
             border-radius: 12px;
@@ -198,7 +198,7 @@
         }
 
         .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #C84C0E 0%, #C84C0E 100%);
             color: white;
             padding: 20px 30px;
             border-radius: 12px 12px 0 0;
@@ -249,7 +249,7 @@
             padding: 15px;
             background: #f8f9fa;
             border-radius: 8px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #C84C0E;
         }
 
         .detail-label {
@@ -287,8 +287,8 @@
         }
 
         .campaign-list-item:hover {
-            border-color: #667eea;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            border-color: #C84C0E;
+            box-shadow: 0 4px 12px rgba(200, 76, 14, 0.2);
             transform: translateY(-2px);
         }
 
@@ -305,12 +305,20 @@
             flex-wrap: wrap;
             font-size: 0.85rem;
             color: #666;
+            margin-bottom: 8px;
         }
 
         .campaign-list-meta span {
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        .campaign-timeline {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 8px;
         }
 
         .status-badge {
@@ -331,15 +339,71 @@
             color: #856404;
         }
 
+        .alert-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+        }
+
+        .alert-box.error {
+            background: #f8d7da;
+            border-color: #dc3545;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+        }
+
+        .alert-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #856404;
+            font-size: 1.1rem;
+        }
+
+        .alert-box.error .alert-header {
+            color: #721c24;
+        }
+
+        .alert-icon {
+            font-size: 24px;
+        }
+
+        .collision-item {
+            background: white;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .alert-box.error .collision-item {
+            border-left-color: #dc3545;
+        }
+
+        .collision-campaigns {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .collision-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         #assetsList .btn {
             background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+            color: #C84C0E;
+            border: 2px solid #C84C0E;
             margin-bottom: 10px;
         }
 
         #assetsList .btn:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #C84C0E 0%, #C84C0E 100%);
             color: white;
         }
 
@@ -355,9 +419,9 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #C84C0E 0%, #C84C0E 100%);
             border: none;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 20px rgba(200, 76, 14, 0.4);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -369,7 +433,7 @@
 
         .chatbot-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 6px 30px rgba(200, 76, 14, 0.6);
         }
 
         .chatbot-window {
@@ -405,7 +469,7 @@
         }
 
         .chatbot-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #C84C0E 0%, #C84C0E 100%);
             color: white;
             padding: 20px;
             display: flex;
@@ -479,7 +543,7 @@
         }
 
         .chat-message.user .message-bubble {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #C84C0E 0%, #C84C0E 100%);
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -510,11 +574,11 @@
         }
 
         .chatbot-input:focus {
-            border-color: #667eea;
+            border-color: #C84C0E;
         }
 
         .chatbot-send {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #C84C0E 0%, #C84C0E 100%);
             color: white;
             border: none;
             padding: 12px 20px;
@@ -547,7 +611,7 @@
         .typing-dot {
             width: 8px;
             height: 8px;
-            background: #667eea;
+            background: #C84C0E;
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
@@ -583,48 +647,49 @@
             }
         }
 
-        .timeline-container {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            overflow-x: auto;
+        .country-group {
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        .timeline-item {
-            display: flex;
+        .country-header {
+            background: #f8f9fa;
             padding: 15px;
-            border-bottom: 1px solid #e0e0e0;
-            align-items: center;
-        }
-
-        .timeline-item:last-child {
-            border-bottom: none;
-        }
-
-        .timeline-campaign {
-            flex: 0 0 250px;
-            font-weight: 600;
-            color: #333;
-            font-size: 0.9rem;
-        }
-
-        .timeline-country {
-            flex: 0 0 100px;
-            color: #666;
-            font-size: 0.85rem;
-        }
-
-        .timeline-months {
-            flex: 1;
+            cursor: pointer;
             display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0B4B66;
+            transition: background 0.2s;
         }
+
+        .country-header:hover {
+            background: #e9ecef;
+        }
+
+        .country-header .toggle-icon {
+            transition: transform 0.3s;
+        }
+
+        .country-header.expanded .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .country-campaigns {
+            display: none;
+            background: white;
+        }
+
+        .country-campaigns.expanded {
+            display: block;
+        }
+
 
         .month-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0A4A66;
             color: white;
             padding: 4px 10px;
             border-radius: 12px;
@@ -633,15 +698,15 @@
         }
 
         .month-badge.tot {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: #0A4A66;
         }
 
         .month-badge.golive {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: #00703C;
         }
 
         .month-badge.uat {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            background: #0A4A66;
         }
 
         @media (max-width: 768px) {
@@ -669,14 +734,8 @@
                 height: 300px;
             }
 
-            .timeline-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .timeline-campaign,
-            .timeline-country {
-                margin-bottom: 8px;
+            .country-header {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -785,13 +844,10 @@
                 </div>
             </div>
 
-            <div class="timeline-container">
-                <h2 style="margin-bottom: 20px;">Campaign Timeline</h2>
-                <div id="timelineView"></div>
-            </div>
+            <div id="collisionAlert"></div>
 
             <div class="card">
-                <h2 style="margin-bottom: 20px;">All Campaigns</h2>
+                <h2 style="margin-bottom: 20px;">Campaigns Timeline</h2>
                 <div class="form-group">
                     <input type="text" id="campaignSearch" placeholder="Search campaigns..." style="margin-bottom: 15px;">
                 </div>
@@ -1030,19 +1086,32 @@
             renderPieChart('complexityChart', analytics.complexity_breakdown, 'Complexity');
             renderBarChart('partnerChart', analytics.partner_breakdown, 'Partners');
 
-            // Render timeline
-            renderTimeline(analytics.timeline);
-
-            // Load campaigns list
-            await loadCampaignsList();
+            // Load campaigns list with timeline data
+            await loadCampaignsList(analytics.timeline);
         }
 
-        async function loadCampaignsList() {
+        async function loadCampaignsList(timelineData) {
             const response = await fetch('/api/campaigns/list');
             const data = await response.json();
             allCampaigns = data.campaigns || [];
 
+            // Create a timeline map for quick lookup
+            const timelineMap = {};
+            if (timelineData && Array.isArray(timelineData)) {
+                timelineData.forEach(item => {
+                    timelineMap[item.campaign] = item.months || [];
+                });
+            }
+
+            // Merge timeline data into campaigns
+            allCampaigns.forEach(campaign => {
+                campaign.timeline = timelineMap[campaign.name] || [];
+            });
+
             renderCampaignsList(allCampaigns);
+
+            // Detect and display collisions
+            detectCollisions(allCampaigns);
 
             // Setup search
             document.getElementById('campaignSearch').addEventListener('input', (e) => {
@@ -1056,6 +1125,78 @@
             });
         }
 
+        function detectCollisions(campaigns) {
+            const collisions = [];
+            const monthMap = {};
+
+            // Only check ongoing campaigns
+            const ongoingCampaigns = campaigns.filter(c =>
+                c.status && c.status.toLowerCase().includes('on going') &&
+                c.timeline && c.timeline.length > 0
+            );
+
+            // Build a map of month -> campaigns
+            ongoingCampaigns.forEach(campaign => {
+                campaign.timeline.forEach(timelineItem => {
+                    const key = `${timelineItem.month}-${timelineItem.activity}`;
+                    if (!monthMap[key]) {
+                        monthMap[key] = [];
+                    }
+                    monthMap[key].push({
+                        name: campaign.name,
+                        country: campaign.country,
+                        month: timelineItem.month,
+                        activity: timelineItem.activity
+                    });
+                });
+            });
+
+            // Find collisions (more than 1 campaign in same month/activity)
+            Object.keys(monthMap).forEach(key => {
+                if (monthMap[key].length > 1) {
+                    collisions.push({
+                        key: key,
+                        campaigns: monthMap[key]
+                    });
+                }
+            });
+
+            // Render collision alert
+            const alertContainer = document.getElementById('collisionAlert');
+            if (collisions.length > 0) {
+                const alertBox = document.createElement('div');
+                alertBox.className = 'alert-box error';
+
+                const header = document.createElement('div');
+                header.className = 'alert-header';
+                header.innerHTML = `
+                    <span class="alert-icon">⚠️</span>
+                    <span>Date Collision Alert: ${collisions.length} conflict(s) detected in ongoing campaigns</span>
+                `;
+                alertBox.appendChild(header);
+
+                collisions.forEach(collision => {
+                    const item = document.createElement('div');
+                    item.className = 'collision-item';
+
+                    const campaignNames = collision.campaigns.map(c => `${c.name} (${c.country})`).join(' & ');
+                    const sample = collision.campaigns[0];
+
+                    item.innerHTML = `
+                        <div class="collision-campaigns">${campaignNames}</div>
+                        <div class="collision-details">📅 ${sample.month} - ${sample.activity}</div>
+                    `;
+
+                    alertBox.appendChild(item);
+                });
+
+                alertContainer.innerHTML = '';
+                alertContainer.appendChild(alertBox);
+            } else {
+                alertContainer.innerHTML = '';
+            }
+        }
+
         function renderCampaignsList(campaigns) {
             const container = document.getElementById('campaignsList');
             container.innerHTML = '';
@@ -1065,47 +1206,102 @@
                 return;
             }
 
+            // Group campaigns by country
+            const groupedByCountry = {};
             campaigns.forEach(campaign => {
-                const item = document.createElement('div');
-                item.className = 'campaign-list-item';
-                item.onclick = () => showCampaignDetail(campaign.name);
-
-                const name = document.createElement('div');
-                name.className = 'campaign-list-name';
-                name.textContent = campaign.name;
-
-                const meta = document.createElement('div');
-                meta.className = 'campaign-list-meta';
-
-                if (campaign.country) {
-                    const country = document.createElement('span');
-                    country.innerHTML = `🌍 ${campaign.country}`;
-                    meta.appendChild(country);
+                const country = campaign.country || 'Unknown';
+                if (!groupedByCountry[country]) {
+                    groupedByCountry[country] = [];
                 }
+                groupedByCountry[country].push(campaign);
+            });
 
-                if (campaign.status) {
-                    const status = document.createElement('span');
-                    const badge = document.createElement('span');
-                    badge.className = 'status-badge';
-                    if (campaign.status.toLowerCase().includes('on going')) {
-                        badge.classList.add('status-ongoing');
-                    } else if (campaign.status.toLowerCase().includes('yet')) {
-                        badge.classList.add('status-yet');
+            // Render each country group
+            Object.keys(groupedByCountry).sort().forEach(country => {
+                const countryGroup = document.createElement('div');
+                countryGroup.className = 'country-group';
+
+                // Country header
+                const header = document.createElement('div');
+                header.className = 'country-header';
+                header.innerHTML = `
+                    <span>🌍 ${country} (${groupedByCountry[country].length})</span>
+                    <span class="toggle-icon">▼</span>
+                `;
+
+                // Country campaigns container
+                const campaignsContainer = document.createElement('div');
+                campaignsContainer.className = 'country-campaigns';
+
+                // Add campaigns for this country
+                groupedByCountry[country].forEach(campaign => {
+                    const item = document.createElement('div');
+                    item.className = 'campaign-list-item';
+                    item.onclick = () => showCampaignDetail(campaign.name);
+
+                    const name = document.createElement('div');
+                    name.className = 'campaign-list-name';
+                    name.textContent = campaign.name;
+
+                    const meta = document.createElement('div');
+                    meta.className = 'campaign-list-meta';
+
+                    if (campaign.status) {
+                        const status = document.createElement('span');
+                        const badge = document.createElement('span');
+                        badge.className = 'status-badge';
+                        if (campaign.status.toLowerCase().includes('on going')) {
+                            badge.classList.add('status-ongoing');
+                        } else if (campaign.status.toLowerCase().includes('yet')) {
+                            badge.classList.add('status-yet');
+                        }
+                        badge.textContent = campaign.status;
+                        status.appendChild(badge);
+                        meta.appendChild(status);
                     }
-                    badge.textContent = campaign.status;
-                    status.appendChild(badge);
-                    meta.appendChild(status);
-                }
 
-                if (campaign.type) {
-                    const type = document.createElement('span');
-                    type.innerHTML = `📋 ${campaign.type}`;
-                    meta.appendChild(type);
-                }
+                    if (campaign.type) {
+                        const type = document.createElement('span');
+                        type.innerHTML = `📋 ${campaign.type}`;
+                        meta.appendChild(type);
+                    }
 
-                item.appendChild(name);
-                item.appendChild(meta);
-                container.appendChild(item);
+                    item.appendChild(name);
+                    item.appendChild(meta);
+
+                    // Add timeline if available
+                    if (campaign.timeline && campaign.timeline.length > 0) {
+                        const timelineDiv = document.createElement('div');
+                        timelineDiv.className = 'campaign-timeline';
+
+                        campaign.timeline.forEach(m => {
+                            const badge = document.createElement('span');
+                            badge.className = 'month-badge';
+
+                            const activity = m.activity.toLowerCase();
+                            if (activity.includes('tot')) badge.classList.add('tot');
+                            else if (activity.includes('go-live')) badge.classList.add('golive');
+                            else if (activity.includes('uat')) badge.classList.add('uat');
+
+                            badge.textContent = `${m.month}: ${m.activity}`;
+                            timelineDiv.appendChild(badge);
+                        });
+
+                        item.appendChild(timelineDiv);
+                    }
+
+                    campaignsContainer.appendChild(item);
+                });
+
+                // Toggle expand/collapse
+                header.onclick = () => {
+                    header.classList.toggle('expanded');
+                    campaignsContainer.classList.toggle('expanded');
+                };
+
+                countryGroup.appendChild(header);
+                countryGroup.appendChild(campaignsContainer);
+                container.appendChild(countryGroup);
             });
         }
 
@@ -1200,51 +1396,6 @@
                         }
                     }
                 }
-            });
-        }
-
-        function renderTimeline(timeline) {
-            const container = document.getElementById('timelineView');
-            container.innerHTML = '';
-
-            if (!timeline || timeline.length === 0) {
-                container.innerHTML = '<p>No timeline data available</p>';
-                return;
-            }
-
-            timeline.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'timeline-item clickable';
-                div.onclick = () => showCampaignDetail(item.campaign);
-
-                const campaign = document.createElement('div');
-                campaign.className = 'timeline-campaign';
-                campaign.textContent = item.campaign;
-
-                const country = document.createElement('div');
-                country.className = 'timeline-country';
-                country.textContent = item.country;
-
-                const months = document.createElement('div');
-                months.className = 'timeline-months';
-
-                item.months.forEach(m => {
-                    const badge = document.createElement('span');
-                    badge.className = 'month-badge';
-
-                    const activity = m.activity.toLowerCase();
-                    if (activity.includes('tot')) badge.classList.add('tot');
-                    else if (activity.includes('go-live')) badge.classList.add('golive');
-                    else if (activity.includes('uat')) badge.classList.add('uat');
-
-                    badge.textContent = `${m.month}: ${m.activity}`;
-                    months.appendChild(badge);
-                });
-
-                div.appendChild(campaign);
-                div.appendChild(country);
-                div.appendChild(months);
-                container.appendChild(div);
             });
         }
 

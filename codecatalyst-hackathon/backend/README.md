@@ -36,11 +36,12 @@ setx OPENAI_API_KEY "sk-..."
 #   - Share your Google Sheet with the service account's email (Viewer or Editor).
 #   - Save the JSON as: secrets/service_account.json  (or upload it in the UI).
 
-# 5) Run
+# 5) Run Streamlit (Old UI)
 streamlit run app.py
 
-# For new ui use this
-python3 fastapi_app.py
+# Or run the new FastAPI UI (Recommended)
+cd ../ui
+python3 app.py
 ```
 
 If you only use **Excel uploads**, you don’t need Google APIs.
