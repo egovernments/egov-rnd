@@ -15,11 +15,42 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = () => {
-    const userData = {
-      name: 'Test User',
-      email: 'test@example.com'
-    };
+  const login = (credentialResponse) => {
+    let userData;
+    
+    if (credentialResponse && credentialResponse.credential) {
+      // Google OAuth login
+      try {
+        // Decode the JWT token to get user info
+        const base64Url = credentialResponse.credential.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        
+        const decoded = JSON.parse(jsonPayload);
+        userData = {
+          name: decoded.name,
+          email: decoded.email,
+          picture: decoded.picture,
+          credential: credentialResponse.credential
+        };
+      } catch (error) {
+        console.error('Error decoding Google credential:', error);
+        userData = {
+          name: 'Google User',
+          email: 'google@example.com',
+          credential: credentialResponse.credential
+        };
+      }
+    } else {
+      // Demo login
+      userData = {
+        name: 'Demo User',
+        email: 'demo@example.com'
+      };
+    }
+    
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
   };

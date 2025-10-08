@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Layout from './Layout';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -12,7 +13,11 @@ function ProtectedRoute({ children }) {
     return <Navigate to="/login" replace />;
   }
 
-  return children;
+  return (
+    <Layout>
+      {children}
+    </Layout>
+  );
 }
 
 export default ProtectedRoute;
