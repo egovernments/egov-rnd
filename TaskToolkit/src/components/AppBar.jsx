@@ -51,7 +51,7 @@ function AppBar() {
         marginTop: 0
       }}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#333' }}>
-          HCM Campaign Tracking
+          Smart Campaign Manager Toolkit
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {user && (
