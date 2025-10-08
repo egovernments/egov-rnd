@@ -15,10 +15,10 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (credentialResponse) => {
+  const login = (credentialResponse, provider = 'demo') => {
     let userData;
     
-    if (credentialResponse && credentialResponse.credential) {
+    if (provider === 'google' && credentialResponse && credentialResponse.credential) {
       // Google OAuth login
       try {
         // Decode the JWT token to get user info
@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }) => {
         
         const decoded = JSON.parse(jsonPayload);
         userData = {
+          provider: 'google',
           name: decoded.name,
           email: decoded.email,
           picture: decoded.picture,
@@ -38,14 +39,25 @@ export const AuthProvider = ({ children }) => {
       } catch (error) {
         console.error('Error decoding Google credential:', error);
         userData = {
+          provider: 'google',
           name: 'Google User',
           email: 'google@example.com',
           credential: credentialResponse.credential
         };
       }
+    } else if (provider === 'github' && credentialResponse) {
+      // GitHub OAuth login
+      userData = {
+        provider: 'github',
+        name: credentialResponse.name || 'GitHub User',
+        email: credentialResponse.email || 'github@example.com',
+        picture: credentialResponse.avatar_url,
+        githubCode: credentialResponse.code
+      };
     } else {
       // Demo login
       userData = {
+        provider: 'demo',
         name: 'Demo User',
         email: 'demo@example.com'
       };
