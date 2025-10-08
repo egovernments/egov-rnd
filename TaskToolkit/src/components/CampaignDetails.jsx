@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Table,
   TableBody,
@@ -22,6 +23,7 @@ import {
 import { getCampaigns } from '../services/jiraService';
 
 const CampaignDetails = () => {
+  const navigate = useNavigate();
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -93,6 +95,10 @@ const CampaignDetails = () => {
       'Review': 'warning'
     };
     return statusColors[statusName] || 'default';
+  };
+
+  const handleRowClick = (campaign) => {
+    navigate(`/campaign/${campaign.id}`);
   };
 
   return (
@@ -178,7 +184,12 @@ const CampaignDetails = () => {
             {filteredCampaigns.map((campaign) => (
               <TableRow
                 key={campaign.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 }, '&:hover': { backgroundColor: '#f9f9f9' } }}
+                onClick={() => handleRowClick(campaign)}
+                sx={{
+                  '&:last-child td, &:last-child th': { border: 0 },
+                  '&:hover': { backgroundColor: '#f0f7ff', cursor: 'pointer' },
+                  transition: 'background-color 0.2s'
+                }}
               >
                 <TableCell component="th" scope="row">
                   {campaign.key}
