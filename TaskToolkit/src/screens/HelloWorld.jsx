@@ -1,51 +1,31 @@
-import { Container, Typography, Box, Paper, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { Container, Typography, Box, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import CampaignDetails from '../components/CampaignDetails';
 
 function HelloWorld() {
-  const { logout } = useAuth();
   const navigate = useNavigate();
+
+  // Simple Arrow Back icon using SVG
+  const ArrowBackIcon = () => (
+    <Box
+      component="svg"
+      sx={{ width: 20, height: 20, mr: 0.5 }}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </Box>
+  );
 
   return (
     <Container maxWidth="lg">
       <Box
         sx={{
-          minHeight: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          minHeight: '100vh',
           py: 4,
-        }}>
-        <Paper
-          elevation={3}
-          sx={{
-            padding: 4,
-            textAlign: "center",
-            borderRadius: 2,
-            mb: 4,
-          }}>
-          <Typography variant="h2" component="h1" gutterBottom>
-            Hello World
-          </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-            Welcome to HCM Campaign Tracking! You've successfully logged in.
-          </Typography>
-          <Box sx={{ display: "flex", gap: 2, mt: 2, flexWrap: "wrap", justifyContent: "center" }}>
-            <Button variant="contained" color="secondary" onClick={() => navigate("/jira-test")}>
-              Test Jira
-            </Button>
-            <Button variant="contained" color="info" onClick={() => navigate("/campaign-details")}>
-              Campaign Details
-            </Button>
-            <Button variant="contained" color="primary" onClick={logout}>
-              Logout
-            </Button>
-          </Box>
-          <Typography variant="body2" color="text.secondary">
-            The logout button is now in the top navigation bar.
-          </Typography>
-        </Paper>
+        }}
+      >
+        <CampaignDetails />
       </Box>
     </Container>
   );
