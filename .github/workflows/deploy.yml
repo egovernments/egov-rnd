@@ -35,10 +35,19 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
         
+      - name: Debug Environment Variables
+        run: |
+          echo "VITE_GITHUB_CLIENT_ID is set: ${{ secrets.VITE_GITHUB_CLIENT_ID != '' }}"
+          echo "Environment variables starting with VITE_:"
+          env | grep VITE_ || echo "No VITE_ variables found"
+        env:
+          VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID }}
+          VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+        
       - name: Build
         run: yarn build
         env:
-          VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID }}
+          VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID || 'Ov23liA9bfunZcwFHjWK' }}
           VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
         
       - name: Setup Pages

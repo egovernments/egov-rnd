@@ -3,9 +3,14 @@ import { Button, Box } from '@mui/material';
 function GitHubLogin({ disabled = false }) {
   const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID;
 
+  // Debug logging
+  console.log('GitHub Client ID:', clientId);
+  console.log('All env vars:', import.meta.env);
+
   const handleGitHubLogin = () => {
     if (!clientId || clientId === 'YOUR_GITHUB_CLIENT_ID_HERE') {
-      console.error('GitHub Client ID not configured');
+      console.error('GitHub Client ID not configured. Current value:', clientId);
+      alert('GitHub Client ID not configured. Check console for details.');
       return;
     }
 
