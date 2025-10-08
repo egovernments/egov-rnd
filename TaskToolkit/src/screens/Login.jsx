@@ -1,8 +1,10 @@
 import { Container, Typography, Box, Paper, Button } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleDummyLogin = () => {
     const dummyCredential = {
@@ -13,6 +15,7 @@ function Login() {
       }
     };
     login(dummyCredential);
+    navigate('/');
   };
 
   return (
