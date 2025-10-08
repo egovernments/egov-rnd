@@ -41,7 +41,7 @@ function App() {
                 }
               />
               <Route
-                path="/campaign/:id"
+                path="/campaign/:key"
                 element={
                   <ProtectedRoute>
                     <CampaignDetailPage />

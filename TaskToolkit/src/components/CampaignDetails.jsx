@@ -98,7 +98,7 @@ const CampaignDetails = () => {
   };
 
   const handleRowClick = (campaign) => {
-    navigate(`/campaign/${campaign.id}`);
+    navigate(`/campaign/${campaign.key}`);
   };
 
   return (

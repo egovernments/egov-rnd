@@ -9,14 +9,20 @@ import {
   Grid,
   Chip,
   CircularProgress,
-  Alert
+  Alert,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
 } from '@mui/material';
-import { getCampaigns } from '../services/jiraService';
+import { getCampaignDetailByEpicLink } from '../services/jiraService';
 
 function CampaignDetailPage() {
-  const { id } = useParams();
+  const { key } = useParams();
   const navigate = useNavigate();
-  const [campaign, setCampaign] = useState(null);
+  const [campaignData, setCampaignData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -37,12 +43,11 @@ function CampaignDetailPage() {
       setLoading(true);
       setError(null);
       try {
-        const response = await getCampaigns();
-        const foundCampaign = response.issues?.find(issue => issue.id === id);
-        if (foundCampaign) {
-          setCampaign(foundCampaign);
+        const response = await getCampaignDetailByEpicLink(key);
+        if (response && response.issues) {
+          setCampaignData(response);
         } else {
-          setError('Campaign not found');
+          setError('No campaign data found');
         }
       } catch (err) {
         setError(err.message || 'Failed to fetch campaign details');
@@ -53,7 +58,7 @@ function CampaignDetailPage() {
     };
 
     fetchCampaignDetail();
-  }, [id]);
+  }, [key]);
 
   const getStatusColor = (statusName) => {
     const statusColors = {
@@ -94,9 +99,11 @@ function CampaignDetailPage() {
     );
   }
 
-  if (!campaign) {
+  if (!campaignData) {
     return null;
   }
+
+  const { issues = [], total = 0 } = campaignData;
 
   return (
     <Container maxWidth="lg">
@@ -110,99 +117,61 @@ function CampaignDetailPage() {
           Back to Campaigns
         </Button>
 
-        <Paper elevation={3} sx={{ p: 4 }}>
+        <Paper elevation={3} sx={{ p: 4, mb: 3 }}>
           <Box sx={{ mb: 4 }}>
             <Typography variant="h4" component="h1" gutterBottom>
               Campaign Details
             </Typography>
             <Typography variant="h6" color="text.secondary">
-              {campaign.key}
+              Epic: {key}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+              Total Issues: {total}
             </Typography>
           </Box>
-
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                Summary
-              </Typography>
-              <Typography variant="body1" sx={{ fontSize: '1.1rem' }}>
-                {campaign.fields?.summary || 'N/A'}
-              </Typography>
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                Status
-              </Typography>
-              <Chip
-                label={campaign.fields?.status?.name || 'Unknown'}
-                color={getStatusColor(campaign.fields?.status?.name)}
-                size="medium"
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                Priority
-              </Typography>
-              <Typography variant="body1">
-                {campaign.fields?.priority?.name || 'N/A'}
-              </Typography>
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                Due Date
-              </Typography>
-              <Typography variant="body1">
-                {campaign.fields?.duedate || 'Not set'}
-              </Typography>
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                Assignee
-              </Typography>
-              <Typography variant="body1">
-                {campaign.fields?.assignee?.displayName || 'Unassigned'}
-              </Typography>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                Parent Epic
-              </Typography>
-              <Typography variant="body1">
-                {campaign.fields?.parent?.fields?.summary || 'N/A'}
-              </Typography>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                Project
-              </Typography>
-              <Typography variant="body1">
-                {campaign.fields?.project?.name || 'N/A'}
-              </Typography>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                Issue Link
-              </Typography>
-              <Typography variant="body2">
-                <a
-                  href={campaign.self}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: '#1976d2', textDecoration: 'none' }}
-                >
-                  {campaign.self}
-                </a>
-              </Typography>
-            </Grid>
-          </Grid>
         </Paper>
+
+        <TableContainer component={Paper} elevation={3}>
+          <Table>
+            <TableHead>
+              <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
+                <TableCell sx={{ fontWeight: 'bold' }}>Key</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Summary</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Status</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Priority</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Assignee</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>Due Date</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {issues.map((issue) => (
+                <TableRow
+                  key={issue.id}
+                  sx={{ '&:hover': { backgroundColor: '#f9f9f9' } }}
+                >
+                  <TableCell>{issue.key}</TableCell>
+                  <TableCell>{issue.fields?.summary || 'N/A'}</TableCell>
+                  <TableCell>
+                    <Chip
+                      label={issue.fields?.status?.name || 'Unknown'}
+                      color={getStatusColor(issue.fields?.status?.name)}
+                      size="small"
+                    />
+                  </TableCell>
+                  <TableCell>{issue.fields?.priority?.name || 'N/A'}</TableCell>
+                  <TableCell>{issue.fields?.assignee?.displayName || 'Unassigned'}</TableCell>
+                  <TableCell>{issue.fields?.duedate || 'Not set'}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        {issues.length === 0 && (
+          <Alert severity="info" sx={{ mt: 3 }}>
+            No issues found for this epic.
+          </Alert>
+        )}
       </Box>
     </Container>
   );

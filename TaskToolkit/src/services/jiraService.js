@@ -38,3 +38,9 @@ export const getCampaigns = async () => {
   const fields = ["summary", "status", "priority", "parent", "duedate"];
   return searchJiraIssues(jql, 100, fields);
 };
+
+export const getCampaignDetailByEpicLink = async (epicKey) => {
+  const jql = `project = HCMPRE AND labels = hcmpre-campaign-import AND "Epic Link" = ${epicKey}`;
+  const fields = ["summary", "status", "priority", "parent", "duedate", "assignee", "project"];
+  return searchJiraIssues(jql, 100, fields);
+};
