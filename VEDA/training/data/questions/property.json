@@ -1,0 +1,22 @@
+[
+  {
+    "question": "List all active properties.",
+    "sql": "SELECT * FROM property WHERE status='ACTIVE';"
+  },
+  {
+    "question": "What is the total area of property with property_id 'PROP123'?",
+    "sql": "SELECT total_area_sqft FROM property WHERE property_id='PROP123';"
+  },
+  {
+    "question": "Which properties belong to tenant 'pb.amritsar'?",
+    "sql": "SELECT property_id FROM property WHERE tenant_id='pb.amritsar';"
+  },
+  {
+    "question": "Get all commercial properties owned by owner ID 5.",
+    "sql": "SELECT * FROM property WHERE property_usage_type='Commercial' AND owner_id=5;"
+  },
+  {
+    "question": "How many properties are occupied by tenants?",
+    "sql": "SELECT COUNT(*) FROM property WHERE occupancy_type='Tenant';"
+  }
+]
