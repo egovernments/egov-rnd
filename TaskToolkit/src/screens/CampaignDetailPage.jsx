@@ -18,6 +18,7 @@ import {
   TableRow
 } from '@mui/material';
 import { getCampaignDetailByEpicLink } from '../services/jiraService';
+import Riskometer from '../components/Riskometer';
 
 function CampaignDetailPage() {
   const { key } = useParams();
@@ -130,6 +131,8 @@ function CampaignDetailPage() {
             </Typography>
           </Box>
         </Paper>
+
+        <Riskometer issues={issues} />
 
         <TableContainer component={Paper} elevation={3}>
           <Table>
