@@ -1,9 +1,6 @@
-import { Container, Typography, Box, Paper, Button } from '@mui/material';
-import { useAuth } from '../context/AuthContext';
+import { Container, Typography, Box, Paper } from '@mui/material';
 
 function HelloWorld() {
-  const { logout } = useAuth();
-
   return (
     <Container maxWidth="md">
       <Box
@@ -12,6 +9,7 @@ function HelloWorld() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          py: 4,
         }}
       >
         <Paper
@@ -28,14 +26,9 @@ function HelloWorld() {
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
             Welcome to TaskToolkit! You've successfully logged in.
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={logout}
-            sx={{ mt: 2 }}
-          >
-            Logout
-          </Button>
+          <Typography variant="body2" color="text.secondary">
+            The logout button is now in the top navigation bar.
+          </Typography>
         </Paper>
       </Box>
     </Container>
