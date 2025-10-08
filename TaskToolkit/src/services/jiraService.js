@@ -35,7 +35,7 @@ export const getProjectEpics = async (projectKey = "HDDF", maxResults = 50) => {
 
 export const getCampaigns = async () => {
   const jql = "project = HCMPRE AND labels = hcmpre-campaign-import AND issuetype = Epic";
-  const fields = ["summary", "status", "priority", "parent", "duedate"];
+  const fields = [];
   return searchJiraIssues(jql, 100, fields);
 };
 
