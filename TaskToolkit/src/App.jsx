@@ -5,6 +5,7 @@ import './App.css'
 import HelloWorld from './screens/HelloWorld'
 import Login from './screens/Login'
 import ProtectedRoute from './components/ProtectedRoute'
+import JiraTest from './components/JiraTest'
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
 
@@ -15,6 +16,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/jira-test" element={<JiraTest />} />
             <Route
               path="/"
               element={
