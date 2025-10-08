@@ -29,7 +29,7 @@ function HelloWorld() {
             Hello World
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-            Welcome to TaskToolkit! You've successfully logged in.
+            Welcome to HCM Campaign Tracking! You've successfully logged in.
           </Typography>
           <Box sx={{ display: "flex", gap: 2, mt: 2, flexWrap: "wrap", justifyContent: "center" }}>
             <Button variant="contained" color="secondary" onClick={() => navigate("/jira-test")}>

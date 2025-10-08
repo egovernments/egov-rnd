@@ -51,7 +51,7 @@ function AppBar() {
         marginTop: 0
       }}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#333' }}>
-          TaskToolkit
+          HCM Campaign Tracking
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {user && (
