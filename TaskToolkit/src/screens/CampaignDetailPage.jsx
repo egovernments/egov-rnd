@@ -18,6 +18,8 @@ import {
   TableRow
 } from '@mui/material';
 import { getCampaignDetailByEpicLink } from '../services/jiraService';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 function CampaignDetailPage() {
   const { key } = useParams();
@@ -71,6 +73,24 @@ function CampaignDetailPage() {
     return statusColors[statusName] || 'default';
   };
 
+  // Function to download full page as PDF
+  const downloadFullPagePDF = async () => {
+    try {
+      const element = document.body;
+      const canvas = await html2canvas(element, { scrollY: -window.scrollY });
+      const imgData = canvas.toDataURL('image/png');
+
+      const pdf = new jsPDF('p', 'pt', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`campaign-${key}.pdf`);
+    } catch (error) {
+      console.error('PDF generation error:', error);
+    }
+  };
+
   if (loading) {
     return (
       <Container maxWidth="lg">
@@ -111,10 +131,20 @@ function CampaignDetailPage() {
         <Button
           variant="outlined"
           onClick={() => navigate('/campaign-details')}
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, mr: 2 }}
         >
           <ArrowBackIcon />
           Back to Campaigns
+        </Button>
+
+        {/* Elevated button for PDF download */}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={downloadFullPagePDF}
+          sx={{ mb: 3 }}
+        >
+          Download Full Page PDF
         </Button>
 
         <Paper elevation={3} sx={{ p: 4, mb: 3 }}>
