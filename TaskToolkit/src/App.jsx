@@ -9,6 +9,7 @@ import HelloWorld from './screens/HelloWorld'
 import Login from './screens/Login'
 import ProtectedRoute from './components/ProtectedRoute'
 import CampaignDetailsScreen from './screens/CampaignDetailsScreen'
+import CampaignDetailPage from './screens/CampaignDetailPage'
 import JiraTestScreen from './screens/JiraTestScreen'
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
@@ -36,6 +37,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <CampaignDetailsScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/campaign/:id"
+                element={
+                  <ProtectedRoute>
+                    <CampaignDetailPage />
                   </ProtectedRoute>
                 }
               />
