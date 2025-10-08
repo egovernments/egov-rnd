@@ -10,6 +10,42 @@ import gspread
 SCOPE = ["https://www.googleapis.com/auth/spreadsheets.readonly",
          "https://www.googleapis.com/auth/drive.readonly"]
 
+def _make_unique_headers(raw_headers):
+    """
+    Normalize and uniquify header names.
+    - Replace empty/None with "unnamed_<idx>"
+    - Strip whitespace
+    - Ensure uniqueness by appending _<n> when duplicates occur
+    """
+    seen = {}
+    result = []
+    for idx, h in enumerate(raw_headers):
+        name = "" if h is None else str(h).strip()
+        if not name:
+            name = f"unnamed_{idx+1}"
+        base = name
+        # ensure unique
+        count = seen.get(base, 0)
+        if count:
+            name = f"{base}_{count+1}"
+        seen[base] = count + 1
+        result.append(name)
+    return result
+
+def _worksheet_to_dataframe(ws) -> pd.DataFrame:
+    """Robustly convert a gspread Worksheet to a DataFrame, tolerating
+    blank/duplicate headers by constructing unique column names.
+    """
+    values = ws.get_all_values()
+    if not values:
+        return pd.DataFrame()
+    headers = _make_unique_headers(values[0])
+    rows = values[1:] if len(values) > 1 else []
+    # Pad/truncate each row to match header length
+    normalized_rows = [r + [None] * (len(headers) - len(r)) if len(r) < len(headers) else r[:len(headers)] for r in rows]
+    df = pd.DataFrame(normalized_rows, columns=headers)
+    return df
+
 def _public_export_to_csv(sheet_url: str) -> Optional[pd.DataFrame]:
     """
     Best-effort attempt for publicly readable sheets (single sheet only).
@@ -45,38 +81,8 @@ def load_google_sheet_all_tabs(sheet_url: str, sa_json_bytes: Optional[bytes]) -
         sh = client.open_by_url(sheet_url)
         out = {}
         for ws in sh.worksheets():
-            # Get all values to handle duplicate/empty headers
-            all_values = ws.get_all_values()
-            if not all_values:
-                out[ws.title] = pd.DataFrame()
-                continue
-
-            # First row as headers
-            headers = all_values[0]
-            data_rows = all_values[1:]
-
-            # Handle duplicate or empty column names
-            seen = {}
-            clean_headers = []
-            for i, h in enumerate(headers):
-                if not h or h.strip() == '':
-                    h = f'Column_{i+1}'
-                # Remove newlines and extra whitespace
-                h = str(h).replace('\n', ' ').strip()
-                if h in seen:
-                    seen[h] += 1
-                    clean_headers.append(f'{h}_{seen[h]}')
-                else:
-                    seen[h] = 0
-                    clean_headers.append(h)
-
-            df = pd.DataFrame(data_rows, columns=clean_headers)
-
-            # Clean string data - strip whitespace from all cells
-            for col in df.columns:
-                if df[col].dtype == 'object':
-                    df[col] = df[col].apply(lambda x: str(x).strip() if x and str(x).strip() != '' else x)
-
+            # Use a robust converter that tolerates duplicate/blank headers
+            df = _worksheet_to_dataframe(ws)
             out[ws.title] = df
         return out
     else:
