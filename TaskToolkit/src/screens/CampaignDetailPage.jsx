@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import {
   Container,
   Box,
@@ -33,6 +33,10 @@ import html2canvas from "html2canvas";
 function CampaignDetailPage() {
   const { key } = useParams();
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const navigatedState = state?.campaign;
+  const navigatedDescription = navigatedState?.fields?.description?.content?.[0]?.content?.[0]?.content?.[0]?.text || "";
+  const navigatedTitle = navigatedState?.fields?.summary || "";
   const [campaignData, setCampaignData] = useState(null);
   const [epicData, setEpicData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,6 +46,7 @@ function CampaignDetailPage() {
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [keyFilter, setKeyFilter] = useState("");
 
+  console.log("navigatedState", navigatedState, navigatedTitle, navigatedDescription);
   // Simple Arrow Back icon using SVG
   const ArrowBackIcon = () => (
     <Box component="svg" sx={{ width: 20, height: 20, mr: 0.5 }} viewBox="0 0 24 24" fill="currentColor">
@@ -100,12 +105,14 @@ function CampaignDetailPage() {
         // Fetch both campaign issues and epic details in parallel
         const [campaignResponse, epicResponse] = await Promise.all([getCampaignDetailByEpicLink(key)]);
 
+        console.log("campaignResponse", campaignResponse);
         if (campaignResponse && campaignResponse.issues) {
           setCampaignData(campaignResponse);
         } else {
           setError("No campaign data found");
         }
 
+        console.log("epicResponse", epicResponse);
         if (epicResponse && epicResponse.issues && epicResponse.issues.length > 0) {
           setEpicData(epicResponse.issues[0]);
         }
@@ -305,7 +312,7 @@ function CampaignDetailPage() {
                 fontWeight: 600,
                 color: "primary.main",
               }}>
-              {/* {epicTitle} */}
+              {navigatedTitle}
             </Typography>
 
             {/* Epic Description */}
@@ -318,7 +325,7 @@ function CampaignDetailPage() {
                 lineHeight: 1.6,
                 whiteSpace: "pre-wrap",
               }}>
-              {/* {renderDescription(epicDescription)} */}
+              {navigatedDescription}
             </Typography>
 
             <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>

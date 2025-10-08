@@ -1,11 +1,11 @@
-# HCM Campaign Tracking Toolkit
+# Smart Campaign Manager Toolkit Toolkit
 ## A Modern React-Based Project Management Solution
 
 ---
 
 ## 🎯 Project Overview
 
-The **HCM Campaign Tracking Toolkit** is a comprehensive web application designed to streamline campaign management and task tracking by integrating with Jira APIs. Built with modern web technologies, it provides real-time insights, analytics, and seamless project oversight.
+The **Smart Campaign Manager Toolkit Toolkit** is a comprehensive web application designed to streamline campaign management and task tracking by integrating with Jira APIs. Built with modern web technologies, it provides real-time insights, analytics, and seamless project oversight.
 
 ---
 
@@ -236,7 +236,7 @@ src/
 
 ## 🎉 Conclusion
 
-The **HCM Campaign Tracking Toolkit** represents a modern approach to project management, combining the power of React, Material-UI, and Jira APIs with AI-assisted development. The result is a robust, scalable, and user-friendly application that streamlines campaign oversight and enhances team productivity.
+The **Smart Campaign Manager Toolkit Toolkit** represents a modern approach to project management, combining the power of React, Material-UI, and Jira APIs with AI-assisted development. The result is a robust, scalable, and user-friendly application that streamlines campaign oversight and enhances team productivity.
 
 ### **Key Achievements**
 ✅ **Seamless Jira Integration** - Direct API connectivity
