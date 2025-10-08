@@ -23,10 +23,35 @@ function AppBar() {
   };
 
   return (
-    <MuiAppBar position="static" color="primary">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          TaskToolkit
+    <MuiAppBar 
+      position="static" 
+      sx={{
+        margin: 0,
+        marginTop: 0,
+        padding: 0,
+        paddingTop: 0,
+        width: '100%',
+        borderRadius: '0 !important',
+        boxShadow: 2,
+        backgroundColor: 'white',
+        '& .MuiToolbar-root': {
+          borderRadius: '0 !important'
+        },
+        '&.MuiAppBar-root': {
+          borderRadius: '0 !important'
+        }
+      }}
+    >
+      <Toolbar sx={{ 
+        minHeight: '64px !important',
+        paddingLeft: '16px !important',
+        paddingRight: '16px !important',
+        paddingTop: '0 !important',
+        margin: 0,
+        marginTop: 0
+      }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#333' }}>
+          HCM Campaign Tracking
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {user && (
@@ -39,7 +64,7 @@ function AppBar() {
                 />
               )}
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                <Typography variant="body2" sx={{ color: 'inherit', lineHeight: 1.2 }}>
+                <Typography variant="body2" sx={{ color: '#333', lineHeight: 1.2 }}>
                   {user.name || 'User'}
                 </Typography>
                 {user.provider && (
@@ -58,20 +83,16 @@ function AppBar() {
               </Box>
             </>
           )}
-          <Button 
-            color="inherit" 
-            onClick={logout}
-            variant="outlined"
-            sx={{ 
-              borderColor: 'rgba(255, 255, 255, 0.5)',
-              '&:hover': {
-                borderColor: 'white',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)'
-              }
+          <Box
+            component="img"
+            src="https://moz-health-prd.s3.af-south-1.amazonaws.com/dashboard-assets/digit-logo.png"
+            alt="Digit Logo"
+            sx={{
+              height: 40,
+              width: 'auto',
+              ml: 2
             }}
-          >
-            Logout
-          </Button>
+          />
         </Box>
       </Toolbar>
     </MuiAppBar>

@@ -2,9 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
-export default defineConfig(({ mode, command }) => {
-  const env = loadEnv(mode, process.cwd(), "");
-
+export default defineConfig(({ command }) => {
   return {
     plugins: [react()],
     base: command === 'serve' ? '/' : '/egov-rnd/',
@@ -17,7 +15,10 @@ export default defineConfig(({ mode, command }) => {
           secure: false,
           configure: (proxy, options) => {
             proxy.on("proxyReq", (proxyReq, req, res) => {
-              proxyReq.setHeader("Cookie", `atlassian.xsrf.token=${env.VITE_JIRA_XSRF_TOKEN}`);
+              const token = process.env.VITE_JIRA_XSRF_TOKEN;
+              if (token) {
+                proxyReq.setHeader("Cookie", `atlassian.xsrf.token=${token}`);
+              }
             });
           },
         },
