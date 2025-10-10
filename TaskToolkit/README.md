@@ -7,6 +7,10 @@
 
 The **Smart Campaign Manager Toolkit Toolkit** is a comprehensive web application designed to streamline campaign management and task tracking by integrating with Jira APIs. Built with modern web technologies, it provides real-time insights, analytics, and seamless project oversight.
 
+
+## Live Application [https://jagankumar-egov.github.io/egov-rnd/login]
+
+
 ---
 
 ## 🚀 Key Features
