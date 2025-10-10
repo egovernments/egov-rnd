@@ -125,7 +125,7 @@ class MapControllers extends GetxController {
       status: "active",
       type: shapeTypeSetter(copy.length),
       userId: "rajan123",
-      alert: ["Alert-001"],
+      alert: "Alert-001",
       distanceMeters: int.parse(siteDistanceController.text),
       locationDetails: copy,
     );
@@ -171,14 +171,14 @@ class MapControllers extends GetxController {
         longitude: newPolyPoints.first.longitude,
       ));
     }
-
+// TODO need to make it dynmaic
     AlertPolygon newAlertPolygon = AlertPolygon(
       id: edittingAlertPolygon?.id ?? "",
       locationName: siteNameController.text,
       status: "active",
       type: shapeTypeSetter(copy.length),
       userId: "rajan123",
-      alert: ["Alert-001"],
+      alert: "Alert-001",
       distanceMeters: int.parse(siteDistanceController.text),
       locationDetails: copy,
     );

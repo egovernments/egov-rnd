@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: route-map-app-ingress
+  namespace: apps
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/lua-resty-waf: "active"
+    nginx.ingress.kubernetes.io/lua-resty-waf-allow-unknown-content-types: "true"
+    nginx.ingress.kubernetes.io/lua-resty-waf-debug: "true"
+    nginx.ingress.kubernetes.io/lua-resty-waf-process-multipart-body: "false"
+    nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: "10"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  tls:
+    - hosts:
+        - unified-qa.digit.org
+      secretName: unified-qa.digit.org-tls-certs
+  rules:
+    - host: unified-qa.digit.org
+      http:
+        paths:
+          - path: /route_map
+            pathType: Prefix
+            backend:
+              service:
+                name: route-map-app-service
+                port:
+                  number: 80
+

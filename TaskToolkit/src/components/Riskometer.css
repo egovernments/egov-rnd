@@ -1,0 +1,180 @@
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(76, 175, 80, 0.6);
+  }
+}
+
+@keyframes gaugeEntry {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.gauge-container {
+  position: relative;
+  width: 320px;
+  height: 180px;
+  margin: 30px auto;
+  overflow: hidden;
+  animation: gaugeEntry 0.8s ease-out;
+}
+
+.gauge {
+  position: relative;
+  width: 320px;
+  height: 180px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.gauge-background {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 320px;
+  height: 160px;
+  border-radius: 160px 160px 0 0;
+  background: linear-gradient(
+    90deg,
+    #4caf50 0%,
+    #8bc34a 12%,
+    #cddc39 25%,
+    #ffeb3b 37%,
+    #ffc107 50%,
+    #ff9800 62%,
+    #ff5722 75%,
+    #f44336 87%,
+    #d32f2f 100%
+  );
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gauge-arc {
+  position: absolute;
+  bottom: 0;
+  left: 25px;
+  width: 270px;
+  height: 135px;
+  border-radius: 135px 135px 0 0;
+  background: #f5f5f5;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gauge-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 320px;
+  height: 160px;
+  border-radius: 160px 160px 0 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  pointer-events: none;
+}
+
+.gauge-needle {
+  position: absolute;
+  width: 4px;
+  height: 120px;
+  background: linear-gradient(to bottom, #1a237e 0%, #283593 50%, #3949ab 100%);
+  bottom: 0;
+  left: 158px;
+  transform-origin: bottom center;
+  border-radius: 2px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 10;
+}
+
+.gauge-needle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 14px solid #d32f2f;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.gauge-center {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+  border-radius: 50%;
+  bottom: -10px;
+  left: 150px;
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  z-index: 11;
+}
+
+.gauge-center::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), transparent);
+  border-radius: 50%;
+}
+
+.risk-score-display {
+  margin-top: 20px !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: pulseGlow 2s ease-in-out infinite;
+  transition: color 0.5s ease;
+}
+
+.risk-label {
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 8px !important;
+}
+
+.gauge-markers {
+  position: absolute;
+  width: 320px;
+  height: 180px;
+  bottom: 0;
+  left: 0;
+}
+
+.gauge-marker {
+  position: absolute;
+  width: 3px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  bottom: 0;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 2px;
+}
+
+.gauge-marker:nth-child(1) { transform: translateX(-50%) rotate(-90deg); }
+.gauge-marker:nth-child(2) { transform: translateX(-50%) rotate(-67.5deg); }
+.gauge-marker:nth-child(3) { transform: translateX(-50%) rotate(-45deg); }
+.gauge-marker:nth-child(4) { transform: translateX(-50%) rotate(-22.5deg); }
+.gauge-marker:nth-child(5) { transform: translateX(-50%) rotate(0deg); }
+.gauge-marker:nth-child(6) { transform: translateX(-50%) rotate(22.5deg); }
+.gauge-marker:nth-child(7) { transform: translateX(-50%) rotate(45deg); }
+.gauge-marker:nth-child(8) { transform: translateX(-50%) rotate(67.5deg); }
+.gauge-marker:nth-child(9) { transform: translateX(-50%) rotate(90deg); }
