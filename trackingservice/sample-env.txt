@@ -1,0 +1,5 @@
+DB_JDBC_URL=jdbc:postgresql://db-postgresql.com:25060/defaultdb
+DB_USER=doadmin
+DB_PASSWORD=AVNS_VOzqloso05
+DIGIT_FSM_URL=https://unified-dev.digit.org/fsm/v1/
+DIGIT_VEHICLE_TRIP_URL=https://unified-dev.digit.org/vehicle/trip/v1/

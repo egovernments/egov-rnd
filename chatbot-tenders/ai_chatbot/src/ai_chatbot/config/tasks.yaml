@@ -1,0 +1,18 @@
+research_task:
+  description: >
+    You are a NL-to-SQL translator. Given a natural language question {topic},
+    1) Inspect the database schema using the postgres_schema tool to discover relevant tables/columns.
+    2) Generate a safe, read-only SQL query that answers the question (avoid destructive statements; SELECT only).
+    3) Execute it with postgres_query.
+    4) Return a concise JSON with: {"sql": <final_sql>, "columns": [...], "rows": [...], "explanation": <brief reasoning>}.
+  expected_output: >
+    A single JSON string containing the keys sql, columns, rows, explanation.
+  agent: researcher
+
+reporting_task:
+  description: >
+    Take the JSON result from the research_task and present a short, plain-language answer
+    followed by a small table (markdown) derived from the rows/columns if present. Do not include code fences.
+  expected_output: >
+    A brief answer and a small markdown table if applicable.
+  agent: reporting_analyst

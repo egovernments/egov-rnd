@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: route-map-app
+  namespace: apps
+  labels:
+    app: route-map-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: route-map-app
+  template:
+    metadata:
+      labels:
+        app: route-map-app
+    spec:
+      containers:
+      - name: route-map-app-container
+        image: egovio/route_map:latest
+        ports:
+        - containerPort: 80
+

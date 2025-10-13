@@ -13,7 +13,7 @@ LatLng custom = const LatLng(17.428446, 78.302284);
 String urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 List<String> subDomain = ['a', 'b', 'c'];
 
-String apiUrl = "http://167.71.225.156:8080/api/v3";
+String apiUrl = "https://unified-dev.digit.org/trackingservice/api/v3";
 
 List<String> siteTypes = ['Waste Land', 'Dumping Ground', 'Landfill'];
 

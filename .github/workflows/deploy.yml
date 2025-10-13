@@ -1,0 +1,70 @@
+name: Deploy TaskToolkit to GitHub Pages
+
+on:
+  push:
+    branches: [ "fastrack-ai" ]
+    paths: [ "TaskToolkit/**" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./TaskToolkit
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.19'
+          cache: 'yarn'
+          cache-dependency-path: './TaskToolkit/yarn.lock'
+          
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        
+      - name: Debug Environment Variables
+        run: |
+          echo "VITE_GITHUB_CLIENT_ID is set: ${{ secrets.VITE_GITHUB_CLIENT_ID != '' }}"
+          echo "Environment variables starting with VITE_:"
+          env | grep VITE_ || echo "No VITE_ variables found"
+        env:
+          VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID }}
+          VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+        
+      - name: Build
+        run: yarn build
+        env:
+          VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID || 'Ov23liA9bfunZcwFHjWK' }}
+          VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './TaskToolkit/dist'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
