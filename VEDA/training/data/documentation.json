@@ -1,0 +1,7 @@
+{
+  "property": "The 'property' table stores property details for tenants. It includes a unique property ID, tenant ID, boundary code, owner ID, property usage type, total and built-up area, occupancy type, status, and creation timestamp.",
+  "owner": "The 'owner' table stores information about property owners, including ID, name, mobile number, email, Aadhaar number, gender, and creation timestamp.",
+  "boundary": "The 'boundary' table defines administrative boundaries, with a unique code, name, type (STATE, CITY, ZONE, WARD), and optional parent boundary reference.",
+  "property_tax_demand": "The 'property_tax_demand' table records tax demands for properties, including demand ID, property ID, financial year, tax period, net demand amount, rebate amount, status (PAID, UNPAID), and creation timestamp.",
+  "payment": "The 'payment' table logs payment transactions for property tax demands, including payment ID, demand ID, property ID, tenant ID, amount paid, payment date, status (SUCCESS, FAILED), and creation timestamp."
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Total property tax collected in Punjab",
+    "sql": "SELECT SUM(amount_paid) FROM payment WHERE tenant_id LIKE 'pb.%' AND status = 'SUCCESS';"
+  },
+  {
+    "question": "Total unpaid tax in Ludhiana",
+    "sql": "SELECT SUM(d.net_demand) FROM property_tax_demand d JOIN property p ON d.property_id = p.property_id JOIN boundary b ON p.boundary_code = b.code WHERE b.name = 'Ludhiana' AND d.status = 'UNPAID';"
+  },
+  {
+    "question": "Show all payments for property PB-PT-103928",
+    "sql": "SELECT * FROM payment WHERE property_id = 'PB-PT-103928';"
+  },
+  {
+    "question": "Top 5 wards by tax collection",
+    "sql": "SELECT b.name AS ward, SUM(p.amount_paid) AS total_collection FROM payment p JOIN property pr ON p.property_id = pr.property_id JOIN boundary b ON pr.boundary_code = b.code WHERE b.type = 'WARD' GROUP BY b.name ORDER BY total_collection DESC LIMIT 5;"
+  },
+  {
+    "question": "List all active properties in Amritsar",
+    "sql": "SELECT * FROM property p JOIN boundary b ON p.boundary_code = b.code WHERE b.name='Amritsar' AND p.status='ACTIVE';"
+  },
+  {
+    "question": "Total tax demand for residential properties in Ludhiana",
+    "sql": "SELECT SUM(d.net_demand) FROM property_tax_demand d JOIN property p ON d.property_id = p.property_id JOIN boundary b ON p.boundary_code = b.code WHERE b.name='Ludhiana' AND p.property_usage_type='Residential';"
+  },
+  {
+    "question": "Owners with more than 3 properties",
+    "sql": "SELECT o.name, COUNT(p.id) AS property_count FROM owner o JOIN property p ON o.id=p.owner_id GROUP BY o.id, o.name HAVING COUNT(p.id) > 3;"
+  },
+  {
+    "question": "Payments made by tenant pb.amritsar in 2024-25",
+    "sql": "SELECT * FROM payment p JOIN property_tax_demand d ON p.demand_id = d.id WHERE p.tenant_id='pb.amritsar' AND d.financial_year='2024-25';"
+  },
+  {
+    "question": "Properties with built-up area greater than 2000 sqft",
+    "sql": "SELECT * FROM property WHERE built_up_area_sqft > 2000;"
+  },
+  {
+    "question": "Average net demand for commercial properties",
+    "sql": "SELECT AVG(d.net_demand) FROM property_tax_demand d JOIN property p ON d.property_id = p.property_id WHERE p.property_usage_type='Commercial';"
+  },
+  {
+    "question": "Top 5 owners by total tax paid",
+    "sql": "SELECT o.name, SUM(p.amount_paid) AS total_paid FROM owner o JOIN property pr ON o.id=pr.owner_id JOIN payment p ON pr.property_id=p.property_id WHERE p.status='SUCCESS' GROUP BY o.id, o.name ORDER BY total_paid DESC LIMIT 5;"
+  },
+  {
+    "question": "List all properties currently inactive",
+    "sql": "SELECT * FROM property WHERE status='INACTIVE';"
+  },
+  {
+    "question": "Total rebate granted in 2024-25",
+    "sql": "SELECT SUM(rebate_amount) FROM property_tax_demand WHERE financial_year='2024-25';"
+  },
+  {
+    "question": "Properties in wards under Ludhiana zone",
+    "sql": "SELECT pr.* FROM property pr JOIN boundary b ON pr.boundary_code=b.code JOIN boundary parent ON b.parent_code=parent.code WHERE parent.name='Ludhiana' AND b.type='WARD';"
+  },
+  {
+    "question": "Show all payments that failed",
+    "sql": "SELECT * FROM payment WHERE status='FAILED';"
+  }
+]
